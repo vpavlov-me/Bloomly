@@ -1,0 +1,10 @@
+.DS_Store
+DerivedData/
+.xcodeproj/
+.xcworkspace/
+.playground/
+*.xcuserdata
+.build/
+Tuist/Cache/
+.fastlane/
+*.xcresult

@@ -1,0 +1,25 @@
+# Generated File Tree
+
+- App/
+  - Sources/
+  - Resources/
+  - CoreData/
+- Packages/
+  - DesignSystem/
+  - Content/
+  - Tracking/
+  - Measurements/
+  - Timeline/
+  - Paywall/
+  - Sync/
+  - Widgets/
+  - WatchApp/
+- Targets/
+  - BabyTrackWidgets/
+  - BabyTrackWatch/
+  - BabyTrackWatchExtension/
+- Tests/
+- Tuist/
+- scripts/
+- Docs/
+- .github/workflows/

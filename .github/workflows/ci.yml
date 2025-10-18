@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: macos-14
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_16.app
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s "$DEVELOPER_DIR"
+      - name: Cache SPM
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Developer/Xcode/DerivedData
+            ~/.swiftpm
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+      - name: Install Tuist
+        run: |
+          if ! command -v tuist >/dev/null 2>&1; then
+            curl -Ls https://install.tuist.io | bash
+          fi
+      - name: Generate Workspace
+        run: |
+          export PATH="$HOME/.tuist/bin:$PATH"
+          tuist generate --path .
+      - name: Build BabyTrack
+        run: |
+          xcodebuild -workspace BabyTrack.xcworkspace \
+            -scheme BabyTrack \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -parallelizeTargets \
+            -skipPackagePluginValidation \
+            build | xcpretty
+      - name: Test
+        run: |
+          xcodebuild -workspace BabyTrack.xcworkspace \
+            -scheme BabyTrackTests \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            test | xcpretty

@@ -1,0 +1,12 @@
+opt_in_rules:
+  - attributes
+  - closure_spacing
+  - fatal_error_message
+
+disabled_rules:
+  - todo
+
+line_length: 120
+identifier_name:
+  min_length: 2
+reporter: "xcode"
