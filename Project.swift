@@ -117,6 +117,11 @@ let project = Project(
             shared: true,
             buildAction: BuildAction(targets: ["BabyTrackTests"]),
             testAction: TestAction(targets: ["BabyTrackTests"])
+        ),
+        Scheme(
+            name: "BabyTrackWatch",
+            shared: true,
+            buildAction: BuildAction(targets: ["BabyTrackWatch", "BabyTrackWatchExtension"])
         )
     ]
 )

@@ -11,16 +11,10 @@ import Content
 import DesignSystem
 
 public struct WatchDashboardView: View {
-    let events: [Event]
-    let logAction: (EventKind) -> Void
+    @StateObject private var store: WatchDataStore
 
-    public init(events: [Event], logAction: @escaping (EventKind) -> Void) {
-        self.events = events
-        self.logAction = logAction
-    }
-
-    public func trigger(kind: EventKind) {
-        logAction(kind)
+    public init(store: @autoclosure @escaping () -> WatchDataStore = WatchDataStore.init) {
+        _store = StateObject(wrappedValue: store())
     }
 
     public var body: some View {
@@ -28,16 +22,16 @@ public struct WatchDashboardView: View {
             Section("Quick Log") {
                 ForEach(EventKind.allCases, id: \.self) { kind in
                     Button(kind.rawValue.capitalized) {
-                        logAction(kind)
+                        store.log(kind: kind)
                     }
                 }
             }
 
             Section("Recent") {
-                if events.isEmpty {
+                if store.events.isEmpty {
                     Text(L10n.timelineEmptyState())
                 } else {
-                    ForEach(events.prefix(5)) { event in
+                    ForEach(store.events.prefix(5)) { event in
                         VStack(alignment: .leading) {
                             Text(event.kind.rawValue.capitalized)
                                 .font(.headline)
@@ -49,5 +43,6 @@ public struct WatchDashboardView: View {
                 }
             }
         }
+        .onAppear { store.fetchRecentEvents(limit: 5) }
     }
 }

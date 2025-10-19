@@ -33,4 +33,11 @@ enum PreviewData {
             isSynced: false
         )
     ]
+
+    static let growthSamples: [GrowthChartSample] = [
+        GrowthChartSample(type: .weight, month: 0, value: 3.2),
+        GrowthChartSample(type: .weight, month: 3, value: 5.4),
+        GrowthChartSample(type: .height, month: 0, value: 49.0),
+        GrowthChartSample(type: .height, month: 3, value: 61.0)
+    ]
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MeasurementType: String, Codable, Sendable {
+public enum MeasurementType: String, Codable, Sendable, CaseIterable {
     case height
     case weight
     case head

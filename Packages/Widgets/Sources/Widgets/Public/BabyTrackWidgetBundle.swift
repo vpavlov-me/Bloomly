@@ -23,6 +23,8 @@ public struct SleepSummaryEntry: TimelineEntry {
 }
 
 public struct LastFeedProvider: TimelineProvider {
+    private let provider = WidgetDataProvider()
+
     public init() {}
 
     public func placeholder(in context: Context) -> LastFeedEntry {
@@ -30,16 +32,23 @@ public struct LastFeedProvider: TimelineProvider {
     }
 
     public func getSnapshot(in context: Context, completion: @escaping (LastFeedEntry) -> Void) {
-        completion(LastFeedEntry(date: Date(), title: "2h ago"))
+        completion(makeEntry())
     }
 
     public func getTimeline(in context: Context, completion: @escaping (Timeline<LastFeedEntry>) -> Void) {
-        let entry = LastFeedEntry(date: Date(), title: "2h ago")
+        let entry = makeEntry()
         completion(Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(1800))))
+    }
+
+    private func makeEntry() -> LastFeedEntry {
+        let summary = provider.lastFeedSummary()
+        return LastFeedEntry(date: Date(), title: summary)
     }
 }
 
 public struct SleepSummaryProvider: TimelineProvider {
+    private let provider = WidgetDataProvider()
+
     public init() {}
 
     public func placeholder(in context: Context) -> SleepSummaryEntry {
@@ -47,12 +56,15 @@ public struct SleepSummaryProvider: TimelineProvider {
     }
 
     public func getSnapshot(in context: Context, completion: @escaping (SleepSummaryEntry) -> Void) {
-        completion(SleepSummaryEntry(date: Date(), totalSleep: 3 * 3600))
+        completion(makeEntry())
     }
 
     public func getTimeline(in context: Context, completion: @escaping (Timeline<SleepSummaryEntry>) -> Void) {
-        let entry = SleepSummaryEntry(date: Date(), totalSleep: 4 * 3600)
-        completion(Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(3600))))
+        completion(Timeline(entries: [makeEntry()], policy: .after(Date().addingTimeInterval(3600))))
+    }
+
+    private func makeEntry() -> SleepSummaryEntry {
+        SleepSummaryEntry(date: Date(), totalSleep: provider.todaySleepDuration())
     }
 }
 

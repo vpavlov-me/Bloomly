@@ -39,7 +39,9 @@ final class TimelineViewModelTests: XCTestCase {
 
     private struct StubMeasurementsRepository: MeasurementsRepository {
         let samples: [MeasurementSample]
-        func measurements(of type: MeasurementType) async throws -> [MeasurementSample] { samples }
+        func measurements(of type: MeasurementType) async throws -> [MeasurementSample] {
+            samples.filter { $0.type == type }
+        }
         func upsert(_ measurement: MeasurementInput) async throws {}
         func delete(id: UUID) async throws {}
     }

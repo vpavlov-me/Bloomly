@@ -15,7 +15,8 @@ let package = Package(
     dependencies: [
         .package(path: "../Tracking"),
         .package(path: "../DesignSystem"),
-        .package(path: "../Content")
+        .package(path: "../Content"),
+        .package(path: "../Sync")
     ],
     targets: [
         .target(
@@ -23,7 +24,8 @@ let package = Package(
             dependencies: [
                 "Tracking",
                 "DesignSystem",
-                "Content"
+                "Content",
+                "Sync"
             ],
             path: "Sources"
         ),

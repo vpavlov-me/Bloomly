@@ -26,6 +26,11 @@ install_tuist() {
 }
 
 materialize_template() {
+    if [ -f "$ROOT/Project.swift" ]; then
+        log "Project files already present, skipping template materialization"
+        return
+    fi
+
     if [ ! -f "$TEMPLATE_ARCHIVE" ]; then
         log "Template archive not found: $TEMPLATE_ARCHIVE"
         exit 1
@@ -41,12 +46,24 @@ resolve_packages() {
     install_tuist
     log "Generating workspace via Tuist"
     (cd "$ROOT" && tuist generate --path "$ROOT" >/dev/null)
+    if command -v xcodebuild >/dev/null 2>&1; then
+        log "Resolving packages"
+        (cd "$ROOT" && xcodebuild -resolvePackageDependencies -workspace BabyTrack.xcworkspace >/dev/null)
+    fi
+}
+
+open_workspace() {
+    if [ "$(uname -s)" = "Darwin" ] && command -v open >/dev/null 2>&1; then
+        log "Opening workspace"
+        open "$ROOT/BabyTrack.xcworkspace"
+    fi
 }
 
 main() {
     init_git
     materialize_template
     resolve_packages
+    open_workspace
     log "Bootstrap completed"
 }
 

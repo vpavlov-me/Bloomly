@@ -44,18 +44,32 @@ public final class TimelineViewModel: ObservableObject {
         defer { isLoading = false }
         do {
             async let events = eventsRepository.events(in: nil, of: nil)
-            async let height = measurementsRepository.measurements(of: .height)
-            async let weight = measurementsRepository.measurements(of: .weight)
+            async let measurements = gatherMeasurements()
             let combined = try await events.map { event in
                 TimelineEntry(id: event.id, date: event.start, kind: .event(event))
-            } + height.map { measurement in
-                TimelineEntry(id: measurement.id, date: measurement.date, kind: .measurement(measurement))
-            } + weight.map { measurement in
-                TimelineEntry(id: measurement.id, date: measurement.date, kind: .measurement(measurement))
-            }
+            } + measurements
             entries = combined.sorted(by: { $0.date > $1.date })
         } catch {
             entries = []
         }
+    }
+
+    private func gatherMeasurements() async throws -> [TimelineEntry] {
+        try await MeasurementType.allCases
+            .asyncFlatMap { type in try await measurementsRepository.measurements(of: type) }
+            .map { measurement in
+                TimelineEntry(id: measurement.id, date: measurement.date, kind: .measurement(measurement))
+            }
+    }
+}
+
+private extension Sequence {
+    func asyncFlatMap<T>(_ transform: (Element) async throws -> [T]) async rethrows -> [T] {
+        var aggregated: [T] = []
+        for element in self {
+            let value = try await transform(element)
+            aggregated.append(contentsOf: value)
+        }
+        return aggregated
     }
 }

@@ -7,9 +7,22 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: macos-14
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - name: ios
+            scheme: BabyTrack
+            destination: 'platform=iOS Simulator,name=iPhone 15'
+            action: test
+          - name: watchos
+            scheme: BabyTrackWatch
+            destination: 'platform=watchOS Simulator,name=Apple Watch Series 9 (45mm)'
+            action: build
     env:
       DEVELOPER_DIR: /Applications/Xcode_16.app
+      OTHER_SWIFT_FLAGS: -warnings-as-errors
     steps:
       - uses: actions/checkout@v4
       - name: Select Xcode
@@ -26,21 +39,18 @@ jobs:
           if ! command -v tuist >/dev/null 2>&1; then
             curl -Ls https://install.tuist.io | bash
           fi
+      - name: Install xcpretty
+        run: |
+          gem install xcpretty --no-document
       - name: Generate Workspace
         run: |
           export PATH="$HOME/.tuist/bin:$PATH"
           tuist generate --path .
-      - name: Build BabyTrack
+      - name: ${{ matrix.target.name }} ${{ matrix.target.action }}
         run: |
           xcodebuild -workspace BabyTrack.xcworkspace \
-            -scheme BabyTrack \
-            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -scheme "${{ matrix.target.scheme }}" \
+            -destination "${{ matrix.target.destination }}" \
             -parallelizeTargets \
             -skipPackagePluginValidation \
-            build | xcpretty
-      - name: Test
-        run: |
-          xcodebuild -workspace BabyTrack.xcworkspace \
-            -scheme BabyTrackTests \
-            -destination 'platform=iOS Simulator,name=iPhone 15' \
-            test | xcpretty
+            ${{ matrix.target.action }} | xcpretty

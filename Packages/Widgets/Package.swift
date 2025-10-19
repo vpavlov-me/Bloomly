@@ -17,7 +17,8 @@ let package = Package(
         .package(path: "../Tracking"),
         .package(path: "../Measurements"),
         .package(path: "../DesignSystem"),
-        .package(path: "../Content")
+        .package(path: "../Content"),
+        .package(path: "../Sync")
     ],
     targets: [
         .target(
@@ -27,7 +28,8 @@ let package = Package(
                 "Tracking",
                 "Measurements",
                 "DesignSystem",
-                "Content"
+                "Content",
+                "Sync"
             ],
             resources: [
                 .process("Resources")
