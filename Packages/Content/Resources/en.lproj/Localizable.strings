@@ -1,0 +1,94 @@
+// Timeline
+"timeline.title" = "Timeline";
+"timeline.search.placeholder" = "Search events...";
+"timeline.empty.title" = "Nothing logged yet";
+"timeline.empty.message" = "Start tracking feeds, sleep and diapers to see insights here.";
+"timeline.empty.action" = "Add first event";
+"timeline.filter.all" = "All";
+"timeline.filter.events" = "Events";
+"timeline.filter.measurements" = "Measurements";
+"timeline.summary.events" = "%d events";
+"timeline.summary.measurements" = "%d measurements";
+
+// Events
+"event.kind.sleep" = "Sleep";
+"event.kind.feed" = "Feed";
+"event.kind.diaper" = "Diaper";
+"event.form.title.new" = "New Event";
+"event.form.title.edit" = "Edit Event";
+"event.form.start" = "Start";
+"event.form.end" = "End";
+"event.form.duration" = "Duration";
+"event.form.notes" = "Notes";
+"event.form.save" = "Save";
+"event.form.cancel" = "Cancel";
+"event.delete.message" = "Event deleted";
+"event.delete.undo" = "Undo";
+"event.form.validation.kind" = "Please select event type";
+"event.form.validation.endBeforeStart" = "End time must be after start time";
+"event.saved" = "Event saved successfully";
+
+// Measurements
+"measurements.title" = "Measurements";
+"measurements.add" = "Add Measurement";
+"measurements.form.title" = "New Measurement";
+"measurements.form.type" = "Type";
+"measurements.form.value" = "Value";
+"measurements.form.unit" = "Unit";
+"measurements.form.date" = "Date";
+"measurements.list.empty" = "No measurements yet";
+"measurements.list.empty.message" = "Start tracking your baby's growth";
+"measurements.growth.title" = "Growth Charts";
+"measurements.growth.subtitle" = "WHO percentiles";
+"measurements.growth.premium" = "WHO percentile curves available with Premium";
+"measurement.type.height" = "Height";
+"measurement.type.weight" = "Weight";
+"measurement.type.head" = "Head Circumference";
+"measurement.saved" = "Measurement saved successfully";
+"measurement.deleted" = "Measurement deleted";
+
+// Paywall
+"paywall.title" = "BabyTrack Premium";
+"paywall.subtitle" = "Unlock advanced features";
+"paywall.loading" = "Loading products...";
+"paywall.error.generic" = "Failed to load products";
+"paywall.restore" = "Restore Purchase";
+"paywall.restore.description" = "Already purchased? Restore your subscription";
+"paywall.restore.success" = "Purchase restored successfully";
+"paywall.feature.charts" = "WHO Growth Charts";
+"paywall.feature.export" = "Data Export";
+"paywall.feature.sync" = "iCloud Sync";
+
+// Settings
+"settings.title" = "Settings";
+"settings.language" = "Language";
+"settings.language.system" = "System";
+"settings.language.english" = "English";
+"settings.language.russian" = "Русский";
+"settings.premium.status" = "Premium Status";
+"settings.premium.active" = "Active";
+"settings.premium.inactive" = "Not Active";
+"settings.premium.manage" = "Manage Subscription";
+"settings.export" = "Export Data";
+"settings.export.csv" = "Export as CSV";
+"settings.export.json" = "Export as JSON";
+"settings.export.progress" = "Exporting...";
+"settings.export.success" = "Export ready to share";
+
+// Errors
+"errors.generic" = "Something went wrong";
+"errors.coredata" = "Database error occurred";
+"errors.validation" = "Please check your input";
+"errors.purchase.failed" = "Purchase failed";
+"errors.network.restricted" = "Network access restricted";
+"errors.load" = "Failed to load data";
+"errors.delete" = "Failed to delete";
+"errors.export" = "Export failed";
+
+// Watch
+"watch.quicklog.title" = "Quick Log";
+"watch.recent" = "Recent";
+
+// Widgets
+"widget.lastfeed.title" = "Last Feed";
+"widget.todaysleep.title" = "Today's Sleep";

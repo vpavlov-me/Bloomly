@@ -13,15 +13,11 @@ let package = Package(
             targets: ["Content"]
         )
     ],
-    dependencies: [
-        .package(path: "../DesignSystem")
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "Content",
-            dependencies: [
-                "DesignSystem"
-            ],
+            dependencies: [],
             resources: [
                 .process("Resources")
             ],
