@@ -3,45 +3,43 @@
 ```
 .
 ├── App
-│   ├── CoreData
-│   │   └── BabyTrackModel.xcdatamodeld
-│   ├── Resources
+│   ├── CoreData/
+│   │   └── BabyTrackModel.xcdatamodeld/
+│   ├── Resources/
 │   │   └── BabyTrack.entitlements
-│   └── Sources
+│   └── Sources/
 │       ├── AppEnvironment.swift
 │       ├── BabyTrackApp.swift
 │       ├── PersistenceController.swift
 │       └── PreviewData.swift
-├── Docs
+├── Docs/
 │   ├── architecture.md
 │   ├── cloudkit.md
 │   └── file-tree.md
-├── Packages
-│   ├── Content
-│   │   ├── Package.swift
-│   │   └── Sources
-│   ├── DesignSystem
-│   ├── Measurements
-│   ├── Paywall
-│   ├── Sync
-│   ├── Timeline
-│   ├── Tracking
-│   ├── WatchApp
-│   └── Widgets
-├── Targets
-│   ├── BabyTrackWatch
-│   ├── BabyTrackWatchExtension
-│   └── BabyTrackWidgets
-├── Tests
-│   └── BabyTrackTests.swift
-├── Tuist
-│   └── Config.swift
+├── Packages/
+│   ├── Content/
+│   ├── DesignSystem/
+│   ├── Measurements/
+│   ├── Paywall/
+│   ├── Sync/
+│   ├── Timeline/
+│   ├── Tracking/
+│   ├── WatchApp/
+│   └── Widgets/
+├── Targets/
+│   ├── BabyTrackWatch/
+│   ├── BabyTrackWatchExtension/
+│   └── BabyTrackWidgets/
+├── Tests/
+│   ├── UI/
+│   │   └── BabyTrackUITests.swift
+│   └── Unit/
+│       └── AppEnvironmentTests.swift
+├── .github/workflows/ci.yml
 ├── Project.swift
 ├── Workspace.swift
-├── scripts
-│   ├── bootstrap.sh
-│   └── template.tar.gz.base64
-└── .github
-    └── workflows
-        └── ci.yml
+├── Tuist/Config.swift
+├── scripts/bootstrap.sh
+├── scripts/template.tar.gz.base64
+└── README.md
 ```

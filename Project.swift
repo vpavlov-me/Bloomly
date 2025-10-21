@@ -24,104 +24,239 @@ let project = Project(
         base: [
             "DEVELOPMENT_TEAM": .string(teamID),
             "CODE_SIGN_STYLE": "Automatic",
-            "SWIFT_VERSION": "5.10"
+            "SWIFT_VERSION": "5.10",
+            "OTHER_SWIFT_FLAGS": "-warnings-as-errors"
         ]
     ),
-    targets: [
-        Target(
-            name: appName,
-            platform: .iOS,
-            product: .app,
-            bundleId: "\(bundlePrefix).babytrack",
-            deploymentTarget: .iOS(targetVersion: "17.0", devices: [.iphone, .ipad]),
-            infoPlist: .extendingDefault(with: [
-                "UILaunchScreen": [:],
-                "UIBackgroundModes": ["fetch"]
-            ]),
-            sources: ["App/Sources/**"],
-            resources: ["App/Resources/**", "App/CoreData/**"],
-            entitlements: "App/Resources/BabyTrack.entitlements",
-            dependencies: [
-                .package(product: "DesignSystem"),
-                .package(product: "Content"),
-                .package(product: "Tracking"),
-                .package(product: "Measurements"),
-                .package(product: "Timeline"),
-                .package(product: "Paywall"),
-                .package(product: "Sync"),
-                .package(product: "Widgets"),
-                .package(product: "WatchApp")
-            ]
-        ),
-        Target(
-            name: "BabyTrackTests",
-            platform: .iOS,
-            product: .unitTests,
-            bundleId: "\(bundlePrefix).babytrack.tests",
-            infoPlist: .default,
-            sources: ["Tests/**"],
-            dependencies: [
-                .target(name: appName),
-                .package(product: "SnapshotTesting")
-            ]
-        ),
-        Target(
-            name: "BabyTrackWidgets",
-            platform: .iOS,
-            product: .appExtension,
-            bundleId: "\(bundlePrefix).babytrack.widgets",
-            deploymentTarget: .iOS(targetVersion: "17.0", devices: [.iphone, .ipad]),
-            infoPlist: .default,
-            sources: ["Targets/BabyTrackWidgets/Sources/**"],
-            entitlements: "Targets/BabyTrackWidgets/BabyTrackWidgets.entitlements",
-            dependencies: [
-                .package(product: "Widgets")
-            ]
-        ),
-        Target(
-            name: "BabyTrackWatch",
-            platform: .watchOS,
-            product: .app,
-            bundleId: "\(bundlePrefix).babytrack.watchapp",
-            deploymentTarget: .watchOS(targetVersion: "10.0"),
-            infoPlist: .default,
-            sources: ["Targets/BabyTrackWatch/Sources/**"],
-            dependencies: [
-                .target(name: "BabyTrackWatchExtension")
-            ]
-        ),
-        Target(
-            name: "BabyTrackWatchExtension",
-            platform: .watchOS,
-            product: .appExtension,
-            bundleId: "\(bundlePrefix).babytrack.watchkitextension",
-            deploymentTarget: .watchOS(targetVersion: "10.0"),
-            infoPlist: .default,
-            sources: ["Targets/BabyTrackWatchExtension/Sources/**"],
-            entitlements: "Targets/BabyTrackWatchExtension/BabyTrackWatchExtension.entitlements",
-            dependencies: [
-                .package(product: "WatchApp"),
-                .package(product: "Tracking")
-            ]
-        )
-    ],
-    schemes: [
-        Scheme(
-            name: appName,
-            shared: true,
-            buildAction: BuildAction(targets: [appName, "BabyTrackWidgets", "BabyTrackWatch", "BabyTrackWatchExtension"]),
-            testAction: TestAction(targets: ["BabyTrackTests"])
-        ),
-        Scheme(
-            name: "BabyTrackTests",
-            shared: true,
-            buildAction: BuildAction(targets: ["BabyTrackTests"]),
-            testAction: TestAction(targets: ["BabyTrackTests"])
-        ),
-        Scheme(
-            name: "BabyTrackWatch",
-            shared: true,
-            buildAction: BuildAction(targets: ["BabyTrackWatch", "BabyTrackWatchExtension"])
-        )
-    ]
+    targets: targets,
+    schemes: schemes
 )
+
+private let targets: [Target] = [
+    Target(
+        name: appName,
+        platform: .iOS,
+        product: .app,
+        bundleId: "\(bundlePrefix).babytrack",
+        deploymentTarget: .iOS(targetVersion: "17.0", devices: [.iphone, .ipad]),
+        infoPlist: .extendingDefault(with: [
+            "UILaunchScreen": [:],
+            "UIBackgroundModes": ["fetch"]
+        ]),
+        sources: ["App/**/*.swift"],
+        resources: ["App/Resources/**", "App/CoreData/**"],
+        entitlements: "App/Resources/BabyTrack.entitlements",
+        dependencies: [
+            .package(product: "DesignSystem"),
+            .package(product: "Content"),
+            .package(product: "Tracking"),
+            .package(product: "Measurements"),
+            .package(product: "Timeline"),
+            .package(product: "Paywall"),
+            .package(product: "Sync"),
+            .package(product: "Widgets"),
+            .package(product: "WatchApp")
+        ]
+    ),
+    Target(
+        name: "BabyTrackWidgets",
+        platform: .iOS,
+        product: .appExtension,
+        bundleId: "\(bundlePrefix).babytrack.widgets",
+        deploymentTarget: .iOS(targetVersion: "17.0", devices: [.iphone, .ipad]),
+        infoPlist: .default,
+        sources: ["Targets/BabyTrackWidgets/Sources/**"],
+        entitlements: "Targets/BabyTrackWidgets/BabyTrackWidgets.entitlements",
+        dependencies: [
+            .package(product: "Widgets"),
+            .target(name: appName, condition: .when(platforms: [.iOS]))
+        ]
+    ),
+    Target(
+        name: "BabyTrackWatch",
+        platform: .watchOS,
+        product: .app,
+        bundleId: "\(bundlePrefix).babytrack.watchapp",
+        deploymentTarget: .watchOS(targetVersion: "10.0"),
+        infoPlist: .default,
+        sources: ["Targets/BabyTrackWatch/Sources/**"],
+        dependencies: [
+            .target(name: "BabyTrackWatchExtension")
+        ]
+    ),
+    Target(
+        name: "BabyTrackWatchExtension",
+        platform: .watchOS,
+        product: .appExtension,
+        bundleId: "\(bundlePrefix).babytrack.watchkitextension",
+        deploymentTarget: .watchOS(targetVersion: "10.0"),
+        infoPlist: .default,
+        sources: ["Targets/BabyTrackWatchExtension/Sources/**"],
+        entitlements: "Targets/BabyTrackWatchExtension/BabyTrackWatchExtension.entitlements",
+        dependencies: [
+            .package(product: "WatchApp"),
+            .package(product: "Tracking")
+        ]
+    ),
+    Target(
+        name: "BabyTrackTests",
+        platform: .iOS,
+        product: .unitTests,
+        bundleId: "\(bundlePrefix).babytrack.tests",
+        infoPlist: .default,
+        sources: ["Tests/Unit/**"],
+        dependencies: [
+            .target(name: appName)
+        ]
+    ),
+    Target(
+        name: "BabyTrackUITests",
+        platform: .iOS,
+        product: .uiTests,
+        bundleId: "\(bundlePrefix).babytrack.uitests",
+        infoPlist: .default,
+        sources: ["Tests/UI/**"],
+        dependencies: [
+            .target(name: appName)
+        ]
+    ),
+    Target(
+        name: "DesignSystemTestsTarget",
+        platform: .iOS,
+        product: .unitTests,
+        bundleId: "\(bundlePrefix).babytrack.designsystemtests",
+        infoPlist: .default,
+        sources: ["Packages/DesignSystem/Tests/**"],
+        dependencies: [
+            .package(product: "DesignSystem"),
+            .package(product: "SnapshotTesting")
+        ]
+    ),
+    Target(
+        name: "ContentTestsTarget",
+        platform: .iOS,
+        product: .unitTests,
+        bundleId: "\(bundlePrefix).babytrack.contenttests",
+        infoPlist: .default,
+        sources: ["Packages/Content/Tests/**"],
+        dependencies: [
+            .package(product: "Content")
+        ]
+    ),
+    Target(
+        name: "TrackingTestsTarget",
+        platform: .iOS,
+        product: .unitTests,
+        bundleId: "\(bundlePrefix).babytrack.trackingtests",
+        infoPlist: .default,
+        sources: ["Packages/Tracking/Tests/**"],
+        dependencies: [
+            .package(product: "Tracking")
+        ]
+    ),
+    Target(
+        name: "MeasurementsTestsTarget",
+        platform: .iOS,
+        product: .unitTests,
+        bundleId: "\(bundlePrefix).babytrack.measurementstests",
+        infoPlist: .default,
+        sources: ["Packages/Measurements/Tests/**"],
+        dependencies: [
+            .package(product: "Measurements"),
+            .package(product: "SnapshotTesting")
+        ]
+    ),
+    Target(
+        name: "TimelineTestsTarget",
+        platform: .iOS,
+        product: .unitTests,
+        bundleId: "\(bundlePrefix).babytrack.timelinetests",
+        infoPlist: .default,
+        sources: ["Packages/Timeline/Tests/**"],
+        dependencies: [
+            .package(product: "Timeline"),
+            .package(product: "Tracking"),
+            .package(product: "Measurements"),
+            .package(product: "SnapshotTesting")
+        ]
+    ),
+    Target(
+        name: "PaywallTestsTarget",
+        platform: .iOS,
+        product: .unitTests,
+        bundleId: "\(bundlePrefix).babytrack.paywalltests",
+        infoPlist: .default,
+        sources: ["Packages/Paywall/Tests/**"],
+        dependencies: [
+            .package(product: "Paywall"),
+            .package(product: "SnapshotTesting")
+        ]
+    ),
+    Target(
+        name: "SyncTestsTarget",
+        platform: .iOS,
+        product: .unitTests,
+        bundleId: "\(bundlePrefix).babytrack.synctests",
+        infoPlist: .default,
+        sources: ["Packages/Sync/Tests/**"],
+        dependencies: [
+            .package(product: "Sync"),
+            .package(product: "Tracking"),
+            .package(product: "Measurements")
+        ]
+    ),
+    Target(
+        name: "WidgetsTestsTarget",
+        platform: .iOS,
+        product: .unitTests,
+        bundleId: "\(bundlePrefix).babytrack.widgetstests",
+        infoPlist: .default,
+        sources: ["Packages/Widgets/Tests/**"],
+        dependencies: [
+            .package(product: "Widgets")
+        ]
+    ),
+    Target(
+        name: "WatchAppTestsTarget",
+        platform: .iOS,
+        product: .unitTests,
+        bundleId: "\(bundlePrefix).babytrack.watchapptests",
+        infoPlist: .default,
+        sources: ["Packages/WatchApp/Tests/**"],
+        dependencies: [
+            .package(product: "WatchApp"),
+            .package(product: "Tracking")
+        ]
+    )
+]
+
+private let schemes: [Scheme] = [
+    Scheme(
+        name: appName,
+        shared: true,
+        buildAction: BuildAction(targets: [appName, "BabyTrackWidgets", "BabyTrackWatch", "BabyTrackWatchExtension"]),
+        testAction: TestAction(targets: [
+            "BabyTrackTests",
+            "BabyTrackUITests",
+            "TrackingTestsTarget",
+            "MeasurementsTestsTarget",
+            "TimelineTestsTarget",
+            "PaywallTestsTarget",
+            "DesignSystemTestsTarget",
+            "SyncTestsTarget",
+            "WidgetsTestsTarget",
+            "WatchAppTestsTarget"
+        ])
+    ),
+    Scheme(
+        name: "BabyTrackTests",
+        shared: true,
+        buildAction: BuildAction(targets: ["BabyTrackTests"]),
+        testAction: TestAction(targets: ["BabyTrackTests"])
+    ),
+    Scheme(
+        name: "BabyTrackWatch",
+        shared: true,
+        buildAction: BuildAction(targets: ["BabyTrackWatch", "BabyTrackWatchExtension"])
+    )
+]

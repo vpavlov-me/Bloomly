@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE model SYSTEM "http://apple.com/DTDs/PropertyList-1.0.dtd">
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1" lastSavedToolsVersion="1" systemVersion="1" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
-    <entity name="Event" representedClassName="Event" syncable="YES">
+    <entity name="Event" representedClassName="EventEntity" syncable="YES">
         <attribute name="id" optional="NO" attributeType="UUIDAttributeType"/>
         <attribute name="kind" optional="NO" attributeType="String"/>
         <attribute name="start" optional="NO" attributeType="Date"/>
@@ -11,7 +11,7 @@
         <attribute name="updatedAt" optional="NO" attributeType="Date"/>
         <attribute name="isSynced" optional="NO" attributeType="Boolean" defaultValueString="0"/>
     </entity>
-    <entity name="Measurement" representedClassName="Measurement" syncable="YES">
+    <entity name="Measurement" representedClassName="MeasurementEntity" syncable="YES">
         <attribute name="id" optional="NO" attributeType="UUIDAttributeType"/>
         <attribute name="type" optional="NO" attributeType="String"/>
         <attribute name="value" optional="NO" attributeType="Double"/>

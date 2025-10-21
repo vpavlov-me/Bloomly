@@ -1,93 +1,136 @@
 # BabyTrack
 
-BabyTrack - нативное iOS приложение для отслеживания сна, кормлений, смен подгузника, роста и других событий младенца. Проект ориентирован на минималистичный UX, оффлайн-первый подход и прозрачную архитектуру на SwiftUI + Core Data с синхронизацией через CloudKit. Помимо основного приложения включены companion widgets, watchOS-клиент и монетизация через StoreKit 2.
+BabyTrack — модульный SwiftUI-проект для отслеживания сна, кормлений, смен подгузников и измерений роста малыша. Архитектура ориентирована на оффлайн-первый опыт, локальное хранение через Core Data с последующей синхронизацией в CloudKit, а также на единый дизайн-слой и переиспользуемые фиче-модули для iOS, watchOS и WidgetKit.
 
 ## Основные возможности
-- Журнал событий (сон, кормления, подгузники) с локальным хранением, отметками времени, заметками и последующей синхронизацией.
-- Лента дневника с агрегацией событий и измерений, быстрыми действиями и доступом к историческим данным.
-- Ростовые измерения c вычислением перцентилей, поддержкой нескольких типов (height, weight, head) и визуализациями на Swift Charts.
-- WidgetKit виджеты «Последнее кормление» и «Сон сегодня», а также watchOS 10 приложение с быстрым логированием.
-- StoreKit 2 paywall, кастомный дизайн-системный слой и централизованная AppEnvironment DI.
+- **Журнал событий** (сон, кормление, подгузник) с локальным хранением, заметками и последующей CloudKit-синхронизацией.
+- **Лента таймлайна** с агрегацией событий и измерений, быстрыми действиями и Swift Charts для роста/веса.
+- **WHO перцентили** — графики роста с эталонными кривыми ВОЗ (Premium feature).
+- **Data Export** — экспорт всех данных в CSV или JSON для резервного копирования.
+- **Toast уведомления** для пользовательского feedback при операциях CRUD.
+- **WidgetKit виджеты** «Последнее кормление» и «Сон сегодня» на общих данных App Group.
+- **watchOS 10 companion** с быстрым логированием и списком последних событий.
+- **Paywall на StoreKit 2** с обработкой покупок/восстановлений, дизайн-система и DI-контейнер на уровне приложения.
 
 ## Tech Stack
-- SwiftUI, Combine, Swift Concurrency
-- Core Data + NSPersistentCloudKitContainer (App Group storage)
-- CloudKit (Private DB) + кастомный SyncService
-- WidgetKit + App Intents timelines
-- watchOS 10 companion (SwiftUI)
-- StoreKit 2 subscriptions
-- Swift Charts visualisations
-- Tuist-driven modular workspace (Xcode 16), SwiftLint, XCTest + SnapshotTesting
-- GitHub Actions CI с матрицей таргетов
+- Swift 5.10, SwiftUI, modern concurrency (async/await)
+- Core Data + NSPersistentCloudKitContainer, App Groups
+- CloudKit (Private DB) с production-grade sync implementation
+- WidgetKit, watchOS 10, Swift Charts
+- StoreKit 2, Storefront paywall
+- XCTest и SnapshotTesting
+- Tuist workspace, Swift Package Manager feature-модули
 
-## Modules
+## Модули
 | Package | Responsibility |
 | --- | --- |
-| `DesignSystem` | Типографика, цветовые и отступные токены, базовые SwiftUI компоненты и layout-хелперы |
-| `Content` | Локализации, доступ к ассетам, текстовые ресурсы |
-| `Tracking` | Доменные модели событий, Core Data репозиторий, change tracking для Sync |
-| `Measurements` | Измерения роста/веса, перцентильные вычисления, Swift Charts вью |
-| `Timeline` | Вью и ViewModel для таймлайна, агрегация событий и измерений |
-| `Paywall` | StoreKit 2 клиенты, витрина подписок и paywall UI |
-| `Sync` | CloudKit синхронизация, маппер записей и управление конфликтами |
-| `Widgets` | Виджеты «Последнее кормление» и «Сон сегодня», работа через App Group стор |
-| `WatchApp` | watchOS 10 UI, WatchDataStore с быстрым логированием и синхронизацией |
+| `DesignSystem` | Цвета, типографика, карточки, Toast, переиспользуемые UI-компоненты |
+| `Content` | Локализации (en/ru), SF Symbols, текстовые ресурсы |
+| `Tracking` | Event-модель, Core Data репозиторий, форма логирования |
+| `Measurements` | Измерения, графики роста, WHO percentiles, формирование выборок |
+| `Timeline` | Объединение событий/измерений в секции, SwiftUI интерфейс |
+| `Paywall` | StoreKit 2 клиент, Premium состояние, UI и снапшоты |
+| `Sync` | CloudKit production sync: pull/push/conflict resolution |
+| `Widgets` | WidgetKit провайдеры, App Group стор, виджеты «Feed/Sleep» |
+| `WatchApp` | watchOS: быстрый лог, события, измерения |
 
 ## Getting Started
 
-> Быстрая альтернатива: запустите `./scripts/bootstrap.sh`, чтобы установить Tuist, сгенерировать workspace и разрешить зависимости.
+> Быстро: `./scripts/bootstrap.sh` — установит Tuist (если нужно), сгенерирует workspace и разрешит зависимости.
 
-1. Убедитесь, что установлен Xcode 16 с iOS 17 SDK.
-2. `brew install tuist swiftlint` (при необходимости).
-3. `tuist install` - подтянет совместимую версию (см. `Tuist/Config.swift`).
-4. `tuist generate` для создания `BabyTrack.xcworkspace`.
-5. Откройте `BabyTrack.xcworkspace` в Xcode.
-6. В Signing настройте Team (placeholder `ABCDE12345`) и при необходимости измените bundle ID `com.example.*`.
-7. Включите iCloud контейнер `iCloud.com.example.BabyTrack` и App Group `group.com.example.BabyTrack` для приложения, виджета и watch extension.
-8. Запустите на iOS 17+ симуляторе или устройстве, включите Background Fetch для корректной работы таймлайна.
+1. Необходим Xcode 16 + iOS 17 / watchOS 10 SDK.
+2. Установите инструменты: `brew install tuist swiftlint`.
+3. `tuist install` — подтянет совместимую версию (см. `Tuist/Config.swift`).
+4. `tuist generate` для сборки `BabyTrack.xcworkspace`.
+5. Откройте workspace и назначьте свою команду (placeholder Team ID `ABCDE12345`).
+6. При необходимости обновите bundle prefix `com.example`.
+7. Включите iCloud контейнер `iCloud.com.example.BabyTrack` и App Group `group.com.example.BabyTrack` во всех таргетах.
+8. Для StoreKit 2 заведите продукты `com.example.babytrack.premium.monthly` и `com.example.babytrack.premium.yearly`.
 
-## Tests
+## Tests & QA
 
 ```bash
+# Build приложение
 xcodebuild -workspace BabyTrack.xcworkspace \
   -scheme BabyTrack \
   -destination 'platform=iOS Simulator,name=iPhone 15' \
   -parallelizeTargets \
   -skipPackagePluginValidation build
 
+# Все модульные тесты (включая snapshot)
 xcodebuild -workspace BabyTrack.xcworkspace \
-  -scheme BabyTrackTests \
+  -scheme BabyTrack \
   -destination 'platform=iOS Simulator,name=iPhone 15' \
   -parallelizeTargets \
   -skipPackagePluginValidation test
 ```
 
-Для snapshot-тестов используйте `SNAPSHOT_RECORD=1`. В CI используется `.github/workflows/ci.yml` с матрицей для iOS и watchOS.
+### Snapshot Testing
+- **Запись эталонов**: `SNAPSHOT_RECORD=1 xcodebuild ... test` — создаст/обновит reference images в `Tests/__Snapshots__`.
+- **Проверка**: Без переменной окружения тесты сравнят текущий UI с эталонными снимками.
+- **CI**: В GitHub Actions snapshot тесты запускаются в режиме сравнения; при неудаче артефакты загружаются автоматически.
 
-## CloudKit & StoreKit
+### In-Memory Storage
+- Репозитории используют `PersistenceController(inMemory: true)` для unit-тестов и превью.
+- Это позволяет изолировать тесты и не засорять production database.
+- Используйте `.preview` для SwiftUI previews.
 
-- Активируйте iCloud capability и создайте контейнер через Developer Portal (подробности в `Docs/cloudkit.md`).
-- В CloudKit Dashboard создайте record types `Event` и `Measurement` с полями `id`, `payload`, `updatedAt`; продвигайте схему из development в production перед релизом.
-- StoreKit 2 продукты: `com.example.babytrack.premium.monthly`, `com.example.babytrack.premium.annual`. Добавьте их в App Store Connect и тестируйте на sandbox-аккаунтах.
-- Пуш синхронизация доступна, pull-цикл пока в разработке (см. `Sync`).
+## Premium & Paywall
+- Premium состояние хранится в `@AppStorage("isPremium")` и доступно через `Paywall.PremiumState`.
+- **Premium Features:**
+  - WHO перцентильные кривые на графиках роста
+  - Head circumference трекинг
+  - Advanced analytics (планируется)
+- Paywall открывается из Settings → Manage Subscription.
+- StoreKit 2 клиент (`StoreClient`) покрывает загрузку, покупку, restore и проверку entitlement.
+
+## Data Export
+Приложение поддерживает экспорт всех данных для резервного копирования или миграции:
+- **CSV Export**: События и измерения в табличном формате
+- **JSON Export**: Structured JSON с метаданными экспорта
+- Доступ: Settings → Export Data → выбрать формат
+- Экспортированные файлы можно поделиться через Share Sheet
+
+## CloudKit Sync
+Production-ready CloudKit синхронизация реализована с:
+- **Pull Changes**: Инкрементальная загрузка через `CKFetchRecordZoneChangesOperation`
+- **Push Pending**: Отправка unsynchronized записей с `CKModifyRecordsOperation`
+- **Conflict Resolution**: Last-write-wins стратегия на основе `modificationDate`
+- **Change Token**: Хранение server change token для эффективной синхронизации
+- **Background Sync**: Extension points для BGTaskScheduler (TODO: активация)
+
+### CloudKit Setup
+1. Включите iCloud capability в Xcode
+2. Создайте CloudKit Container: `iCloud.com.example.BabyTrack`
+3. Настройте Private Database schema:
+   - Record Types: `Event`, `Measurement`
+   - Включите CloudKit в Core Data model
+4. Deploy schema в production environment
+
+## Error Handling & UX
+- **Toast Notifications**: Все CRUD операции показывают success/error toast
+- **Graceful Fallbacks**: Нет force unwraps, все optionals обрабатываются
+- **Loading States**: ProgressView во время async операций
+- **Empty States**: Кастомные EmptyStateView для пустых списков
 
 ## Документация
-
-- `Docs/architecture.md` - обзор модульной архитектуры и потоков данных.
-- `Docs/cloudkit.md` - пошаговая настройка CloudKit.
-- `Docs/file-tree.md` - актуальная структура репозитория.
+- `Docs/architecture.md` — диаграмма потоков данных и слои модулей.
+- `Docs/cloudkit.md` — пошаговая настройка iCloud, schema deploy.
+- `Docs/file-tree.md` — актуальная структура репозитория.
 
 ## Roadmap
-
-- [x] Tuist workspace и модульная структура
+- [x] Tuist workspace и модульная SPM-структура
 - [x] Core Data + CloudKit scaffold
-- [x] Paywall с StoreKit 2
-- [x] WidgetKit + watchOS связка
-- [x] Snapshot/Unit тесты
-- [ ] Полноценная CloudKit pull-синхронизация
-- [ ] Реальные WHO percentile данные
-- [ ] Продакшен аналитика и A/B тесты paywall
+- [x] Paywall с StoreKit 2 и snapshot-тестами
+- [x] WidgetKit + watchOS внедрение
+- [x] Unit/UI/Snapshot тесты и CI workflow
+- [x] Production CloudKit sync (pull/push/conflicts)
+- [x] WHO percentiles и расширенные графики
+- [x] Data Export (CSV/JSON)
+- [x] Toast notifications и error handling
+- [ ] Background sync с BGTaskScheduler
+- [ ] Advanced analytics dashboard
+- [ ] A/B paywall сценарии
 
 ## License
-
 MIT. См. `LICENSE`.

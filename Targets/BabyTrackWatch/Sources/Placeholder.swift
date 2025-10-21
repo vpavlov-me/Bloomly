@@ -1,1 +1,7 @@
-// Placeholder for Watch app container target. Resources/assets can be added here.
+import SwiftUI
+
+struct BabyTrackWatchAppContainer: View {
+    var body: some View {
+        Text("BabyTrack Watch")
+    }
+}
