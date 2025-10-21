@@ -1,0 +1,47 @@
+name: Запрос фичи
+description: Предложите улучшение приложения
+title: "[Feature] "
+labels:
+  - enhancement
+  - needs-triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Поделитесь идеей или улучшением, которое сделает BabyTrack лучше. Чем конкретнее описание, тем быстрее мы сможем оценить задачу.
+  - type: input
+    id: summary
+    attributes:
+      label: Краткое описание
+      placeholder: Добавить виджет с последним измерением роста
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Какую проблему решает фича?
+      description: Опишите боль или сценарий пользователя, который вы хотите улучшить.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Предлагаемое решение
+      description: Какие изменения вы предлагаете? UI/UX, архитектура, данные, edge cases.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Рассматривали ли альтернативы?
+      description: Перечислите подходы, которые вы попробовали или отклонили.
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Зависимости
+      description: Новые данные, API, дизайн, юридические требования, связанные задачи.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Дополнительные материалы
+      description: Приложите ссылки на макеты, исследования, аналитические отчёты.

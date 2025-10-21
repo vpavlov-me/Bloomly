@@ -117,6 +117,12 @@ Production-ready CloudKit синхронизация реализована с:
 - `Docs/architecture.md` — диаграмма потоков данных и слои модулей.
 - `Docs/cloudkit.md` — пошаговая настройка iCloud, schema deploy.
 - `Docs/file-tree.md` — актуальная структура репозитория.
+- `Docs/github-workflow.md` — правила работы с GitHub, ветки, PR, релизы.
+
+## Контрибьютинг
+- Перед первым вкладом прочтите [CONTRIBUTING.md](CONTRIBUTING.md) — там описан рабочий процесс, требования к веткам и тестам.
+- Мы придерживаемся [кодекса поведения](CODE_OF_CONDUCT.md).
+- Для багов и фич используйте готовые issue шаблоны в GitHub.
 
 ## Roadmap
 - [x] Tuist workspace и модульная SPM-структура

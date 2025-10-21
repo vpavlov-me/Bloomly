@@ -1,0 +1,60 @@
+name: Отчёт об ошибке
+description: Помогите нам исправить проблему
+title: "[Bug] "
+labels:
+  - bug
+  - needs-triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Спасибо, что нашли время описать проблему. Пожалуйста, заполните обязательные поля — это ускорит воспроизведение и фикc.
+  - type: input
+    id: summary
+    attributes:
+      label: Краткое описание
+      description: В одном предложении — что пошло не так?
+      placeholder: Трекер событий падает при добавлении сна
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Шаги воспроизведения
+      description: Подробно опишите, что нужно сделать, чтобы воспроизвести баг.
+      placeholder: |
+        1. Открыть вкладку Sleep
+        2. Нажать +
+        3. Заполнить форму и нажать Save
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Ожидаемое поведение
+      description: Что должно происходить вместо текущего поведения?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Фактический результат
+      description: Что происходит сейчас? Приложите скриншоты, если есть.
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Окружение
+      description: Версии ОС, устройства, сборки; при необходимости — логи.
+      placeholder: |
+        - iOS 18.1, iPhone 15 Pro
+        - Build: 2025.02.10-1
+        - Логи: ...
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Дополнительные заметки
+      description: Опционально — что ещё может помочь (гипотезы, баги рядом, ссылки).

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Обсуждения команды
+    url: https://github.com/Vibecoding/Bloomy/discussions
+    about: Используйте для открытых вопросов и идей, которые пока рано превращать в issue.
