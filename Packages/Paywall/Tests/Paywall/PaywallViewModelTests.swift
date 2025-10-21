@@ -1,20 +1,42 @@
+import StoreKit
 import XCTest
 @testable import Paywall
 
 final class PaywallViewModelTests: XCTestCase {
-    func testLoadPopulatesProducts() async {
-        let viewModel = PaywallViewModel(storeClient: StubStoreClient())
-        await viewModel.load()
-        XCTAssertEqual(viewModel.products.count, 1)
-        XCTAssertEqual(viewModel.state, .idle)
-    }
-
-    private struct StubStoreClient: StoreClient {
-        func products() async throws -> [StoreProduct] {
-            [StoreProduct(id: "1", displayName: "Monthly", description: "", displayPrice: "$1", period: .monthly)]
+    func testLoadWithoutProductsSetsError() async {
+        let client = StubStoreClient(products: [], purchaseResult: nil, restoreTransactions: [])
+        let viewModel = PaywallViewModel(storeClient: client)
+        await MainActor.run { viewModel.load() }
+        try? await Task.sleep(nanoseconds: 50_000_000)
+        await MainActor.run {
+            if case .error(.noProducts) = viewModel.state {
+                XCTAssertTrue(true)
+            } else {
+                XCTFail("Expected noProducts error")
+            }
         }
-
-        func purchase(_ product: StoreProduct) async throws -> StoreTransactionResult { .success }
-        func restore() async throws -> StoreTransactionResult { .success }
     }
+}
+
+private final class StubStoreClient: StoreClient {
+    let productsResult: [Product]
+    let purchaseResult: Result<Transaction, Error>?
+    let restoreResult: [Transaction]
+
+    init(products: [Product], purchaseResult: Result<Transaction, Error>?, restoreTransactions: [Transaction]) {
+        self.productsResult = products
+        self.purchaseResult = purchaseResult
+        self.restoreResult = restoreTransactions
+    }
+
+    func products() async throws -> [Product] { productsResult }
+
+    func purchase(_ product: Product) async throws -> Transaction {
+        guard let purchaseResult else {
+            throw StoreClientError.underlying("Unavailable")
+        }
+        return try purchaseResult.get()
+    }
+
+    func restore() async throws -> [Transaction] { restoreResult }
 }

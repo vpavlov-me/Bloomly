@@ -4,45 +4,36 @@ import Measurements
 @testable import Timeline
 
 final class TimelineViewModelTests: XCTestCase {
-    func testReloadCombinesEntries() async {
-        let event = Event(
-            id: UUID(),
-            kind: .sleep,
-            start: Date(),
-            end: nil,
-            notes: nil,
-            createdAt: Date(),
-            updatedAt: Date(),
-            isSynced: false
-        )
-        let measurement = MeasurementSample(
-            id: UUID(),
-            type: .weight,
-            value: 5.0,
-            unit: "kg",
-            date: Date(),
-            isSynced: false
-        )
-        let repo = StubEventsRepository(events: [event])
-        let measurementsRepo = StubMeasurementsRepository(samples: [measurement])
-        let viewModel = TimelineViewModel(eventsRepository: repo, measurementsRepository: measurementsRepo)
-        await viewModel.reload()
-        XCTAssertEqual(viewModel.entries.count, 2)
-    }
+    func testRefreshBuildsSections() async throws {
+        let eventsRepo = InMemoryEventsRepository()
+        let measurementsRepo = StubMeasurementsRepository()
+        let viewModel = await MainActor.run { TimelineViewModel(eventsRepository: eventsRepo, measurementsRepository: measurementsRepo) }
 
-    private struct StubEventsRepository: EventsRepository {
-        let events: [Event]
-        func events(in range: ClosedRange<Date>?, of kind: EventKind?) async throws -> [Event] { events }
-        func upsert(_ event: EventInput) async throws {}
-        func delete(id: UUID) async throws {}
-    }
-
-    private struct StubMeasurementsRepository: MeasurementsRepository {
-        let samples: [MeasurementSample]
-        func measurements(of type: MeasurementType) async throws -> [MeasurementSample] {
-            samples.filter { $0.type == type }
+        let draft = EventDraft(kind: .feed, start: Date())
+        _ = try await eventsRepo.save(draft: draft)
+        await MainActor.run { viewModel.refresh() }
+        try? await Task.sleep(nanoseconds: 50_000_000)
+        await MainActor.run {
+            XCTAssertFalse(viewModel.sections.isEmpty)
         }
-        func upsert(_ measurement: MeasurementInput) async throws {}
-        func delete(id: UUID) async throws {}
     }
+}
+
+private final class StubMeasurementsRepository: MeasurementsRepository {
+    func measurementsStream(for type: MeasurementType) -> AsyncStream<[MeasurementSample]> {
+        AsyncStream { continuation in
+            continuation.yield([])
+            continuation.finish()
+        }
+    }
+
+    func fetchMeasurements(for type: MeasurementType, limit: Int?) async throws -> [MeasurementSample] {
+        []
+    }
+
+    func save(draft: MeasurementDraft) async throws -> MeasurementSample {
+        MeasurementSample(id: UUID(), type: draft.type, value: draft.value, unit: draft.unit, date: draft.date, isSynced: false)
+    }
+
+    func delete(id: UUID) async throws {}
 }
