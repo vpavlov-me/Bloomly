@@ -1,0 +1,36 @@
+import SwiftUI
+
+public struct Card<Content: View>: View {
+    private let padding: CGFloat
+    private let content: Content
+
+    public init(padding: CGFloat = BabyTrackTheme.spacing.md, @ViewBuilder content: () -> Content) {
+        self.padding = padding
+        self.content = content()
+    }
+
+    public var body: some View {
+        content
+            .padding(padding)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(BabyTrackTheme.palette.elevatedSurface)
+            .clipShape(RoundedRectangle(cornerRadius: BabyTrackTheme.radii.card, style: .continuous))
+            .shadow(color: .black.opacity(0.06), radius: 10, x: 0, y: 6)
+    }
+}
+
+#if DEBUG
+struct Card_Previews: PreviewProvider {
+    static var previews: some View {
+        Card {
+            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.sm) {
+                BabyTrackTheme.typography.title.text("Sample Card")
+                BabyTrackTheme.typography.body.text("Helpful description for a card component.")
+            }
+        }
+        .padding()
+        .background(BabyTrackTheme.palette.secondaryBackground)
+        .previewLayout(.sizeThatFits)
+    }
+}
+#endif
