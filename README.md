@@ -122,8 +122,9 @@ Production-ready CloudKit синхронизация реализована с:
 ## Автоматизация
 - GitHub Actions: `CI` (сборка + тесты), `SwiftLint`, `Actionlint`, `Stale Issues`.
 - Release Drafter автоматически собирает черновики релизов по меткам.
-- PR Labeler и Auto Assign распределяют метки и ревьюеров на основе путей.
-- Dependabot создаёт PR с обновлениями SwiftPM и GitHub Actions зависимостей.
+- PR Labeler и Auto Assign распределяют метки и ревьюров на основе путей.
+- Dependabot создаёт PR с обновлениями SwiftPM и GitHub Actions зависимостей и сам мержит patch-обновления.
+- Labels Sync держит набор меток в актуальном состоянии из `.github/labels.yml`.
 
 ## Контрибьютинг
 - Перед первым вкладом прочтите [CONTRIBUTING.md](CONTRIBUTING.md) — там описан рабочий процесс, требования к веткам и тестам.

@@ -86,6 +86,8 @@ Docs/       @techwriters
 - **Release Drafter** (`.github/workflows/release-drafter.yml`) — готовит заметки по мержам в `main`.
 - **Stale Issues** (`.github/workflows/stale.yml`) — пингует и закрывает неактивные issue/PR.
 - **Dependabot** (`.github/dependabot.yml`) — обновляет зависимости SwiftPM/GitHub Actions.
+- **Labels Sync** (`.github/workflows/labels-sync.yml`) — синхронизирует метки из `.github/labels.yml`.
+- **Dependabot Auto Merge** (`.github/workflows/dependabot-auto-merge.yml`) — автоматически мержит patch-обновления Dependabot после зелёных чеков.
 
 ## 11. Checklist при настройке репозитория
 - [ ] Создана ветка `develop`

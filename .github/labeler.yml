@@ -18,6 +18,12 @@ module:measurements:
 module:timeline:
   - "Packages/Timeline/**"
 
+module:tracking:
+  - "Packages/Tracking/**"
+
+module:widgets:
+  - "Packages/Widgets/**"
+
 docs:
   - "Docs/**"
   - "*.md"

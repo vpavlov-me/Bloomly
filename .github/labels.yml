@@ -1,0 +1,78 @@
+- name: bug
+  color: d73a4a
+  description: Ошибка, приводящая к неправильному поведению или падению
+- name: feature
+  color: 0e8a16
+  description: Новая функциональность для пользователей
+- name: feat
+  color: 0e8a16
+  description: Альтернативный маркер для новой функциональности
+- name: enhancement
+  color: a2eeef
+  description: Улучшение существующей функциональности
+- name: hotfix
+  color: e11d21
+  description: Срочный фикс production-релиза
+- name: chore
+  color: 1d76db
+  description: Технические задачи, поддержка инфраструктуры
+- name: ci
+  color: 0052cc
+  description: Изменения процессов CI/CD
+- name: dependencies
+  color: 0366d6
+  description: Обновления зависимостей
+- name: refactor
+  color: bc4c00
+  description: Рефакторинг без изменения поведения
+- name: test
+  color: 5319e7
+  description: Добавление или правка тестов
+- name: tests
+  color: 5319e7
+  description: Изменения, связанные с тестовой инфраструктурой
+- name: documentation
+  color: 0e8a16
+  description: Обновление документации и руководств
+- name: question
+  color: d876e3
+  description: Вопросы и запросы на уточнение
+- name: needs-triage
+  color: fbca04
+  description: Требуется первичная оценка
+- name: P0
+  color: fbca04
+  description: Блокирующая задача, требует немедленного внимания
+- name: P1
+  color: fef2c0
+  description: Высокий приоритет
+- name: P2
+  color: c2e0c6
+  description: Средний приоритет
+- name: module:app
+  color: 1d76db
+  description: Затрагивает приложение или цели Xcode
+- name: module:design-system
+  color: 1d76db
+  description: Изменения дизайн-системы
+- name: module:watch
+  color: 1d76db
+  description: Изменения watchOS-приложения
+- name: module:sync
+  color: 1d76db
+  description: Изменения подсистемы синхронизации
+- name: module:measurements
+  color: 1d76db
+  description: Изменения модулей измерений и графиков
+- name: module:timeline
+  color: 1d76db
+  description: Изменения таймлайна событий
+- name: module:tracking
+  color: 1d76db
+  description: Изменения трекинга событий и Core Data
+- name: module:widgets
+  color: 1d76db
+  description: Изменения виджетов WidgetKit
+- name: docs
+  color: 5319e7
+  description: Документация и знания
