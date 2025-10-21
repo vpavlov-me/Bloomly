@@ -14,7 +14,6 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../Tracking"),
-        .package(path: "../DesignSystem"),
         .package(path: "../Content"),
         .package(path: "../Sync")
     ],
@@ -23,7 +22,6 @@ let package = Package(
             name: "WatchApp",
             dependencies: [
                 "Tracking",
-                "DesignSystem",
                 "Content",
                 "Sync"
             ],
