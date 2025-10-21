@@ -55,7 +55,7 @@ git push -u origin develop
 
 ```
 # Модульный пример
-*           @pavlov @babytrack-core
+*           @vpavlov-me @babytrack-core
 App/        @ios-team
 Packages/   @module-leads
 Docs/       @techwriters
@@ -78,7 +78,16 @@ Docs/       @techwriters
 - Для приватных обращений используйте почту babytrack@vibecoding.com.
 - Регулярно проверяйте Security Advisories и Dependabot alerts.
 
-## 10. Checklist при настройке репозитория
+## 10. Автоматизация GitHub
+- **CI** (`.github/workflows/ci.yml`) — сборка, тесты и SwiftLint.
+- **Actionlint** (`.github/workflows/actionlint.yml`) — проверка GitHub Actions.
+- **PR Labeler** (`.github/workflows/pr-labeler.yml`) — навешивает метки на основе `.github/labeler.yml`.
+- **Auto Assign** (`.github/workflows/auto-assign.yml`) — назначает ревьюеров согласно `.github/auto_assign.yml`.
+- **Release Drafter** (`.github/workflows/release-drafter.yml`) — готовит заметки по мержам в `main`.
+- **Stale Issues** (`.github/workflows/stale.yml`) — пингует и закрывает неактивные issue/PR.
+- **Dependabot** (`.github/dependabot.yml`) — обновляет зависимости SwiftPM/GitHub Actions.
+
+## 11. Checklist при настройке репозитория
 - [ ] Создана ветка `develop`
 - [ ] Защищены ветки `main`, `develop`
 - [ ] Включены требуемые status checks

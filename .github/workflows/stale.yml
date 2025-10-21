@@ -1,0 +1,29 @@
+name: Stale Issues
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          stale-issue-message: >
+            Похоже, что по этой задаче не было активности 45 дней. Сообщите, пожалуйста, актуальна ли она —
+            иначе мы закроем её автоматически через неделю.
+          stale-pr-message: >
+            PR без активности 30 дней: напомните, если он ещё нужен. Автозакрытие произойдёт через 7 дней.
+          days-before-issue-stale: 45
+          days-before-issue-close: 7
+          days-before-pr-stale: 30
+          days-before-pr-close: 7
+          exempt-issue-labels: "pinned,security,blocked"
+          exempt-pr-labels: "pinned,security,work-in-progress"
+          remove-stale-when-updated: true

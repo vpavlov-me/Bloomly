@@ -6,7 +6,7 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 5
     reviewers:
-      - "pavlov"
+      - "vpavlov-me"
     labels:
       - "dependencies"
       - "automated-pr"
@@ -16,7 +16,7 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 5
     reviewers:
-      - "pavlov"
+      - "vpavlov-me"
     labels:
       - "dependencies"
       - "automated-pr"

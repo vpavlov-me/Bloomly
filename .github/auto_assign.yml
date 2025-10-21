@@ -1,0 +1,10 @@
+addReviewers: true
+addAssignees: true
+# Обновите список при появлении новых core-контрибьюторов
+reviewers:
+  - vpavlov-me
+assignees:
+  - vpavlov-me
+skipKeywords:
+  - WIP
+  - Draft

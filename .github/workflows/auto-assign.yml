@@ -1,0 +1,19 @@
+name: Auto Assign
+
+on:
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+
+jobs:
+  auto-assign:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: peter-evans/auto-assign@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: .github/auto_assign.yml

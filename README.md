@@ -119,6 +119,12 @@ Production-ready CloudKit синхронизация реализована с:
 - `Docs/file-tree.md` — актуальная структура репозитория.
 - `Docs/github-workflow.md` — правила работы с GitHub, ветки, PR, релизы.
 
+## Автоматизация
+- GitHub Actions: `CI` (сборка + тесты), `SwiftLint`, `Actionlint`, `Stale Issues`.
+- Release Drafter автоматически собирает черновики релизов по меткам.
+- PR Labeler и Auto Assign распределяют метки и ревьюеров на основе путей.
+- Dependabot создаёт PR с обновлениями SwiftPM и GitHub Actions зависимостей.
+
 ## Контрибьютинг
 - Перед первым вкладом прочтите [CONTRIBUTING.md](CONTRIBUTING.md) — там описан рабочий процесс, требования к веткам и тестам.
 - Мы придерживаемся [кодекса поведения](CODE_OF_CONDUCT.md).

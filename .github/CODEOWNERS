@@ -1,0 +1,12 @@
+# Укажите ответственных за области. Обновляйте по мере роста команды.
+*                       @vpavlov-me
+App/                    @vpavlov-me
+Packages/DesignSystem/  @vpavlov-me
+Packages/Measurements/  @vpavlov-me
+Packages/Timeline/      @vpavlov-me
+Packages/Tracking/      @vpavlov-me
+Packages/Sync/          @vpavlov-me
+Packages/Widgets/       @vpavlov-me
+Packages/WatchApp/      @vpavlov-me
+Docs/                   @vpavlov-me
+.github/                @vpavlov-me

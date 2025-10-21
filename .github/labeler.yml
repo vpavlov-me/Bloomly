@@ -1,0 +1,33 @@
+module:app:
+  - "App/**"
+  - "Targets/**"
+  - "Tests/**"
+
+module:design-system:
+  - "Packages/DesignSystem/**"
+
+module:watch:
+  - "Packages/WatchApp/**"
+
+module:sync:
+  - "Packages/Sync/**"
+
+module:measurements:
+  - "Packages/Measurements/**"
+
+module:timeline:
+  - "Packages/Timeline/**"
+
+docs:
+  - "Docs/**"
+  - "*.md"
+  - "**/*.md"
+
+ci:
+  - ".github/**"
+  - "scripts/**"
+
+config:
+  - "Tuist/**"
+  - "Workspace.swift"
+  - "Project.swift"
