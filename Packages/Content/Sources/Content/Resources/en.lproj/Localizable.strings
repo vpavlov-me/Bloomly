@@ -1,5 +1,206 @@
+/* Timeline */
+"timeline.title" = "Timeline";
+"timeline.search.placeholder" = "Search events...";
+"timeline.empty.title" = "No events yet";
+"timeline.empty.message" = "Start tracking your baby's activities";
+"timeline.empty.action" = "Add First Event";
+"timeline.filter.all" = "All";
+"timeline.filter.events" = "Events";
+"timeline.filter.measurements" = "Measurements";
+"timeline.summary.events" = "%d events";
+"timeline.summary.measurements" = "%d measurements";
+
+/* Events */
+"event.form.title.new" = "New Event";
+"event.form.title.edit" = "Edit Event";
+"event.form.start" = "Start Time";
+"event.form.end" = "End Time";
+"event.form.duration" = "Duration";
+"event.form.notes" = "Notes";
+"event.form.save" = "Save";
+"event.form.cancel" = "Cancel";
+"event.delete.message" = "Event deleted";
+"event.delete.undo" = "Undo";
+"event.form.validation.kind" = "Please select an event type";
+"event.form.validation.endBeforeStart" = "End time must be after start time";
+"event.kind.sleep" = "Sleep";
+"event.kind.feed" = "Feeding";
+"event.kind.diaper" = "Diaper";
+
+/* Measurements */
+"measurements.title" = "Measurements";
+"measurements.add" = "Add Measurement";
+"measurements.form.title" = "New Measurement";
+"measurements.form.type" = "Type";
+"measurements.form.value" = "Value";
+"measurements.form.unit" = "Unit";
+"measurements.form.date" = "Date";
+"measurements.list.empty" = "No measurements";
+"measurements.list.empty.message" = "Track your baby's growth";
+"measurements.growth.title" = "Growth Charts";
+"measurements.growth.subtitle" = "Track development with WHO percentiles";
+"measurements.growth.premium" = "Upgrade to Premium for growth charts";
+"measurement.type.height" = "Height";
+"measurement.type.weight" = "Weight";
+"measurement.type.head" = "Head Circumference";
+"measurement.unit.cm" = "cm";
+"measurement.unit.kg" = "kg";
+"measurement.unit.in" = "in";
+"measurement.unit.lb" = "lb";
+
+/* Paywall */
 "paywall.title" = "BabyTrack Premium";
 "paywall.subtitle" = "Unlock unlimited history and sync";
-"timeline.empty" = "No entries yet";
-"widgets.lastFeed" = "Last Feed";
+"paywall.loading" = "Loading...";
+"paywall.error.generic" = "Unable to load products. Please try again.";
+"paywall.restore" = "Restore Purchases";
+"paywall.restore.description" = "Already purchased? Restore your subscription.";
+"paywall.restore.success" = "Purchases restored successfully!";
+"paywall.feature.charts" = "Advanced growth charts with WHO percentiles";
+"paywall.feature.export" = "Export all data to CSV or JSON";
+"paywall.feature.sync" = "Cloud sync across all your devices";
+"paywall.price.monthly" = "Monthly";
+"paywall.price.yearly" = "Yearly";
+"paywall.terms" = "Terms of Service";
+"paywall.privacy" = "Privacy Policy";
+
+/* Settings */
+"settings.title" = "Settings";
+"settings.language" = "Language";
+"settings.language.system" = "System Default";
+"settings.language.english" = "English";
+"settings.language.russian" = "Русский";
+"settings.premium.status" = "Premium Status";
+"settings.premium.active" = "Active";
+"settings.premium.inactive" = "Not Active";
+"settings.export" = "Export Data";
+"settings.premium.manage" = "Manage Subscription";
+"settings.about" = "About";
+"settings.version" = "Version";
+"settings.notifications" = "Notifications";
+"settings.appearance" = "Appearance";
+"settings.appearance.system" = "System";
+"settings.appearance.light" = "Light";
+"settings.appearance.dark" = "Dark";
+
+/* Errors */
+"errors.generic" = "Something went wrong. Please try again.";
+"errors.coredata" = "Database error occurred";
+"errors.validation" = "Please check your input";
+"errors.purchase.failed" = "Purchase failed. Please try again.";
+"errors.network.restricted" = "Network connection required";
+
+/* Widgets */
+"widgets.lastFeed" = "Last Feeding";
 "widgets.sleepSummary" = "Sleep Today";
+"widgets.description.feed" = "View your baby's last feeding time";
+"widgets.description.sleep" = "Track today's sleep duration";
+
+/* Common */
+"common.save" = "Save";
+"common.cancel" = "Cancel";
+"common.delete" = "Delete";
+"common.edit" = "Edit";
+"common.done" = "Done";
+"common.add" = "Add";
+"common.close" = "Close";
+"common.ok" = "OK";
+"common.yes" = "Yes";
+"common.no" = "No";
+"common.loading" = "Loading...";
+"common.error" = "Error";
+"common.success" = "Success";
+"common.today" = "Today";
+"common.yesterday" = "Yesterday";
+"common.week" = "Week";
+"common.month" = "Month";
+
+/* Dashboard */
+"dashboard.title" = "Dashboard";
+"dashboard.summary" = "Today's Summary";
+"dashboard.quickLog" = "Quick Log";
+"dashboard.recentActivity" = "Recent Activity";
+
+/* Tab Bar */
+"tab.dashboard" = "Dashboard";
+"tab.timeline" = "Timeline";
+"tab.charts" = "Charts";
+"tab.settings" = "Settings";
+
+/* Time Formatting */
+"time.hours.short" = "h";
+"time.minutes.short" = "m";
+"time.seconds.short" = "s";
+"time.hours.long" = "hours";
+"time.minutes.long" = "minutes";
+"time.ago" = "%@ ago";
+"time.just_now" = "Just now";
+
+/* Date Formatting */
+"date.format.short" = "MMM d";
+"date.format.long" = "MMMM d, yyyy";
+"date.format.time" = "h:mm a";
+
+/* Onboarding */
+"onboarding.welcome.title" = "Welcome to BabyTrack";
+"onboarding.welcome.subtitle" = "Track your baby's daily activities and growth";
+"onboarding.features.title" = "Everything you need";
+"onboarding.features.subtitle" = "Sleep, feeding, diapers, and measurements";
+"onboarding.privacy.title" = "Your data stays private";
+"onboarding.privacy.subtitle" = "All data stored securely on your device";
+"onboarding.getStarted" = "Get Started";
+"onboarding.skip" = "Skip";
+
+/* Charts */
+"charts.title" = "Growth Charts";
+"charts.height" = "Height Chart";
+"charts.weight" = "Weight Chart";
+"charts.head" = "Head Circumference Chart";
+"charts.percentile" = "Percentile";
+"charts.date" = "Date";
+"charts.value" = "Value";
+"charts.empty" = "No measurements to display";
+"charts.empty.message" = "Add measurements to see growth charts";
+
+/* Notifications */
+"notification.permission.title" = "Enable Notifications";
+"notification.permission.message" = "Get reminders for feeding and sleep times";
+"notification.permission.allow" = "Allow";
+"notification.permission.later" = "Maybe Later";
+
+/* Data Export */
+"export.title" = "Export Data";
+"export.format" = "Export Format";
+"export.format.csv" = "CSV (Excel compatible)";
+"export.format.json" = "JSON (Developer friendly)";
+"export.date_range" = "Date Range";
+"export.date_range.all" = "All Time";
+"export.date_range.last_week" = "Last Week";
+"export.date_range.last_month" = "Last Month";
+"export.date_range.last_year" = "Last Year";
+"export.include_events" = "Include Events";
+"export.include_measurements" = "Include Measurements";
+"export.export" = "Export";
+"export.success" = "Data exported successfully";
+"export.error" = "Failed to export data";
+
+/* Sync */
+"sync.title" = "Cloud Sync";
+"sync.status" = "Sync Status";
+"sync.synced" = "Synced";
+"sync.syncing" = "Syncing...";
+"sync.error" = "Sync Error";
+"sync.last_sync" = "Last synced: %@";
+"sync.never_synced" = "Never synced";
+"sync.enable" = "Enable Cloud Sync";
+"sync.disable" = "Disable Cloud Sync";
+
+/* Accessibility */
+"accessibility.delete_event" = "Delete event";
+"accessibility.edit_event" = "Edit event";
+"accessibility.add_event" = "Add new event";
+"accessibility.filter_events" = "Filter events";
+"accessibility.export_data" = "Export data";
+"accessibility.open_settings" = "Open settings";
+"accessibility.close" = "Close";
+"accessibility.back" = "Back";
