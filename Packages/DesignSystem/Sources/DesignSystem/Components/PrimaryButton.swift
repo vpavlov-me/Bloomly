@@ -5,10 +5,14 @@ public struct PrimaryButton<Content: View>: View {
     private let content: Content
     private let isLoading: Bool
     private let disabled: Bool
+    private let accessibilityLabel: String?
+    private let accessibilityHint: String?
 
     public init(
         isLoading: Bool = false,
         disabled: Bool = false,
+        accessibilityLabel: String? = nil,
+        accessibilityHint: String? = nil,
         action: @escaping () -> Void,
         @ViewBuilder label: () -> Content
     ) {
@@ -16,6 +20,8 @@ public struct PrimaryButton<Content: View>: View {
         self.content = label()
         self.isLoading = isLoading
         self.disabled = disabled
+        self.accessibilityLabel = accessibilityLabel
+        self.accessibilityHint = accessibilityHint
     }
 
     public var body: some View {
@@ -25,6 +31,7 @@ public struct PrimaryButton<Content: View>: View {
                 if isLoading {
                     ProgressView()
                         .progressViewStyle(.circular)
+                        .accessibilityLabel("Loading")
                 }
             }
             .frame(maxWidth: .infinity)
@@ -32,6 +39,30 @@ public struct PrimaryButton<Content: View>: View {
         }
         .buttonStyle(PrimaryButtonStyle())
         .disabled(isLoading || disabled)
+        .minimumTouchTarget()
+        .accessibilityElement(children: .combine)
+        .modify { view in
+            if let label = accessibilityLabel {
+                view.accessibilityLabel(label)
+            } else {
+                view
+            }
+        }
+        .modify { view in
+            if let hint = accessibilityHint {
+                view.accessibilityHint(hint)
+            } else {
+                view
+            }
+        }
+        .accessibilityAddTraits(isLoading ? .updatesFrequently : [])
+        .accessibilityRemoveTraits(disabled ? [] : .isButton)
+        .accessibilityAddTraits(.isButton)
+    }
+
+    @ViewBuilder
+    private func modify<V: View>(@ViewBuilder _ transform: (Self) -> V) -> some View {
+        transform(self)
     }
 }
 
@@ -47,7 +78,7 @@ public struct PrimaryButtonStyle: ButtonStyle {
             .background(BabyTrackTheme.palette.accent)
             .clipShape(RoundedRectangle(cornerRadius: BabyTrackTheme.radii.pill, style: .continuous))
             .opacity(configuration.isPressed ? 0.85 : 1)
-            .animation(.easeOut(duration: 0.15), value: configuration.isPressed)
+            .accessibleAnimation(.easeOut(duration: 0.15), value: configuration.isPressed)
     }
 }
 

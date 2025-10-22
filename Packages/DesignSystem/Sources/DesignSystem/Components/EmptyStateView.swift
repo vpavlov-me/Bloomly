@@ -25,11 +25,21 @@ public struct EmptyStateView: View {
                     Circle()
                         .fill(BabyTrackTheme.palette.secondaryBackground)
                 )
+                .accessibilityHidden(true)
+
             BabyTrackTheme.typography.title.text(title)
+                .accessibilityAddTraits(.isHeader)
+
             BabyTrackTheme.typography.caption.text(message)
                 .multilineTextAlignment(.center)
+                .dynamicTypeSize(.xSmall ... .xxxLarge)
+
             if let actionTitle, let action {
-                PrimaryButton(action: action) {
+                PrimaryButton(
+                    accessibilityLabel: actionTitle,
+                    accessibilityHint: AccessibilityHints.Button.add,
+                    action: action
+                ) {
                     Text(actionTitle)
                 }
                 .frame(maxWidth: 220)
@@ -38,6 +48,9 @@ public struct EmptyStateView: View {
         .padding(BabyTrackTheme.spacing.lg)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(transparentBackground)
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel(AccessibilityLabels.EmptyState.message(title: title, description: message))
+        .accessibilityIdentifier(AccessibilityIdentifiers.EmptyState.message)
     }
 
     private var transparentBackground: some View {
