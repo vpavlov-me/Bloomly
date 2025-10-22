@@ -1,5 +1,207 @@
-"paywall.title" = "BabyTrack Премиум";
-"paywall.subtitle" = "Откройте безлимит и синхронизацию";
+/* Timeline */
+"timeline.title" = "Лента";
+"timeline.search.placeholder" = "Поиск событий...";
+"timeline.empty.title" = "Пока нет событий";
+"timeline.empty.message" = "Начните отслеживать активности малыша";
+"timeline.empty.action" = "Добавить первое событие";
+"timeline.filter.all" = "Все";
+"timeline.filter.events" = "События";
+"timeline.filter.measurements" = "Измерения";
+"timeline.summary.events" = "%d событий";
+"timeline.summary.measurements" = "%d измерений";
 "timeline.empty" = "Пока нет записей";
+
+/* Events */
+"event.form.title.new" = "Новое событие";
+"event.form.title.edit" = "Редактировать событие";
+"event.form.start" = "Время начала";
+"event.form.end" = "Время окончания";
+"event.form.duration" = "Продолжительность";
+"event.form.notes" = "Заметки";
+"event.form.save" = "Сохранить";
+"event.form.cancel" = "Отмена";
+"event.delete.message" = "Событие удалено";
+"event.delete.undo" = "Отменить";
+"event.form.validation.kind" = "Пожалуйста, выберите тип события";
+"event.form.validation.endBeforeStart" = "Время окончания должно быть после времени начала";
+"event.kind.sleep" = "Сон";
+"event.kind.feed" = "Кормление";
+"event.kind.diaper" = "Подгузник";
+
+/* Measurements */
+"measurements.title" = "Измерения";
+"measurements.add" = "Добавить измерение";
+"measurements.form.title" = "Новое измерение";
+"measurements.form.type" = "Тип";
+"measurements.form.value" = "Значение";
+"measurements.form.unit" = "Единица";
+"measurements.form.date" = "Дата";
+"measurements.list.empty" = "Нет измерений";
+"measurements.list.empty.message" = "Отслеживайте рост малыша";
+"measurements.growth.title" = "Графики роста";
+"measurements.growth.subtitle" = "Отслеживание развития по перцентилям ВОЗ";
+"measurements.growth.premium" = "Обновитесь до Premium для графиков роста";
+"measurement.type.height" = "Рост";
+"measurement.type.weight" = "Вес";
+"measurement.type.head" = "Окружность головы";
+"measurement.unit.cm" = "см";
+"measurement.unit.kg" = "кг";
+"measurement.unit.in" = "дюйм";
+"measurement.unit.lb" = "фунт";
+
+/* Paywall */
+"paywall.title" = "BabyTrack Премиум";
+"paywall.subtitle" = "Получите безлимитную историю и синхронизацию";
+"paywall.loading" = "Загрузка...";
+"paywall.error.generic" = "Не удалось загрузить продукты. Попробуйте снова.";
+"paywall.restore" = "Восстановить покупки";
+"paywall.restore.description" = "Уже купили? Восстановите подписку.";
+"paywall.restore.success" = "Покупки успешно восстановлены!";
+"paywall.feature.charts" = "Расширенные графики роста с перцентилями ВОЗ";
+"paywall.feature.export" = "Экспорт всех данных в CSV или JSON";
+"paywall.feature.sync" = "Облачная синхронизация на всех устройствах";
+"paywall.price.monthly" = "Месяц";
+"paywall.price.yearly" = "Год";
+"paywall.terms" = "Условия использования";
+"paywall.privacy" = "Политика конфиденциальности";
+
+/* Settings */
+"settings.title" = "Настройки";
+"settings.language" = "Язык";
+"settings.language.system" = "Системный";
+"settings.language.english" = "English";
+"settings.language.russian" = "Русский";
+"settings.premium.status" = "Статус Premium";
+"settings.premium.active" = "Активна";
+"settings.premium.inactive" = "Не активна";
+"settings.export" = "Экспорт данных";
+"settings.premium.manage" = "Управление подпиской";
+"settings.about" = "О приложении";
+"settings.version" = "Версия";
+"settings.notifications" = "Уведомления";
+"settings.appearance" = "Оформление";
+"settings.appearance.system" = "Системное";
+"settings.appearance.light" = "Светлое";
+"settings.appearance.dark" = "Тёмное";
+
+/* Errors */
+"errors.generic" = "Что-то пошло не так. Попробуйте снова.";
+"errors.coredata" = "Произошла ошибка базы данных";
+"errors.validation" = "Пожалуйста, проверьте введённые данные";
+"errors.purchase.failed" = "Покупка не удалась. Попробуйте снова.";
+"errors.network.restricted" = "Требуется подключение к сети";
+
+/* Widgets */
 "widgets.lastFeed" = "Последнее кормление";
 "widgets.sleepSummary" = "Сон сегодня";
+"widgets.description.feed" = "Просмотр времени последнего кормления";
+"widgets.description.sleep" = "Отслеживание продолжительности сна сегодня";
+
+/* Common */
+"common.save" = "Сохранить";
+"common.cancel" = "Отмена";
+"common.delete" = "Удалить";
+"common.edit" = "Изменить";
+"common.done" = "Готово";
+"common.add" = "Добавить";
+"common.close" = "Закрыть";
+"common.ok" = "ОК";
+"common.yes" = "Да";
+"common.no" = "Нет";
+"common.loading" = "Загрузка...";
+"common.error" = "Ошибка";
+"common.success" = "Успешно";
+"common.today" = "Сегодня";
+"common.yesterday" = "Вчера";
+"common.week" = "Неделя";
+"common.month" = "Месяц";
+
+/* Dashboard */
+"dashboard.title" = "Главная";
+"dashboard.summary" = "Сводка за сегодня";
+"dashboard.quickLog" = "Быстрая запись";
+"dashboard.recentActivity" = "Недавняя активность";
+
+/* Tab Bar */
+"tab.dashboard" = "Главная";
+"tab.timeline" = "Лента";
+"tab.charts" = "Графики";
+"tab.settings" = "Настройки";
+
+/* Time Formatting */
+"time.hours.short" = "ч";
+"time.minutes.short" = "м";
+"time.seconds.short" = "с";
+"time.hours.long" = "часов";
+"time.minutes.long" = "минут";
+"time.ago" = "%@ назад";
+"time.just_now" = "Только что";
+
+/* Date Formatting */
+"date.format.short" = "d MMM";
+"date.format.long" = "d MMMM yyyy";
+"date.format.time" = "HH:mm";
+
+/* Onboarding */
+"onboarding.welcome.title" = "Добро пожаловать в BabyTrack";
+"onboarding.welcome.subtitle" = "Отслеживайте ежедневные активности и рост малыша";
+"onboarding.features.title" = "Всё что нужно";
+"onboarding.features.subtitle" = "Сон, кормление, подгузники и измерения";
+"onboarding.privacy.title" = "Ваши данные в безопасности";
+"onboarding.privacy.subtitle" = "Все данные надёжно хранятся на вашем устройстве";
+"onboarding.getStarted" = "Начать";
+"onboarding.skip" = "Пропустить";
+
+/* Charts */
+"charts.title" = "Графики роста";
+"charts.height" = "График роста";
+"charts.weight" = "График веса";
+"charts.head" = "График окружности головы";
+"charts.percentile" = "Перцентиль";
+"charts.date" = "Дата";
+"charts.value" = "Значение";
+"charts.empty" = "Нет измерений для отображения";
+"charts.empty.message" = "Добавьте измерения для просмотра графиков роста";
+
+/* Notifications */
+"notification.permission.title" = "Включить уведомления";
+"notification.permission.message" = "Получайте напоминания о времени кормления и сна";
+"notification.permission.allow" = "Разрешить";
+"notification.permission.later" = "Может быть позже";
+
+/* Data Export */
+"export.title" = "Экспорт данных";
+"export.format" = "Формат экспорта";
+"export.format.csv" = "CSV (совместим с Excel)";
+"export.format.json" = "JSON (для разработчиков)";
+"export.date_range" = "Период дат";
+"export.date_range.all" = "Всё время";
+"export.date_range.last_week" = "Последняя неделя";
+"export.date_range.last_month" = "Последний месяц";
+"export.date_range.last_year" = "Последний год";
+"export.include_events" = "Включить события";
+"export.include_measurements" = "Включить измерения";
+"export.export" = "Экспортировать";
+"export.success" = "Данные успешно экспортированы";
+"export.error" = "Не удалось экспортировать данные";
+
+/* Sync */
+"sync.title" = "Облачная синхронизация";
+"sync.status" = "Статус синхронизации";
+"sync.synced" = "Синхронизировано";
+"sync.syncing" = "Синхронизация...";
+"sync.error" = "Ошибка синхронизации";
+"sync.last_sync" = "Последняя синхронизация: %@";
+"sync.never_synced" = "Ещё не синхронизировано";
+"sync.enable" = "Включить облачную синхронизацию";
+"sync.disable" = "Отключить облачную синхронизацию";
+
+/* Accessibility */
+"accessibility.delete_event" = "Удалить событие";
+"accessibility.edit_event" = "Редактировать событие";
+"accessibility.add_event" = "Добавить новое событие";
+"accessibility.filter_events" = "Фильтровать события";
+"accessibility.export_data" = "Экспортировать данные";
+"accessibility.open_settings" = "Открыть настройки";
+"accessibility.close" = "Закрыть";
+"accessibility.back" = "Назад";
