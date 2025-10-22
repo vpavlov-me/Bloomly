@@ -1,6 +1,8 @@
-# CloudKit Setup
+# CloudKit Setup (WIP)
 
-1. Включите **iCloud > CloudKit** capability для App, Widget, Watch Extension. Используйте контейнер `iCloud.com.example.BabyTrack` и App Group `group.com.example.BabyTrack`.
+> ⚠️ Интеграция CloudKit ещё не завершена. Инструкция ниже поможет подготовить окружение, но до завершения разработки `CloudKitSyncService` данные не будут синхронизироваться автоматически.
+
+1. Включите **iCloud > CloudKit** capability для App, Widget, Watch Extension. Используйте контейнер `iCloud.com.example.BabyTrack` и App Group `group.com.example.babytrack`.
 2. На [developer.apple.com](https://developer.apple.com) создайте контейнер и назначьте его bundle ID.
 3. В CloudKit Dashboard:
    - Перейдите в Environment: Development.

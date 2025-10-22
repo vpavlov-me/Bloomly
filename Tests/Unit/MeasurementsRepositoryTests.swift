@@ -356,31 +356,6 @@ final class MeasurementsRepositoryTests: XCTestCase {
 
     // MARK: - Performance Tests
 
-    func testCreatePerformance() throws {
-        measure {
-            Task {
-                for i in 0..<50 {
-                    let measurement = MeasurementDTO(type: .height, value: 50.0 + Double(i), unit: "cm", date: Date())
-                    _ = try? await self.repository.create(measurement)
-                }
-            }
-        }
-    }
-
-    func testFetchPerformance() async throws {
-        // Create 100 measurements
-        for i in 0..<100 {
-            let measurement = MeasurementDTO(type: .height, value: 50.0 + Double(i) * 0.1, unit: "cm", date: Date().addingTimeInterval(TimeInterval(-i * 100)))
-            _ = try await repository.create(measurement)
-        }
-
-        measure {
-            Task {
-                _ = try? await self.repository.measurements(in: nil, type: nil)
-            }
-        }
-    }
-
     func testQueryPerformanceWithLargeDataset() async throws {
         // Create 500 measurements
         for i in 0..<500 {

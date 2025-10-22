@@ -1,3 +1,4 @@
+import Combine
 import XCTest
 import Tracking
 @testable import WatchApp
@@ -5,13 +6,23 @@ import Tracking
 final class WatchDataStoreTests: XCTestCase {
     func testLogAddsEvent() async {
         let repository = InMemoryEventsRepository()
-        let store = await MainActor.run { WatchDataStore(repository: repository) }
+        let store = await MainActor.run { WatchDataStore(eventsRepository: repository) }
+        let expectation = expectation(description: "recent events updated")
+
+        var cancellable: AnyCancellable?
         await MainActor.run {
+            cancellable = store.$recentEvents
+                .dropFirst()
+                .sink { events in
+                    if !events.isEmpty {
+                        expectation.fulfill()
+                    }
+                }
             store.log(draft: EventDraft(kind: .feed, start: Date()))
         }
-        try? await Task.sleep(nanoseconds: 50_000_000)
-        await MainActor.run {
-            XCTAssertEqual(store.recentEvents.count, 1)
-        }
+
+        wait(for: [expectation], timeout: 1.0)
+        XCTAssertEqual(await MainActor.run { store.recentEvents.count }, 1)
+        cancellable?.cancel()
     }
 }

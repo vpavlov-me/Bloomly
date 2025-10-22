@@ -1,9 +1,9 @@
 # BabyTrack
 
-BabyTrack — модульный SwiftUI-проект для отслеживания сна, кормлений, смен подгузников и измерений роста малыша. Архитектура ориентирована на оффлайн-первый опыт, локальное хранение через Core Data с последующей синхронизацией в CloudKit, а также на единый дизайн-слой и переиспользуемые фиче-модули для iOS, watchOS и WidgetKit.
+BabyTrack — модульный SwiftUI-проект для отслеживания сна, кормлений, смен подгузников и измерений роста малыша. Архитектура ориентирована на оффлайн-первый опыт, локальное хранение через Core Data с запланированной синхронизацией в CloudKit, а также на единый дизайн-слой и переиспользуемые фиче-модули для iOS, watchOS и WidgetKit.
 
 ## Основные возможности
-- **Журнал событий** (сон, кормление, подгузник) с локальным хранением, заметками и последующей CloudKit-синхронизацией.
+- **Журнал событий** (сон, кормление, подгузник) с локальным хранением, заметками и заготовкой CloudKit-синхронизации (в разработке).
 - **Лента таймлайна** с агрегацией событий и измерений, быстрыми действиями и Swift Charts для роста/веса.
 - **WHO перцентили** — графики роста с эталонными кривыми ВОЗ (Premium feature).
 - **Data Export** — экспорт всех данных в CSV или JSON для резервного копирования.
@@ -15,7 +15,7 @@ BabyTrack — модульный SwiftUI-проект для отслежива�
 ## Tech Stack
 - Swift 5.10, SwiftUI, modern concurrency (async/await)
 - Core Data + NSPersistentCloudKitContainer, App Groups
-- CloudKit (Private DB) с production-grade sync implementation
+- CloudKit (Private DB) — модуль `Sync` содержит прототип сервисов (pull/push/conflict), который требует доработки до production
 - WidgetKit, watchOS 10, Swift Charts
 - StoreKit 2, Storefront paywall
 - XCTest и SnapshotTesting
@@ -30,7 +30,7 @@ BabyTrack — модульный SwiftUI-проект для отслежива�
 | `Measurements` | Измерения, графики роста, WHO percentiles, формирование выборок |
 | `Timeline` | Объединение событий/измерений в секции, SwiftUI интерфейс |
 | `Paywall` | StoreKit 2 клиент, Premium состояние, UI и снапшоты |
-| `Sync` | CloudKit production sync: pull/push/conflict resolution |
+| `Sync` | CloudKit sync scaffolding: API для pull/push/resolve (требует завершения) |
 | `Widgets` | WidgetKit провайдеры, App Group стор, виджеты «Feed/Sleep» |
 | `WatchApp` | watchOS: быстрый лог, события, измерения |
 
@@ -44,7 +44,7 @@ BabyTrack — модульный SwiftUI-проект для отслежива�
 4. `tuist generate` для сборки `BabyTrack.xcworkspace`.
 5. Откройте workspace и назначьте свою команду (placeholder Team ID `ABCDE12345`).
 6. При необходимости обновите bundle prefix `com.example`.
-7. Включите iCloud контейнер `iCloud.com.example.BabyTrack` и App Group `group.com.example.BabyTrack` во всех таргетах.
+7. Включите iCloud контейнер `iCloud.com.example.BabyTrack` и App Group `group.com.example.babytrack` во всех таргетах.
 8. Для StoreKit 2 заведите продукты `com.example.babytrack.premium.monthly` и `com.example.babytrack.premium.yearly`.
 
 ## Tests & QA
@@ -91,21 +91,16 @@ xcodebuild -workspace BabyTrack.xcworkspace \
 - Доступ: Settings → Export Data → выбрать формат
 - Экспортированные файлы можно поделиться через Share Sheet
 
-## CloudKit Sync
-Production-ready CloudKit синхронизация реализована с:
-- **Pull Changes**: Инкрементальная загрузка через `CKFetchRecordZoneChangesOperation`
-- **Push Pending**: Отправка unsynchronized записей с `CKModifyRecordsOperation`
-- **Conflict Resolution**: Last-write-wins стратегия на основе `modificationDate`
-- **Change Token**: Хранение server change token для эффективной синхронизации
-- **Background Sync**: Extension points для BGTaskScheduler (TODO: активация)
+## CloudKit Sync (WIP)
+Синхронизация через CloudKit пока находиться на стадии прототипа:
+- Заготовлены операции `pullChanges/pushPending/resolveConflicts` в `CloudKitSyncService`, но отсутствует маппинг к Core Data и персистентное хранение токена.
+- Фоновая регистрация через `BGTaskScheduler` не подключена.
+- Настройка контейнера и схемы в CloudKit дорабатывается — инструкция ниже пригодится после завершения интеграции.
 
-### CloudKit Setup
-1. Включите iCloud capability в Xcode
-2. Создайте CloudKit Container: `iCloud.com.example.BabyTrack`
-3. Настройте Private Database schema:
-   - Record Types: `Event`, `Measurement`
-   - Включите CloudKit в Core Data model
-4. Deploy schema в production environment
+### CloudKit Setup (подготовка)
+1. Включите iCloud capability в Xcode.
+2. Создайте CloudKit Container: `iCloud.com.example.BabyTrack`.
+3. Подготовьте Private Database schema (Record Types: `Event`, `Measurement`) — деплой выполняйте только после завершения интеграции.
 
 ## Error Handling & UX
 - **Toast Notifications**: Все CRUD операции показывают success/error toast
@@ -137,7 +132,7 @@ Production-ready CloudKit синхронизация реализована с:
 - [x] Paywall с StoreKit 2 и snapshot-тестами
 - [x] WidgetKit + watchOS внедрение
 - [x] Unit/UI/Snapshot тесты и CI workflow
-- [x] Production CloudKit sync (pull/push/conflicts)
+- [ ] Production CloudKit sync (pull/push/conflicts)
 - [x] WHO percentiles и расширенные графики
 - [x] Data Export (CSV/JSON)
 - [x] Toast notifications и error handling

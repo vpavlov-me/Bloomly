@@ -1,7 +1,7 @@
 import ProjectDescription
 
 let config = Config(
-    compatibleXcodeVersions: [.exact("16.0")],
+    compatibleXcodeVersions: [.list(["16.0", "16.1", "16.2", "16.3", "16.4"])],
     generationOptions: [
         .automaticSchemes(options: .disabled)
     ]

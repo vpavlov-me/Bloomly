@@ -1,3 +1,4 @@
+import AppSupport
 import Foundation
 import os.log
 
@@ -31,20 +32,6 @@ public extension EventsRepository {
         let interval = DateInterval(start: startOfDay, end: endOfDay)
         return try await events(in: interval, kind: nil)
     }
-}
-
-public struct AnalyticsEvent: Sendable {
-    public let name: String
-    public let metadata: [String: String]
-
-    public init(name: String, metadata: [String: String] = [:]) {
-        self.name = name
-        self.metadata = metadata
-    }
-}
-
-public protocol Analytics: Sendable {
-    func track(_ event: AnalyticsEvent)
 }
 
 public struct AnalyticsLogger: Analytics {
