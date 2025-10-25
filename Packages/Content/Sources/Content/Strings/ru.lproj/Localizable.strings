@@ -165,3 +165,37 @@
 "profile.addPhoto" = "Добавить фото";
 "profile.empty.title" = "Профиля пока нет";
 "profile.empty.message" = "Создайте профиль малыша, чтобы начать отслеживание";
+
+"onboarding.welcome.title" = "Добро пожаловать в BabyTrack";
+"onboarding.welcome.subtitle" = "Отслеживайте активности малыша с легкостью";
+"onboarding.welcome.benefit1.title" = "Отслеживание роста";
+"onboarding.welcome.benefit1.description" = "Следите за кормлением, сном, пеленанием и измерениями";
+"onboarding.welcome.benefit2.title" = "Умные напоминания";
+"onboarding.welcome.benefit2.description" = "Не пропускайте время кормления или смены подгузника";
+"onboarding.welcome.benefit3.title" = "Поддержка Apple Watch";
+"onboarding.welcome.benefit3.description" = "Быстрая запись с вашего запястья";
+"onboarding.welcome.getStarted" = "Начать";
+
+"onboarding.profile.title" = "Создание профиля малыша";
+"onboarding.profile.subtitle" = "Давайте познакомимся с вашим малышом";
+"onboarding.profile.addPhoto" = "Добавить фото";
+"onboarding.profile.changePhoto" = "Изменить фото";
+"onboarding.profile.nameError" = "Имя должно содержать от 2 до 50 символов";
+
+"onboarding.notifications.title" = "Будьте в курсе";
+"onboarding.notifications.subtitle" = "Получайте своевременные напоминания о кормлении, сне и смене подгузников";
+"onboarding.notifications.benefit1" = "Настраиваемые интервалы кормления";
+"onboarding.notifications.benefit2" = "Тихие часы для спокойного сна";
+"onboarding.notifications.benefit3" = "Отключить можно в любой момент в настройках";
+"onboarding.notifications.enable" = "Включить уведомления";
+"onboarding.notifications.skip" = "Может быть позже";
+
+"onboarding.intro.title" = "Все готово!";
+"onboarding.intro.subtitle" = "Вот как использовать BabyTrack";
+"onboarding.intro.feature1.title" = "Вкладка Лента";
+"onboarding.intro.feature1.description" = "Просматривайте все события и измерения в одном месте";
+"onboarding.intro.feature2.title" = "Вкладка Измерения";
+"onboarding.intro.feature2.description" = "Отслеживайте рост с помощью графиков и перцентилей";
+"onboarding.intro.feature3.title" = "Вкладка Настройки";
+"onboarding.intro.feature3.description" = "Настраивайте уведомления и предпочтения";
+"onboarding.intro.getStarted" = "Начать отслеживание";

@@ -165,3 +165,37 @@
 "profile.addPhoto" = "Add Photo";
 "profile.empty.title" = "No Profile Yet";
 "profile.empty.message" = "Create a profile for your baby to start tracking";
+
+"onboarding.welcome.title" = "Welcome to BabyTrack";
+"onboarding.welcome.subtitle" = "Track your baby's daily activities with ease";
+"onboarding.welcome.benefit1.title" = "Track Growth";
+"onboarding.welcome.benefit1.description" = "Monitor feeding, sleep, diaper changes, and measurements";
+"onboarding.welcome.benefit2.title" = "Smart Reminders";
+"onboarding.welcome.benefit2.description" = "Never miss feeding time or diaper changes";
+"onboarding.welcome.benefit3.title" = "Apple Watch Support";
+"onboarding.welcome.benefit3.description" = "Quick logging from your wrist";
+"onboarding.welcome.getStarted" = "Get Started";
+
+"onboarding.profile.title" = "Create Baby Profile";
+"onboarding.profile.subtitle" = "Let's get to know your little one";
+"onboarding.profile.addPhoto" = "Add Photo";
+"onboarding.profile.changePhoto" = "Change Photo";
+"onboarding.profile.nameError" = "Name must be between 2 and 50 characters";
+
+"onboarding.notifications.title" = "Stay Updated";
+"onboarding.notifications.subtitle" = "Get timely reminders for feeding, sleep, and diaper changes";
+"onboarding.notifications.benefit1" = "Customizable feeding intervals";
+"onboarding.notifications.benefit2" = "Quiet hours for uninterrupted sleep";
+"onboarding.notifications.benefit3" = "Disable anytime in settings";
+"onboarding.notifications.enable" = "Enable Notifications";
+"onboarding.notifications.skip" = "Maybe Later";
+
+"onboarding.intro.title" = "You're All Set!";
+"onboarding.intro.subtitle" = "Here's how to use BabyTrack";
+"onboarding.intro.feature1.title" = "Timeline Tab";
+"onboarding.intro.feature1.description" = "View all events and measurements in one place";
+"onboarding.intro.feature2.title" = "Measurements Tab";
+"onboarding.intro.feature2.description" = "Track growth with charts and percentiles";
+"onboarding.intro.feature3.title" = "Settings Tab";
+"onboarding.intro.feature3.description" = "Customize notifications and preferences";
+"onboarding.intro.getStarted" = "Start Tracking";
