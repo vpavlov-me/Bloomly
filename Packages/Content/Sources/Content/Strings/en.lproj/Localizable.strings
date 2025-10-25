@@ -199,3 +199,16 @@
 "onboarding.intro.feature3.title" = "Settings Tab";
 "onboarding.intro.feature3.description" = "Customize notifications and preferences";
 "onboarding.intro.getStarted" = "Start Tracking";
+
+"widget.small.title" = "Last Feed";
+"widget.small.description" = "Time since last feeding";
+"widget.medium.title" = "Activity Summary";
+"widget.medium.description" = "Quick overview of today's activities";
+"widget.large.title" = "Today's Timeline";
+"widget.large.description" = "View recent events and daily stats";
+"widget.feed" = "Feed";
+"widget.sleep" = "Sleep";
+"widget.diaper" = "Diaper";
+"widget.noData" = "No Data";
+"widget.recentActivity" = "Recent Activity";
+"widget.tapToView" = "Tap to view timeline";

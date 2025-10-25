@@ -199,3 +199,16 @@
 "onboarding.intro.feature3.title" = "Вкладка Настройки";
 "onboarding.intro.feature3.description" = "Настраивайте уведомления и предпочтения";
 "onboarding.intro.getStarted" = "Начать отслеживание";
+
+"widget.small.title" = "Последнее кормление";
+"widget.small.description" = "Время с последнего кормления";
+"widget.medium.title" = "Сводка активности";
+"widget.medium.description" = "Быстрый обзор активностей за сегодня";
+"widget.large.title" = "Лента за сегодня";
+"widget.large.description" = "Просмотр недавних событий и статистики за день";
+"widget.feed" = "Кормление";
+"widget.sleep" = "Сон";
+"widget.diaper" = "Подгузник";
+"widget.noData" = "Нет данных";
+"widget.recentActivity" = "Недавняя активность";
+"widget.tapToView" = "Нажмите для просмотра ленты";
