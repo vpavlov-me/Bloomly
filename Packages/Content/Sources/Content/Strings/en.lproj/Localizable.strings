@@ -104,3 +104,25 @@
 "notification.request.message" = "Allow notifications to get reminders for feeding, sleep, and diaper changes.";
 "notification.quietHours" = "Quiet Hours";
 "notification.quietHours.description" = "No reminders during these hours";
+
+"common.add" = "Add";
+"common.edit" = "Edit";
+"common.delete" = "Delete";
+"common.save" = "Save";
+"common.cancel" = "Cancel";
+"common.dismiss" = "Dismiss";
+"common.ok" = "OK";
+"common.loading" = "Loading...";
+"common.tryAgain" = "Try Again";
+
+"main.tab.timeline" = "Timeline";
+"main.tab.add" = "Add";
+"main.tab.measurements" = "Measurements";
+"main.tab.settings" = "Settings";
+
+"watch.quicklog.title" = "Quick Log";
+"watch.recent.title" = "Recent";
+"watch.measure.title" = "Measure";
+"watch.tab.log" = "Log";
+"watch.tab.history" = "History";
+"watch.tab.measure" = "Measure";

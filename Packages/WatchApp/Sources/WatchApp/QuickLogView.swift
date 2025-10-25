@@ -24,12 +24,12 @@ public struct QuickLogView: View {
                 }
             }
         }
-        .navigationTitle("Quick Log")
+        .navigationTitle(Text(AppCopy.WatchApp.quickLogTitle))
         .alert(AppCopy.string(for: "errors.generic"), isPresented: Binding(
             get: { errorMessage != nil },
             set: { if !$0 { errorMessage = nil } }
         )) {
-            Button("OK", role: .cancel) {}
+            Button(AppCopy.Common.ok, role: .cancel) {}
         } message: {
             Text(errorMessage ?? "")
         }

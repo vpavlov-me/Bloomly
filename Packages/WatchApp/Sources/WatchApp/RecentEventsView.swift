@@ -1,3 +1,4 @@
+import Content
 import SwiftUI
 import Tracking
 
@@ -16,7 +17,7 @@ public struct RecentEventsView: View {
                     .font(.footnote)
             }
         }
-        .navigationTitle("Recent")
+        .navigationTitle(Text(AppCopy.WatchApp.recentTitle))
         .task { await load() }
     }
 

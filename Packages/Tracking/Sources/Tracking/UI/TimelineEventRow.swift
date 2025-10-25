@@ -44,10 +44,10 @@ public struct TimelineEventRow: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             Menu {
                 Button(role: .destructive) { onDelete(event) } label: {
-                    Label("Delete", systemImage: "trash")
+                    Label(AppCopy.Common.delete, systemImage: "trash")
                 }
                 Button { onEdit(event) } label: {
-                    Label("Edit", systemImage: "pencil")
+                    Label(AppCopy.Common.edit, systemImage: "pencil")
                 }
             } label: {
                 Image(systemName: "ellipsis")

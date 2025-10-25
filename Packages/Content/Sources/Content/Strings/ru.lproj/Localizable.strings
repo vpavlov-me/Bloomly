@@ -104,3 +104,25 @@
 "notification.request.message" = "Разрешите уведомления, чтобы получать напоминания о кормлении, сне и смене подгузника.";
 "notification.quietHours" = "Тихие часы";
 "notification.quietHours.description" = "Не беспокоить в это время";
+
+"common.add" = "Добавить";
+"common.edit" = "Редактировать";
+"common.delete" = "Удалить";
+"common.save" = "Сохранить";
+"common.cancel" = "Отмена";
+"common.dismiss" = "Закрыть";
+"common.ok" = "ОК";
+"common.loading" = "Загрузка...";
+"common.tryAgain" = "Попробовать снова";
+
+"main.tab.timeline" = "Лента";
+"main.tab.add" = "Добавить";
+"main.tab.measurements" = "Измерения";
+"main.tab.settings" = "Настройки";
+
+"watch.quicklog.title" = "Быстрая запись";
+"watch.recent.title" = "Недавние";
+"watch.measure.title" = "Измерение";
+"watch.tab.log" = "Запись";
+"watch.tab.history" = "История";
+"watch.tab.measure" = "Измерение";

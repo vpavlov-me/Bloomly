@@ -14,13 +14,13 @@ public struct WatchDashboardView: View {
     public var body: some View {
         TabView {
             QuickLogView()
-                .tabItem { Label(AppCopy.string(for: "timeline.empty.action"), systemImage: Symbols.add) }
+                .tabItem { Label(AppCopy.WatchApp.tabLog, systemImage: Symbols.add) }
 
             RecentEventsView()
-                .tabItem { Label("History", systemImage: Symbols.timeline) }
+                .tabItem { Label(AppCopy.WatchApp.tabHistory, systemImage: Symbols.timeline) }
 
             AddMeasurementView()
-                .tabItem { Label("Measure", systemImage: Symbols.measurement) }
+                .tabItem { Label(AppCopy.WatchApp.tabMeasure, systemImage: Symbols.measurement) }
         }
         .environment(\.eventsRepository, store.eventsRepository)
         .environment(\.measurementsRepository, store.measurementsRepository)

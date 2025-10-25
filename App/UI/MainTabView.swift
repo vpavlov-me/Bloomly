@@ -46,16 +46,16 @@ public struct MainTabView: View {
                 TimelineView(viewModel: timelineViewModel)
                     .onAppear(perform: bindTimelineCallbacks)
             }
-            .tabItem { Label(AppCopy.string(for: "timeline.title"), systemImage: Symbols.timeline) }
+            .tabItem { Label(AppCopy.MainTabs.timeline, systemImage: Symbols.timeline) }
 
             NavigationStack { addTab }
-                .tabItem { Label("Add", systemImage: Symbols.add) }
+                .tabItem { Label(AppCopy.MainTabs.add, systemImage: Symbols.add) }
 
             NavigationStack { measurementsTab }
-                .tabItem { Label(AppCopy.string(for: "measurements.title"), systemImage: Symbols.measurement) }
+                .tabItem { Label(AppCopy.MainTabs.measurements, systemImage: Symbols.measurement) }
 
             NavigationStack { settingsTab }
-                .tabItem { Label(AppCopy.string(for: "settings.title"), systemImage: Symbols.settings) }
+                .tabItem { Label(AppCopy.MainTabs.settings, systemImage: Symbols.settings) }
         }
         .sheet(isPresented: $showEventForm, onDismiss: { editingEvent = nil }) {
             EventFormView(event: editingEvent) { event in
@@ -113,7 +113,7 @@ public struct MainTabView: View {
                 }
             }
         }
-        .navigationTitle("Add")
+        .navigationTitle(Text(AppCopy.MainTabs.add))
     }
 
     private var measurementsTab: some View {
