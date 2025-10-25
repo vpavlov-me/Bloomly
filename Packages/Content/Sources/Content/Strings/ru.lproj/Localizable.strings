@@ -70,10 +70,37 @@
 "settings.premium.active" = "Активна";
 "settings.premium.inactive" = "Не активна";
 "settings.export" = "Экспорт данных";
+"settings.export.csv" = "Экспорт в CSV";
+"settings.export.json" = "Экспорт в JSON";
+"settings.export.progress" = "Экспортируем...";
+"settings.export.success" = "Экспорт завершён";
 "settings.premium.manage" = "Управлять подпиской";
+"settings.notifications" = "Уведомления";
+"settings.notifications.enable" = "Включить напоминания";
+"settings.notifications.quietHours" = "Тихие часы";
+"settings.notifications.quietHours.start" = "Начало";
+"settings.notifications.quietHours.end" = "Окончание";
 
 "errors.generic" = "Произошла ошибка.";
 "errors.coredata" = "Не удалось сохранить изменения.";
 "errors.validation" = "Проверьте выделенные поля.";
 "errors.purchase.failed" = "Покупка не выполнена. Повторите позже.";
 "errors.network.restricted" = "Нет доступа к сети.";
+"errors.load" = "Не удалось загрузить данные.";
+"errors.delete" = "Не удалось удалить.";
+"errors.export" = "Ошибка экспорта.";
+
+"event.saved" = "Событие сохранено";
+"measurement.saved" = "Измерение сохранено";
+"measurement.deleted" = "Измерение удалено";
+
+"notification.feed.reminder" = "Время кормления";
+"notification.feed.body" = "Пора покормить малыша";
+"notification.sleep.reminder" = "Время сна";
+"notification.sleep.body" = "Пора укладывать малыша спать";
+"notification.diaper.reminder" = "Проверка подгузника";
+"notification.diaper.body" = "Проверьте и смените подгузник при необходимости";
+"notification.request.title" = "Включить напоминания";
+"notification.request.message" = "Разрешите уведомления, чтобы получать напоминания о кормлении, сне и смене подгузника.";
+"notification.quietHours" = "Тихие часы";
+"notification.quietHours.description" = "Не беспокоить в это время";

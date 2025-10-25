@@ -15,14 +15,22 @@ struct BabyTrackApp: App {
                 .environment(\.analytics, container.analytics)
                 .environment(\.premiumState, container.premiumState)
                 .environment(\.syncService, container.syncService)
+                .environment(\.notificationManager, container.notificationManager)
                 .environment(\.managedObjectContext, container.persistence.viewContext)
+                .task {
+                    // Request notification permissions on first launch
+                    await container.notificationManager.requestNotificationPermission()
+                }
         }
         .onChange(of: scenePhase) { _, newPhase in
             switch newPhase {
             case .background:
                 Task { await container.syncService.pushPending() }
             case .active:
-                Task { await container.syncService.pullChanges() }
+                Task {
+                    await container.syncService.pullChanges()
+                    container.notificationManager.checkNotificationStatus()
+                }
             default:
                 break
             }

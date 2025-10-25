@@ -70,10 +70,37 @@
 "settings.premium.active" = "Active";
 "settings.premium.inactive" = "Not active";
 "settings.export" = "Export data";
+"settings.export.csv" = "Export to CSV";
+"settings.export.json" = "Export to JSON";
+"settings.export.progress" = "Exporting...";
+"settings.export.success" = "Export completed";
 "settings.premium.manage" = "Manage subscription";
+"settings.notifications" = "Notifications";
+"settings.notifications.enable" = "Enable reminders";
+"settings.notifications.quietHours" = "Quiet hours";
+"settings.notifications.quietHours.start" = "Start";
+"settings.notifications.quietHours.end" = "End";
 
 "errors.generic" = "We hit a snag.";
 "errors.coredata" = "Failed to save changes.";
 "errors.validation" = "Check the highlighted fields.";
 "errors.purchase.failed" = "Purchase failed. Try again later.";
 "errors.network.restricted" = "Network access is restricted.";
+"errors.load" = "Failed to load data.";
+"errors.delete" = "Failed to delete.";
+"errors.export" = "Export failed.";
+
+"event.saved" = "Event saved";
+"measurement.saved" = "Measurement saved";
+"measurement.deleted" = "Measurement deleted";
+
+"notification.feed.reminder" = "Feeding Time";
+"notification.feed.body" = "Time to feed the baby";
+"notification.sleep.reminder" = "Sleep Time";
+"notification.sleep.body" = "Time for baby's sleep";
+"notification.diaper.reminder" = "Diaper Check";
+"notification.diaper.body" = "Check and change diaper if needed";
+"notification.request.title" = "Enable Reminders";
+"notification.request.message" = "Allow notifications to get reminders for feeding, sleep, and diaper changes.";
+"notification.quietHours" = "Quiet Hours";
+"notification.quietHours.description" = "No reminders during these hours";

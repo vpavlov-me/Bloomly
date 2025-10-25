@@ -103,6 +103,19 @@ public enum AppCopy {
         public static let purchase = LocalizedStringKey("errors.purchase.failed")
         public static let network = LocalizedStringKey("errors.network.restricted")
     }
+
+    public enum Notifications {
+        public static let feedReminder = LocalizedStringKey("notification.feed.reminder")
+        public static let feedBody = LocalizedStringKey("notification.feed.body")
+        public static let sleepReminder = LocalizedStringKey("notification.sleep.reminder")
+        public static let sleepBody = LocalizedStringKey("notification.sleep.body")
+        public static let diaperReminder = LocalizedStringKey("notification.diaper.reminder")
+        public static let diaperBody = LocalizedStringKey("notification.diaper.body")
+        public static let requestTitle = LocalizedStringKey("notification.request.title")
+        public static let requestMessage = LocalizedStringKey("notification.request.message")
+        public static let quietHours = LocalizedStringKey("notification.quietHours")
+        public static let quietHoursDescription = LocalizedStringKey("notification.quietHours.description")
+    }
 }
 
 public enum EventCopy {

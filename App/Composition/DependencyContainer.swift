@@ -17,6 +17,7 @@ public final class DependencyContainer: ObservableObject {
     public let syncService: any SyncService
     public let analytics: any Analytics
     public let premiumState: PremiumState
+    public let notificationManager: NotificationManager
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -26,7 +27,8 @@ public final class DependencyContainer: ObservableObject {
         measurementsRepository: (any MeasurementsRepository)? = nil,
         storeClient: StoreClient? = nil,
         syncService: (any SyncService)? = nil,
-        analytics: (any Analytics)? = nil
+        analytics: (any Analytics)? = nil,
+        notificationManager: NotificationManager? = nil
     ) {
         BabyTrackTheme.configureAppearance()
 
@@ -39,6 +41,7 @@ public final class DependencyContainer: ObservableObject {
         self.syncService = syncService ?? CloudKitSyncService()
         self.analytics = analytics ?? AnalyticsLogger()
         self.premiumState = PremiumState()
+        self.notificationManager = notificationManager ?? NotificationManager()
 
         setupSyncBindings()
     }
@@ -78,6 +81,10 @@ private struct SyncServiceKey: EnvironmentKey {
     static let defaultValue: any SyncService = CloudKitSyncService()
 }
 
+private struct NotificationManagerKey: EnvironmentKey {
+    static let defaultValue: NotificationManager = NotificationManager()
+}
+
 public extension EnvironmentValues {
     var eventsRepository: any EventsRepository {
         get { self[EventsRepositoryKey.self] }
@@ -107,6 +114,11 @@ public extension EnvironmentValues {
     var syncService: any SyncService {
         get { self[SyncServiceKey.self] }
         set { self[SyncServiceKey.self] = newValue }
+    }
+
+    var notificationManager: NotificationManager {
+        get { self[NotificationManagerKey.self] }
+        set { self[NotificationManagerKey.self] = newValue }
     }
 }
 
