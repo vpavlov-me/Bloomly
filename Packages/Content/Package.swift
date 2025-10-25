@@ -18,10 +18,10 @@ let package = Package(
         .target(
             name: "Content",
             dependencies: [],
+            path: "Sources",
             resources: [
-                .process("Resources")
-            ],
-            path: "Sources"
+                .process("Content/Resources")
+            ]
         ),
         .testTarget(
             name: "ContentTests",

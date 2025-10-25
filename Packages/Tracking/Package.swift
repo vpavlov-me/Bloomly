@@ -14,13 +14,17 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../AppSupport")
+        .package(path: "../AppSupport"),
+        .package(path: "../Content"),
+        .package(path: "../DesignSystem")
     ],
     targets: [
         .target(
             name: "Tracking",
             dependencies: [
-                "AppSupport"
+                "AppSupport",
+                "Content",
+                "DesignSystem"
             ],
             path: "Sources"
         ),

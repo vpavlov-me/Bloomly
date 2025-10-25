@@ -25,6 +25,7 @@ struct BabyTrackApp: App {
             .environment(\.premiumState, container.premiumState)
             .environment(\.syncService, container.syncService)
             .environment(\.notificationManager, container.notificationManager)
+            .environment(\.chartAggregator, container.chartAggregator)
             .environment(\.managedObjectContext, container.persistence.viewContext)
             .handleWidgetDeepLinks { deepLink in
                 widgetDeepLink = deepLink
