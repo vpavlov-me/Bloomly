@@ -8,6 +8,10 @@ import Sync
 import Tracking
 import SwiftUI
 
+#if os(iOS)
+import WatchApp
+#endif
+
 @MainActor
 public final class DependencyContainer: ObservableObject {
     public let persistence: PersistenceController
@@ -52,7 +56,64 @@ public final class DependencyContainer: ObservableObject {
                 Task { await self?.syncService.pullChanges() }
             }
             .store(in: &cancellables)
+
+        #if os(iOS)
+        // Setup Watch Connectivity to receive events from Apple Watch
+        NotificationCenter.default.publisher(for: NSNotification.Name("watchEventReceived"))
+            .sink { [weak self] notification in
+                Task { [weak self] in
+                    await self?.handleWatchEvent(notification)
+                }
+            }
+            .store(in: &cancellables)
+
+        // Send recent events to watch when data changes
+        NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)
+            .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                Task { [weak self] in
+                    await self?.syncEventsToWatch()
+                }
+            }
+            .store(in: &cancellables)
+        #endif
     }
+
+    #if os(iOS)
+    private func handleWatchEvent(_ notification: Notification) async {
+        guard let userInfo = notification.userInfo,
+              let kind = userInfo["kind"] as? EventKind,
+              let start = userInfo["start"] as? Date else {
+            return
+        }
+
+        let end = userInfo["end"] as? Date
+        let notes = userInfo["notes"] as? String
+
+        let dto = EventDTO(kind: kind, start: start, end: end, notes: notes)
+
+        do {
+            _ = try await eventsRepository.create(dto)
+        } catch {
+            debugPrint("Failed to save event from watch: \(error)")
+        }
+    }
+
+    private func syncEventsToWatch() async {
+        do {
+            let interval = DateInterval(
+                start: Calendar.current.date(byAdding: .day, value: -3, to: Date()) ?? Date(),
+                end: Date()
+            )
+            let events = try await eventsRepository.events(in: interval, kind: nil)
+            let recentEvents = Array(events.prefix(10))
+
+            WatchConnectivityService.shared.sendRecentEvents(recentEvents)
+        } catch {
+            debugPrint("Failed to sync events to watch: \(error)")
+        }
+    }
+    #endif
 }
 
 // MARK: - Environment keys
