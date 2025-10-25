@@ -1,0 +1,23 @@
+name: Feature Request
+description: Propose a new capability or improvement
+labels: [feature]
+body:
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      placeholder: One-line summary
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Problem, proposal, and constraints
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: Bullet list of done conditions

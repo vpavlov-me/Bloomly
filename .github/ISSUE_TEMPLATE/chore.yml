@@ -1,0 +1,24 @@
+name: Chore
+description: Maintenance task (docs, refactor, tooling)
+labels: [chore]
+body:
+  - type: input
+    id: task
+    attributes:
+      label: Task
+      placeholder: e.g. Bump dependencies, add tests
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      placeholder: Why now? Link to PR/issue
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Checklist
+      value: |
+        - [ ] Implementation
+        - [ ] Tests
+        - [ ] Docs

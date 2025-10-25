@@ -1,0 +1,26 @@
+name: Bug Report
+description: Report a reproducible problem
+labels: [bug]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us what you expected to happen
+      placeholder: A clear and concise description
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Minimal repro steps
+      placeholder: 1) Go to… 2) Click… 3) See error
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: App version / commit
+      placeholder: e.g. 1.0.2 (build 45) or d34db33f
+
