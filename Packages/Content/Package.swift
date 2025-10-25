@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "Content",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v17),
         .watchOS(.v10)

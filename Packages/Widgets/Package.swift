@@ -31,10 +31,10 @@ let package = Package(
                 "Content",
                 "Sync"
             ],
+            path: "Sources",
             resources: [
                 .process("Resources")
-            ],
-            path: "Sources"
+            ]
         ),
         .testTarget(
             name: "WidgetsTests",
