@@ -54,7 +54,7 @@ public struct MainTabView: View {
             NavigationStack { measurementsTab }
                 .tabItem { Label(AppCopy.MainTabs.measurements, systemImage: Symbols.measurement) }
 
-            NavigationStack { settingsTab }
+            NavigationStack { SettingsView(container: container) }
                 .tabItem { Label(AppCopy.MainTabs.settings, systemImage: Symbols.settings) }
         }
         .sheet(isPresented: $showEventForm, onDismiss: { editingEvent = nil }) {
