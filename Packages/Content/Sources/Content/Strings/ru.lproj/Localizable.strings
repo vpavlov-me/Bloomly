@@ -148,3 +148,20 @@
 "watch.tab.log" = "Запись";
 "watch.tab.history" = "История";
 "watch.tab.measure" = "Измерение";
+
+"profile.title" = "Профиль малыша";
+"profile.name" = "Имя";
+"profile.name.placeholder" = "Имя малыша";
+"profile.birthDate" = "Дата рождения";
+"profile.age.exact" = "Точный возраст";
+"profile.totalEvents" = "Всего событий";
+"profile.edit" = "Редактировать профиль";
+"profile.delete" = "Удалить профиль";
+"profile.delete.title" = "Удалить профиль?";
+"profile.delete.message" = "Это навсегда удалит профиль малыша. События и измерения будут сохранены.";
+"profile.delete.confirm" = "Удалить";
+"profile.create" = "Создать профиль";
+"profile.changePhoto" = "Изменить фото";
+"profile.addPhoto" = "Добавить фото";
+"profile.empty.title" = "Профиля пока нет";
+"profile.empty.message" = "Создайте профиль малыша, чтобы начать отслеживание";

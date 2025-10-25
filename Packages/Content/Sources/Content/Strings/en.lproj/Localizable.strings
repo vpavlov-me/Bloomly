@@ -148,3 +148,20 @@
 "watch.tab.log" = "Log";
 "watch.tab.history" = "History";
 "watch.tab.measure" = "Measure";
+
+"profile.title" = "Baby Profile";
+"profile.name" = "Name";
+"profile.name.placeholder" = "Baby's name";
+"profile.birthDate" = "Birth Date";
+"profile.age.exact" = "Exact Age";
+"profile.totalEvents" = "Total Events";
+"profile.edit" = "Edit Profile";
+"profile.delete" = "Delete Profile";
+"profile.delete.title" = "Delete Profile?";
+"profile.delete.message" = "This will permanently delete the baby profile. Events and measurements will be kept.";
+"profile.delete.confirm" = "Delete";
+"profile.create" = "Create Profile";
+"profile.changePhoto" = "Change Photo";
+"profile.addPhoto" = "Add Photo";
+"profile.empty.title" = "No Profile Yet";
+"profile.empty.message" = "Create a profile for your baby to start tracking";

@@ -6,6 +6,7 @@ public struct SettingsView: View {
     @ObservedObject private var container: DependencyContainer
     @ObservedObject private var settings = AppSettings.shared
     @ObservedObject private var notificationManager: NotificationManager
+    @ObservedObject private var profileStore = BabyProfileStore.shared
 
     @State private var showPaywall = false
     @State private var showExportSheet = false
@@ -27,6 +28,56 @@ public struct SettingsView: View {
 
     public var body: some View {
         Form {
+            // MARK: - Profile Section
+            Section {
+                NavigationLink {
+                    BabyProfileView(eventsRepository: container.eventsRepository)
+                } label: {
+                    HStack(spacing: BabyTrackTheme.spacing.md) {
+                        if let profile = profileStore.currentProfile {
+                            if let photoData = profile.photoData, let uiImage = UIImage(data: photoData) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 50, height: 50)
+                                    .clipShape(Circle())
+                            } else {
+                                Circle()
+                                    .fill(BabyTrackTheme.palette.mutedBackground)
+                                    .frame(width: 50, height: 50)
+                                    .overlay {
+                                        Image(systemName: "person.fill")
+                                            .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                                    }
+                            }
+
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(profile.name)
+                                    .font(BabyTrackTheme.typography.headline.font)
+                                Text(profile.ageText)
+                                    .font(BabyTrackTheme.typography.caption.font)
+                                    .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                            }
+                        } else {
+                            HStack(spacing: BabyTrackTheme.spacing.md) {
+                                Circle()
+                                    .fill(BabyTrackTheme.palette.mutedBackground)
+                                    .frame(width: 50, height: 50)
+                                    .overlay {
+                                        Image(systemName: "person.fill")
+                                            .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                                    }
+
+                                Text(AppCopy.string(for: "profile.create"))
+                                    .font(BabyTrackTheme.typography.body.font)
+                            }
+                        }
+                    }
+                }
+            } header: {
+                Text(AppCopy.string(for: "profile.title"))
+            }
+
             // MARK: - Notifications Section
             Section {
                 Toggle(AppCopy.string(for: "settings.notifications.enable"), isOn: $notificationManager.isNotificationEnabled)
