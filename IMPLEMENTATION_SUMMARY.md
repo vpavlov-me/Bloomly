@@ -25,22 +25,19 @@
 toast = ToastMessage(type: .success, message: "Saved!")
 ```
 
-### 2. Production CloudKit Sync
+### 2. CloudKit Sync (прототип)
 **Файлы:**
 - `Packages/Sync/Sources/Sync/Infrastructure/CloudKitSyncService.swift`
 
-**Функциональность:**
-- ✅ `pullChanges()` - инкрементальная загрузка с server change token
-- ✅ `pushPending()` - отправка unsynchronized записей
-- ✅ `resolveConflicts()` - last-write-wins стратегия
-- ✅ Background sync extension points
-- ✅ Error logging через unified Logger
-- ✅ CKRecordZone operations для зональной синхронизации
+**Что готово:**
+- Заготовлены операции `pullChanges()`, `pushPending()` и `resolveConflicts()`.
+- Есть задел для логирования ошибок и интеграции с BGTaskScheduler.
 
-**TODO для production:**
-- Активация BGTaskScheduler для background sync
-- Интеграция с Core Data change tracking
-- Персистентное хранение change token
+**Ограничения:**
+- Нет маппинга записей CloudKit ↔︎ Core Data.
+- Нет выгрузки локальных изменений (репозиторий `pushPending()` отправляет пустой список).
+- Серверный change token хранится только в памяти — при перезапуске начнётся полный fetch.
+- Фоновая синхронизация не зарегистрирована.
 
 ### 3. WHO Percentiles Integration
 **Файлы:**
@@ -176,7 +173,7 @@ let url = appGroupURL ?? defaultURL ?? FileManager.default.temporaryDirectory
 
 | Критерий | Статус | Примечание |
 |----------|--------|------------|
-| CloudKit sync реализована | ✅ | Production-ready с TODO для BGTaskScheduler |
+| CloudKit sync реализована | ⚠️ | Прототип без маппинга Core Data и без персистентного токена |
 | WHO percentiles интегрированы | ✅ | Полные данные 0-24 мес + charts |
 | Toast notifications | ✅ | Система с 4 типами |
 | Data export (CSV/JSON) | ✅ | С Share Sheet |
@@ -196,11 +193,11 @@ let url = appGroupURL ?? defaultURL ?? FileManager.default.temporaryDirectory
 - ✅ Localization (en/ru)
 
 **Требуют дополнительной настройки:**
-- ⚠️ CloudKit - нужно:
-  - Настроить iCloud container
-  - Deploy CloudKit schema
+- ⚠️ CloudKit:
+  - Завершить маппинг с Core Data и выгрузку локальных изменений
+  - Персистентно хранить server change token
+  - Настроить iCloud container и deploy schema
   - Активировать BGTaskScheduler
-  - Персистентное хранение change token
 
 **Рекомендации для запуска:**
 1. Обновить Team ID и bundle identifiers

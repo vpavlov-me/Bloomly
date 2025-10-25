@@ -103,6 +103,47 @@ public enum AppCopy {
         public static let purchase = LocalizedStringKey("errors.purchase.failed")
         public static let network = LocalizedStringKey("errors.network.restricted")
     }
+
+    public enum Notifications {
+        public static let feedReminder = LocalizedStringKey("notification.feed.reminder")
+        public static let feedBody = LocalizedStringKey("notification.feed.body")
+        public static let sleepReminder = LocalizedStringKey("notification.sleep.reminder")
+        public static let sleepBody = LocalizedStringKey("notification.sleep.body")
+        public static let diaperReminder = LocalizedStringKey("notification.diaper.reminder")
+        public static let diaperBody = LocalizedStringKey("notification.diaper.body")
+        public static let requestTitle = LocalizedStringKey("notification.request.title")
+        public static let requestMessage = LocalizedStringKey("notification.request.message")
+        public static let quietHours = LocalizedStringKey("notification.quietHours")
+        public static let quietHoursDescription = LocalizedStringKey("notification.quietHours.description")
+    }
+
+    public enum Common {
+        public static let add = LocalizedStringKey("common.add")
+        public static let edit = LocalizedStringKey("common.edit")
+        public static let delete = LocalizedStringKey("common.delete")
+        public static let save = LocalizedStringKey("common.save")
+        public static let cancel = LocalizedStringKey("common.cancel")
+        public static let dismiss = LocalizedStringKey("common.dismiss")
+        public static let ok = LocalizedStringKey("common.ok")
+        public static let loading = LocalizedStringKey("common.loading")
+        public static let tryAgain = LocalizedStringKey("common.tryAgain")
+    }
+
+    public enum MainTabs {
+        public static let timeline = LocalizedStringKey("main.tab.timeline")
+        public static let add = LocalizedStringKey("main.tab.add")
+        public static let measurements = LocalizedStringKey("main.tab.measurements")
+        public static let settings = LocalizedStringKey("main.tab.settings")
+    }
+
+    public enum WatchApp {
+        public static let quickLogTitle = LocalizedStringKey("watch.quicklog.title")
+        public static let recentTitle = LocalizedStringKey("watch.recent.title")
+        public static let measureTitle = LocalizedStringKey("watch.measure.title")
+        public static let tabLog = LocalizedStringKey("watch.tab.log")
+        public static let tabHistory = LocalizedStringKey("watch.tab.history")
+        public static let tabMeasure = LocalizedStringKey("watch.tab.measure")
+    }
 }
 
 public enum EventCopy {

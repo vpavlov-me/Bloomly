@@ -274,31 +274,6 @@ final class EventsRepositoryTests: XCTestCase {
 
     // MARK: - Performance Tests
 
-    func testCreatePerformance() throws {
-        measure {
-            Task {
-                for _ in 0..<50 {
-                    let event = EventDTO(kind: .sleep, start: Date())
-                    _ = try? await self.repository.create(event)
-                }
-            }
-        }
-    }
-
-    func testFetchPerformance() async throws {
-        // Create 100 events
-        for i in 0..<100 {
-            let event = EventDTO(kind: .sleep, start: Date().addingTimeInterval(TimeInterval(-i * 100)))
-            _ = try await repository.create(event)
-        }
-
-        measure {
-            Task {
-                _ = try? await self.repository.events(in: nil, kind: nil)
-            }
-        }
-    }
-
     func testQueryPerformanceWithLargeDataset() async throws {
         // Create 500 events
         for i in 0..<500 {

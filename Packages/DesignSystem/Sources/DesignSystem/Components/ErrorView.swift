@@ -1,3 +1,4 @@
+import Content
 import SwiftUI
 
 /// User-friendly error presentation view
@@ -44,17 +45,17 @@ public struct ErrorView: View {
             VStack(spacing: BabyTrackTheme.spacing.sm) {
                 if let onRetry = onRetry, error.isRetryable {
                     PrimaryButton(
-                        accessibilityLabel: "Retry",
+                        accessibilityLabel: String(localized: AppCopy.Common.tryAgain),
                         accessibilityHint: "Double tap to try again",
                         action: onRetry
                     ) {
-                        Label("Try Again", systemImage: "arrow.clockwise")
+                        Label(AppCopy.Common.tryAgain, systemImage: "arrow.clockwise")
                     }
                 }
 
                 if let onDismiss = onDismiss {
                     Button(action: onDismiss) {
-                        Text("Dismiss")
+                        Text(AppCopy.Common.dismiss)
                             .font(.system(.body, design: .rounded))
                             .foregroundStyle(BabyTrackTheme.palette.mutedText)
                     }
@@ -121,9 +122,9 @@ public extension View {
             presenting: error.wrappedValue
         ) { presentedError in
             if let onRetry = onRetry, presentedError.isRetryable {
-                Button("Try Again", action: onRetry)
+                Button(AppCopy.Common.tryAgain, action: onRetry)
             }
-            Button("OK", role: .cancel) {
+            Button(AppCopy.Common.ok, role: .cancel) {
                 error.wrappedValue = nil
             }
         } message: { presentedError in
@@ -218,8 +219,8 @@ public struct LoadingStateView<Content: View>: View {
         case .loading:
             VStack(spacing: BabyTrackTheme.spacing.md) {
                 ProgressView()
-                    .accessibilityLabel("Loading")
-                Text("Loading...")
+                    .accessibilityLabel(String(localized: AppCopy.Common.loading))
+                Text(AppCopy.Common.loading)
                     .font(BabyTrackTheme.typography.caption.font)
                     .foregroundStyle(BabyTrackTheme.palette.mutedText)
             }

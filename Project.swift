@@ -9,6 +9,7 @@ let project = Project(
     organizationName: "BabyTrack",
     options: [.textSettings(defaultIndentation: .spaces(4))],
     packages: [
+        .package(path: "Packages/AppSupport"),
         .package(path: "Packages/DesignSystem"),
         .package(path: "Packages/Content"),
         .package(path: "Packages/Tracking"),
@@ -47,6 +48,7 @@ private let targets: [Target] = [
         resources: ["App/Resources/**", "App/CoreData/**"],
         entitlements: "App/Resources/BabyTrack.entitlements",
         dependencies: [
+            .package(product: "AppSupport"),
             .package(product: "DesignSystem"),
             .package(product: "Content"),
             .package(product: "Tracking"),

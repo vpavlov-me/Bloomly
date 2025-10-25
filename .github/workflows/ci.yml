@@ -21,13 +21,19 @@ jobs:
   build-and-test:
     runs-on: macos-latest
     env:
-      DEVELOPER_DIR: /Applications/Xcode_16.app
+      DEVELOPER_DIR: /Applications/Xcode.app
       OTHER_SWIFT_FLAGS: -warnings-as-errors
     steps:
       - uses: actions/checkout@v4
 
       - name: Select Xcode
-        run: sudo xcode-select -s "$DEVELOPER_DIR"
+        run: |
+          if [ -d "$DEVELOPER_DIR" ]; then
+            sudo xcode-select -s "$DEVELOPER_DIR"
+          else
+            echo "Requested DEVELOPER_DIR '$DEVELOPER_DIR' not found, falling back to default"
+            sudo xcode-select -s /Applications/Xcode.app
+          fi
 
       - name: Cache SPM
         uses: actions/cache@v4

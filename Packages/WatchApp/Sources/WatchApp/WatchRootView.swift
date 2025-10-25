@@ -12,13 +12,13 @@ public struct WatchRootView: View {
         TabView(selection: $selection) {
             QuickLogView()
                 .tag(0)
-                .tabItem { Label("Log", systemImage: Symbols.add) }
+                .tabItem { Label(AppCopy.WatchApp.tabLog, systemImage: Symbols.add) }
             RecentEventsView()
                 .tag(1)
-                .tabItem { Label("History", systemImage: Symbols.timeline) }
+                .tabItem { Label(AppCopy.WatchApp.tabHistory, systemImage: Symbols.timeline) }
             AddMeasurementView()
                 .tag(2)
-                .tabItem { Label("Measure", systemImage: Symbols.measurement) }
+                .tabItem { Label(AppCopy.WatchApp.tabMeasure, systemImage: Symbols.measurement) }
         }
     }
 }

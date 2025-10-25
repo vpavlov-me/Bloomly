@@ -13,17 +13,21 @@ let package = Package(
         )
     ],
     dependencies: [
+        .package(path: "../AppSupport"),
         .package(path: "../Tracking"),
         .package(path: "../Content"),
-        .package(path: "../Sync")
+        .package(path: "../Sync"),
+        .package(path: "../Measurements")
     ],
     targets: [
         .target(
             name: "WatchApp",
             dependencies: [
+                "AppSupport",
                 "Tracking",
                 "Content",
-                "Sync"
+                "Sync",
+                "Measurements"
             ],
             path: "Sources"
         ),

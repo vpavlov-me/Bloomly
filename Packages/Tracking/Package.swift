@@ -13,10 +13,15 @@ let package = Package(
             targets: ["Tracking"]
         )
     ],
-    dependencies: [],
+    dependencies: [
+        .package(path: "../AppSupport")
+    ],
     targets: [
         .target(
             name: "Tracking",
+            dependencies: [
+                "AppSupport"
+            ],
             path: "Sources"
         ),
         .testTarget(

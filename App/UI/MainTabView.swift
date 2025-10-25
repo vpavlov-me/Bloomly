@@ -10,6 +10,7 @@ import UniformTypeIdentifiers
 public struct MainTabView: View {
     @ObservedObject private var container: DependencyContainer
     @StateObject private var timelineViewModel: TimelineViewModel
+    @Binding var widgetDeepLink: WidgetDeepLink?
 
     @State private var showEventForm = false
     @State private var showMeasurementForm = false
@@ -22,6 +23,7 @@ public struct MainTabView: View {
     @State private var isExporting = false
     @State private var exportURL: URL?
     @State private var toastMessage: ToastMessage?
+    @State private var selectedTab = 0
 
     private var exportService: DataExportService {
         DataExportService(
@@ -30,8 +32,9 @@ public struct MainTabView: View {
         )
     }
 
-    public init(container: DependencyContainer) {
+    public init(container: DependencyContainer, widgetDeepLink: Binding<WidgetDeepLink?> = .constant(nil)) {
         self._container = ObservedObject(initialValue: container)
+        self._widgetDeepLink = widgetDeepLink
         _timelineViewModel = StateObject(
             wrappedValue: TimelineViewModel(
                 eventsRepository: container.eventsRepository,
@@ -41,21 +44,30 @@ public struct MainTabView: View {
     }
 
     public var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             NavigationStack {
                 TimelineView(viewModel: timelineViewModel)
                     .onAppear(perform: bindTimelineCallbacks)
             }
-            .tabItem { Label(AppCopy.string(for: "timeline.title"), systemImage: Symbols.timeline) }
+            .tabItem { Label(AppCopy.MainTabs.timeline, systemImage: Symbols.timeline) }
+            .tag(0)
 
             NavigationStack { addTab }
-                .tabItem { Label("Add", systemImage: Symbols.add) }
+                .tabItem { Label(AppCopy.MainTabs.add, systemImage: Symbols.add) }
+                .tag(1)
 
             NavigationStack { measurementsTab }
-                .tabItem { Label(AppCopy.string(for: "measurements.title"), systemImage: Symbols.measurement) }
+                .tabItem { Label(AppCopy.MainTabs.measurements, systemImage: Symbols.measurement) }
+                .tag(2)
 
-            NavigationStack { settingsTab }
-                .tabItem { Label(AppCopy.string(for: "settings.title"), systemImage: Symbols.settings) }
+            NavigationStack { SettingsView(container: container) }
+                .tabItem { Label(AppCopy.MainTabs.settings, systemImage: Symbols.settings) }
+                .tag(3)
+        }
+        .onChange(of: widgetDeepLink) { _, deepLink in
+            guard let deepLink = deepLink else { return }
+            handleDeepLink(deepLink)
+            widgetDeepLink = nil
         }
         .sheet(isPresented: $showEventForm, onDismiss: { editingEvent = nil }) {
             EventFormView(event: editingEvent) { event in
@@ -113,7 +125,7 @@ public struct MainTabView: View {
                 }
             }
         }
-        .navigationTitle("Add")
+        .navigationTitle(Text(AppCopy.MainTabs.add))
     }
 
     private var measurementsTab: some View {
@@ -160,6 +172,17 @@ public struct MainTabView: View {
 
     private var settingsTab: some View {
         Form {
+            Section(header: Text(AppCopy.string(for: "settings.notifications"))) {
+                Toggle(AppCopy.string(for: "settings.notifications.enable"), isOn: $container.notificationManager.isNotificationEnabled)
+                    .onChange(of: container.notificationManager.isNotificationEnabled) { _, newValue in
+                        if newValue {
+                            Task {
+                                await container.notificationManager.requestNotificationPermission()
+                            }
+                        }
+                    }
+            }
+
             Section(header: Text(AppCopy.string(for: "settings.premium.status"))) {
                 HStack {
                     Text(container.premiumState.isPremium ? AppCopy.string(for: "settings.premium.active") : AppCopy.string(for: "settings.premium.inactive"))
@@ -254,6 +277,19 @@ public struct MainTabView: View {
             await MainActor.run {
                 toastMessage = ToastMessage(type: .error, message: AppCopy.string(for: "errors.export"))
             }
+        }
+    }
+
+    // MARK: - Widget Deep Linking
+
+    private func handleDeepLink(_ deepLink: WidgetDeepLink) {
+        switch deepLink {
+        case .timeline:
+            selectedTab = 0
+        case .addFeed, .addSleep, .addDiaper:
+            selectedTab = 1
+            // Could open specific form based on deepLink type
+            // For now just navigate to add tab
         }
     }
 }

@@ -1,3 +1,4 @@
+import Content
 import DesignSystem
 import SwiftUI
 
@@ -27,9 +28,9 @@ public struct MeasurementRow: View {
             }
             Spacer()
             Menu {
-                Button("Edit") { onEdit(measurement) }
+                Button(AppCopy.Common.edit) { onEdit(measurement) }
                 Button(role: .destructive, action: { onDelete(measurement) }) {
-                    Text("Delete")
+                    Text(AppCopy.Common.delete)
                 }
             } label: {
                 Image(systemName: "ellipsis")
