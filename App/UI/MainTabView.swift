@@ -46,23 +46,49 @@ public struct MainTabView: View {
     public var body: some View {
         TabView(selection: $selectedTab) {
             NavigationStack {
+                DashboardView(
+                    viewModel: DashboardViewModel(eventsRepository: container.eventsRepository)
+                ) { kind in
+                    container.analytics.track(AnalyticsEvent(
+                        name: "quick_action_tapped",
+                        metadata: ["kind": kind.rawValue, "source": "dashboard"]
+                    ))
+                    showEventForm = true
+                }
+                .environment(\.eventsRepository, container.eventsRepository)
+                .environment(\.analytics, container.analytics)
+            }
+            .tabItem { Label("Dashboard", systemImage: "house.fill") }
+            .tag(0)
+
+            NavigationStack {
                 TimelineView(viewModel: timelineViewModel)
                     .onAppear(perform: bindTimelineCallbacks)
             }
-            .tabItem { Label(AppCopy.MainTabs.timeline, systemImage: Symbols.timeline) }
-            .tag(0)
+            .tabItem { Label(AppCopy.MainTabs.timeline, systemImage: "list.bullet") }
+            .tag(1)
 
-            NavigationStack { addTab }
-                .tabItem { Label(AppCopy.MainTabs.add, systemImage: Symbols.add) }
-                .tag(1)
+            NavigationStack {
+                ChartsView(
+                    viewModel: ChartsViewModel(
+                        aggregator: container.chartAggregator
+                    )
+                )
+            }
+            .tabItem { Label("Charts", systemImage: "chart.bar.fill") }
+            .tag(2)
 
-            NavigationStack { measurementsTab }
-                .tabItem { Label(AppCopy.MainTabs.measurements, systemImage: Symbols.measurement) }
-                .tag(2)
-
-            NavigationStack { SettingsView(container: container) }
-                .tabItem { Label(AppCopy.MainTabs.settings, systemImage: Symbols.settings) }
-                .tag(3)
+            NavigationStack {
+                ProfileView(container: container)
+            }
+            .tabItem { Label("Profile", systemImage: "person.fill") }
+            .tag(3)
+        }
+        .onChange(of: selectedTab) { oldValue, newValue in
+            container.analytics.track(AnalyticsEvent(
+                name: "tab_switched",
+                metadata: ["from": "\(oldValue)", "to": "\(newValue)"]
+            ))
         }
         .onChange(of: widgetDeepLink) { _, deepLink in
             guard let deepLink = deepLink else { return }
@@ -285,11 +311,10 @@ public struct MainTabView: View {
     private func handleDeepLink(_ deepLink: WidgetDeepLink) {
         switch deepLink {
         case .timeline:
-            selectedTab = 0
+            selectedTab = 1  // Timeline is now tab 1
         case .addFeed, .addSleep, .addDiaper:
-            selectedTab = 1
-            // Could open specific form based on deepLink type
-            // For now just navigate to add tab
+            selectedTab = 0  // Dashboard for quick actions
+            showEventForm = true
         }
     }
 }
