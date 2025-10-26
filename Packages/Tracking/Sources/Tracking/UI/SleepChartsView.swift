@@ -141,7 +141,7 @@ public struct SleepChartsView: View {
                             .font(BabyTrackTheme.typography.caption.font)
                             .foregroundStyle(BabyTrackTheme.palette.warning)
                             .padding(.horizontal, BabyTrackTheme.spacing.xs)
-                            .padding(.vertical: 2)
+                            .padding(.vertical, 2)
                             .background(
                                 RoundedRectangle(cornerRadius: 4)
                                     .fill(BabyTrackTheme.palette.background)

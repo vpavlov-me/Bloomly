@@ -59,11 +59,6 @@ public struct PrimaryButton<Content: View>: View {
         .accessibilityRemoveTraits(disabled ? [] : .isButton)
         .accessibilityAddTraits(.isButton)
     }
-
-    @ViewBuilder
-    private func modify<V: View>(@ViewBuilder _ transform: (Self) -> V) -> some View {
-        transform(self)
-    }
 }
 
 public struct PrimaryButtonStyle: ButtonStyle {

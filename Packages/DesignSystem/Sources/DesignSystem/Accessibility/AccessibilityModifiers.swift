@@ -17,11 +17,6 @@ public extension View {
 // MARK: - Dynamic Type Support
 
 public extension View {
-    /// Enables Dynamic Type scaling for text
-    func dynamicTypeSize(_ range: ClosedRange<DynamicTypeSize> = .xSmall ... .accessibility5) -> some View {
-        self.dynamicTypeSize(range)
-    }
-
     /// Limits Dynamic Type scaling to a specific range
     func limitedDynamicType() -> some View {
         self.dynamicTypeSize(.xSmall ... .xxxLarge)
@@ -82,18 +77,7 @@ public struct AccessibilityCustomAction {
     }
 }
 
-public extension View {
-    /// Adds multiple custom accessibility actions
-    func accessibilityActions(_ actions: [AccessibilityCustomAction]) -> some View {
-        var view = self
-        for customAction in actions {
-            view = view.accessibilityAction(named: customAction.name) {
-                _ = customAction.action()
-            }
-        }
-        return view
-    }
-}
+// Note: Multiple accessibility actions should be added individually using .accessibilityAction(named:)
 
 // MARK: - Trait Helpers
 
@@ -133,7 +117,7 @@ public extension View {
 
 // MARK: - Conditional Modifier Helper
 
-private extension View {
+public extension View {
     @ViewBuilder
     func modify<Content: View>(@ViewBuilder _ transform: (Self) -> Content) -> some View {
         transform(self)
