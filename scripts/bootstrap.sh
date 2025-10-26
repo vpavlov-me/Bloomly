@@ -48,7 +48,7 @@ resolve_packages() {
     (cd "$ROOT" && tuist generate --path "$ROOT" >/dev/null)
     if command -v xcodebuild >/dev/null 2>&1; then
         log "Resolving packages"
-        (cd "$ROOT" && xcodebuild -resolvePackageDependencies -workspace BabyTrack.xcworkspace >/dev/null)
+        (cd "$ROOT" && xcodebuild -resolvePackageDependencies -workspace BabyTrack.xcworkspace -scheme BabyTrack >/dev/null)
     fi
 }
 

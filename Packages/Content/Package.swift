@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "Content",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v17),
         .watchOS(.v10)
@@ -18,10 +19,10 @@ let package = Package(
         .target(
             name: "Content",
             dependencies: [],
+            path: "Sources",
             resources: [
-                .process("Resources")
-            ],
-            path: "Sources"
+                .process("Content/Resources")
+            ]
         ),
         .testTarget(
             name: "ContentTests",

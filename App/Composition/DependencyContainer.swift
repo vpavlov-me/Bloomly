@@ -22,6 +22,7 @@ public final class DependencyContainer: ObservableObject {
     public let analytics: any Analytics
     public let premiumState: PremiumState
     public let notificationManager: NotificationManager
+    public let chartAggregator: ChartDataAggregator
 
     private var cancellables = Set<AnyCancellable>()
 
@@ -46,6 +47,7 @@ public final class DependencyContainer: ObservableObject {
         self.analytics = analytics ?? AnalyticsLogger()
         self.premiumState = PremiumState()
         self.notificationManager = notificationManager ?? NotificationManager()
+        self.chartAggregator = ChartDataAggregator(eventsRepository: self.eventsRepository)
 
         setupSyncBindings()
     }
@@ -146,6 +148,10 @@ private struct NotificationManagerKey: EnvironmentKey {
     static let defaultValue: NotificationManager = NotificationManager()
 }
 
+private struct ChartAggregatorKey: EnvironmentKey {
+    static let defaultValue: ChartDataAggregator = ChartDataAggregator(eventsRepository: NullEventsRepository())
+}
+
 public extension EnvironmentValues {
     var eventsRepository: any EventsRepository {
         get { self[EventsRepositoryKey.self] }
@@ -180,6 +186,11 @@ public extension EnvironmentValues {
     var notificationManager: NotificationManager {
         get { self[NotificationManagerKey.self] }
         set { self[NotificationManagerKey.self] = newValue }
+    }
+
+    var chartAggregator: ChartDataAggregator {
+        get { self[ChartAggregatorKey.self] }
+        set { self[ChartAggregatorKey.self] = newValue }
     }
 }
 
