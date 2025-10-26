@@ -4,6 +4,7 @@ import PackageDescription
 let package = Package(
     name: "WatchApp",
     platforms: [
+        .iOS(.v17),
         .watchOS(.v10)
     ],
     products: [

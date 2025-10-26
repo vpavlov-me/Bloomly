@@ -45,17 +45,17 @@ public struct ErrorView: View {
             VStack(spacing: BabyTrackTheme.spacing.sm) {
                 if let onRetry = onRetry, error.isRetryable {
                     PrimaryButton(
-                        accessibilityLabel: String(localized: AppCopy.Common.tryAgain),
+                        accessibilityLabel: String(localized: "common.tryAgain"),
                         accessibilityHint: "Double tap to try again",
                         action: onRetry
                     ) {
-                        Label(AppCopy.Common.tryAgain, systemImage: "arrow.clockwise")
+                        Label("Try Again", systemImage: "arrow.clockwise")
                     }
                 }
 
                 if let onDismiss = onDismiss {
                     Button(action: onDismiss) {
-                        Text(AppCopy.Common.dismiss)
+                        Text("Dismiss")
                             .font(.system(.body, design: .rounded))
                             .foregroundStyle(BabyTrackTheme.palette.mutedText)
                     }
@@ -219,7 +219,7 @@ public struct LoadingStateView<Content: View>: View {
         case .loading:
             VStack(spacing: BabyTrackTheme.spacing.md) {
                 ProgressView()
-                    .accessibilityLabel(String(localized: AppCopy.Common.loading))
+                    .accessibilityLabel("Loading")
                 Text(AppCopy.Common.loading)
                     .font(BabyTrackTheme.typography.caption.font)
                     .foregroundStyle(BabyTrackTheme.palette.mutedText)

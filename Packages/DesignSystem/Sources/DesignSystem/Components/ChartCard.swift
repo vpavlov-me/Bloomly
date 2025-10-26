@@ -41,7 +41,7 @@ struct ChartCard_Previews: PreviewProvider {
     static var previews: some View {
         ChartCard(title: "Sleep", subtitle: "Last 7 days") {
             Chart {
-                ForEach(0..<7) { day in
+                ForEach(0..<7, id: \.self) { day in
                     LineMark(x: .value("Day", day), y: .value("Hours", Double.random(in: 8...11)))
                 }
             }

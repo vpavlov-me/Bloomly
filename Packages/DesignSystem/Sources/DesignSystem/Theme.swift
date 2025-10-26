@@ -27,6 +27,7 @@ public extension BabyTrackTheme {
         public let elevatedSurface = Color.dynamic(light: UIColor.white, dark: UIColor.secondarySystemBackground)
         public let accent = Color.dynamic(light: UIColor(red: 0.99, green: 0.52, blue: 0.57, alpha: 1),
                                           dark: UIColor(red: 0.98, green: 0.44, blue: 0.48, alpha: 1))
+        public let accentContrast = Color.white
         public let success = Color(.systemGreen)
         public let warning = Color(.systemOrange)
         public let destructive = Color(.systemRed)
@@ -61,6 +62,8 @@ public extension BabyTrackTheme {
                                           color: BabyTrackTheme.palette.primaryText)
         public let title = TextStyle(font: .system(.title2, design: .rounded).weight(.semibold),
                                      color: BabyTrackTheme.palette.primaryText)
+        public let title3 = TextStyle(font: .system(.title3, design: .rounded).weight(.semibold),
+                                      color: BabyTrackTheme.palette.primaryText)
         public let headline = TextStyle(font: .system(.headline, design: .rounded),
                                         color: BabyTrackTheme.palette.primaryText)
         public let body = TextStyle(font: .system(.body, design: .rounded),

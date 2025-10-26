@@ -3,15 +3,15 @@ import Content
 import DesignSystem
 import SwiftUI
 
-/// Displays sleep analytics charts with multiple visualizations and date range controls.
+/// Displays feeding analytics with multiple chart types and interactive filters.
 ///
 /// Features:
-/// - Total sleep per day (bar chart, 7 days)
-/// - Average sleep duration statistics
-/// - Date range selector (7/14/30 days)
+/// - Feedings per day (bar chart)
+/// - Average feeding duration (line chart)
+/// - Date range selector
 /// - Loading and empty states
 /// - Dark mode support
-public struct SleepChartsView: View {
+public struct FeedingChartsView: View {
     @StateObject private var viewModel: ChartsViewModel
     @Environment(\.colorScheme) private var colorScheme
 
@@ -25,19 +25,23 @@ public struct SleepChartsView: View {
                 // Date range selector
                 dateRangeSelector
 
-                // Total sleep per day chart
-                totalSleepChart
+                // Feeding frequency chart
+                feedingFrequencyChart
+
+                // Average duration chart
+                averageDurationChart
 
                 // Statistics summary
-                if let series = viewModel.series(for: .sleepTotal) {
-                    statisticsSummary(for: series)
+                if let frequencySeries = viewModel.series(for: .feedFrequency),
+                   let durationSeries = viewModel.series(for: .feedAverageDuration) {
+                    statisticsSummary(frequency: frequencySeries, duration: durationSeries)
                 }
             }
             .padding(.vertical, BabyTrackTheme.spacing.lg)
         }
         .background(BabyTrackTheme.palette.background.ignoresSafeArea())
         .task {
-            await viewModel.loadChart(for: .sleepTotal)
+            await loadCharts()
         }
     }
 
@@ -87,23 +91,23 @@ public struct SleepChartsView: View {
         }
     }
 
-    // MARK: - Total Sleep Chart
+    // MARK: - Feeding Frequency Chart
 
-    private var totalSleepChart: some View {
+    private var feedingFrequencyChart: some View {
         ChartCard(
-            title: "Total Sleep Per Day",
+            title: "Feedings Per Day",
             subtitle: viewModel.selectedDateRange.displayName
         ) {
             Group {
-                if viewModel.isLoading(.sleepTotal) {
+                if viewModel.isLoading(.feedFrequency) {
                     loadingView
-                } else if let error = viewModel.error(for: .sleepTotal) {
+                } else if let error = viewModel.error(for: .feedFrequency) {
                     errorView(error)
-                } else if let series = viewModel.series(for: .sleepTotal) {
+                } else if let series = viewModel.series(for: .feedFrequency) {
                     if series.points.isEmpty || series.statistics.sampleCount == 0 {
                         emptyStateView
                     } else {
-                        sleepBarChart(series: series)
+                        feedingFrequencyBarChart(series: series)
                     }
                 } else {
                     emptyStateView
@@ -113,18 +117,18 @@ public struct SleepChartsView: View {
         }
     }
 
-    private func sleepBarChart(series: ChartSeries) -> some View {
+    private func feedingFrequencyBarChart(series: ChartSeries) -> some View {
         Chart {
             ForEach(series.points, id: \.interval.start) { point in
                 BarMark(
                     x: .value("Date", point.interval.start, unit: .day),
-                    y: .value("Hours", point.value)
+                    y: .value("Count", point.value)
                 )
-                .foregroundStyle(sleepBarGradient)
+                .foregroundStyle(feedingBarGradient)
                 .cornerRadius(BabyTrackTheme.radii.soft)
                 .annotation(position: .top, alignment: .center) {
                     if point.value > 0 {
-                        Text(formatHours(point.value))
+                        Text("\(Int(point.value))")
                             .font(BabyTrackTheme.typography.caption.font)
                             .foregroundStyle(BabyTrackTheme.palette.mutedText)
                     }
@@ -137,7 +141,7 @@ public struct SleepChartsView: View {
                     .foregroundStyle(BabyTrackTheme.palette.warning.opacity(0.6))
                     .lineStyle(StrokeStyle(lineWidth: 2, dash: [5, 5]))
                     .annotation(position: .top, alignment: .trailing) {
-                        Text("Avg: \(formatHours(series.statistics.average))")
+                        Text("Avg: \(String(format: "%.1f", series.statistics.average))")
                             .font(BabyTrackTheme.typography.caption.font)
                             .foregroundStyle(BabyTrackTheme.palette.warning)
                             .padding(.horizontal, BabyTrackTheme.spacing.xs)
@@ -163,8 +167,8 @@ public struct SleepChartsView: View {
         .chartYAxis {
             AxisMarks(position: .leading) { value in
                 AxisValueLabel {
-                    if let hours = value.as(Double.self) {
-                        Text("\(Int(hours))h")
+                    if let count = value.as(Double.self) {
+                        Text("\(Int(count))")
                             .font(BabyTrackTheme.typography.caption.font)
                     }
                 }
@@ -175,26 +179,124 @@ public struct SleepChartsView: View {
         .animation(.easeInOut(duration: 0.3), value: series.points.map(\.value))
     }
 
-    private var sleepBarGradient: LinearGradient {
+    private var feedingBarGradient: LinearGradient {
         LinearGradient(
             colors: [
-                BabyTrackTheme.palette.accent.opacity(0.8),
-                BabyTrackTheme.palette.accent
+                Color.pink.opacity(0.8),
+                Color.pink
             ],
             startPoint: .top,
             endPoint: .bottom
         )
     }
 
+    // MARK: - Average Duration Chart
+
+    private var averageDurationChart: some View {
+        ChartCard(
+            title: "Average Feeding Duration",
+            subtitle: viewModel.selectedDateRange.displayName
+        ) {
+            Group {
+                if viewModel.isLoading(.feedAverageDuration) {
+                    loadingView
+                } else if let error = viewModel.error(for: .feedAverageDuration) {
+                    errorView(error)
+                } else if let series = viewModel.series(for: .feedAverageDuration) {
+                    if series.points.isEmpty || series.statistics.sampleCount == 0 {
+                        emptyStateView
+                    } else {
+                        averageDurationLineChart(series: series)
+                    }
+                } else {
+                    emptyStateView
+                }
+            }
+            .frame(height: 220)
+        }
+    }
+
+    private func averageDurationLineChart(series: ChartSeries) -> some View {
+        Chart {
+            ForEach(series.points, id: \.interval.start) { point in
+                LineMark(
+                    x: .value("Date", point.interval.start, unit: .day),
+                    y: .value("Minutes", point.value)
+                )
+                .foregroundStyle(Color.purple)
+                .lineStyle(StrokeStyle(lineWidth: 3))
+                .interpolationMethod(.catmullRom)
+
+                PointMark(
+                    x: .value("Date", point.interval.start, unit: .day),
+                    y: .value("Minutes", point.value)
+                )
+                .foregroundStyle(Color.purple)
+                .symbolSize(60)
+            }
+
+            // Average line
+            if series.statistics.sampleCount > 0 {
+                RuleMark(y: .value("Average", series.statistics.average))
+                    .foregroundStyle(BabyTrackTheme.palette.success.opacity(0.6))
+                    .lineStyle(StrokeStyle(lineWidth: 2, dash: [5, 5]))
+                    .annotation(position: .top, alignment: .trailing) {
+                        Text("Avg: \(Int(series.statistics.average))m")
+                            .font(BabyTrackTheme.typography.caption.font)
+                            .foregroundStyle(BabyTrackTheme.palette.success)
+                            .padding(.horizontal, BabyTrackTheme.spacing.xs)
+                            .padding(.vertical, 2)
+                            .background(
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(BabyTrackTheme.palette.background)
+                            )
+                    }
+            }
+        }
+        .chartXAxis {
+            AxisMarks(values: .automatic(desiredCount: series.points.count)) { value in
+                if let date = value.as(Date.self) {
+                    AxisValueLabel {
+                        Text(formatDate(date))
+                            .font(BabyTrackTheme.typography.caption.font)
+                    }
+                    AxisGridLine()
+                }
+            }
+        }
+        .chartYAxis {
+            AxisMarks(position: .leading) { value in
+                AxisValueLabel {
+                    if let minutes = value.as(Double.self) {
+                        Text("\(Int(minutes))m")
+                            .font(BabyTrackTheme.typography.caption.font)
+                    }
+                }
+                AxisGridLine()
+            }
+        }
+        .chartYScale(domain: 0...(series.statistics.maximum * 1.2))
+        .animation(.easeInOut(duration: 0.3), value: series.points.map(\.value))
+    }
+
     // MARK: - Statistics Summary
 
-    private func statisticsSummary(for series: ChartSeries) -> some View {
-        ChartCard(title: "Sleep Statistics") {
+    private func statisticsSummary(frequency: ChartSeries, duration: ChartSeries) -> some View {
+        ChartCard(title: "Feeding Statistics") {
             HStack(spacing: BabyTrackTheme.spacing.lg) {
                 statisticItem(
-                    title: "Average",
-                    value: formatHours(series.statistics.average),
-                    icon: "moon.fill"
+                    title: "Total Feeds",
+                    value: "\(Int(frequency.statistics.total))",
+                    icon: "fork.knife"
+                )
+
+                Divider()
+                    .frame(height: 40)
+
+                statisticItem(
+                    title: "Avg Duration",
+                    value: "\(Int(duration.statistics.average))m",
+                    icon: "clock.fill"
                 )
 
                 Divider()
@@ -202,17 +304,8 @@ public struct SleepChartsView: View {
 
                 statisticItem(
                     title: "Longest",
-                    value: formatHours(series.statistics.maximum),
+                    value: "\(Int(duration.statistics.maximum))m",
                     icon: "star.fill"
-                )
-
-                Divider()
-                    .frame(height: 40)
-
-                statisticItem(
-                    title: "Shortest",
-                    value: formatHours(series.statistics.minimum),
-                    icon: "clock.fill"
                 )
             }
             .padding(.vertical, BabyTrackTheme.spacing.sm)
@@ -223,7 +316,7 @@ public struct SleepChartsView: View {
         VStack(spacing: BabyTrackTheme.spacing.xs) {
             Image(systemName: icon)
                 .font(.system(size: 20))
-                .foregroundStyle(BabyTrackTheme.palette.accent)
+                .foregroundStyle(Color.pink)
 
             Text(value)
                 .font(BabyTrackTheme.typography.title3.font)
@@ -242,7 +335,7 @@ public struct SleepChartsView: View {
         VStack(spacing: BabyTrackTheme.spacing.md) {
             ProgressView()
                 .tint(BabyTrackTheme.palette.accent)
-            Text("Loading sleep data...")
+            Text("Loading feeding data...")
                 .font(BabyTrackTheme.typography.callout.font)
                 .foregroundStyle(BabyTrackTheme.palette.mutedText)
         }
@@ -268,36 +361,31 @@ public struct SleepChartsView: View {
 
     private var emptyStateView: some View {
         EmptyStateView(
-            icon: "moon.zzz.fill",
+            icon: "fork.knife",
             title: "Not enough data",
-            message: "Start tracking sleep sessions to see your baby's sleep patterns"
+            message: "Start tracking feedings to see patterns and statistics"
         )
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
-    // MARK: - Formatters
-
-    private func formatHours(_ hours: Double) -> String {
-        let totalMinutes = Int(hours * 60)
-        let h = totalMinutes / 60
-        let m = totalMinutes % 60
-        if m == 0 {
-            return "\(h)h"
-        }
-        return "\(h)h \(m)m"
-    }
+    // MARK: - Helpers
 
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d"
         return formatter.string(from: date)
     }
+
+    private func loadCharts() async {
+        await viewModel.loadChart(for: .feedFrequency)
+        await viewModel.loadChart(for: .feedAverageDuration)
+    }
 }
 
 // MARK: - Previews
 
 #if DEBUG
-struct SleepChartsView_Previews: PreviewProvider {
+struct FeedingChartsView_Previews: PreviewProvider {
     static var previews: some View {
         let mockRepository = PreviewEventsRepository()
         let aggregator = ChartDataAggregator(
@@ -311,12 +399,12 @@ struct SleepChartsView_Previews: PreviewProvider {
 
         Group {
             // Light mode
-            SleepChartsView(viewModel: viewModel)
+            FeedingChartsView(viewModel: viewModel)
                 .preferredColorScheme(.light)
                 .previewDisplayName("Light Mode")
 
             // Dark mode
-            SleepChartsView(viewModel: viewModel)
+            FeedingChartsView(viewModel: viewModel)
                 .preferredColorScheme(.dark)
                 .previewDisplayName("Dark Mode")
         }
@@ -335,7 +423,7 @@ struct SleepChartsView_Previews: PreviewProvider {
         func delete(id: UUID) async throws {}
 
         func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] {
-            // Generate mock sleep events for the last 7 days
+            // Generate mock feeding events for the last 7 days
             let calendar = Calendar.current
             let now = Date()
             var mockEvents: [EventDTO] = []
@@ -344,28 +432,17 @@ struct SleepChartsView_Previews: PreviewProvider {
                 guard let day = calendar.date(byAdding: .day, value: -dayOffset, to: now) else { continue }
                 let startOfDay = calendar.startOfDay(for: day)
 
-                // Night sleep (7-9 hours)
-                let sleepHours = Double.random(in: 7...9)
-                if let sleepStart = calendar.date(byAdding: .hour, value: 22, to: startOfDay),
-                   let sleepEnd = calendar.date(byAdding: .hour, value: Int(sleepHours), to: sleepStart) {
-                    mockEvents.append(EventDTO(
-                        kind: .sleep,
-                        start: sleepStart,
-                        end: sleepEnd
-                    ))
-                }
-
-                // Day naps (1-3 naps)
-                let napCount = Int.random(in: 1...3)
-                for napIndex in 0..<napCount {
-                    let napHour = 10 + napIndex * 3
-                    let napDuration = Double.random(in: 0.5...2.0)
-                    if let napStart = calendar.date(byAdding: .hour, value: napHour, to: startOfDay),
-                       let napEnd = calendar.date(byAdding: .hour, value: Int(napDuration), to: napStart) {
+                // 5-8 feedings per day
+                let feedingCount = Int.random(in: 5...8)
+                for feedingIndex in 0..<feedingCount {
+                    let hour = 6 + feedingIndex * 3
+                    let duration = Double.random(in: 10...30) * 60 // 10-30 minutes
+                    if let feedStart = calendar.date(byAdding: .hour, value: hour, to: startOfDay),
+                       let feedEnd = feedStart.addingTimeInterval(duration) {
                         mockEvents.append(EventDTO(
-                            kind: .sleep,
-                            start: napStart,
-                            end: napEnd
+                            kind: .feed,
+                            start: feedStart,
+                            end: feedEnd
                         ))
                     }
                 }

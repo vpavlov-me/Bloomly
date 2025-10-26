@@ -11,26 +11,26 @@ public actor CoreDataMeasurementsRepository: MeasurementsRepository {
     public func create(_ dto: MeasurementDTO) async throws -> MeasurementDTO {
         try await perform { context in
             let object = NSEntityDescription.insertNewObject(forEntityName: "Measurement", into: context)
-            populate(object, from: dto)
+            self.populate(object, from: dto)
             try context.saveIfNeeded()
-            return map(object)
+            return self.map(object)
         }
     }
 
     public func update(_ dto: MeasurementDTO) async throws -> MeasurementDTO {
         try await perform { context in
-            guard let object = try fetchObject(id: dto.id, in: context) else {
+            guard let object = try self.fetchObject(id: dto.id, in: context) else {
                 throw MeasurementsRepositoryError.notFound
             }
-            populate(object, from: dto)
+            self.populate(object, from: dto)
             try context.saveIfNeeded()
-            return map(object)
+            return self.map(object)
         }
     }
 
     public func delete(id: UUID) async throws {
         try await perform { context in
-            guard let object = try fetchObject(id: id, in: context) else {
+            guard let object = try self.fetchObject(id: id, in: context) else {
                 throw MeasurementsRepositoryError.notFound
             }
             context.delete(object)
@@ -50,7 +50,7 @@ public actor CoreDataMeasurementsRepository: MeasurementsRepository {
             }
             request.predicate = predicates.isEmpty ? nil : NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
             request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-            return try context.fetch(request).map(map(_:))
+            return try context.fetch(request).map(self.map(_:))
         }
     }
 

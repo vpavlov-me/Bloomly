@@ -15,7 +15,7 @@ public actor ErrorRecovery {
 
     /// Execute an operation with automatic retry on failure
     public func withRetry<T>(
-        operation: String,
+        operationName: String,
         maxAttempts: Int? = nil,
         operation: @Sendable () async throws -> T
     ) async throws -> T {
@@ -26,7 +26,7 @@ public actor ErrorRecovery {
             do {
                 let result = try await operation()
                 // Success - reset retry count
-                retryAttempts[operation] = 0
+                retryAttempts[operationName] = 0
                 return result
             } catch {
                 lastError = error
@@ -34,7 +34,7 @@ public actor ErrorRecovery {
 
                 // Log the error
                 appError.log(context: [
-                    "operation": operation,
+                    "operation": operationName,
                     "attempt": "\(attempt)/\(attempts)"
                 ])
 
@@ -50,7 +50,7 @@ public actor ErrorRecovery {
                     try await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
 
                     // Update retry count
-                    retryAttempts[operation] = attempt
+                    retryAttempts[operationName] = attempt
                 }
             }
         }
@@ -274,6 +274,6 @@ public extension Task where Failure == Error {
         operation: @escaping @Sendable () async throws -> T
     ) async throws -> T {
         let recovery = ErrorRecovery(maxRetries: maxAttempts, retryDelay: delay)
-        return try await recovery.withRetry(operation: "task", operation: operation)
+        return try await recovery.withRetry(operationName: "task", operation: operation)
     }
 }

@@ -23,7 +23,7 @@ public actor CoreDataEventsRepository: EventsRepository {
             object.setValue(now, forKey: "updatedAt")
             object.setValue(false, forKey: "isSynced")
             try context.saveIfNeeded()
-            guard let mapped = map(object) else {
+            guard let mapped = self.map(object) else {
                 throw EventsRepositoryError.persistence(NSError(domain: "Mapping", code: 0))
             }
             return mapped
@@ -32,7 +32,7 @@ public actor CoreDataEventsRepository: EventsRepository {
 
     public func update(_ dto: EventDTO) async throws -> EventDTO {
         try await perform { context in
-            guard let object = try fetchObject(id: dto.id, in: context) else {
+            guard let object = try self.fetchObject(id: dto.id, in: context) else {
                 throw EventsRepositoryError.notFound
             }
             object.setValue(dto.kind.rawValue, forKey: "kind")
@@ -41,7 +41,7 @@ public actor CoreDataEventsRepository: EventsRepository {
             object.setValue(dto.notes, forKey: "notes")
             object.setValue(Date(), forKey: "updatedAt")
             try context.saveIfNeeded()
-            guard let mapped = map(object) else {
+            guard let mapped = self.map(object) else {
                 throw EventsRepositoryError.persistence(NSError(domain: "Mapping", code: 0))
             }
             return mapped
@@ -50,7 +50,7 @@ public actor CoreDataEventsRepository: EventsRepository {
 
     public func delete(id: UUID) async throws {
         try await perform { context in
-            guard let object = try fetchObject(id: id, in: context) else {
+            guard let object = try self.fetchObject(id: id, in: context) else {
                 throw EventsRepositoryError.notFound
             }
             context.delete(object)
@@ -71,7 +71,7 @@ public actor CoreDataEventsRepository: EventsRepository {
             request.predicate = predicates.isEmpty ? nil : NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
             request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: false)]
             let objects = try context.fetch(request)
-            return objects.compactMap(map(_:))
+            return objects.compactMap(self.map(_:))
         }
     }
 
@@ -81,7 +81,7 @@ public actor CoreDataEventsRepository: EventsRepository {
             request.predicate = NSPredicate(format: "kind == %@", kind.rawValue)
             request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: false)]
             request.fetchLimit = 1
-            return try context.fetch(request).compactMap(map(_:)).first
+            return try context.fetch(request).compactMap(self.map(_:)).first
         }
     }
 

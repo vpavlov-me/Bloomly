@@ -143,7 +143,7 @@ extension PaywallView {
         }
 
         @MainActor
-        func purchase(id: String) async -> Transaction? {
+        func purchase(id: String) async -> StoreKit.Transaction? {
             message = nil
             currentPurchaseID = id
             defer { currentPurchaseID = nil }
@@ -156,7 +156,7 @@ extension PaywallView {
         }
 
         @MainActor
-        func restore() async -> Transaction? {
+        func restore() async -> StoreKit.Transaction? {
             message = nil
             do {
                 return try await client.restore()
