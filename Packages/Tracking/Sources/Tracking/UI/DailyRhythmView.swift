@@ -12,13 +12,12 @@ import SwiftUI
 /// - Handles overlapping events
 public struct DailyRhythmView: View {
     @StateObject private var viewModel: ViewModel
-    @Environment(\.eventsRepository) private var eventsRepository
 
     private let hourWidth: CGFloat = 60 // Width per hour
     private let trackHeight: CGFloat = 80
 
-    public init(selectedDate: Date = Date()) {
-        _viewModel = StateObject(wrappedValue: ViewModel(selectedDate: selectedDate))
+    public init(viewModel: ChartsViewModel) {
+        _viewModel = StateObject(wrappedValue: ViewModel(selectedDate: Date()))
     }
 
     public var body: some View {

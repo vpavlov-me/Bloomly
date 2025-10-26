@@ -104,13 +104,15 @@ public struct MainTabView: View {
             .environment(\.analytics, container.analytics)
         }
         .sheet(isPresented: $showMeasurementForm, onDismiss: { editingMeasurement = nil }) {
-            MeasurementFormView(measurement: editingMeasurement) { _ in
+            MeasurementFormView(
+                repository: container.measurementsRepository,
+                measurement: editingMeasurement
+            ) { _ in
                 Task {
                     await loadMeasurements()
                     toastMessage = ToastMessage(type: .success, message: AppCopy.string(for: "measurement.saved"))
                 }
             }
-            .environment(\.measurementsRepository, container.measurementsRepository)
         }
         .sheet(isPresented: $showPaywall) {
             PaywallView(storeClient: container.storeClient, premiumState: container.premiumState)

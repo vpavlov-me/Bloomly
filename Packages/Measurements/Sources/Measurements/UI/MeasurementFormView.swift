@@ -4,11 +4,16 @@ import SwiftUI
 
 public struct MeasurementFormView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.measurementsRepository) private var measurementsRepository
 
     @StateObject private var viewModel: ViewModel
+    private let repository: any MeasurementsRepository
 
-    public init(measurement: MeasurementDTO? = nil, onComplete: @escaping (MeasurementDTO) -> Void) {
+    public init(
+        repository: any MeasurementsRepository,
+        measurement: MeasurementDTO? = nil,
+        onComplete: @escaping (MeasurementDTO) -> Void
+    ) {
+        self.repository = repository
         _viewModel = StateObject(wrappedValue: ViewModel(measurement: measurement, onComplete: onComplete))
     }
 
@@ -59,7 +64,7 @@ public struct MeasurementFormView: View {
 
     private func save() {
         Task {
-            await viewModel.save(repository: measurementsRepository)
+            await viewModel.save(repository: repository)
             if viewModel.error == nil {
                 dismiss()
             }
@@ -132,8 +137,10 @@ extension MeasurementFormView {
 #if DEBUG
 struct MeasurementFormView_Previews: PreviewProvider {
     static var previews: some View {
-        MeasurementFormView { _ in }
-            .environment(\.measurementsRepository, PreviewMeasurementsRepository())
+        MeasurementFormView(
+            repository: PreviewMeasurementsRepository(),
+            onComplete: { _ in }
+        )
     }
 
     private struct PreviewMeasurementsRepository: MeasurementsRepository {

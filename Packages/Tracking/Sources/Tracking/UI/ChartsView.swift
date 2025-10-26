@@ -119,25 +119,20 @@ struct ChartsView_Previews: PreviewProvider {
     static var previews: some View {
         ChartsView(
             viewModel: ChartsViewModel(
-                aggregator: PreviewChartDataAggregator()
+                aggregator: ChartDataAggregator(eventsRepository: PreviewEventsRepository())
             )
         )
     }
 
-    private struct PreviewChartDataAggregator: ChartDataAggregator {
-        func series(for metric: ChartMetric, in range: DateInterval, period: AggregationPeriod) async throws -> ChartSeries {
-            ChartSeries(
-                metric: metric,
-                period: period,
-                dataPoints: [
-                    ChartDataPoint(date: Date(), value: 8.0),
-                    ChartDataPoint(date: Date().addingTimeInterval(-86400), value: 7.5),
-                    ChartDataPoint(date: Date().addingTimeInterval(-2 * 86400), value: 9.0)
-                ]
-            )
+    private struct PreviewEventsRepository: EventsRepository {
+        func create(_ dto: EventDTO) async throws -> EventDTO { dto }
+        func update(_ dto: EventDTO) async throws -> EventDTO { dto }
+        func delete(id: UUID) async throws {}
+        func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] { [] }
+        func lastEvent(for kind: EventKind) async throws -> EventDTO? { nil }
+        func stats(for day: Date) async throws -> EventDayStats {
+            .init(date: day, totalEvents: 0, totalDuration: 0)
         }
-
-        func invalidateCache(metric: ChartMetric?) async {}
     }
 }
 #endif
