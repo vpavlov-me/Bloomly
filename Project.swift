@@ -49,6 +49,19 @@ let project = Project(
             sources: ["App/**/*.swift"],
             resources: ["App/Resources/**"],
             entitlements: "App/Resources/BabyTrack.entitlements",
+            scripts: [
+                .pre(
+                    script: """
+                    if which swiftlint >/dev/null; then
+                        swiftlint
+                    else
+                        echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+                    fi
+                    """,
+                    name: "SwiftLint",
+                    basedOnDependencyAnalysis: false
+                )
+            ],
             dependencies: [
                 .package(product: "AppSupport"),
                 .package(product: "DesignSystem"),

@@ -8,10 +8,6 @@ public actor CloudKitSyncService: SyncService {
     private let container: CKContainer
     private let database: CKDatabase
     private let logger = Logger(subsystem: "com.example.babytrack", category: "Sync")
-fix(sync): persist cloudkit change token and update roadmap
-
-- Implements persistent storage for the CloudKit server change token using UserDefaults to prevent full fetches on every app launch.
-- Updates the project roadmap in cloude.md to accurately reflect that CloudKit sync is still in progress.
     private let userDefaults: UserDefaults
 
     private let serverChangeTokenKey = "CloudKitSync.serverChangeToken"
