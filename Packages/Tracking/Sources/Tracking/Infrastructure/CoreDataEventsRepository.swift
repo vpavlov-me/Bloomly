@@ -50,6 +50,18 @@ public actor CoreDataEventsRepository: EventsRepository {
         }
     }
 
+    public func read(id: UUID) async throws -> EventDTO {
+        try await perform { context in
+            guard let object = try self.fetchObject(id: id, in: context) else {
+                throw EventsRepositoryError.notFound
+            }
+            guard let mapped = self.map(object) else {
+                throw EventsRepositoryError.persistence(NSError(domain: "Mapping", code: 0))
+            }
+            return mapped
+        }
+    }
+
     public func delete(id: UUID) async throws {
         try await perform { context in
             guard let object = try self.fetchObject(id: id, in: context) else {
@@ -59,6 +71,44 @@ public actor CoreDataEventsRepository: EventsRepository {
             object.setValue(true, forKey: "isDeleted")
             object.setValue(Date(), forKey: "updatedAt")
             try context.saveIfNeeded()
+        }
+    }
+
+    public func upsert(_ dto: EventDTO) async throws -> EventDTO {
+        try await perform { context in
+            // Try to fetch existing object
+            let existing = try self.fetchObject(id: dto.id, in: context)
+
+            if let object = existing {
+                // Update existing
+                object.setValue(dto.kind.rawValue, forKey: "kind")
+                object.setValue(dto.start, forKey: "start")
+                object.setValue(dto.end, forKey: "end")
+                object.setValue(dto.notes, forKey: "notes")
+                object.setValue(dto.isDeleted, forKey: "isDeleted")
+                object.setValue(Date(), forKey: "updatedAt")
+            } else {
+                // Create new
+                let object = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context)
+                object.setValue(dto.id, forKey: "id")
+                object.setValue(dto.kind.rawValue, forKey: "kind")
+                object.setValue(dto.start, forKey: "start")
+                object.setValue(dto.end, forKey: "end")
+                object.setValue(dto.notes, forKey: "notes")
+                object.setValue(dto.createdAt, forKey: "createdAt")
+                object.setValue(Date(), forKey: "updatedAt")
+                object.setValue(false, forKey: "isSynced")
+                object.setValue(false, forKey: "isDeleted")
+            }
+
+            try context.saveIfNeeded()
+
+            // Fetch and return the saved object
+            guard let saved = try self.fetchObject(id: dto.id, in: context),
+                  let mapped = self.map(saved) else {
+                throw EventsRepositoryError.persistence(NSError(domain: "Mapping", code: 0))
+            }
+            return mapped
         }
     }
 
@@ -91,12 +141,74 @@ public actor CoreDataEventsRepository: EventsRepository {
         }
     }
 
+    public func events(for babyID: UUID, in interval: DateInterval?) async throws -> [EventDTO] {
+        // Note: Baby relationship not yet implemented in Core Data model
+        // For now, return all events. This will be updated when Baby-Event relationship is added
+        try await events(in: interval, kind: nil)
+    }
+
     public func stats(for day: Date) async throws -> EventDayStats {
         let events = try await events(on: day, calendar: calendar)
         let totalDuration = events.reduce(0) { partialResult, event in
             partialResult + event.duration
         }
         return EventDayStats(date: calendar.startOfDay(for: day), totalEvents: events.count, totalDuration: totalDuration)
+    }
+
+    public func batchCreate(_ dtos: [EventDTO]) async throws -> [EventDTO] {
+        try await perform { context in
+            var created: [EventDTO] = []
+
+            for dto in dtos {
+                let object = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context)
+                let now = Date()
+                object.setValue(dto.id, forKey: "id")
+                object.setValue(dto.kind.rawValue, forKey: "kind")
+                object.setValue(dto.start, forKey: "start")
+                object.setValue(dto.end, forKey: "end")
+                object.setValue(dto.notes, forKey: "notes")
+                object.setValue(dto.createdAt, forKey: "createdAt")
+                object.setValue(now, forKey: "updatedAt")
+                object.setValue(false, forKey: "isSynced")
+                object.setValue(false, forKey: "isDeleted")
+
+                if let mapped = self.map(object) {
+                    created.append(mapped)
+                }
+            }
+
+            // Single save for all objects (performance optimization)
+            try context.saveIfNeeded()
+            return created
+        }
+    }
+
+    public func batchUpdate(_ dtos: [EventDTO]) async throws -> [EventDTO] {
+        try await perform { context in
+            var updated: [EventDTO] = []
+            let now = Date()
+
+            for dto in dtos {
+                guard let object = try self.fetchObject(id: dto.id, in: context) else {
+                    throw EventsRepositoryError.notFound
+                }
+
+                object.setValue(dto.kind.rawValue, forKey: "kind")
+                object.setValue(dto.start, forKey: "start")
+                object.setValue(dto.end, forKey: "end")
+                object.setValue(dto.notes, forKey: "notes")
+                object.setValue(dto.isDeleted, forKey: "isDeleted")
+                object.setValue(now, forKey: "updatedAt")
+
+                if let mapped = self.map(object) {
+                    updated.append(mapped)
+                }
+            }
+
+            // Single save for all objects (performance optimization)
+            try context.saveIfNeeded()
+            return updated
+        }
     }
 
     private func perform<T>(_ action: @escaping (NSManagedObjectContext) throws -> T) async throws -> T {

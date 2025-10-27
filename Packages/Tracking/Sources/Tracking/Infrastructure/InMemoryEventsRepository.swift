@@ -46,9 +46,43 @@ public actor InMemoryEventsRepository: EventsRepository {
         try await events(in: nil, kind: kind).first
     }
 
+    public func read(id: UUID) async throws -> EventDTO {
+        guard let event = storage[id] else {
+            throw EventsRepositoryError.notFound
+        }
+        return event
+    }
+
+    public func upsert(_ dto: EventDTO) async throws -> EventDTO {
+        storage[dto.id] = dto
+        return dto
+    }
+
+    public func events(for babyID: UUID, in interval: DateInterval?) async throws -> [EventDTO] {
+        // In-memory doesn't support baby filtering yet
+        try await events(in: interval, kind: nil)
+    }
+
     public func stats(for day: Date) async throws -> EventDayStats {
         let events = try await events(on: day, calendar: calendar)
         let totalDuration = events.reduce(0) { $0 + $1.duration }
         return EventDayStats(date: calendar.startOfDay(for: day), totalEvents: events.count, totalDuration: totalDuration)
+    }
+
+    public func batchCreate(_ dtos: [EventDTO]) async throws -> [EventDTO] {
+        for dto in dtos {
+            storage[dto.id] = dto
+        }
+        return dtos
+    }
+
+    public func batchUpdate(_ dtos: [EventDTO]) async throws -> [EventDTO] {
+        for dto in dtos {
+            guard storage[dto.id] != nil else {
+                throw EventsRepositoryError.notFound
+            }
+            storage[dto.id] = dto
+        }
+        return dtos
     }
 }
