@@ -265,12 +265,12 @@ swiftlint --fix  # Автоисправление
 - [x] Paywall с StoreKit 2 и snapshot-тестами
 - [x] WidgetKit + watchOS внедрение
 - [x] Unit/UI/Snapshot тесты и CI workflow
-- [x] Production CloudKit sync (pull/push/conflicts)
 - [x] WHO percentiles и расширенные графики
 - [x] Data Export (CSV/JSON)
 - [x] Toast notifications и error handling
 
 ### In Progress
+- [ ] Production CloudKit sync (pull/push/conflicts)
 - [ ] Background sync с BGTaskScheduler
 - [ ] Advanced analytics dashboard
 

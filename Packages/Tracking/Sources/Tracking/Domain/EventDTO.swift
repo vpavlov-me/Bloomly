@@ -9,6 +9,7 @@ public struct EventDTO: Identifiable, Equatable, Hashable, Sendable {
     public var createdAt: Date
     public var updatedAt: Date
     public var isSynced: Bool
+    public var isDeleted: Bool
 
     public init(
         id: UUID = UUID(),
@@ -18,7 +19,8 @@ public struct EventDTO: Identifiable, Equatable, Hashable, Sendable {
         notes: String? = nil,
         createdAt: Date = Date(),
         updatedAt: Date = Date(),
-        isSynced: Bool = false
+        isSynced: Bool = false,
+        isDeleted: Bool = false
     ) {
         self.id = id
         self.kind = kind
@@ -28,6 +30,7 @@ public struct EventDTO: Identifiable, Equatable, Hashable, Sendable {
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.isSynced = isSynced
+        self.isDeleted = isDeleted
     }
 
     public var duration: TimeInterval {

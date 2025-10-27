@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 import UserNotifications
 import Tracking
 import Content
@@ -60,8 +61,8 @@ public final class NotificationManager: NSObject, UNUserNotificationCenterDelega
         }
 
         let content = UNMutableNotificationContent()
-        content.title = String(localized: getReminderTitle(for: eventKind))
-        content.body = String(localized: getReminderMessage(for: eventKind))
+        content.title = getReminderTitle(for: eventKind)
+        content.body = getReminderMessage(for: eventKind)
         content.sound = .default
         content.badge = NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + 1)
 
@@ -103,8 +104,8 @@ public final class NotificationManager: NSObject, UNUserNotificationCenterDelega
         }
 
         let content = UNMutableNotificationContent()
-        content.title = String(localized: getReminderTitle(for: eventKind))
-        content.body = String(localized: getReminderMessage(for: eventKind))
+        content.title = getReminderTitle(for: eventKind)
+        content.body = getReminderMessage(for: eventKind)
         content.sound = .default
         content.badge = NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + 1)
 
@@ -186,7 +187,7 @@ public final class NotificationManager: NSObject, UNUserNotificationCenterDelega
     // MARK: - UNUserNotificationCenterDelegate
 
     /// Handle notification when app is in foreground
-    public func userNotificationCenter(
+    nonisolated public func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
@@ -198,7 +199,7 @@ public final class NotificationManager: NSObject, UNUserNotificationCenterDelega
     }
 
     /// Handle notification tap
-    public func userNotificationCenter(
+    nonisolated public func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void
@@ -220,25 +221,29 @@ public final class NotificationManager: NSObject, UNUserNotificationCenterDelega
 
     // MARK: - Private Helpers
 
-    private func getReminderTitle(for eventKind: EventKind) -> LocalizedStringKey {
+    private func getReminderTitle(for eventKind: EventKind) -> String {
         switch eventKind {
         case .feed:
-            return AppCopy.Notifications.feedReminder
+            return String(localized: "notifications.feed.reminder")
         case .sleep:
-            return AppCopy.Notifications.sleepReminder
+            return String(localized: "notifications.sleep.reminder")
         case .diaper:
-            return AppCopy.Notifications.diaperReminder
+            return String(localized: "notifications.diaper.reminder")
+        case .pumping:
+            return String(localized: "notifications.pumping.reminder")
         }
     }
 
-    private func getReminderMessage(for eventKind: EventKind) -> LocalizedStringKey {
+    private func getReminderMessage(for eventKind: EventKind) -> String {
         switch eventKind {
         case .feed:
-            return AppCopy.Notifications.feedBody
+            return String(localized: "notifications.feed.body")
         case .sleep:
-            return AppCopy.Notifications.sleepBody
+            return String(localized: "notifications.sleep.body")
         case .diaper:
-            return AppCopy.Notifications.diaperBody
+            return String(localized: "notifications.diaper.body")
+        case .pumping:
+            return String(localized: "notifications.pumping.body")
         }
     }
 }

@@ -72,7 +72,6 @@
 		CBDF61CC6C705297270C92AD /* BabyTrackWatchExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AF6A80EF0BEF311F2AB90EF7 /* BabyTrackWatchExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CF38CD27B166319EC66DE9FD /* Timeline in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5C27448BA57B27E43E7303 /* Timeline */; };
 		D04481864021F143FF2A5324 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18D7EF599BCD9D41840549E /* AppSettings.swift */; };
-		D294EF3B0BCB4FDF9F0BF0F6 /* BabyTrackModel.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = 2D2B889FAEED6C1BD05D5A64 /* BabyTrackModel.xcdatamodel */; };
 		D82D45338DF35D5FF91C45FC /* DataExportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E2C57DC60C4A8EB3DAF0E4 /* DataExportServiceTests.swift */; };
 		D8D0014E3354F51F4751B53F /* BabyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9860754ED68D400EE9CE3A37 /* BabyProfileView.swift */; };
 		DC19AB609057CD855BBFF12F /* BabyTrackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D381F2A9710BD16CB83E8 /* BabyTrackUITests.swift */; };
@@ -1489,7 +1488,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D294EF3B0BCB4FDF9F0BF0F6 /* BabyTrackModel.xcdatamodel in Resources */,
 				76356B9E99CA266EA105786E /* BabyTrack.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

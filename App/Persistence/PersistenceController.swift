@@ -64,6 +64,15 @@ private extension PersistenceController {
         let context = container.viewContext
         let calendar = Calendar.current
         let now = Date()
+
+        // Create a sample baby profile
+        let baby = NSEntityDescription.insertNewObject(forEntityName: "Baby", into: context)
+        baby.setValue(UUID(), forKey: "id")
+        baby.setValue("Emma", forKey: "name")
+        baby.setValue(calendar.date(byAdding: .month, value: -3, to: now), forKey: "birthDate")
+        baby.setValue(now, forKey: "createdAt")
+        baby.setValue(now, forKey: "updatedAt")
+
         for offset in 0..<6 {
             let date = calendar.date(byAdding: .day, value: -offset, to: now) ?? now
             let event = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context)
@@ -77,6 +86,8 @@ private extension PersistenceController {
             event.setValue(date, forKey: "createdAt")
             event.setValue(date, forKey: "updatedAt")
             event.setValue(false, forKey: "isSynced")
+            event.setValue(false, forKey: "isDeleted")
+            event.setValue(baby, forKey: "baby")
         }
 
         for offset in 0..<5 {
@@ -87,6 +98,7 @@ private extension PersistenceController {
             measurement.setValue("cm", forKey: "unit")
             measurement.setValue(calendar.date(byAdding: .day, value: -offset, to: now), forKey: "date")
             measurement.setValue(false, forKey: "isSynced")
+            measurement.setValue(baby, forKey: "baby")
         }
 
         try? context.save()
