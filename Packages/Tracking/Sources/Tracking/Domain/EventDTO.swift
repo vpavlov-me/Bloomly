@@ -40,6 +40,53 @@ public struct EventDTO: Identifiable, Equatable, Hashable, Sendable {
     public var isOngoing: Bool {
         end == nil
     }
+
+    /// Formatted duration string (e.g., "2h 30m", "45m", "3h")
+    public var formattedDuration: String {
+        let seconds = Int(duration)
+        let hours = seconds / 3600
+        let minutes = (seconds % 3600) / 60
+
+        if hours > 0 && minutes > 0 {
+            return "\(hours)h \(minutes)m"
+        } else if hours > 0 {
+            return "\(hours)h"
+        } else if minutes > 0 {
+            return "\(minutes)m"
+        } else {
+            return "<1m"
+        }
+    }
+
+    /// Duration in minutes (rounded)
+    public var durationInMinutes: Int {
+        Int(duration / 60)
+    }
+
+    /// Duration in hours (rounded to 1 decimal place)
+    public var durationInHours: Double {
+        (duration / 3600).rounded(toPlaces: 1)
+    }
+
+    /// Check if event is in the past
+    public var isPast: Bool {
+        if let end = end {
+            return end < Date()
+        }
+        return start < Date()
+    }
+
+    /// Check if event is today
+    public func isToday(calendar: Calendar = .current) -> Bool {
+        calendar.isDateInToday(start)
+    }
+}
+
+private extension Double {
+    func rounded(toPlaces places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
 }
 
 public struct EventDayStats: Equatable, Sendable {
