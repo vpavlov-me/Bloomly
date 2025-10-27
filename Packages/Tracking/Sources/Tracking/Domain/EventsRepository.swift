@@ -17,12 +17,38 @@ public enum EventsRepositoryError: LocalizedError {
 }
 
 public protocol EventsRepository: Sendable {
+    /// Create a new event
     func create(_ dto: EventDTO) async throws -> EventDTO
+
+    /// Read an event by ID
+    func read(id: UUID) async throws -> EventDTO
+
+    /// Update an existing event
     func update(_ dto: EventDTO) async throws -> EventDTO
+
+    /// Soft delete an event (marks as deleted)
     func delete(id: UUID) async throws
+
+    /// Idempotent upsert: creates if ID doesn't exist, updates if it does
+    func upsert(_ dto: EventDTO) async throws -> EventDTO
+
+    /// Fetch events in date range with optional kind filter
     func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO]
+
+    /// Fetch events for a specific baby (for multi-baby support)
+    func events(for babyID: UUID, in interval: DateInterval?) async throws -> [EventDTO]
+
+    /// Get the last event of a specific kind
     func lastEvent(for kind: EventKind) async throws -> EventDTO?
+
+    /// Get statistics for a specific day
     func stats(for day: Date) async throws -> EventDayStats
+
+    /// Batch insert multiple events (optimized for performance)
+    func batchCreate(_ dtos: [EventDTO]) async throws -> [EventDTO]
+
+    /// Batch update multiple events
+    func batchUpdate(_ dtos: [EventDTO]) async throws -> [EventDTO]
 }
 
 public extension EventsRepository {
