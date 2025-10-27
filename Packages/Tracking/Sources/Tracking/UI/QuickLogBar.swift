@@ -4,21 +4,27 @@ import DesignSystem
 import SwiftUI
 
 public struct QuickLogBar: View {
-    @Environment(\.eventsRepository) private var eventsRepository
-    @Environment(\.analytics) private var analytics
-
+    private let eventsRepository: any EventsRepository
+    private let analytics: any Analytics
     private let onSubmit: (EventDTO) -> Void
+
     @State private var isLogging = false
     @State private var error: String?
 
-    public init(onSubmit: @escaping (EventDTO) -> Void) {
+    public init(
+        eventsRepository: any EventsRepository,
+        analytics: any Analytics,
+        onSubmit: @escaping (EventDTO) -> Void
+    ) {
+        self.eventsRepository = eventsRepository
+        self.analytics = analytics
         self.onSubmit = onSubmit
     }
 
     public var body: some View {
         Card {
             VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.sm) {
-                BabyTrackTheme.typography.headline.text(String(localized: AppCopy.Events.formTitleNew))
+                BabyTrackTheme.typography.headline.text(AppCopy.string(for: "event.form.title.new"))
                 HStack(spacing: BabyTrackTheme.spacing.sm) {
                     ForEach(EventKind.allCases) { kind in
                         Button {
@@ -69,15 +75,16 @@ public struct QuickLogBar: View {
 #if DEBUG
 struct QuickLogBar_Previews: PreviewProvider {
     static var previews: some View {
-        QuickLogBar { _ in }
-            .environment(\.eventsRepository, PreviewEventsRepository())
-            .environment(\.analytics, AnalyticsLogger())
+        QuickLogBar(
+            eventsRepository: PreviewEventsRepository(),
+            analytics: AnalyticsLogger()
+        ) { _ in }
             .padding()
             .background(BabyTrackTheme.palette.background)
             .previewLayout(.sizeThatFits)
     }
 
-    private struct PreviewEventsRepository: EventsRepository {
+    struct PreviewEventsRepository: EventsRepository {
         func create(_ dto: EventDTO) async throws -> EventDTO { dto }
         func update(_ dto: EventDTO) async throws -> EventDTO { dto }
         func delete(id: UUID) async throws {}

@@ -1,22 +1,44 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE model SYSTEM "http://apple.com/DTDs/PropertyList-1.0.dtd">
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1" lastSavedToolsVersion="1" systemVersion="1" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23B81" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Baby" representedClassName="BabyEntity" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="birthDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="photoData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Event" inverseName="baby" inverseEntity="Event"/>
+        <relationship name="measurements" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Measurement" inverseName="baby" inverseEntity="Measurement"/>
+    </entity>
     <entity name="Event" representedClassName="EventEntity" syncable="YES">
-        <attribute name="id" optional="NO" attributeType="UUIDAttributeType"/>
-        <attribute name="kind" optional="NO" attributeType="String"/>
-        <attribute name="start" optional="NO" attributeType="Date"/>
-        <attribute name="end" optional="YES" attributeType="Date"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="kind" optional="YES" attributeType="String"/>
+        <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
-        <attribute name="createdAt" optional="NO" attributeType="Date"/>
-        <attribute name="updatedAt" optional="NO" attributeType="Date"/>
-        <attribute name="isSynced" optional="NO" attributeType="Boolean" defaultValueString="0"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSynced" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isDeleted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="baby" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Baby" inverseName="events" inverseEntity="Baby"/>
+        <fetchIndex name="byStartDate">
+            <fetchIndexElement property="start" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <fetchIndex name="byBabyAndStart">
+            <fetchIndexElement property="baby" type="Binary" order="ascending"/>
+            <fetchIndexElement property="start" type="Binary" order="ascending"/>
+        </fetchIndex>
     </entity>
     <entity name="Measurement" representedClassName="MeasurementEntity" syncable="YES">
-        <attribute name="id" optional="NO" attributeType="UUIDAttributeType"/>
-        <attribute name="type" optional="NO" attributeType="String"/>
-        <attribute name="value" optional="NO" attributeType="Double"/>
-        <attribute name="unit" optional="NO" attributeType="String"/>
-        <attribute name="date" optional="NO" attributeType="Date"/>
-        <attribute name="isSynced" optional="NO" attributeType="Boolean" defaultValueString="0"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isSynced" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="baby" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Baby" inverseName="measurements" inverseEntity="Baby"/>
+        <fetchIndex name="byDate">
+            <fetchIndexElement property="date" type="Binary" order="ascending"/>
+        </fetchIndex>
     </entity>
 </model>

@@ -8,17 +8,37 @@ public actor CloudKitSyncService: SyncService {
     private let container: CKContainer
     private let database: CKDatabase
     private let logger = Logger(subsystem: "com.example.babytrack", category: "Sync")
-    private var changeToken: CKServerChangeToken?
+fix(sync): persist cloudkit change token and update roadmap
+
+- Implements persistent storage for the CloudKit server change token using UserDefaults to prevent full fetches on every app launch.
+- Updates the project roadmap in cloude.md to accurately reflect that CloudKit sync is still in progress.
+    private let userDefaults: UserDefaults
+
+    private let serverChangeTokenKey = "CloudKitSync.serverChangeToken"
+    private var changeToken: CKServerChangeToken? {
+        get {
+            guard let data = userDefaults.data(forKey: serverChangeTokenKey) else { return nil }
+            return try? NSKeyedUnarchiver.unarchivedObject(ofClass: CKServerChangeToken.self, from: data)
+        }
+        set {
+            guard let token = newValue else {
+                userDefaults.removeObject(forKey: serverChangeTokenKey)
+                return
+            }
+            let data = try? NSKeyedArchiver.archivedData(withRootObject: token, requiringSecureCoding: true)
+            userDefaults.set(data, forKey: serverChangeTokenKey)
+        }
+    }
 
     // Record types
     private enum RecordType: String {
         case event = "Event"
         case measurement = "Measurement"
     }
-
-    public init(containerIdentifier: String = "iCloud.com.example.BabyTrack") {
+    public init(containerIdentifier: String = "iCloud.com.example.BabyTrack", userDefaults: UserDefaults = .standard) {
         self.container = CKContainer(identifier: containerIdentifier)
         self.database = container.privateCloudDatabase
+        self.userDefaults = userDefaults
     }
 
     // MARK: - SyncService Protocol
@@ -57,9 +77,7 @@ public actor CloudKitSyncService: SyncService {
             operation.recordZoneFetchResultBlock = { _, result in
                 switch result {
                 case .success(let token):
-                    Task {
-                        await self.storeChangeToken(token.0)
-                    }
+                    self.changeToken = token.0
                 case .failure(let error):
                     self.logger.error("Zone fetch failed: \(error.localizedDescription)")
                 }
@@ -149,12 +167,6 @@ public actor CloudKitSyncService: SyncService {
     }
 
     // MARK: - Private Helpers
-
-    private func storeChangeToken(_ token: CKServerChangeToken) {
-        self.changeToken = token
-        // TODO: Persist token to UserDefaults or Keychain for app restarts
-        logger.debug("Stored new change token")
-    }
 
     private func createRecord(from event: [String: Any]) -> CKRecord? {
         // TODO: Map Core Data Event entity to CKRecord

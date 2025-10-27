@@ -1,3 +1,4 @@
+import AppSupport
 import Content
 import DesignSystem
 import Measurements
@@ -53,7 +54,10 @@ public struct TimelineView: View {
     private var listContent: some View {
         List {
             Section {
-                QuickLogBar { event in
+                QuickLogBar(
+                    eventsRepository: viewModel.eventsRepository,
+                    analytics: viewModel.analytics
+                ) { event in
                     viewModel.append(event: event)
                 }
                 .listRowInsets(EdgeInsets())
@@ -66,6 +70,9 @@ public struct TimelineView: View {
                     LocalizedStringKey(filter.titleKey)
                 }
                 .listRowInsets(EdgeInsets())
+                .onChange(of: viewModel.filter) { _, _ in
+                    viewModel.applyFilters()
+                }
             }
             .listRowBackground(Color.clear)
 
@@ -137,22 +144,27 @@ public final class TimelineViewModel: ObservableObject {
 
     @Published public private(set) var sections: [DaySection] = []
     @Published public var searchText: String = ""
-    @Published public var filter: Filter = .all {
-        didSet { applyFilters() }
-    }
+    @Published public var filter: Filter = .all
     @Published public private(set) var isLoading = false
 
-    private let eventsRepository: any EventsRepository
+    public let eventsRepository: any EventsRepository
     private let measurementsRepository: any MeasurementsRepository
+    public let analytics: any Analytics
     private let calendar: Calendar
     private var cache: [FeedItem] = []
     private var lastDeleted: FeedItem?
     public var onPresentEventForm: ((EventDTO?) -> Void)?
     public var onPresentMeasurementForm: ((MeasurementDTO?) -> Void)?
 
-    public init(eventsRepository: any EventsRepository, measurementsRepository: any MeasurementsRepository, calendar: Calendar = .current) {
+    public init(
+        eventsRepository: any EventsRepository,
+        measurementsRepository: any MeasurementsRepository,
+        analytics: any Analytics,
+        calendar: Calendar = .current
+    ) {
         self.eventsRepository = eventsRepository
         self.measurementsRepository = measurementsRepository
+        self.analytics = analytics
         self.calendar = calendar
     }
 

@@ -47,7 +47,7 @@ let project = Project(
                 "UIBackgroundModes": ["fetch"]
             ]),
             sources: ["App/**/*.swift"],
-            resources: ["App/Resources/**", "App/CoreData/**"],
+            resources: ["App/Resources/**"],
             entitlements: "App/Resources/BabyTrack.entitlements",
             dependencies: [
                 .package(product: "AppSupport"),
@@ -61,7 +61,8 @@ let project = Project(
                 .package(product: "Widgets"),
                 .package(product: "WatchApp"),
                 .target(name: "BabyTrackWidgets")
-            ]
+            ],
+            coreDataModels: [.coreDataModel("App/CoreData/BabyTrackModel.xcdatamodeld")]
         ),
         .target(
             name: "BabyTrackWidgets",

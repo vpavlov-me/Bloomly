@@ -71,7 +71,7 @@ public final class WatchConnectivityService: NSObject, ObservableObject {
 // MARK: - WCSessionDelegate
 
 extension WatchConnectivityService: WCSessionDelegate {
-    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    nonisolated public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         Task { @MainActor in
             self.isReachable = session.isReachable
             self.isPaired = session.isPaired
@@ -79,19 +79,19 @@ extension WatchConnectivityService: WCSessionDelegate {
         }
     }
 
-    public func sessionReachabilityDidChange(_ session: WCSession) {
+    nonisolated public func sessionReachabilityDidChange(_ session: WCSession) {
         Task { @MainActor in
             self.isReachable = session.isReachable
         }
     }
 
-    public func sessionDidBecomeInactive(_ session: WCSession) {
+    nonisolated public func sessionDidBecomeInactive(_ session: WCSession) {
         Task { @MainActor in
             self.isReachable = false
         }
     }
 
-    public func sessionDidDeactivate(_ session: WCSession) {
+    nonisolated public func sessionDidDeactivate(_ session: WCSession) {
         Task { @MainActor in
             self.isReachable = false
         }
@@ -99,7 +99,7 @@ extension WatchConnectivityService: WCSessionDelegate {
         session.activate()
     }
 
-    public func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
+    nonisolated public func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
         // Handle messages from watch (e.g., new event logged on watch)
         if let eventData = message["newEvent"] as? [String: Any],
            let kindString = eventData["kind"] as? String,
@@ -216,7 +216,7 @@ public final class WatchConnectivityService: NSObject, ObservableObject {
 // MARK: - WCSessionDelegate
 
 extension WatchConnectivityService: WCSessionDelegate {
-    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    nonisolated public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         Task { @MainActor in
             self.isReachable = session.isReachable
 
@@ -227,7 +227,7 @@ extension WatchConnectivityService: WCSessionDelegate {
         }
     }
 
-    public func sessionReachabilityDidChange(_ session: WCSession) {
+    nonisolated public func sessionReachabilityDidChange(_ session: WCSession) {
         Task { @MainActor in
             self.isReachable = session.isReachable
 
@@ -237,7 +237,7 @@ extension WatchConnectivityService: WCSessionDelegate {
         }
     }
 
-    public func session(_ session: WCSession, didReceiveMessage message: [String: Any], replyHandler: @escaping ([String: Any]) -> Void) {
+    nonisolated public func session(_ session: WCSession, didReceiveMessage message: [String: Any], replyHandler: @escaping ([String: Any]) -> Void) {
         // Handle requests from iPhone
         if message["requestRecentEvents"] != nil {
             // Watch typically receives events from iPhone, not the other way
@@ -246,7 +246,7 @@ extension WatchConnectivityService: WCSessionDelegate {
         }
     }
 
-    public func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
+    nonisolated public func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
         // Handle incoming events from iPhone
         if let eventsData = message["recentEvents"] as? [[String: Any]] {
             Task { @MainActor in
@@ -255,7 +255,7 @@ extension WatchConnectivityService: WCSessionDelegate {
         }
     }
 
-    public func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String: Any]) {
+    nonisolated public func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String: Any]) {
         // Handle application context updates
         Task { @MainActor in
             // Process stats or other context data

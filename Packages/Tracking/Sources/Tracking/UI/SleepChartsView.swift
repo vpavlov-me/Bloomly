@@ -379,7 +379,7 @@ struct SleepChartsView_Previews: PreviewProvider {
         }
 
         func stats(for day: Date) async throws -> EventDayStats {
-            EventDayStats(sleepCount: 0, feedCount: 0, diaperCount: 0)
+            EventDayStats(date: day, totalEvents: 0, totalDuration: 0)
         }
     }
 }

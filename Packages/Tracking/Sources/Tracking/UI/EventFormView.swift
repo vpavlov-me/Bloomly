@@ -5,12 +5,20 @@ import SwiftUI
 
 public struct EventFormView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.eventsRepository) private var eventsRepository
-    @Environment(\.analytics) private var analytics
 
     @StateObject private var viewModel: ViewModel
 
-    public init(event: EventDTO? = nil, onComplete: @escaping (EventDTO) -> Void) {
+    private let eventsRepository: any EventsRepository
+    private let analytics: any Analytics
+
+    public init(
+        eventsRepository: any EventsRepository,
+        analytics: any Analytics,
+        event: EventDTO? = nil,
+        onComplete: @escaping (EventDTO) -> Void
+    ) {
+        self.eventsRepository = eventsRepository
+        self.analytics = analytics
         _viewModel = StateObject(wrappedValue: ViewModel(event: event, onComplete: onComplete))
     }
 
@@ -163,9 +171,10 @@ extension EventFormView {
 #if DEBUG
 struct EventFormView_Previews: PreviewProvider {
     static var previews: some View {
-        EventFormView { _ in }
-            .environment(\.eventsRepository, QuickLogBar_Previews.PreviewEventsRepository())
-            .environment(\.analytics, AnalyticsLogger())
+        EventFormView(
+            eventsRepository: QuickLogBar_Previews.PreviewEventsRepository(),
+            analytics: AnalyticsLogger()
+        ) { _ in }
     }
 }
 #endif

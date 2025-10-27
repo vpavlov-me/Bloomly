@@ -77,7 +77,7 @@ public struct ChartsView: View {
                     ? .white
                     : BabyTrackTheme.palette.primaryText
             )
-            .clipShape(RoundedRectangle(cornerRadius: BabyTrackTheme.cornerRadius.medium))
+            .clipShape(RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft))
         }
     }
 }

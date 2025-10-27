@@ -33,7 +33,7 @@ public final class ChartsViewModel: ObservableObject {
 
     // MARK: - Dependencies
 
-    private let aggregator: ChartDataAggregator
+    public let aggregator: ChartDataAggregator
     private let calendar: Calendar
     private var cancellables = Set<AnyCancellable>()
 

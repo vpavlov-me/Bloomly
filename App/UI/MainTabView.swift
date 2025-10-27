@@ -38,7 +38,8 @@ public struct MainTabView: View {
         _timelineViewModel = StateObject(
             wrappedValue: TimelineViewModel(
                 eventsRepository: container.eventsRepository,
-                measurementsRepository: container.measurementsRepository
+                measurementsRepository: container.measurementsRepository,
+                analytics: container.analytics
             )
         )
     }
@@ -47,7 +48,8 @@ public struct MainTabView: View {
         TabView(selection: $selectedTab) {
             NavigationStack {
                 DashboardView(
-                    viewModel: DashboardViewModel(eventsRepository: container.eventsRepository)
+                    viewModel: DashboardViewModel(eventsRepository: container.eventsRepository),
+                    analytics: container.analytics
                 ) { kind in
                     container.analytics.track(AnalyticsEvent(
                         name: "quick_action_tapped",
@@ -55,8 +57,6 @@ public struct MainTabView: View {
                     ))
                     showEventForm = true
                 }
-                .environment(\.eventsRepository, container.eventsRepository)
-                .environment(\.analytics, container.analytics)
             }
             .tabItem { Label("Dashboard", systemImage: "house.fill") }
             .tag(0)
@@ -96,12 +96,14 @@ public struct MainTabView: View {
             widgetDeepLink = nil
         }
         .sheet(isPresented: $showEventForm, onDismiss: { editingEvent = nil }) {
-            EventFormView(event: editingEvent) { event in
+            EventFormView(
+                eventsRepository: container.eventsRepository,
+                analytics: container.analytics,
+                event: editingEvent
+            ) { event in
                 timelineViewModel.append(event: event)
                 toastMessage = ToastMessage(type: .success, message: AppCopy.string(for: "event.saved"))
             }
-            .environment(\.eventsRepository, container.eventsRepository)
-            .environment(\.analytics, container.analytics)
         }
         .sheet(isPresented: $showMeasurementForm, onDismiss: { editingMeasurement = nil }) {
             MeasurementFormView(

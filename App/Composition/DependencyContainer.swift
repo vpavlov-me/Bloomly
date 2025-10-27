@@ -133,7 +133,11 @@ private struct StoreClientKey: EnvironmentKey {
 }
 
 private struct PremiumStateKey: EnvironmentKey {
-    static let defaultValue: PremiumState = PremiumState()
+    static let defaultValue: PremiumState = {
+        MainActor.assumeIsolated {
+            PremiumState()
+        }
+    }()
 }
 
 private struct AnalyticsKey: EnvironmentKey {
@@ -145,11 +149,15 @@ private struct SyncServiceKey: EnvironmentKey {
 }
 
 private struct NotificationManagerKey: EnvironmentKey {
-    static let defaultValue: NotificationManager = NotificationManager()
+    static let defaultValue: NotificationManager = {
+        MainActor.assumeIsolated {
+            NotificationManager()
+        }
+    }()
 }
 
 private struct ChartAggregatorKey: EnvironmentKey {
-    static let defaultValue: ChartDataAggregator = ChartDataAggregator(eventsRepository: NullEventsRepository())
+    static let defaultValue: ChartDataAggregator = ChartDataAggregator(eventsRepository: InMemoryEventsRepository())
 }
 
 public extension EnvironmentValues {

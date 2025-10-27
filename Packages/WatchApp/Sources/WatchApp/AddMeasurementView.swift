@@ -14,20 +14,20 @@ public struct AddMeasurementView: View {
 
     public var body: some View {
         Form {
-            Picker(Text(AppCopy.Measurements.type), selection: $type) {
+            Picker(AppCopy.Measurements.type, selection: $type) {
                 ForEach(MeasurementType.allCases) { type in
                     Text(LocalizedStringKey(type.titleKey)).tag(type)
                 }
             }
-            TextField(Text(AppCopy.Measurements.value), text: $value)
+            TextField(AppCopy.Measurements.value, text: $value)
                 .keyboardType(.decimalPad)
-            TextField(Text(AppCopy.Measurements.unit), text: $unit)
-            DatePicker(Text(AppCopy.Measurements.date), selection: $date, displayedComponents: [.date, .hourAndMinute])
+            TextField(AppCopy.Measurements.unit, text: $unit)
+            DatePicker(AppCopy.Measurements.date, selection: $date, displayedComponents: [.date, .hourAndMinute])
             Button(AppCopy.Common.save) {
                 Task { await save() }
             }
         }
-        .navigationTitle(Text(AppCopy.WatchApp.measureTitle))
+        .navigationTitle(AppCopy.WatchApp.measureTitle)
         .alert(AppCopy.string(for: "measurements.add"), isPresented: Binding(
             get: { confirmation != nil },
             set: { if !$0 { confirmation = nil } }

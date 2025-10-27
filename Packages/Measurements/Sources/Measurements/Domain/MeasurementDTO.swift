@@ -1,6 +1,6 @@
 import Foundation
 
-public struct MeasurementDTO: Identifiable, Equatable, Sendable {
+public struct MeasurementDTO: Identifiable, Equatable, Hashable, Sendable {
     public let id: UUID
     public var type: MeasurementType
     public var value: Double

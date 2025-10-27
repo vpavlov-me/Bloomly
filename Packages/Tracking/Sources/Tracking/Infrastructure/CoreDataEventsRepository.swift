@@ -22,6 +22,7 @@ public actor CoreDataEventsRepository: EventsRepository {
             object.setValue(dto.createdAt, forKey: "createdAt")
             object.setValue(now, forKey: "updatedAt")
             object.setValue(false, forKey: "isSynced")
+            object.setValue(false, forKey: "isDeleted")
             try context.saveIfNeeded()
             guard let mapped = self.map(object) else {
                 throw EventsRepositoryError.persistence(NSError(domain: "Mapping", code: 0))
@@ -39,6 +40,7 @@ public actor CoreDataEventsRepository: EventsRepository {
             object.setValue(dto.start, forKey: "start")
             object.setValue(dto.end, forKey: "end")
             object.setValue(dto.notes, forKey: "notes")
+            object.setValue(dto.isDeleted, forKey: "isDeleted")
             object.setValue(Date(), forKey: "updatedAt")
             try context.saveIfNeeded()
             guard let mapped = self.map(object) else {
@@ -53,7 +55,9 @@ public actor CoreDataEventsRepository: EventsRepository {
             guard let object = try self.fetchObject(id: id, in: context) else {
                 throw EventsRepositoryError.notFound
             }
-            context.delete(object)
+            // Soft delete: mark as deleted instead of removing from database
+            object.setValue(true, forKey: "isDeleted")
+            object.setValue(Date(), forKey: "updatedAt")
             try context.saveIfNeeded()
         }
     }
@@ -62,13 +66,15 @@ public actor CoreDataEventsRepository: EventsRepository {
         try await perform { context in
             let request = NSFetchRequest<NSManagedObject>(entityName: "Event")
             var predicates: [NSPredicate] = []
+            // Filter out soft-deleted events by default
+            predicates.append(NSPredicate(format: "isDeleted == NO"))
             if let interval {
                 predicates.append(NSPredicate(format: "start >= %@ AND start < %@", interval.start as NSDate, interval.end as NSDate))
             }
             if let kind {
                 predicates.append(NSPredicate(format: "kind == %@", kind.rawValue))
             }
-            request.predicate = predicates.isEmpty ? nil : NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
             request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: false)]
             let objects = try context.fetch(request)
             return objects.compactMap(self.map(_:))
@@ -78,7 +84,7 @@ public actor CoreDataEventsRepository: EventsRepository {
     public func lastEvent(for kind: EventKind) async throws -> EventDTO? {
         try await perform { context in
             let request = NSFetchRequest<NSManagedObject>(entityName: "Event")
-            request.predicate = NSPredicate(format: "kind == %@", kind.rawValue)
+            request.predicate = NSPredicate(format: "kind == %@ AND isDeleted == NO", kind.rawValue)
             request.sortDescriptors = [NSSortDescriptor(key: "start", ascending: false)]
             request.fetchLimit = 1
             return try context.fetch(request).compactMap(self.map(_:)).first
@@ -126,6 +132,7 @@ public actor CoreDataEventsRepository: EventsRepository {
         let end = object.value(forKey: "end") as? Date
         let notes = object.value(forKey: "notes") as? String
         let synced = object.value(forKey: "isSynced") as? Bool ?? false
+        let deleted = object.value(forKey: "isDeleted") as? Bool ?? false
 
         return EventDTO(
             id: id,
@@ -135,7 +142,8 @@ public actor CoreDataEventsRepository: EventsRepository {
             notes: notes,
             createdAt: createdAt,
             updatedAt: updatedAt,
-            isSynced: synced
+            isSynced: synced,
+            isDeleted: deleted
         )
     }
 }

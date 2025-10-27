@@ -3,9 +3,10 @@ import WidgetKit
 
 // MARK: - Widget Bundle
 
-@main
-struct BabyTrackWidgets: WidgetBundle {
-    var body: some Widget {
+public struct BabyTrackWidgets: WidgetBundle {
+    public init() {}
+
+    public var body: some Widget {
         SmallWidget()
         MediumWidget()
         LargeWidget()
@@ -14,10 +15,12 @@ struct BabyTrackWidgets: WidgetBundle {
 
 // MARK: - Small Widget (Last Feed)
 
-struct SmallWidget: Widget {
+public struct SmallWidget: Widget {
     let kind: String = "SmallWidget"
 
-    var body: some WidgetConfiguration {
+    public init() {}
+
+    public var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: SmallWidgetProvider()) { entry in
             SmallWidgetView(entry: entry)
         }
@@ -92,10 +95,12 @@ struct SmallWidgetView: View {
 
 // MARK: - Medium Widget (Summary)
 
-struct MediumWidget: Widget {
+public struct MediumWidget: Widget {
     let kind: String = "MediumWidget"
 
-    var body: some WidgetConfiguration {
+    public init() {}
+
+    public var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: MediumWidgetProvider()) { entry in
             MediumWidgetView(entry: entry)
         }
@@ -220,10 +225,12 @@ struct ActivityItem: View {
 
 // MARK: - Large Widget (Timeline)
 
-struct LargeWidget: Widget {
+public struct LargeWidget: Widget {
     let kind: String = "LargeWidget"
 
-    var body: some WidgetConfiguration {
+    public init() {}
+
+    public var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: LargeWidgetProvider()) { entry in
             LargeWidgetView(entry: entry)
         }
@@ -288,10 +295,16 @@ struct LargeWidgetEntry: TimelineEntry {
     let recentEvents: [RecentEvent]
 }
 
-struct RecentEvent {
-    let icon: String
-    let time: String
-    let description: String
+public struct RecentEvent {
+    public let icon: String
+    public let time: String
+    public let description: String
+
+    public init(icon: String, time: String, description: String) {
+        self.icon = icon
+        self.time = time
+        self.description = description
+    }
 }
 
 struct LargeWidgetView: View {
