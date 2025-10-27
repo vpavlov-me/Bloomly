@@ -12,11 +12,13 @@ import SwiftUI
 /// - Handles overlapping events
 public struct DailyRhythmView: View {
     @StateObject private var viewModel: ViewModel
+    private let eventsRepository: any EventsRepository
 
     private let hourWidth: CGFloat = 60 // Width per hour
     private let trackHeight: CGFloat = 80
 
     public init(viewModel: ChartsViewModel) {
+        self.eventsRepository = viewModel.aggregator.eventsRepository
         _viewModel = StateObject(wrappedValue: ViewModel(selectedDate: Date()))
     }
 
@@ -266,6 +268,8 @@ public struct DailyRhythmView: View {
             return Color.pink.opacity(0.8)
         case .diaper:
             return Color.yellow.opacity(0.8)
+        case .pumping:
+            return Color.purple.opacity(0.8)
         }
     }
 
@@ -409,16 +413,18 @@ extension DailyRhythmView {
 #if DEBUG
 struct DailyRhythmView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
+        let repository = PreviewEventsRepository()
+        let aggregator = ChartDataAggregator(eventsRepository: repository)
+        let viewModel = ChartsViewModel(aggregator: aggregator)
+
+        return Group {
             // Light mode
-            DailyRhythmView()
-                .environment(\.eventsRepository, PreviewEventsRepository())
+            DailyRhythmView(viewModel: viewModel)
                 .preferredColorScheme(.light)
                 .previewDisplayName("Light Mode")
 
             // Dark mode
-            DailyRhythmView()
-                .environment(\.eventsRepository, PreviewEventsRepository())
+            DailyRhythmView(viewModel: viewModel)
                 .preferredColorScheme(.dark)
                 .previewDisplayName("Dark Mode")
         }
@@ -487,7 +493,7 @@ struct DailyRhythmView_Previews: PreviewProvider {
 
         func lastEvent(for kind: EventKind) async throws -> EventDTO? { nil }
         func stats(for day: Date) async throws -> EventDayStats {
-            EventDayStats(sleepCount: 0, feedCount: 0, diaperCount: 0)
+            EventDayStats(date: day, totalEvents: 0, totalDuration: 0)
         }
     }
 }

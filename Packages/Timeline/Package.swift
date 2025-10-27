@@ -13,6 +13,7 @@ let package = Package(
         )
     ],
     dependencies: [
+        .package(path: "../AppSupport"),
         .package(path: "../Tracking"),
         .package(path: "../Measurements"),
         .package(path: "../DesignSystem"),
@@ -23,6 +24,7 @@ let package = Package(
         .target(
             name: "Timeline",
             dependencies: [
+                "AppSupport",
                 "Tracking",
                 "Measurements",
                 "DesignSystem",

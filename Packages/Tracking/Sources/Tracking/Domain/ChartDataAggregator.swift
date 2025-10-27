@@ -6,7 +6,7 @@ public enum ChartAggregationError: Error {
 
 /// Aggregates event data into chart-friendly series with caching.
 public actor ChartDataAggregator {
-    private let eventsRepository: any EventsRepository
+    public let eventsRepository: any EventsRepository
     private let calendar: Calendar
     private let cacheTTL: TimeInterval
     private let maximumCacheEntries: Int

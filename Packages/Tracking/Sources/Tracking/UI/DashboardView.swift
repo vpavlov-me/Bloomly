@@ -1,18 +1,21 @@
+import AppSupport
 import Content
 import DesignSystem
 import SwiftUI
 
 public struct DashboardView: View {
     @StateObject private var viewModel: DashboardViewModel
-    @Environment(\.analytics) private var analytics
 
+    private let analytics: any Analytics
     private let onQuickAction: (EventKind) -> Void
 
     public init(
         viewModel: DashboardViewModel,
+        analytics: any Analytics,
         onQuickAction: @escaping (EventKind) -> Void
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.analytics = analytics
         self.onQuickAction = onQuickAction
     }
 
@@ -185,12 +188,12 @@ private struct ActiveEventBanner: View {
 
                 VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.xs) {
                     BabyTrackTheme.typography.headline.text(
-                        String(localized: LocalizedStringKey(event.kind.titleKey))
+                        AppCopy.string(for: event.kind.titleKey)
                     )
                     BabyTrackTheme.typography.body.text(
-                        String(localized: "dashboard.activeEvent.ongoing")
+                        AppCopy.string(for: "dashboard.activeEvent.ongoing")
                     )
-                    .foregroundStyle(BabyTrackTheme.palette.secondaryText)
+                    .foregroundStyle(BabyTrackTheme.palette.mutedText)
                 }
 
                 Spacer()
@@ -220,7 +223,7 @@ private struct QuickActionButton: View {
             .frame(maxWidth: .infinity)
             .padding(.vertical, BabyTrackTheme.spacing.md)
             .background(BabyTrackTheme.palette.secondaryBackground)
-            .clipShape(RoundedRectangle(cornerRadius: BabyTrackTheme.cornerRadius.medium))
+            .clipShape(RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft))
         }
         .buttonStyle(.plain)
     }
@@ -242,7 +245,7 @@ private struct TimeSinceCard: View {
                         .font(.system(.subheadline, design: .rounded).weight(.medium))
                     Text(formatTimeSince(timeSince))
                         .font(.system(.caption, design: .rounded))
-                        .foregroundStyle(BabyTrackTheme.palette.secondaryText)
+                        .foregroundStyle(BabyTrackTheme.palette.mutedText)
                 }
 
                 Spacer()
@@ -320,11 +323,11 @@ struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             DashboardView(
-                viewModel: DashboardViewModel(eventsRepository: PreviewEventsRepository())
+                viewModel: DashboardViewModel(eventsRepository: PreviewEventsRepository()),
+                analytics: AnalyticsLogger()
             ) { kind in
                 print("Quick action: \(kind)")
             }
-            .environment(\.analytics, AnalyticsLogger())
         }
     }
 

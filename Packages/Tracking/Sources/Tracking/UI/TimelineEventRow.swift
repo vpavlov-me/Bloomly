@@ -7,8 +7,6 @@ public struct TimelineEventRow: View {
     private let onEdit: (EventDTO) -> Void
     private let onDelete: (EventDTO) -> Void
 
-    @Environment(\.eventsRepository) private var eventsRepository
-
     public init(event: EventDTO, onEdit: @escaping (EventDTO) -> Void, onDelete: @escaping (EventDTO) -> Void) {
         self.event = event
         self.onEdit = onEdit

@@ -1,6 +1,6 @@
 import Foundation
 
-public struct EventDTO: Identifiable, Equatable, Sendable {
+public struct EventDTO: Identifiable, Equatable, Hashable, Sendable {
     public let id: UUID
     public var kind: EventKind
     public var start: Date

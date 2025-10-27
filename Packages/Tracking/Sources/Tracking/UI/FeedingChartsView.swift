@@ -437,8 +437,8 @@ struct FeedingChartsView_Previews: PreviewProvider {
                 for feedingIndex in 0..<feedingCount {
                     let hour = 6 + feedingIndex * 3
                     let duration = Double.random(in: 10...30) * 60 // 10-30 minutes
-                    if let feedStart = calendar.date(byAdding: .hour, value: hour, to: startOfDay),
-                       let feedEnd = feedStart.addingTimeInterval(duration) {
+                    if let feedStart = calendar.date(byAdding: .hour, value: hour, to: startOfDay) {
+                        let feedEnd = feedStart.addingTimeInterval(duration)
                         mockEvents.append(EventDTO(
                             kind: .feed,
                             start: feedStart,
@@ -456,7 +456,7 @@ struct FeedingChartsView_Previews: PreviewProvider {
         }
 
         func stats(for day: Date) async throws -> EventDayStats {
-            EventDayStats(sleepCount: 0, feedCount: 0, diaperCount: 0)
+            EventDayStats(date: day, totalEvents: 0, totalDuration: 0)
         }
     }
 }
