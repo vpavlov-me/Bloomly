@@ -85,7 +85,8 @@ public struct DashboardView: View {
                     ],
                     spacing: BabyTrackTheme.spacing.sm
                 ) {
-                    ForEach(EventKind.allCases) { kind in
+                    // Show only implemented tracking features
+                    ForEach([EventKind.sleep, .feeding, .diaper, .pumping]) { kind in
                         QuickActionButton(kind: kind) {
                             analytics.track(AnalyticsEvent(
                                 name: "quick_action_tapped",
@@ -101,7 +102,8 @@ public struct DashboardView: View {
 
     private var timeSinceLastSection: some View {
         VStack(spacing: BabyTrackTheme.spacing.sm) {
-            ForEach(EventKind.allCases) { kind in
+            // Show only implemented tracking features
+            ForEach([EventKind.sleep, .feeding, .diaper, .pumping]) { kind in
                 if let timeSince = viewModel.timeSinceLastEvent(for: kind) {
                     TimeSinceCard(kind: kind, timeSince: timeSince)
                 }
@@ -126,7 +128,7 @@ public struct DashboardView: View {
                     Divider()
 
                     StatRow(
-                        icon: EventKind.feed.symbol,
+                        icon: EventKind.feeding.symbol,
                         title: String(localized: "dashboard.stats.feeding"),
                         value: "\(stats.feedingCount) • \(formatDuration(stats.totalFeedingDuration))"
                     )
@@ -338,7 +340,7 @@ struct DashboardView_Previews: PreviewProvider {
         func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] {
             [
                 EventDTO(kind: .sleep, start: Date().addingTimeInterval(-7200), end: Date().addingTimeInterval(-3600)),
-                EventDTO(kind: .feed, start: Date().addingTimeInterval(-1800)),
+                EventDTO(kind: .feeding, start: Date().addingTimeInterval(-1800)),
                 EventDTO(kind: .diaper, start: Date().addingTimeInterval(-3600))
             ]
         }
