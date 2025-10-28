@@ -122,7 +122,7 @@ public final class TimelineViewModel: ObservableObject {
         selectedEvent = event
 
         analytics.track(AnalyticsEvent(
-            type: .eventViewed,
+            name: "event_viewed",
             metadata: ["kind": event.kind.rawValue]
         ))
     }

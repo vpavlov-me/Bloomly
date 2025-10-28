@@ -273,7 +273,7 @@ import AppSupport
 #Preview("With Events") {
     TimelineView(
         viewModel: TimelineViewModel(
-            repository: PreviewRepository(),
+            repository: MockEventsRepository(events: makePreviewEvents()),
             analytics: MockAnalytics()
         )
     )
@@ -282,66 +282,19 @@ import AppSupport
 #Preview("Empty") {
     TimelineView(
         viewModel: TimelineViewModel(
-            repository: EmptyRepository(),
+            repository: MockEventsRepository(),
             analytics: MockAnalytics()
         )
     )
 }
 
-private struct PreviewRepository: EventsRepository {
-    func create(_ dto: EventDTO) async throws -> EventDTO { dto }
-    func update(_ dto: EventDTO) async throws -> EventDTO { dto }
-    func delete(id: UUID) async throws {}
-
-    func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] {
-        [
-            EventDTO(kind: .sleep, start: Date().addingTimeInterval(-3600), end: Date(), notes: "Good night sleep"),
-            EventDTO(kind: .feeding, start: Date().addingTimeInterval(-7200), notes: "Breast feeding - left side"),
-            EventDTO(kind: .diaper, start: Date().addingTimeInterval(-10800), notes: "Wet diaper"),
-            EventDTO(kind: .pumping, start: Date().addingTimeInterval(-86400), notes: "150ml total"),
-            EventDTO(kind: .feeding, start: Date().addingTimeInterval(-90000), notes: "Bottle 120ml"),
-        ]
-    }
-
-    func lastEvent(for kind: EventKind) async throws -> EventDTO? {
-        EventDTO(kind: kind, start: Date().addingTimeInterval(-3600))
-    }
-
-    func stats(for day: Date) async throws -> EventDayStats {
-        .init(date: Date(), totalEvents: 5, totalDuration: 7200)
-    }
-
-    func read(id: UUID) async throws -> EventDTO {
-        EventDTO(kind: .sleep, start: Date())
-    }
-
-    func upsert(_ dto: EventDTO) async throws -> EventDTO { dto }
-    func batchCreate(_ dtos: [EventDTO]) async throws -> [EventDTO] { dtos }
-    func batchUpdate(_ dtos: [EventDTO]) async throws -> [EventDTO] { dtos }
-
-    func events(for babyId: UUID, in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] {
-        []
-    }
-
-    func events(on date: Date, calendar: Calendar) async throws -> [EventDTO] { [] }
-}
-
-private struct EmptyRepository: EventsRepository {
-    func create(_ dto: EventDTO) async throws -> EventDTO { dto }
-    func update(_ dto: EventDTO) async throws -> EventDTO { dto }
-    func delete(id: UUID) async throws {}
-    func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] { [] }
-    func lastEvent(for kind: EventKind) async throws -> EventDTO? { nil }
-    func stats(for day: Date) async throws -> EventDayStats {
-        .init(date: Date(), totalEvents: 0, totalDuration: 0)
-    }
-    func read(id: UUID) async throws -> EventDTO {
-        EventDTO(kind: .sleep, start: Date())
-    }
-    func upsert(_ dto: EventDTO) async throws -> EventDTO { dto }
-    func batchCreate(_ dtos: [EventDTO]) async throws -> [EventDTO] { dtos }
-    func batchUpdate(_ dtos: [EventDTO]) async throws -> [EventDTO] { dtos }
-    func events(for babyId: UUID, in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] { [] }
-    func events(on date: Date, calendar: Calendar) async throws -> [EventDTO] { [] }
+private func makePreviewEvents() -> [EventDTO] {
+    [
+        EventDTO(kind: .sleep, start: Date().addingTimeInterval(-3600), end: Date(), notes: "Good night sleep"),
+        EventDTO(kind: .feeding, start: Date().addingTimeInterval(-7200), notes: "Breast feeding - left side"),
+        EventDTO(kind: .diaper, start: Date().addingTimeInterval(-10800), notes: "Wet diaper"),
+        EventDTO(kind: .pumping, start: Date().addingTimeInterval(-86400), notes: "150ml total"),
+        EventDTO(kind: .feeding, start: Date().addingTimeInterval(-90000), notes: "Bottle 120ml"),
+    ]
 }
 #endif

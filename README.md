@@ -66,9 +66,25 @@ xcodebuild -workspace BabyTrack.xcworkspace \
 ```
 
 ### Snapshot Testing
+BabyTrack использует [swift-snapshot-testing](https://github.com/pointfreeco/swift-snapshot-testing) для предотвращения UI регрессий.
+
+**Покрытие тестами:**
+- Dashboard (пустое состояние, с данными, активные таймеры)
+- Timeline (пустое, заполненное состояние)
+- Все экраны трекинга (Sleep, Feed, Diaper, Pumping)
+- Paywall и компоненты дизайн-системы
+
+**Варианты тестирования:**
+- Light/Dark режимы
+- iPhone SE, iPhone 13 Pro, iPhone 15 Pro Max
+- Различные состояния (Empty, Loading, Error)
+
+**Команды:**
 - **Запись эталонов**: `SNAPSHOT_RECORD=1 xcodebuild ... test` — создаст/обновит reference images в `Tests/__Snapshots__`.
 - **Проверка**: Без переменной окружения тесты сравнят текущий UI с эталонными снимками.
 - **CI**: В GitHub Actions snapshot тесты запускаются в режиме сравнения; при неудаче артефакты загружаются автоматически.
+
+Подробная документация: [Docs/snapshot-testing.md](Docs/snapshot-testing.md)
 
 ### In-Memory Storage
 - Репозитории используют `PersistenceController(inMemory: true)` для unit-тестов и превью.

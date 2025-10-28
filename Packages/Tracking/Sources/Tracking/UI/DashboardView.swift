@@ -323,32 +323,25 @@ private struct ElapsedTimeView: View {
 #if DEBUG
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
+        let now = Date()
+        let events = [
+            EventDTO(kind: .sleep, start: now.addingTimeInterval(-7200), end: now.addingTimeInterval(-3600)),
+            EventDTO(kind: .feeding, start: now.addingTimeInterval(-1800)),
+            EventDTO(kind: .diaper, start: now.addingTimeInterval(-3600))
+        ]
+        let lastEvents: [EventKind: EventDTO] = [
+            .sleep: events[0],
+            .feeding: events[1],
+            .diaper: events[2]
+        ]
+
         NavigationStack {
             DashboardView(
-                viewModel: DashboardViewModel(eventsRepository: PreviewEventsRepository()),
+                viewModel: DashboardViewModel(eventsRepository: MockEventsRepository(events: events, lastEvents: lastEvents)),
                 analytics: AnalyticsLogger()
             ) { kind in
                 print("Quick action: \(kind)")
             }
-        }
-    }
-
-    private struct PreviewEventsRepository: EventsRepository {
-        func create(_ dto: EventDTO) async throws -> EventDTO { dto }
-        func update(_ dto: EventDTO) async throws -> EventDTO { dto }
-        func delete(id: UUID) async throws {}
-        func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] {
-            [
-                EventDTO(kind: .sleep, start: Date().addingTimeInterval(-7200), end: Date().addingTimeInterval(-3600)),
-                EventDTO(kind: .feeding, start: Date().addingTimeInterval(-1800)),
-                EventDTO(kind: .diaper, start: Date().addingTimeInterval(-3600))
-            ]
-        }
-        func lastEvent(for kind: EventKind) async throws -> EventDTO? {
-            EventDTO(kind: kind, start: Date().addingTimeInterval(-3600))
-        }
-        func stats(for day: Date) async throws -> EventDayStats {
-            .init(date: Date(), totalEvents: 5, totalDuration: 7200)
         }
     }
 }

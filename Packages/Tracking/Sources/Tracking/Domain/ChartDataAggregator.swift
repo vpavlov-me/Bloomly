@@ -63,7 +63,7 @@ public actor ChartDataAggregator {
         case .feedAverageDuration:
             aggregated = aggregateFeedAverage(events: events, buckets: buckets, range: range)
         case .feedFrequency:
-            aggregated = aggregateFrequency(events: events, buckets: buckets, range: range, kind: .feed)
+            aggregated = aggregateFrequency(events: events, buckets: buckets, range: range, kind: .feeding)
         case .diaperFrequency:
             aggregated = aggregateFrequency(events: events, buckets: buckets, range: range, kind: .diaper)
         }
@@ -184,7 +184,7 @@ public actor ChartDataAggregator {
         var totalDuration = 0.0
         var totalSamples = 0
 
-        for event in events where event.kind == .feed {
+        for event in events where event.kind == .feeding {
             guard event.start >= range.start && event.start < range.end else {
                 continue
             }
@@ -384,7 +384,7 @@ private extension ChartMetric {
         case .sleepTotal:
             return .sleep
         case .feedAverageDuration, .feedFrequency:
-            return .feed
+            return .feeding
         case .diaperFrequency:
             return .diaper
         }

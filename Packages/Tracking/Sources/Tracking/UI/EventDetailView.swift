@@ -359,7 +359,7 @@ import AppSupport
                 notes: "Good night sleep",
                 metadata: ["duration": "7200"]
             ),
-            repository: PreviewRepository(),
+            repository: MockEventsRepository(),
             analytics: MockAnalytics()
         )
     )
@@ -372,29 +372,11 @@ import AppSupport
             start: Date().addingTimeInterval(-3600),
             notes: "Breast feeding"
         ),
-        repository: PreviewRepository(),
+        repository: MockEventsRepository(),
         analytics: MockAnalytics()
     )
     vm.enterEditMode()
     return EventDetailView(viewModel: vm)
 }
 
-private struct PreviewRepository: EventsRepository {
-    func create(_ dto: EventDTO) async throws -> EventDTO { dto }
-    func update(_ dto: EventDTO) async throws -> EventDTO { dto }
-    func delete(id: UUID) async throws {}
-    func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] { [] }
-    func lastEvent(for kind: EventKind) async throws -> EventDTO? { nil }
-    func stats(for day: Date) async throws -> EventDayStats {
-        .init(date: Date(), totalEvents: 0, totalDuration: 0)
-    }
-    func read(id: UUID) async throws -> EventDTO {
-        EventDTO(kind: .sleep, start: Date())
-    }
-    func upsert(_ dto: EventDTO) async throws -> EventDTO { dto }
-    func batchCreate(_ dtos: [EventDTO]) async throws -> [EventDTO] { dtos }
-    func batchUpdate(_ dtos: [EventDTO]) async throws -> [EventDTO] { dtos }
-    func events(for babyId: UUID, in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] { [] }
-    func events(on date: Date, calendar: Calendar) async throws -> [EventDTO] { [] }
-}
 #endif
