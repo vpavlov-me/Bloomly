@@ -1,0 +1,18 @@
+{
+  "id": "723e4567-e89b-12d3-a456-426614174006",
+  "babyId": "623e4567-e89b-12d3-a456-426614174005",
+  "type": "weight",
+  "value": 4.2,
+  "unit": "kg",
+  "date": "2025-10-28T10:00:00Z",
+  "notes": "Monthly checkup",
+  "location": "pediatrician",
+  "percentile": 50.5,
+  "zScore": 0.01,
+  "isSynced": true,
+  "metadata": {
+    "measuredBy": "Dr. Smith",
+    "device": "Medical scale",
+    "method": "recumbent"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "323e4567-e89b-12d3-a456-426614174002",
+  "kind": "feeding",
+  "start": "2025-10-28T13:00:00Z",
+  "end": "2025-10-28T13:15:00Z",
+  "notes": "120 ml",
+  "metadata": {
+    "feedingType": "bottle",
+    "volume": "120"
+  },
+  "createdAt": "2025-10-28T13:00:00Z",
+  "updatedAt": "2025-10-28T13:15:00Z",
+  "isSynced": false,
+  "isDeleted": false
+}

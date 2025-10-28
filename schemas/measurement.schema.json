@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://babytrack.app/schemas/measurement.schema.json",
+  "title": "BabyTrack Measurement Schema",
+  "description": "Schema for baby measurements (height, weight, head circumference) in BabyTrack application",
+  "type": "object",
+  "required": ["id", "type", "value", "unit", "date"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "Unique identifier for the measurement (UUID v4)"
+    },
+    "babyId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "Reference to baby profile (UUID v4)"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["height", "weight", "head"],
+      "description": "Type of measurement"
+    },
+    "value": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Measurement value (numeric)"
+    },
+    "unit": {
+      "type": "string",
+      "enum": ["cm", "kg", "lb", "oz", "in"],
+      "description": "Unit of measurement"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when measurement was taken (ISO 8601)"
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "maxLength": 500,
+      "description": "Additional notes about the measurement"
+    },
+    "location": {
+      "type": ["string", "null"],
+      "maxLength": 100,
+      "description": "Location where measurement was taken (e.g., 'home', 'pediatrician')"
+    },
+    "percentile": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 100,
+      "description": "WHO percentile for this measurement (calculated)"
+    },
+    "zScore": {
+      "type": ["number", "null"],
+      "description": "WHO z-score for this measurement (calculated)"
+    },
+    "isSynced": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether measurement has been synced to CloudKit"
+    },
+    "metadata": {
+      "type": ["object", "null"],
+      "description": "Additional metadata",
+      "properties": {
+        "measuredBy": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Person who took the measurement"
+        },
+        "device": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Device used for measurement"
+        },
+        "method": {
+          "type": "string",
+          "enum": ["recumbent", "standing", "estimated"],
+          "description": "Measurement method"
+        }
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": { "const": "height" }
+        }
+      },
+      "then": {
+        "properties": {
+          "unit": { "enum": ["cm", "in"] }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "const": "weight" }
+        }
+      },
+      "then": {
+        "properties": {
+          "unit": { "enum": ["kg", "lb", "oz"] }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "const": "head" }
+        }
+      },
+      "then": {
+        "properties": {
+          "unit": { "enum": ["cm", "in"] }
+        }
+      }
+    }
+  ]
+}

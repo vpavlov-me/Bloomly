@@ -1,0 +1,14 @@
+{
+  "id": "423e4567-e89b-12d3-a456-426614174003",
+  "kind": "diaper",
+  "start": "2025-10-28T11:30:00Z",
+  "end": "2025-10-28T11:30:00Z",
+  "notes": "Wet",
+  "metadata": {
+    "type": "wet"
+  },
+  "createdAt": "2025-10-28T11:30:00Z",
+  "updatedAt": "2025-10-28T11:30:00Z",
+  "isSynced": true,
+  "isDeleted": false
+}

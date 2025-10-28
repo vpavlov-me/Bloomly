@@ -1,0 +1,17 @@
+{
+  "id": "823e4567-e89b-12d3-a456-426614174007",
+  "babyId": "623e4567-e89b-12d3-a456-426614174005",
+  "type": "height",
+  "value": 55.5,
+  "unit": "cm",
+  "date": "2025-10-28T10:00:00Z",
+  "notes": "Monthly checkup",
+  "location": "pediatrician",
+  "percentile": 48.2,
+  "zScore": -0.05,
+  "isSynced": true,
+  "metadata": {
+    "measuredBy": "Dr. Smith",
+    "method": "recumbent"
+  }
+}
