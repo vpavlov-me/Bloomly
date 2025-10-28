@@ -1,0 +1,15 @@
+{
+  "id": "123e4567-e89b-12d3-a456-426614174000",
+  "kind": "sleep",
+  "start": "2025-10-28T14:30:00Z",
+  "end": "2025-10-28T16:45:00Z",
+  "notes": "Afternoon nap in crib",
+  "metadata": {
+    "quality": "good",
+    "location": "crib"
+  },
+  "createdAt": "2025-10-28T14:30:00Z",
+  "updatedAt": "2025-10-28T16:45:00Z",
+  "isSynced": true,
+  "isDeleted": false
+}

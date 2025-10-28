@@ -413,7 +413,8 @@ extension DailyRhythmView {
 #if DEBUG
 struct DailyRhythmView_Previews: PreviewProvider {
     static var previews: some View {
-        let repository = PreviewEventsRepository()
+        let events = makePreviewEvents()
+        let repository = MockEventsRepository(events: events)
         let aggregator = ChartDataAggregator(eventsRepository: repository)
         let viewModel = ChartsViewModel(aggregator: aggregator)
 
@@ -430,71 +431,60 @@ struct DailyRhythmView_Previews: PreviewProvider {
         }
     }
 
-    private actor PreviewEventsRepository: EventsRepository {
-        func create(_ dto: EventDTO) async throws -> EventDTO { dto }
-        func update(_ dto: EventDTO) async throws -> EventDTO { dto }
-        func delete(id: UUID) async throws {}
+    private static func makePreviewEvents() -> [EventDTO] {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
 
-        func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] {
-            let calendar = Calendar.current
-            let today = calendar.startOfDay(for: Date())
-
-            return [
-                // Night sleep
-                EventDTO(
-                    kind: .sleep,
-                    start: calendar.date(byAdding: .hour, value: 1, to: today)!,
-                    end: calendar.date(byAdding: .hour, value: 8, to: today)!
-                ),
-                // Morning feed
-                EventDTO(
-                    kind: .feed,
-                    start: calendar.date(byAdding: .hour, value: 8, to: today)!,
-                    end: calendar.date(byAdding: .minute, value: 30, to: calendar.date(byAdding: .hour, value: 8, to: today)!)!
-                ),
-                // Diaper change
-                EventDTO(
-                    kind: .diaper,
-                    start: calendar.date(byAdding: .hour, value: 9, to: today)!,
-                    end: calendar.date(byAdding: .minute, value: 5, to: calendar.date(byAdding: .hour, value: 9, to: today)!)!
-                ),
-                // Morning nap
-                EventDTO(
-                    kind: .sleep,
-                    start: calendar.date(byAdding: .hour, value: 10, to: today)!,
-                    end: calendar.date(byAdding: .hour, value: 12, to: today)!
-                ),
-                // Lunch feed
-                EventDTO(
-                    kind: .feed,
-                    start: calendar.date(byAdding: .hour, value: 12, to: today)!,
-                    end: calendar.date(byAdding: .minute, value: 25, to: calendar.date(byAdding: .hour, value: 12, to: today)!)!
-                ),
-                // Afternoon nap
-                EventDTO(
-                    kind: .sleep,
-                    start: calendar.date(byAdding: .hour, value: 14, to: today)!,
-                    end: calendar.date(byAdding: .hour, value: 16, to: today)!
-                ),
-                // Evening feed
-                EventDTO(
-                    kind: .feed,
-                    start: calendar.date(byAdding: .hour, value: 18, to: today)!,
-                    end: calendar.date(byAdding: .minute, value: 30, to: calendar.date(byAdding: .hour, value: 18, to: today)!)!
-                ),
-                // Night sleep (ongoing)
-                EventDTO(
-                    kind: .sleep,
-                    start: calendar.date(byAdding: .hour, value: 21, to: today)!,
-                    end: nil
-                )
-            ]
-        }
-
-        func lastEvent(for kind: EventKind) async throws -> EventDTO? { nil }
-        func stats(for day: Date) async throws -> EventDayStats {
-            EventDayStats(date: day, totalEvents: 0, totalDuration: 0)
-        }
+        return [
+            // Night sleep
+            EventDTO(
+                kind: .sleep,
+                start: calendar.date(byAdding: .hour, value: 1, to: today)!,
+                end: calendar.date(byAdding: .hour, value: 8, to: today)!
+            ),
+            // Morning feed
+            EventDTO(
+                kind: .feed,
+                start: calendar.date(byAdding: .hour, value: 8, to: today)!,
+                end: calendar.date(byAdding: .minute, value: 30, to: calendar.date(byAdding: .hour, value: 8, to: today)!)!
+            ),
+            // Diaper change
+            EventDTO(
+                kind: .diaper,
+                start: calendar.date(byAdding: .hour, value: 9, to: today)!,
+                end: calendar.date(byAdding: .minute, value: 5, to: calendar.date(byAdding: .hour, value: 9, to: today)!)!
+            ),
+            // Morning nap
+            EventDTO(
+                kind: .sleep,
+                start: calendar.date(byAdding: .hour, value: 10, to: today)!,
+                end: calendar.date(byAdding: .hour, value: 12, to: today)!
+            ),
+            // Lunch feed
+            EventDTO(
+                kind: .feed,
+                start: calendar.date(byAdding: .hour, value: 12, to: today)!,
+                end: calendar.date(byAdding: .minute, value: 25, to: calendar.date(byAdding: .hour, value: 12, to: today)!)!
+            ),
+            // Afternoon nap
+            EventDTO(
+                kind: .sleep,
+                start: calendar.date(byAdding: .hour, value: 14, to: today)!,
+                end: calendar.date(byAdding: .hour, value: 16, to: today)!
+            ),
+            // Evening feed
+            EventDTO(
+                kind: .feed,
+                start: calendar.date(byAdding: .hour, value: 18, to: today)!,
+                end: calendar.date(byAdding: .minute, value: 30, to: calendar.date(byAdding: .hour, value: 18, to: today)!)!
+            ),
+            // Night sleep (ongoing)
+            EventDTO(
+                kind: .sleep,
+                start: calendar.date(byAdding: .hour, value: 21, to: today)!,
+                end: nil
+            )
+        ]
     }
 }
 #endif

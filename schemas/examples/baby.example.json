@@ -1,0 +1,24 @@
+{
+  "id": "623e4567-e89b-12d3-a456-426614174005",
+  "name": "Emma",
+  "birthDate": "2025-08-15T10:30:00Z",
+  "gender": "female",
+  "photoData": null,
+  "photoUrl": "https://example.com/photos/baby-emma.jpg",
+  "weight": 3.5,
+  "height": 50.0,
+  "headCircumference": 35.0,
+  "createdAt": "2025-08-15T10:30:00Z",
+  "updatedAt": "2025-10-28T09:00:00Z",
+  "metadata": {
+    "parentNames": ["Anna", "John"],
+    "pediatrician": {
+      "name": "Dr. Smith",
+      "phone": "+1-555-0123",
+      "email": "dr.smith@pediatrics.com"
+    },
+    "allergies": [],
+    "medications": [],
+    "notes": "Healthy baby girl, born full-term"
+  }
+}

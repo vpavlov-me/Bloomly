@@ -6,6 +6,7 @@ public struct EventDTO: Identifiable, Equatable, Hashable, Sendable {
     public var start: Date
     public var end: Date?
     public var notes: String?
+    public var metadata: [String: String]?
     public var createdAt: Date
     public var updatedAt: Date
     public var isSynced: Bool
@@ -17,6 +18,7 @@ public struct EventDTO: Identifiable, Equatable, Hashable, Sendable {
         start: Date,
         end: Date? = nil,
         notes: String? = nil,
+        metadata: [String: String]? = nil,
         createdAt: Date = Date(),
         updatedAt: Date = Date(),
         isSynced: Bool = false,
@@ -27,6 +29,7 @@ public struct EventDTO: Identifiable, Equatable, Hashable, Sendable {
         self.start = start
         self.end = end
         self.notes = notes
+        self.metadata = metadata
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.isSynced = isSynced

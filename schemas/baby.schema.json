@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://babytrack.app/schemas/baby.schema.json",
+  "title": "BabyTrack Baby Profile Schema",
+  "description": "Schema for baby profile data in BabyTrack application",
+  "type": "object",
+  "required": ["id", "name", "birthDate", "createdAt", "updatedAt"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "Unique identifier for the baby profile (UUID v4)"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Baby's name"
+    },
+    "birthDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Baby's birth date and time (ISO 8601)"
+    },
+    "gender": {
+      "type": ["string", "null"],
+      "enum": ["male", "female", "other", null],
+      "description": "Baby's gender (optional)"
+    },
+    "photoData": {
+      "type": ["string", "null"],
+      "contentEncoding": "base64",
+      "description": "Base64-encoded photo data (optional)"
+    },
+    "photoUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL to baby's photo (alternative to photoData)"
+    },
+    "weight": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "description": "Birth weight in kilograms (optional)"
+    },
+    "height": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "description": "Birth height in centimeters (optional)"
+    },
+    "headCircumference": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "description": "Birth head circumference in centimeters (optional)"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when profile was created"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when profile was last updated"
+    },
+    "metadata": {
+      "type": ["object", "null"],
+      "description": "Additional profile metadata",
+      "properties": {
+        "parentNames": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "maxItems": 10,
+          "description": "Names of parents/caregivers"
+        },
+        "pediatrician": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 100
+            },
+            "phone": {
+              "type": "string",
+              "maxLength": 20
+            },
+            "email": {
+              "type": "string",
+              "format": "email"
+            }
+          },
+          "description": "Pediatrician contact information"
+        },
+        "allergies": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "description": "Known allergies"
+        },
+        "medications": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "description": "Current medications"
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "General notes about the baby"
+        }
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

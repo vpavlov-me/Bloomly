@@ -1,0 +1,17 @@
+{
+  "id": "523e4567-e89b-12d3-a456-426614174004",
+  "kind": "pumping",
+  "start": "2025-10-28T08:00:00Z",
+  "end": "2025-10-28T08:20:00Z",
+  "notes": "Morning pumping session",
+  "metadata": {
+    "volume": "150",
+    "leftVolume": "80",
+    "rightVolume": "70",
+    "duration": "1200"
+  },
+  "createdAt": "2025-10-28T08:00:00Z",
+  "updatedAt": "2025-10-28T08:20:00Z",
+  "isSynced": true,
+  "isDeleted": false
+}

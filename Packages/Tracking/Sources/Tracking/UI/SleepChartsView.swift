@@ -299,7 +299,7 @@ public struct SleepChartsView: View {
 #if DEBUG
 struct SleepChartsView_Previews: PreviewProvider {
     static var previews: some View {
-        let mockRepository = PreviewEventsRepository()
+        let mockRepository = MockEventsRepository()
         let aggregator = ChartDataAggregator(
             eventsRepository: mockRepository,
             calendar: .current
@@ -323,64 +323,5 @@ struct SleepChartsView_Previews: PreviewProvider {
     }
 
     // Mock repository for previews
-    private actor PreviewEventsRepository: EventsRepository {
-        func create(_ dto: EventDTO) async throws -> EventDTO {
-            dto
-        }
-
-        func update(_ dto: EventDTO) async throws -> EventDTO {
-            dto
-        }
-
-        func delete(id: UUID) async throws {}
-
-        func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] {
-            // Generate mock sleep events for the last 7 days
-            let calendar = Calendar.current
-            let now = Date()
-            var mockEvents: [EventDTO] = []
-
-            for dayOffset in 0..<7 {
-                guard let day = calendar.date(byAdding: .day, value: -dayOffset, to: now) else { continue }
-                let startOfDay = calendar.startOfDay(for: day)
-
-                // Night sleep (7-9 hours)
-                let sleepHours = Double.random(in: 7...9)
-                if let sleepStart = calendar.date(byAdding: .hour, value: 22, to: startOfDay),
-                   let sleepEnd = calendar.date(byAdding: .hour, value: Int(sleepHours), to: sleepStart) {
-                    mockEvents.append(EventDTO(
-                        kind: .sleep,
-                        start: sleepStart,
-                        end: sleepEnd
-                    ))
-                }
-
-                // Day naps (1-3 naps)
-                let napCount = Int.random(in: 1...3)
-                for napIndex in 0..<napCount {
-                    let napHour = 10 + napIndex * 3
-                    let napDuration = Double.random(in: 0.5...2.0)
-                    if let napStart = calendar.date(byAdding: .hour, value: napHour, to: startOfDay),
-                       let napEnd = calendar.date(byAdding: .hour, value: Int(napDuration), to: napStart) {
-                        mockEvents.append(EventDTO(
-                            kind: .sleep,
-                            start: napStart,
-                            end: napEnd
-                        ))
-                    }
-                }
-            }
-
-            return mockEvents
-        }
-
-        func lastEvent(for kind: EventKind) async throws -> EventDTO? {
-            nil
-        }
-
-        func stats(for day: Date) async throws -> EventDayStats {
-            EventDayStats(date: day, totalEvents: 0, totalDuration: 0)
-        }
-    }
 }
 #endif

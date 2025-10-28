@@ -1,0 +1,62 @@
+{
+  "version": "1.0.0",
+  "lastSyncTimestamp": "2025-10-28T12:00:00Z",
+  "user": {
+    "id": "CKRecordUser123",
+    "email": "anna@example.com",
+    "createdAt": "2025-08-15T10:00:00Z"
+  },
+  "subscription": {
+    "isPremium": true,
+    "productId": "com.example.babytrack.premium.monthly",
+    "expiresAt": "2025-11-28T12:00:00Z",
+    "isAutoRenewing": true,
+    "originalPurchaseDate": "2025-09-01T14:30:00Z"
+  },
+  "preferences": {
+    "locale": "en",
+    "timeFormat": "24h",
+    "dateFormat": "DD/MM/YYYY",
+    "measurementSystem": "metric",
+    "theme": "system",
+    "notificationsEnabled": true,
+    "reminderSettings": {
+      "feedingReminder": true,
+      "feedingInterval": 3,
+      "sleepReminder": false,
+      "diaperReminder": true
+    },
+    "chartSettings": {
+      "showPercentiles": true,
+      "timeRange": "month"
+    }
+  },
+  "onboarding": {
+    "completed": true,
+    "currentStep": 5,
+    "completedAt": "2025-08-15T11:00:00Z"
+  },
+  "sync": {
+    "enabled": true,
+    "lastSyncToken": "opaque-token-string-abc123",
+    "pendingChanges": 0,
+    "syncStatus": "idle",
+    "lastError": null
+  },
+  "analytics": {
+    "enabled": true,
+    "anonymousId": "923e4567-e89b-12d3-a456-426614174008"
+  },
+  "activeTimers": [
+    {
+      "eventId": "a23e4567-e89b-12d3-a456-426614174009",
+      "kind": "sleep",
+      "startTime": "2025-10-28T14:30:00Z"
+    }
+  ],
+  "metadata": {
+    "installDate": "2025-08-15T10:00:00Z",
+    "lastOpenedAt": "2025-10-28T09:00:00Z",
+    "openCount": 245
+  }
+}

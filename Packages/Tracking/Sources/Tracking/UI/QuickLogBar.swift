@@ -76,7 +76,7 @@ public struct QuickLogBar: View {
 struct QuickLogBar_Previews: PreviewProvider {
     static var previews: some View {
         QuickLogBar(
-            eventsRepository: PreviewEventsRepository(),
+            eventsRepository: MockEventsRepository(),
             analytics: AnalyticsLogger()
         ) { _ in }
             .padding()
@@ -84,13 +84,5 @@ struct QuickLogBar_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
     }
 
-    struct PreviewEventsRepository: EventsRepository {
-        func create(_ dto: EventDTO) async throws -> EventDTO { dto }
-        func update(_ dto: EventDTO) async throws -> EventDTO { dto }
-        func delete(id: UUID) async throws {}
-        func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] { [] }
-        func lastEvent(for kind: EventKind) async throws -> EventDTO? { nil }
-        func stats(for day: Date) async throws -> EventDayStats { .init(date: Date(), totalEvents: 0, totalDuration: 0) }
-    }
 }
 #endif

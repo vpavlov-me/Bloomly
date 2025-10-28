@@ -123,13 +123,15 @@ public final class DashboardViewModel: ObservableObject {
             case .sleep:
                 sleepCount += 1
                 sleepDuration += event.duration
-            case .feed:
+            case .feeding:
                 feedingCount += 1
                 feedingDuration += event.duration
             case .diaper:
                 diaperCount += 1
             case .pumping:
                 pumpingCount += 1
+            case .measurement, .medication, .note:
+                break
             }
         }
 

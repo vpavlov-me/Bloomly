@@ -1,0 +1,266 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://babytrack.app/schemas/app-state.schema.json",
+  "title": "BabyTrack Application State Schema",
+  "description": "Schema for application state, settings, and preferences in BabyTrack",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "App version (semver format)"
+    },
+    "lastSyncTimestamp": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Last successful CloudKit sync timestamp"
+    },
+    "user": {
+      "type": "object",
+      "description": "User account information",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "User identifier (CloudKit record name)"
+        },
+        "email": {
+          "type": ["string", "null"],
+          "format": "email",
+          "description": "User email address"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Account creation timestamp"
+        }
+      }
+    },
+    "subscription": {
+      "type": "object",
+      "description": "Premium subscription state",
+      "properties": {
+        "isPremium": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether user has active premium subscription"
+        },
+        "productId": {
+          "type": ["string", "null"],
+          "description": "StoreKit product ID"
+        },
+        "expiresAt": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "Subscription expiration date"
+        },
+        "isAutoRenewing": {
+          "type": ["boolean", "null"],
+          "description": "Whether subscription auto-renews"
+        },
+        "originalPurchaseDate": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "Original purchase date"
+        }
+      },
+      "required": ["isPremium"]
+    },
+    "preferences": {
+      "type": "object",
+      "description": "User preferences and settings",
+      "properties": {
+        "locale": {
+          "type": "string",
+          "pattern": "^[a-z]{2}(-[A-Z]{2})?$",
+          "default": "en",
+          "description": "User's preferred locale (e.g., 'en', 'ru', 'en-US')"
+        },
+        "timeFormat": {
+          "type": "string",
+          "enum": ["12h", "24h"],
+          "default": "24h",
+          "description": "Time format preference"
+        },
+        "dateFormat": {
+          "type": "string",
+          "enum": ["DD/MM/YYYY", "MM/DD/YYYY", "YYYY-MM-DD"],
+          "default": "DD/MM/YYYY",
+          "description": "Date format preference"
+        },
+        "measurementSystem": {
+          "type": "string",
+          "enum": ["metric", "imperial"],
+          "default": "metric",
+          "description": "Measurement system (metric or imperial)"
+        },
+        "theme": {
+          "type": "string",
+          "enum": ["system", "light", "dark"],
+          "default": "system",
+          "description": "App theme preference"
+        },
+        "notificationsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether notifications are enabled"
+        },
+        "reminderSettings": {
+          "type": "object",
+          "properties": {
+            "feedingReminder": {
+              "type": "boolean",
+              "default": false
+            },
+            "feedingInterval": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 24,
+              "description": "Feeding reminder interval in hours"
+            },
+            "sleepReminder": {
+              "type": "boolean",
+              "default": false
+            },
+            "diaperReminder": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "chartSettings": {
+          "type": "object",
+          "properties": {
+            "showPercentiles": {
+              "type": "boolean",
+              "default": true,
+              "description": "Show WHO percentile curves on growth charts"
+            },
+            "timeRange": {
+              "type": "string",
+              "enum": ["week", "month", "3months", "6months", "year", "all"],
+              "default": "month",
+              "description": "Default time range for charts"
+            }
+          }
+        }
+      }
+    },
+    "onboarding": {
+      "type": "object",
+      "description": "Onboarding state",
+      "properties": {
+        "completed": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether onboarding has been completed"
+        },
+        "currentStep": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Current onboarding step"
+        },
+        "completedAt": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "Timestamp when onboarding was completed"
+        }
+      },
+      "required": ["completed"]
+    },
+    "sync": {
+      "type": "object",
+      "description": "CloudKit sync state",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether CloudKit sync is enabled"
+        },
+        "lastSyncToken": {
+          "type": ["string", "null"],
+          "description": "CloudKit server change token (opaque)"
+        },
+        "pendingChanges": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 0,
+          "description": "Number of pending changes to sync"
+        },
+        "syncStatus": {
+          "type": "string",
+          "enum": ["idle", "syncing", "error"],
+          "default": "idle",
+          "description": "Current sync status"
+        },
+        "lastError": {
+          "type": ["string", "null"],
+          "description": "Last sync error message"
+        }
+      }
+    },
+    "analytics": {
+      "type": "object",
+      "description": "Analytics settings",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether analytics tracking is enabled"
+        },
+        "anonymousId": {
+          "type": ["string", "null"],
+          "format": "uuid",
+          "description": "Anonymous user identifier for analytics"
+        }
+      }
+    },
+    "activeTimers": {
+      "type": "array",
+      "description": "Active event timers (e.g., ongoing sleep)",
+      "items": {
+        "type": "object",
+        "required": ["eventId", "kind", "startTime"],
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "description": "Event UUID"
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["sleep", "feeding", "pumping"],
+            "description": "Event type"
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timer start time"
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional app metadata",
+      "properties": {
+        "installDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "App installation date"
+        },
+        "lastOpenedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last time app was opened"
+        },
+        "openCount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of app opens"
+        }
+      }
+    }
+  },
+  "required": ["version"],
+  "additionalProperties": false
+}

@@ -1,0 +1,236 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://babytrack.app/schemas/event.schema.json",
+  "title": "BabyTrack Event Schema",
+  "description": "Schema for all event types in BabyTrack application (Sleep, Feeding, Diaper, Pumping)",
+  "definitions": {
+    "uuid": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "UUID v4 format"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime string"
+    },
+    "BaseEvent": {
+      "type": "object",
+      "required": ["id", "kind", "start", "createdAt", "updatedAt"],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/uuid",
+          "description": "Unique identifier for the event"
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["sleep", "feeding", "diaper", "pumping", "measurement", "medication", "note"],
+          "description": "Type of event"
+        },
+        "start": {
+          "$ref": "#/definitions/timestamp",
+          "description": "Event start time"
+        },
+        "end": {
+          "oneOf": [
+            { "$ref": "#/definitions/timestamp" },
+            { "type": "null" }
+          ],
+          "description": "Event end time (null for ongoing events)"
+        },
+        "notes": {
+          "type": ["string", "null"],
+          "maxLength": 1000,
+          "description": "User notes about the event"
+        },
+        "metadata": {
+          "type": ["object", "null"],
+          "description": "Event-specific metadata stored as key-value pairs",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "createdAt": {
+          "$ref": "#/definitions/timestamp",
+          "description": "Timestamp when event was created"
+        },
+        "updatedAt": {
+          "$ref": "#/definitions/timestamp",
+          "description": "Timestamp when event was last updated"
+        },
+        "isSynced": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether event has been synced to CloudKit"
+        },
+        "isDeleted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Soft delete flag for sync purposes"
+        }
+      }
+    },
+    "SleepEvent": {
+      "allOf": [
+        { "$ref": "#/definitions/BaseEvent" },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "sleep"
+            },
+            "metadata": {
+              "type": ["object", "null"],
+              "properties": {
+                "quality": {
+                  "type": "string",
+                  "enum": ["poor", "fair", "good", "excellent"],
+                  "description": "Sleep quality rating"
+                },
+                "location": {
+                  "type": "string",
+                  "enum": ["crib", "bed", "stroller", "car"],
+                  "description": "Where baby slept"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "description": "Sleep event with optional quality and location metadata"
+    },
+    "FeedingEvent": {
+      "allOf": [
+        { "$ref": "#/definitions/BaseEvent" },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "feeding"
+            },
+            "metadata": {
+              "type": "object",
+              "properties": {
+                "feedingType": {
+                  "type": "string",
+                  "enum": ["breast", "bottle", "solid"],
+                  "description": "Type of feeding"
+                },
+                "leftDuration": {
+                  "type": "string",
+                  "pattern": "^[0-9]+$",
+                  "description": "Left breast feeding duration in seconds (breast feeding only)"
+                },
+                "rightDuration": {
+                  "type": "string",
+                  "pattern": "^[0-9]+$",
+                  "description": "Right breast feeding duration in seconds (breast feeding only)"
+                },
+                "totalDuration": {
+                  "type": "string",
+                  "pattern": "^[0-9]+$",
+                  "description": "Total breast feeding duration in seconds (breast feeding only)"
+                },
+                "volume": {
+                  "type": "string",
+                  "pattern": "^[0-9]+$",
+                  "description": "Bottle volume in ml (bottle feeding only)"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 500,
+                  "description": "Description of solid food (solid feeding only)"
+                },
+                "amount": {
+                  "type": "string",
+                  "maxLength": 100,
+                  "description": "Amount of solid food (solid feeding only)"
+                }
+              },
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "required": ["metadata"]
+        }
+      ],
+      "description": "Feeding event (breast, bottle, or solid) with type-specific metadata"
+    },
+    "DiaperEvent": {
+      "allOf": [
+        { "$ref": "#/definitions/BaseEvent" },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "diaper"
+            },
+            "metadata": {
+              "type": ["object", "null"],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["wet", "dirty", "both"],
+                  "description": "Type of diaper change"
+                },
+                "consistency": {
+                  "type": "string",
+                  "enum": ["normal", "loose", "hard"],
+                  "description": "Stool consistency (for dirty diapers)"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "description": "Diaper change event with type and optional consistency"
+    },
+    "PumpingEvent": {
+      "allOf": [
+        { "$ref": "#/definitions/BaseEvent" },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "pumping"
+            },
+            "metadata": {
+              "type": ["object", "null"],
+              "properties": {
+                "volume": {
+                  "type": "string",
+                  "pattern": "^[0-9]+$",
+                  "description": "Pumped milk volume in ml"
+                },
+                "leftVolume": {
+                  "type": "string",
+                  "pattern": "^[0-9]+$",
+                  "description": "Left breast volume in ml"
+                },
+                "rightVolume": {
+                  "type": "string",
+                  "pattern": "^[0-9]+$",
+                  "description": "Right breast volume in ml"
+                },
+                "duration": {
+                  "type": "string",
+                  "pattern": "^[0-9]+$",
+                  "description": "Pumping duration in seconds"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "description": "Breast pumping event with volume and duration metadata"
+    }
+  },
+  "oneOf": [
+    { "$ref": "#/definitions/SleepEvent" },
+    { "$ref": "#/definitions/FeedingEvent" },
+    { "$ref": "#/definitions/DiaperEvent" },
+    { "$ref": "#/definitions/PumpingEvent" },
+    { "$ref": "#/definitions/BaseEvent" }
+  ]
+}

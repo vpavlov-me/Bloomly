@@ -1,0 +1,17 @@
+{
+  "id": "223e4567-e89b-12d3-a456-426614174001",
+  "kind": "feeding",
+  "start": "2025-10-28T10:00:00Z",
+  "end": "2025-10-28T10:25:00Z",
+  "notes": "L: 10:00 • R: 5:00",
+  "metadata": {
+    "feedingType": "breast",
+    "leftDuration": "600",
+    "rightDuration": "300",
+    "totalDuration": "900"
+  },
+  "createdAt": "2025-10-28T10:00:00Z",
+  "updatedAt": "2025-10-28T10:25:00Z",
+  "isSynced": true,
+  "isDeleted": false
+}

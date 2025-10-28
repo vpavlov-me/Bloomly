@@ -387,7 +387,7 @@ public struct FeedingChartsView: View {
 #if DEBUG
 struct FeedingChartsView_Previews: PreviewProvider {
     static var previews: some View {
-        let mockRepository = PreviewEventsRepository()
+        let mockRepository = MockEventsRepository()
         let aggregator = ChartDataAggregator(
             eventsRepository: mockRepository,
             calendar: .current
@@ -411,53 +411,5 @@ struct FeedingChartsView_Previews: PreviewProvider {
     }
 
     // Mock repository for previews
-    private actor PreviewEventsRepository: EventsRepository {
-        func create(_ dto: EventDTO) async throws -> EventDTO {
-            dto
-        }
-
-        func update(_ dto: EventDTO) async throws -> EventDTO {
-            dto
-        }
-
-        func delete(id: UUID) async throws {}
-
-        func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] {
-            // Generate mock feeding events for the last 7 days
-            let calendar = Calendar.current
-            let now = Date()
-            var mockEvents: [EventDTO] = []
-
-            for dayOffset in 0..<7 {
-                guard let day = calendar.date(byAdding: .day, value: -dayOffset, to: now) else { continue }
-                let startOfDay = calendar.startOfDay(for: day)
-
-                // 5-8 feedings per day
-                let feedingCount = Int.random(in: 5...8)
-                for feedingIndex in 0..<feedingCount {
-                    let hour = 6 + feedingIndex * 3
-                    let duration = Double.random(in: 10...30) * 60 // 10-30 minutes
-                    if let feedStart = calendar.date(byAdding: .hour, value: hour, to: startOfDay) {
-                        let feedEnd = feedStart.addingTimeInterval(duration)
-                        mockEvents.append(EventDTO(
-                            kind: .feed,
-                            start: feedStart,
-                            end: feedEnd
-                        ))
-                    }
-                }
-            }
-
-            return mockEvents
-        }
-
-        func lastEvent(for kind: EventKind) async throws -> EventDTO? {
-            nil
-        }
-
-        func stats(for day: Date) async throws -> EventDayStats {
-            EventDayStats(date: day, totalEvents: 0, totalDuration: 0)
-        }
-    }
 }
 #endif
