@@ -167,7 +167,7 @@ public enum LanguageOption: String, CaseIterable, Identifiable {
         switch self {
         case .system: return "System"
         case .english: return "English"
-        case .russian: return "Русский"
+        case .russian: return "Russian"
         }
     }
 }

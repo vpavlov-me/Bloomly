@@ -1,18 +1,18 @@
 # GitHub Workflow Guide
 
-Этот документ описывает, как мы работаем с GitHub для BabyTrack: ветки, pull requests, issue, релизы и настройки репозитория.
+This document describes how we use GitHub for BabyTrack: branching, pull requests, issues, releases, and repository configuration.
 
-## 1. Ветки
-- `main` — стабильная ветка. Защищаем в настройках репозитория (Settings → Branches):
+## 1. Branches
+- `main` — stable branch. Protect it in repository settings (Settings → Branches):
   - Require a pull request before merging
   - Require status checks to pass before merging (`CI`)
   - Require linear history
-- `develop` — интеграционная ветка для готовых фич. Также защищаем от прямых пушей.
-- `feature/*`, `bugfix/*` — ответвляемся от `develop`.
-- `hotfix/*` — ответвляемся от `main`, после мёрджа делаем `git checkout develop && git merge main`.
-- `release/<version>` — подготовка релиза. После мёрджа в `main` тегируем `v<version>`.
+- `develop` — integration branch for finished features. Also protect it from direct pushes.
+- `feature/*`, `bugfix/*` — branch from `develop`.
+- `hotfix/*` — branch from `main`, then after merge run `git checkout develop && git merge main`.
+- `release/<version>` — release prep. After merging into `main`, tag `v<version>`.
 
-Создайте базовые ветки локально:
+Create the base branches locally:
 ```bash
 git checkout main
 git pull
@@ -21,40 +21,40 @@ git push -u origin develop
 ```
 
 ## 2. Issue Flow
-1. Используйте шаблоны (`Bug Report`, `Feature Request`).
-2. Назначайте метки:
-   - `bug`, `enhancement`, `documentation`, `ci`, `question`.
-   - Приоритет: `P0`, `P1`, `P2`.
-   - Компонент: `module:sync`, `module:tracking`, `module:design-system`, и т.д.
-3. Добавляйте исполнителя и срок (milestone) при необходимости.
+1. Use the templates (`Bug Report`, `Feature Request`).
+2. Apply labels:
+   - `bug`, `enhancement`, `documentation`, `ci`, `question`
+   - Priority: `P0`, `P1`, `P2`
+   - Component: `module:sync`, `module:tracking`, `module:design-system`, etc.
+3. Add an assignee and milestone when needed.
 
 ## 3. Pull Requests
-- Цель — < 400 строк diff. Делим на независимые PR.
-- Заполняем шаблон, добавляем скриншоты UI.
-- Минимум один апрув.
-- CI должен быть зелёный.
-- После мёрджа не забываем удалить ветку (`Delete branch` в UI).
-- Для крупных изменений добавляем changelog в `Docs/releases/<version>.md`.
+- Target < 400 lines of diff. Split into independent PRs when larger.
+- Fill out the template and attach UI screenshots.
+- Require at least one approval.
+- CI must be green before merging.
+- Delete the branch after merging (`Delete branch` in the UI).
+- For substantial changes update the changelog in `Docs/releases/<version>.md`.
 
 ## 4. CI/CD
 - Workflow: `.github/workflows/ci.yml`.
-- Запускается на `push` в `main` и на каждый `pull_request`.
-- Проверяет сборку iOS, виджетов и watchOS; гоняет тесты.
-- Snapshot-фейлы выгружаются артефактами.
-- Рекомендуется включить Required status check `CI` в branch protection.
+- Runs on `push` to `main` and every `pull_request`.
+- Builds the iOS app, widgets, and watchOS targets; runs tests.
+- Snapshot failures are uploaded as artifacts.
+- Enable the required status check `CI` in branch protection.
 
 ## 5. Dependabot
-Файл `.github/dependabot.yml` обновляет:
+The `.github/dependabot.yml` file updates:
 - Swift Package Manager (`package-ecosystem: swift`)
 - GitHub Actions (`package-ecosystem: github-actions`)
 
-Запуск раз в неделю, создаёт PR с changelog и ссылками. Настройте автоматическое назначение ревьюеров через CODEOWNERS.
+It runs weekly, creates PRs with changelog references, and can auto-assign reviewers via CODEOWNERS.
 
-## 6. Code Owners и ревью
-- Создайте файл `.github/CODEOWNERS` (пример ниже) и обновите списки владельцев.
+## 6. Code Owners & Reviews
+- Maintain `.github/CODEOWNERS` (example below) and keep owner lists current.
 
 ```
-# Модульный пример
+# Modular example
 *           @vpavlov-me @babytrack-core
 App/        @ios-team
 Packages/   @module-leads
@@ -62,41 +62,41 @@ Docs/       @techwriters
 ```
 
 ## 7. Releases
-1. Создаём ветку `release/<version>` от `develop`.
-2. Обновляем версии, changelog, метаданные, скриншоты (при необходимости).
-3. Мёрджим через PR в `main` (release) и обратно в `develop`.
-4. Создаём GitHub Release с бинарными артефактами или TestFlight ссылкой.
-5. Тег `v<version>` ставим на коммит в `main`.
+1. Create `release/<version>` from `develop`.
+2. Update versions, changelog, metadata, screenshots if needed.
+3. Merge via PR into `main` (release) and back into `develop`.
+4. Create a GitHub Release with binary artifacts or a TestFlight link.
+5. Tag `v<version>` on the commit in `main`.
 
 ## 8. Issue Boards
-- Используйте Projects (Beta) для roadmap.
-- Колонки: Backlog → Ready → In Progress → In Review → Done.
-- Автоматизируйте перемещение карт при смене статуса issue/PR.
+- Use Projects (Beta) for the roadmap.
+- Columns: Backlog → Ready → In Progress → In Review → Done.
+- Automate card movement based on issue/PR status changes.
 
-## 9. Безопасность
-- Поддерживаем `CODE_OF_CONDUCT.md` и `SECURITY.md` (см. TODO).
-- Для приватных обращений используйте почту babytrack@vibecoding.com.
-- Регулярно проверяйте Security Advisories и Dependabot alerts.
+## 9. Security
+- Maintain `CODE_OF_CONDUCT.md` and `SECURITY.md`.
+- For private reports use babytrack@vibecoding.com.
+- Monitor Security Advisories and Dependabot alerts.
 
-## 10. Автоматизация GitHub
-- **CI** (`.github/workflows/ci.yml`) — сборка, тесты и SwiftLint.
-- **Actionlint** (`.github/workflows/actionlint.yml`) — проверка GitHub Actions.
-- **PR Labeler** (`.github/workflows/pr-labeler.yml`) — навешивает метки на основе `.github/labeler.yml`.
-- **Auto Assign** (`.github/workflows/auto-assign.yml`) — назначает ревьюеров согласно `.github/auto_assign.yml`.
-- **Release Drafter** (`.github/workflows/release-drafter.yml`) — готовит заметки по мержам в `main`.
-- **Stale Issues** (`.github/workflows/stale.yml`) — пингует и закрывает неактивные issue/PR.
-- **Dependabot** (`.github/dependabot.yml`) — обновляет зависимости SwiftPM/GitHub Actions.
-- **Labels Sync** (`.github/workflows/labels-sync.yml`) — синхронизирует метки из `.github/labels.yml`.
-- **Dependabot Auto Merge** (`.github/workflows/dependabot-auto-merge.yml`) — автоматически мержит patch-обновления Dependabot после зелёных чеков.
+## 10. GitHub Automation
+- **CI** (`.github/workflows/ci.yml`) — build, tests, SwiftLint.
+- **Actionlint** (`.github/workflows/actionlint.yml`) — validates GitHub Actions.
+- **PR Labeler** (`.github/workflows/pr-labeler.yml`) — applies labels based on `.github/labeler.yml`.
+- **Auto Assign** (`.github/workflows/auto-assign.yml`) — assigns reviewers per `.github/auto_assign.yml`.
+- **Release Drafter** (`.github/workflows/release-drafter.yml`) — compiles notes from merges into `main`.
+- **Stale Issues** (`.github/workflows/stale.yml`) — pings and closes inactive issues/PRs.
+- **Dependabot** (`.github/dependabot.yml`) — updates SwiftPM and GitHub Actions dependencies.
+- **Labels Sync** (`.github/workflows/labels-sync.yml`) — syncs labels from `.github/labels.yml`.
+- **Dependabot Auto Merge** (`.github/workflows/dependabot-auto-merge.yml`) — merges Dependabot patch updates after green checks.
 
-## 11. Checklist при настройке репозитория
-- [ ] Создана ветка `develop`
-- [ ] Защищены ветки `main`, `develop`
-- [ ] Включены требуемые status checks
-- [ ] Добавлены Issue/PR templates
-- [ ] Включён Dependabot
-- [ ] Настроен CODEOWNERS
-- [ ] Подключены Projects и Labels
-- [ ] Описан workflow в `CONTRIBUTING.md`
+## 11. Repository Setup Checklist
+- [ ] Create the `develop` branch
+- [ ] Protect the `main` and `develop` branches
+- [ ] Enable required status checks
+- [ ] Add Issue/PR templates
+- [ ] Enable Dependabot
+- [ ] Configure CODEOWNERS
+- [ ] Set up Projects and Labels
+- [ ] Document the workflow in `CONTRIBUTING.md`
 
-Этот файл обновляем по мере эволюции процессов команды.
+Update this document as the team’s processes evolve.

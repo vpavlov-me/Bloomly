@@ -43,13 +43,17 @@ public final class DependencyContainer: ObservableObject {
         self.eventsRepository = eventsRepository ?? CoreDataEventsRepository(context: viewContext)
         self.measurementsRepository = measurementsRepository ?? CoreDataMeasurementsRepository(context: viewContext)
         self.storeClient = storeClient ?? StoreClient.live()
-        self.syncService = syncService ?? CloudKitSyncService()
+        self.syncService = syncService ?? CloudKitSyncService(persistentContainer: persistence.container)
         self.analytics = analytics ?? AnalyticsLogger()
         self.premiumState = PremiumState()
         self.notificationManager = notificationManager ?? NotificationManager()
         self.chartAggregator = ChartDataAggregator(eventsRepository: self.eventsRepository)
 
         setupSyncBindings()
+
+        #if os(iOS)
+        Task { await self.syncService.registerBackgroundSync() }
+        #endif
     }
 
     private func setupSyncBindings() {
@@ -145,7 +149,11 @@ private struct AnalyticsKey: EnvironmentKey {
 }
 
 private struct SyncServiceKey: EnvironmentKey {
-    static let defaultValue: any SyncService = CloudKitSyncService()
+    static let defaultValue: any SyncService = {
+        MainActor.assumeIsolated {
+            CloudKitSyncService(persistentContainer: PersistenceController.shared.container)
+        }
+    }()
 }
 
 private struct NotificationManagerKey: EnvironmentKey {

@@ -4,17 +4,17 @@
 
 | Version | Supported |
 | ------- | --------- |
-| main    | ✅        |
-| develop | ✅        |
-| release/<version> | ✅ (до выхода следующего релиза) |
+| main | ✅ |
+| develop | ✅ |
+| release/<version> | ✅ (until the next release ships) |
 
 ## Reporting a Vulnerability
 
-Если обнаружили уязвимость:
+If you discover a vulnerability:
 
-1. Не создавайте публичный issue.
-2. Отправьте письмо на babytrack@vibecoding.com с подробным описанием.
-3. Укажите шаги воспроизведения, ожидаемое поведение и оценку влияния.
-4. При необходимости шифруйте сообщение (PGP ключ — TODO).
+1. Do **not** open a public issue.
+2. Email babytrack@vibecoding.com with a detailed report.
+3. Include reproduction steps, expected vs. actual behavior, and impact assessment.
+4. Encrypt the message if needed (PGP key — TODO).
 
-Мы подтвердим получение в течение 2 рабочих дней и сообщим о дальнейших шагах. После фикса мы согласуем дату раскрытия с репортёром.
+We will acknowledge your report within two business days and share next steps. Once the fix is ready, we will coordinate a disclosure date with the reporter.
