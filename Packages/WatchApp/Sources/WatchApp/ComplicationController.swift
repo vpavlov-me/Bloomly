@@ -6,6 +6,12 @@ import Tracking
 
 /// Provides complication data for Apple Watch faces
 public final class ComplicationController: NSObject, CLKComplicationDataSource {
+    private let dataProvider: ComplicationDataProvider
+
+    public override init() {
+        self.dataProvider = ComplicationDataProvider()
+        super.init()
+    }
 
     // MARK: - Timeline Configuration
 
@@ -62,7 +68,17 @@ public final class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Private Helpers
 
     private func makeTimelineEntry(for complication: CLKComplication, date: Date) -> CLKComplicationTimelineEntry? {
-        guard let template = makeTemplate(for: complication, lastFeedAgo: "1h", eventsCount: 5, sleepHours: "4h") else {
+        // Get real data from data provider
+        let lastFeedAgo = dataProvider.getLastFeedTimeAgo()
+        let eventsCount = dataProvider.getTodayEventsCount()
+        let sleepHours = dataProvider.getTodaySleepTotal()
+
+        guard let template = makeTemplate(
+            for: complication,
+            lastFeedAgo: lastFeedAgo,
+            eventsCount: eventsCount,
+            sleepHours: sleepHours
+        ) else {
             return nil
         }
         return CLKComplicationTimelineEntry(date: date, complicationTemplate: template)
