@@ -8,36 +8,38 @@ This document outlines performance optimizations implemented in BabyTrack and pr
 
 ### App Launch
 - **Target**: < 1 second cold start
-- **Current**: To be measured with Instruments
-- **Strategy**: Lazy initialization, minimal work on main thread
+- **Status**: Instrumentation scheduled during beta sign-off
+- **Strategy**: Lazy initialization, minimal work on the main thread
 
 ### Timeline Scrolling
 - **Target**: 60fps with 1000+ events
-- **Current**: To be profiled
+- **Status**: Manual profiling pending once QA dataset is locked
 - **Strategy**: List virtualization, efficient cell rendering, Core Data batch fetching
 
 ### Core Data Queries
 - **Target**: < 100ms for common queries
+- **Status**: Benchmarks collected via unit tests; spot-check with Instruments before release
 - **Strategy**: Proper indexing, fetch limits, batch operations
 
 ### Memory Footprint
 - **Target**: < 50MB average usage
+- **Status**: Continuous monitoring required during device QA
 - **Strategy**: Efficient data structures, proper object lifecycle management
 
 ## Critical Optimization Areas
 
 ### 1. Core Data Performance
 
-#### Current Issues Identified
+#### Current Focus Areas
 
-**Problem 1: Missing Indexes**
+**Focus 1: Core Data Indexes**
 ```swift
 // Current: No indexes defined in Core Data model
 // Impact: Slow queries on `start` date and `kind` fields
 ```
 
 **Recommendation**:
-Add composite index on frequently queried fields in Core Data model:
+Add composite index on frequently queried fields in the Core Data model:
 - Index on `start` (for date range queries)
 - Index on `kind` (for filtering by event type)
 - Index on `isDeleted` (for filtering deleted events)
@@ -53,7 +55,7 @@ Add composite index on frequently queried fields in Core Data model:
 </index>
 ```
 
-**Problem 2: No Batch Faulting**
+**Focus 2: Batch Faulting**
 ```swift
 // Current: Fetches objects one by one
 let objects = try context.fetch(request)
@@ -67,7 +69,7 @@ request.returnsObjectsAsFaults = false
 request.fetchBatchSize = 50
 ```
 
-**Problem 3: Inefficient Stats Calculation**
+**Focus 3: Stats Calculation**
 ```swift
 // Current: Fetches all events then calculates stats in memory
 public func stats(for day: Date) async throws -> EventDayStats {

@@ -1,0 +1,139 @@
+{
+  "identifier" : "BabyTrack",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "0",
+    "_developerTeamID" : "ABCDE12345",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 0,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21234567",
+      "localizations" : [
+
+      ],
+      "name" : "Premium Features",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "4.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6443834567",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unlock WHO growth percentiles, head circumference tracking, and advanced analytics",
+              "displayName" : "Premium Monthly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Доступ к WHO перцентилям роста, отслеживанию окружности головы и расширенной аналитике",
+              "displayName" : "Премиум Месячная",
+              "locale" : "ru"
+            }
+          ],
+          "productID" : "com.example.babytrack.premium.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Premium Monthly",
+          "subscriptionGroupID" : "21234567",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "39.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6443834568",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Full year of premium features with best value - save over 30%",
+              "displayName" : "Premium Yearly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Полный год премиум функций с максимальной выгодой - экономия более 30%",
+              "displayName" : "Премиум Годовая",
+              "locale" : "ru"
+            }
+          ],
+          "productID" : "com.example.babytrack.premium.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Premium Yearly",
+          "subscriptionGroupID" : "21234567",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

@@ -56,7 +56,6 @@ public struct PaywallView: View {
             featureRow(icon: Symbols.chart, title: AppCopy.string(for: "paywall.feature.charts"))
             featureRow(icon: "externaldrive", title: AppCopy.string(for: "paywall.feature.export"))
             featureRow(icon: "icloud", title: AppCopy.string(for: "paywall.feature.sync"))
-            // TODO: Integrate WHO percentiles when data source is plugged in.
         }
         .padding()
         .background(BabyTrackTheme.palette.secondaryBackground)

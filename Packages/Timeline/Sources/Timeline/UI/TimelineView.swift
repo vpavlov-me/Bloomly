@@ -13,6 +13,13 @@ public struct TimelineView: View {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
+    private var toastBinding: Binding<ToastMessage?> {
+        Binding(
+            get: { viewModel.toast },
+            set: { viewModel.toast = $0 }
+        )
+    }
+
     public var body: some View {
         NavigationStack {
             Group {
@@ -49,6 +56,7 @@ public struct TimelineView: View {
                 viewModel.applyFilters()
             }
         }
+        .toast(toastBinding)
     }
 
     private var listContent: some View {
@@ -146,6 +154,7 @@ public final class TimelineViewModel: ObservableObject {
     @Published public var searchText: String = ""
     @Published public var filter: Filter = .all
     @Published public private(set) var isLoading = false
+    @Published public var toast: ToastMessage?
 
     public let eventsRepository: any EventsRepository
     private let measurementsRepository: any MeasurementsRepository
@@ -188,7 +197,7 @@ public final class TimelineViewModel: ObservableObject {
             cache = events.map(FeedItem.event) + measurements.map(FeedItem.measurement)
             applyFilters()
         } catch {
-            // TODO: surface error to UI if needed
+            handle(error, messageKey: "errors.generic", domain: "timeline.refresh")
         }
     }
 
@@ -252,7 +261,8 @@ public final class TimelineViewModel: ObservableObject {
             cache.removeAll { $0.id == item.id }
             applyFilters()
         } catch {
-            // TODO: handle error
+            lastDeleted = nil
+            handle(error, messageKey: "errors.generic", domain: "timeline.delete")
         }
     }
 
@@ -270,7 +280,7 @@ public final class TimelineViewModel: ObservableObject {
             }
             applyFilters()
         } catch {
-            // TODO: handle error
+            handle(error, messageKey: "errors.generic", domain: "timeline.undo")
         }
     }
 
@@ -308,5 +318,11 @@ public final class TimelineViewModel: ObservableObject {
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         return formatter.string(from: date)
+    }
+
+    @MainActor
+    private func handle(_ error: Error, messageKey: String, domain: String) {
+        analytics.trackError(error, domain: domain)
+        toast = ToastMessage(type: .error, message: AppCopy.string(for: messageKey))
     }
 }

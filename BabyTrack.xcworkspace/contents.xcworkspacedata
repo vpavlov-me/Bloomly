@@ -34,6 +34,9 @@
       <FileRef
          location = "group:snapshot-testing.md">
       </FileRef>
+      <FileRef
+         location = "group:watch-app-guide.md">
+      </FileRef>
       <Group
          location = "group:QA"
          name = "QA">
