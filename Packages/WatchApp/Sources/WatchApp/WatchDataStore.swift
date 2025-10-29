@@ -6,11 +6,27 @@ import Tracking
 
 @MainActor
 public final class WatchDataStore: ObservableObject {
+    public static let shared = WatchDataStore()
+
     public let eventsRepository: any EventsRepository
     public let measurementsRepository: any MeasurementsRepository
     public let analytics: any Analytics
 
     @Published public private(set) var recentEvents: [EventDTO] = []
+
+    // MARK: - Computed Properties for Complications
+
+    public var lastFeed: EventDTO? {
+        recentEvents.first { $0.kind == .feeding }
+    }
+
+    public var lastSleep: EventDTO? {
+        recentEvents.first { $0.kind == .sleep }
+    }
+
+    public var lastDiaper: EventDTO? {
+        recentEvents.first { $0.kind == .diaper }
+    }
 
     #if os(watchOS)
     private let connectivity = WatchConnectivityService.shared

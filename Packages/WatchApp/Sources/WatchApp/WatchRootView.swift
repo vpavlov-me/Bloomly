@@ -10,12 +10,16 @@ public struct WatchRootView: View {
 
     public var body: some View {
         TabView(selection: $selection) {
-            QuickLogView()
-                .tag(0)
-                .tabItem { Label(AppCopy.WatchApp.tabLog, systemImage: Symbols.add) }
+            NavigationStack {
+                QuickActionsView()
+            }
+            .tag(0)
+            .tabItem { Label(AppCopy.WatchApp.tabLog, systemImage: Symbols.add) }
+
             RecentEventsView()
                 .tag(1)
                 .tabItem { Label(AppCopy.WatchApp.tabHistory, systemImage: Symbols.timeline) }
+
             AddMeasurementView()
                 .tag(2)
                 .tabItem { Label(AppCopy.WatchApp.tabMeasure, systemImage: Symbols.measurement) }

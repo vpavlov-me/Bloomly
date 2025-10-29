@@ -47,6 +47,13 @@ public enum AnalyticsEventType: String, Sendable {
     case onboardingStarted = "onboarding.started"
     case onboardingCompleted = "onboarding.completed"
     case onboardingSkipped = "onboarding.skipped"
+
+    // MARK: - Apple Watch
+    case watchAppOpened = "watch.app.opened"
+    case watchEventLogged = "watch.event.logged"
+    case watchQuickActionUsed = "watch.quickAction.used"
+    case watchComplicationTapped = "watch.complication.tapped"
+    case watchSyncCompleted = "watch.sync.completed"
 }
 
 public extension AnalyticsEvent {
