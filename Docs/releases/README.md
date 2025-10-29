@@ -1,9 +1,9 @@
 # Release Notes
 
-Храните здесь релизные заметки в формате `Docs/releases/<version>.md`. Рекомендуемая структура:
+Store release notes in `Docs/releases/<version>.md`. Recommended structure:
 
 ```markdown
-# BabyTrack <version> — <дата>
+# BabyTrack <version> — <date>
 
 ## 🚀 Highlights
 - ...
@@ -15,7 +15,7 @@
 - ...
 
 ## 📦 Migration
-- Шаги по миграции данных, если требуется.
+- Data migration steps, if required.
 ```
 
-В GitHub Release добавляйте ссылку на соответствующий файл.
+Add a link to the corresponding file when publishing the GitHub Release.

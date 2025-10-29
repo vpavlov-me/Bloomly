@@ -1,28 +1,28 @@
-# Руководство для контрибьюторов
+# Contributor Guide
 
-Спасибо, что хотите улучшить BabyTrack! Этот документ описывает, как мы работаем с репозиторием: от заведения issue до релизов и горящего продакшена.
+Thanks for helping improve BabyTrack! This guide documents how we work with the repository—from filing issues to shipping releases and handling urgent fixes.
 
-## 📋 Предварительные требования
-- macOS 14+ и Xcode 16 (см. `README.md` для деталей).
-- Установленные инструменты: `tuist`, `swiftlint`, `xcpretty`.
-- Аккаунт GitHub с доступом к репозиторию и правом создавать ветки.
-- Настроенный SSH-ключ или HTTPS с токеном.
+## 📋 Prerequisites
+- macOS 14+ and Xcode 16 (see `README.md` for details).
+- Installed tooling: `tuist`, `swiftlint`, `xcpretty`.
+- GitHub account with permission to create branches in this repository.
+- Configured SSH key or HTTPS with a personal access token.
 
-## 🌿 Стратегия ветвления
-- `main` — стабильные релизные сборки. Защищённая ветка, пуши только через pull request.
-- `develop` — интеграционная ветка, сюда вливаются проверенные фичи перед релизом.
-- `feature/<scope>-<short-name>` — функциональные изменения. Пример: `feature/tracking-offline-mode`.
-- `bugfix/<issue-id>-<short-name>` — исправления найденных багов (из `develop`).
-- `hotfix/<issue-id>-<short-name>` — срочные исправления production (из `main`, мерж обратно в `develop` и `main`).
-- `release/<version>` — подготовка релиза, багфиксы и метаданные (из `develop`, мерж в `main` и `develop`).
+## 🌿 Branching Strategy
+- `main` — stable release-ready builds. Protected branch; merges happen through pull requests only.
+- `develop` — integration branch where vetted features land before a release.
+- `feature/<scope>-<short-name>` — feature work. Example: `feature/tracking-offline-mode`.
+- `bugfix/<issue-id>-<short-name>` — fixes for issues discovered in `develop`.
+- `hotfix/<issue-id>-<short-name>` — urgent production fixes (branched from `main`, merged back into both `main` and `develop`).
+- `release/<version>` — release preparation, last-mile bug fixes, and metadata (branched from `develop`, merged into `main` and `develop`).
 
-## 🔁 Рабочий процесс
-1. **Создайте issue** (или возьмите существующий), согласуйте объём, отметьте метки.
-2. **Ответвитесь** от целевой ветки (`develop` или `main` для hotfix) и создайте новую ветку по правилам выше.
-3. **Разработка**:
-   - Соблюдайте стиль кода, запускайте `swiftlint`.
-   - Поддерживайте покрытие тестами; добавляйте snapshot тесты при изменении UI.
-4. **Тесты**:
+## 🔁 Workflow
+1. **Create an issue** (or pick an existing one), agree on scope, add relevant labels.
+2. **Branch** off the target (`develop`, or `main` for hotfixes) following the naming conventions above.
+3. **Implement:**
+   - Follow the existing code style, run `swiftlint`.
+   - Maintain test coverage; add snapshot tests when you change UI.
+4. **Test:**
    ```bash
    tuist generate --path .
    xcodebuild -workspace BabyTrack.xcworkspace \
@@ -31,55 +31,55 @@
      -skipPackagePluginValidation \
      test
    ```
-5. **PR**:
-   - Заполните шаблон pull request.
-   - Привяжите issue (например, `Closes #123`).
-   - Дождитесь зелёного CI.
-6. **Код-ревью**:
-   - Минимум один апрув от владельца модуля (см. CODEOWNERS, когда появится).
-   - Правки — через дополнительные коммиты, не сквошим до финального мёрджа (чтобы было видно историю).
+5. **Open a PR:**
+   - Fill in the pull request template.
+   - Link the issue (e.g., `Closes #123`).
+   - Wait for a green CI run.
+6. **Code review:**
+   - At least one approval from the module owner (see CODEOWNERS once available).
+   - Apply changes via additional commits; avoid squashing until the final merge so the history remains clear.
 
-## 🤖 Автоматизация
-- **SwiftLint**: отдельный job в CI (`.github/workflows/ci.yml`). PR без чистого линта не пройдут.
-- **Actionlint**: проверяет YAML GitHub Actions на синтаксис.
-- **PR Labeler**: назначает метки по путям (см. `.github/labeler.yml`); дополняйте при появлении новых модулей.
-- **Auto Assign**: автоматически назначает ревьюеров и исполнителей (см. `.github/auto_assign.yml`).
-- **Release Drafter**: соберёт черновик релиза из мержей в `main`.
-- **Stale issues**: напоминает о задачах/PR без активности и закрывает спустя неделю.
-- **Labels Sync**: автоматически применяет конфигурацию меток из `.github/labels.yml`.
-- **Dependabot Auto Merge**: мержит patch-обновления зависимостей после прохождения проверок.
+## 🤖 Automation
+- **SwiftLint**: enforced via a dedicated CI job (`.github/workflows/ci.yml`). PRs fail if linting is not clean.
+- **Actionlint**: validates GitHub Actions YAML syntax.
+- **PR Labeler**: applies labels based on file paths (see `.github/labeler.yml`); update as new modules appear.
+- **Auto Assign**: assigns reviewers and assignees automatically (see `.github/auto_assign.yml`).
+- **Release Drafter**: builds release drafts from merges into `main`.
+- **Stale Issues**: reminds about inactive issues/PRs and closes them after a week.
+- **Labels Sync**: keeps GitHub labels aligned with `.github/labels.yml`.
+- **Dependabot Auto Merge**: merges dependency patch updates after successful checks.
 
-## 📝 Стиль коммитов
-- Используем `Conventional Commits`:
-  - `feat: добавить поддержку WHO перцентилей`
-  - `fix(tracking): починить креш при пустом note`
-  - `chore(ci): обновить образ xcode`
-- Коммиты должны быть атомарными; не смешивайте логически независимые изменения.
+## 📝 Commit Style
+- Follow **Conventional Commits**:
+  - `feat: add WHO percentile support`
+  - `fix(tracking): prevent crash when note is empty`
+  - `chore(ci): update xcode image`
+- Keep commits atomic; do not mix unrelated changes in one commit.
 
-## 🔐 Защита веток и CI
-- Ветка `main` защищена: требуется успешный прогон `CI` и минимум один апрув.
-- `develop` защищена от прямых пушей; разрешены squash/merge и rebase/merge через PR.
-- CI (`.github/workflows/ci.yml`) должен быть зелёным перед мёрджем.
+## 🔐 Branch Protection & CI
+- `main` is protected: requires a successful `CI` run and at least one approval.
+- `develop` disallows direct pushes; squash/merge and rebase/merge are permitted via PR.
+- CI (`.github/workflows/ci.yml`) must pass before merging.
 
-## 🚀 Релизы
-1. Создаём `release/<version>` из `develop`.
-2. Обновляем версию в `Project.swift`, changelog (см. ниже).
-3. Гоняем регрессионные тесты, проверяем инструменты локально.
-4. После апрува мержим в `main` (release) и `develop` (чтобы не потерять фиксы).
-5. Создаём GitHub Release с changelog и билдом.
+## 🚀 Releases
+1. Create `release/<version>` from `develop`.
+2. Update the version in `Project.swift` and refresh the changelog (see below).
+3. Run regression tests and verify tooling locally.
+4. After approvals, merge into `main` (release) and back into `develop` (to retain fixes).
+5. Draft a GitHub Release with the changelog and attach the build.
 
-## 🧯 Hotfix
-1. От `main` создаём `hotfix/<issue-id>-<short-name>`.
-2. Фиксим проблему, пишем тест.
-3. Мержим через PR в `main`, затем cherry-pick/merge в `develop`.
+## 🧯 Hotfixes
+1. Branch `hotfix/<issue-id>-<short-name>` from `main`.
+2. Fix the problem and add a covering test.
+3. Merge via PR into `main`, then cherry-pick or merge into `develop`.
 
-## 🗂️ Документация и changelog
-- Технические заметки: `Docs/`.
-- Релизные заметки: `Docs/releases/<version>.md`.
-- Если добавляете новую фичу, обновите `Docs/` и README при необходимости.
+## 🗂️ Documentation & Changelog
+- Technical notes live in `Docs/`.
+- Release notes belong in `Docs/releases/<version>.md`.
+- When adding a feature, update `Docs/` and the README if relevant.
 
-## 🤝 Кодекс поведения
-Мы придерживаемся [Contributor Covenant](CODE_OF_CONDUCT.md). Нарушения — модераторам проекта.
+## 🤝 Code of Conduct
+We follow the [Contributor Covenant](CODE_OF_CONDUCT.md). Contact the project moderators when you observe violations.
 
-## ❓ Вопросы
-Создайте discussion в GitHub или обратитесь в командный чат. Спасибо за ваш вклад!
+## ❓ Questions
+Open a GitHub discussion or reach out in the team chat. Thanks for contributing!

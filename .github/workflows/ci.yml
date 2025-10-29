@@ -65,6 +65,8 @@ jobs:
             -destination 'platform=iOS Simulator,name=iPhone 15' \
             -parallelizeTargets \
             -skipPackagePluginValidation \
+            -enableCodeCoverage YES \
+            -resultBundlePath ./TestResults.xcresult \
             test | xcpretty
 
       - name: Build Widgets Extension
@@ -82,6 +84,24 @@ jobs:
             -destination 'platform=watchOS Simulator,name=Apple Watch Series 9 (45mm)' \
             -skipPackagePluginValidation \
             build | xcpretty
+
+      - name: Generate Coverage Report
+        if: success()
+        run: |
+          xcrun xccov view --report --json ./TestResults.xcresult > coverage.json
+          echo "## Test Coverage Report" >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          xcrun xccov view --report ./TestResults.xcresult >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestResults
+          path: |
+            ./TestResults.xcresult
+            coverage.json
 
       - name: Upload Snapshot Failures
         if: failure()

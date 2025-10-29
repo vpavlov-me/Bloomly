@@ -29,8 +29,8 @@
 +---------------+
 ```
 
-- **AppEnvironment** прокидывает зависимости (репозитории, сервисы) в SwiftUI и watchOS слоях.
-- **Tracking/Measurements** хранят протоколы репозиториев, Core Data реализации скрыты во `Internal`.
-- **Sync** инкапсулирует CloudKit маппинг, отслеживание изменений и будущие конфликты.
-- **Widgets** и **WatchApp** получают доступ к общему стору через App Group контейнер.
-- **DesignSystem/Content** обеспечивают единый внешний вид и локализацию.
+- **AppEnvironment** injects repositories and services into SwiftUI and watchOS layers.
+- **Tracking/Measurements** expose repository protocols while Core Data implementations remain inside `Internal`.
+- **Sync** encapsulates CloudKit mapping, change-token storage, and conflict resolution.
+- **Widgets** and **WatchApp** use the shared store through the App Group container.
+- **DesignSystem/Content** deliver consistent visuals and localization resources.
