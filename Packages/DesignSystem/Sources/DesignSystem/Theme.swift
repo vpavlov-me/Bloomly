@@ -5,6 +5,7 @@ public enum BabyTrackTheme {
     public static let typography = Typography()
     public static let spacing = Spacing()
     public static let radii = Radii()
+    public static let animation = Animation()
 
     /// Call at app launch to configure global UIKit / AppKit appearance.
     public static func configureAppearance() {
@@ -21,6 +22,7 @@ public enum BabyTrackTheme {
 
 public extension BabyTrackTheme {
     struct Palette {
+        // Base colors
         public let background = Color(.systemBackground)
         public let secondaryBackground = Color(.secondarySystemBackground)
         public let tertiaryBackground = Color(.tertiarySystemBackground)
@@ -34,6 +36,22 @@ public extension BabyTrackTheme {
         public let outline = Color.dynamic(light: UIColor.systemGray4, dark: UIColor.systemGray5)
         public let mutedText = Color(.secondaryLabel)
         public let primaryText = Color(.label)
+
+        // Event-specific colors
+        /// Soft blue for sleep events
+        public let sleep = Color(hex: "#667BC6")
+        /// Warm pink for feeding events
+        public let feeding = Color(hex: "#DA7297")
+        /// Soft yellow for diaper events
+        public let diaper = Color(hex: "#FFDC7F")
+        /// Light blue for pumping events
+        public let pumping = Color(hex: "#7BA8E5")
+        /// Purple for measurement events
+        public let measurement = Color(hex: "#9B85C9")
+        /// Green for medication events
+        public let medication = Color(hex: "#82C997")
+        /// Gray for note events
+        public let note = Color(hex: "#95A5A6")
 
         #if canImport(UIKit)
         fileprivate let accentLight = UIColor(red: 0.99, green: 0.52, blue: 0.57, alpha: 1)
@@ -90,9 +108,42 @@ public extension BabyTrackTheme {
         public let soft: CGFloat = 12
         public let card: CGFloat = 18
     }
+
+    struct Animation {
+        /// Fast animation for micro-interactions (0.2s)
+        public let fast: SwiftUI.Animation = .easeInOut(duration: 0.2)
+        /// Standard animation for most UI changes (0.3s)
+        public let standard: SwiftUI.Animation = .easeInOut(duration: 0.3)
+        /// Slow animation for larger transitions (0.4s)
+        public let slow: SwiftUI.Animation = .easeInOut(duration: 0.4)
+        /// Spring animation for bouncy effects
+        public let spring: SwiftUI.Animation = .spring(response: 0.4, dampingFraction: 0.7)
+        /// Smooth animation for smooth transitions
+        public let smooth: SwiftUI.Animation = .smooth(duration: 0.3)
+    }
 }
 
 private extension Color {
+    /// Initialize Color from hex string (e.g., "#667BC6")
+    init(hex: String) {
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var int: UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&int)
+        let r, g, b: UInt64
+        switch hex.count {
+        case 6: // RGB (24-bit)
+            (r, g, b) = ((int >> 16) & 0xFF, (int >> 8) & 0xFF, int & 0xFF)
+        default:
+            (r, g, b) = (0, 0, 0)
+        }
+        self.init(
+            .sRGB,
+            red: Double(r) / 255,
+            green: Double(g) / 255,
+            blue: Double(b) / 255
+        )
+    }
+
     #if canImport(UIKit)
     static func dynamic(light: UIColor, dark: UIColor) -> Color {
         Color(UIColor { trait in
@@ -112,6 +163,7 @@ private extension Color {
 struct BabyTrackTheme_Previews: PreviewProvider {
     static var previews: some View {
         Group {
+            // Typography preview
             VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.md) {
                 BabyTrackTheme.typography.largeTitle.text("Large Title")
                 BabyTrackTheme.typography.title.text("Title")
@@ -121,18 +173,57 @@ struct BabyTrackTheme_Previews: PreviewProvider {
             .padding(BabyTrackTheme.spacing.lg)
             .background(BabyTrackTheme.palette.background)
 
+            // Base colors preview
             VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.md) {
                 RoundedRectangle(cornerRadius: BabyTrackTheme.radii.card)
                     .fill(BabyTrackTheme.palette.accent)
-                    .frame(height: 80)
+                    .frame(height: 60)
+                    .overlay(Text("Accent").foregroundStyle(.white).font(.headline))
                 RoundedRectangle(cornerRadius: BabyTrackTheme.radii.card)
                     .fill(BabyTrackTheme.palette.elevatedSurface)
-                    .frame(height: 80)
+                    .frame(height: 60)
+                    .overlay(Text("Elevated").foregroundStyle(BabyTrackTheme.palette.primaryText).font(.headline))
             }
             .padding(BabyTrackTheme.spacing.lg)
             .background(BabyTrackTheme.palette.secondaryBackground)
+
+            // Event colors preview
+            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.sm) {
+                Text("Event Colors").font(.headline)
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: BabyTrackTheme.spacing.sm) {
+                    EventColorCard(title: "Sleep", color: BabyTrackTheme.palette.sleep, icon: "moon.fill")
+                    EventColorCard(title: "Feeding", color: BabyTrackTheme.palette.feeding, icon: "bottle.fill")
+                    EventColorCard(title: "Diaper", color: BabyTrackTheme.palette.diaper, icon: "sparkles")
+                    EventColorCard(title: "Pumping", color: BabyTrackTheme.palette.pumping, icon: "drop.fill")
+                    EventColorCard(title: "Measurement", color: BabyTrackTheme.palette.measurement, icon: "ruler")
+                    EventColorCard(title: "Medication", color: BabyTrackTheme.palette.medication, icon: "pills")
+                }
+            }
+            .padding(BabyTrackTheme.spacing.lg)
+            .background(BabyTrackTheme.palette.background)
         }
-        .previewLayout(.fixed(width: 320, height: 240))
+        .previewLayout(.sizeThatFits)
+    }
+
+    private struct EventColorCard: View {
+        let title: String
+        let color: Color
+        let icon: String
+
+        var body: some View {
+            VStack(spacing: BabyTrackTheme.spacing.xs) {
+                Image(systemName: icon)
+                    .font(.title2)
+                Text(title)
+                    .font(.caption)
+                    .fontWeight(.medium)
+            }
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity)
+            .padding(BabyTrackTheme.spacing.md)
+            .background(color)
+            .clipShape(RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft))
+        }
     }
 }
 #endif
