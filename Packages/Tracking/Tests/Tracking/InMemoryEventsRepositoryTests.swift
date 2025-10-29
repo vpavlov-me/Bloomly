@@ -4,7 +4,7 @@ import XCTest
 final class InMemoryEventsRepositoryTests: XCTestCase {
     func testEventDraftProducesDTO() {
         let start = Date()
-        let draft = EventDraft(kind: .feed, start: start, notes: "120ml")
+        let draft = EventDraft(kind: .feeding, start: start, notes: "120ml")
 
         let dto = draft.makeDTO()
 

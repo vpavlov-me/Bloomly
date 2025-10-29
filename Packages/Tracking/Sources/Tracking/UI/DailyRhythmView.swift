@@ -264,12 +264,14 @@ public struct DailyRhythmView: View {
         switch kind {
         case .sleep:
             return Color.blue.opacity(0.8)
-        case .feed:
+        case .feeding:
             return Color.pink.opacity(0.8)
         case .diaper:
             return Color.yellow.opacity(0.8)
         case .pumping:
             return Color.purple.opacity(0.8)
+        case .measurement, .medication, .note:
+            return Color.gray.opacity(0.8)
         }
     }
 
@@ -444,7 +446,7 @@ struct DailyRhythmView_Previews: PreviewProvider {
             ),
             // Morning feed
             EventDTO(
-                kind: .feed,
+                kind: .feeding,
                 start: calendar.date(byAdding: .hour, value: 8, to: today)!,
                 end: calendar.date(byAdding: .minute, value: 30, to: calendar.date(byAdding: .hour, value: 8, to: today)!)!
             ),
@@ -462,7 +464,7 @@ struct DailyRhythmView_Previews: PreviewProvider {
             ),
             // Lunch feed
             EventDTO(
-                kind: .feed,
+                kind: .feeding,
                 start: calendar.date(byAdding: .hour, value: 12, to: today)!,
                 end: calendar.date(byAdding: .minute, value: 25, to: calendar.date(byAdding: .hour, value: 12, to: today)!)!
             ),
@@ -474,7 +476,7 @@ struct DailyRhythmView_Previews: PreviewProvider {
             ),
             // Evening feed
             EventDTO(
-                kind: .feed,
+                kind: .feeding,
                 start: calendar.date(byAdding: .hour, value: 18, to: today)!,
                 end: calendar.date(byAdding: .minute, value: 30, to: calendar.date(byAdding: .hour, value: 18, to: today)!)!
             ),

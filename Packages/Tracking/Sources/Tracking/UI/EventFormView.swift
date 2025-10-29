@@ -172,7 +172,7 @@ extension EventFormView {
 struct EventFormView_Previews: PreviewProvider {
     static var previews: some View {
         EventFormView(
-            eventsRepository: QuickLogBar_Previews.PreviewEventsRepository(),
+            eventsRepository: MockEventsRepository(),
             analytics: AnalyticsLogger()
         ) { _ in }
     }

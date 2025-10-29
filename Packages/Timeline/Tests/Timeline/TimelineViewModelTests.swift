@@ -28,7 +28,7 @@ final class TimelineViewModelTests: XCTestCase {
 
     func testRefreshBuildsSections() async throws {
         // Given
-        let event = EventDTO(kind: .feed, start: Date())
+        let event = EventDTO(kind: .feeding, start: Date())
         eventsRepo.events = [event]
 
         // When
@@ -46,7 +46,7 @@ final class TimelineViewModelTests: XCTestCase {
         let yesterday = calendar.date(byAdding: .day, value: -1, to: today)!
 
         let event1 = EventDTO(kind: .sleep, start: today)
-        let event2 = EventDTO(kind: .feed, start: today)
+        let event2 = EventDTO(kind: .feeding, start: today)
         let event3 = EventDTO(kind: .diaper, start: yesterday)
 
         eventsRepo.events = [event1, event2, event3]
@@ -68,7 +68,7 @@ final class TimelineViewModelTests: XCTestCase {
 
         eventsRepo.events = [
             EventDTO(kind: .sleep, start: twoDaysAgo),
-            EventDTO(kind: .feed, start: today),
+            EventDTO(kind: .feeding, start: today),
             EventDTO(kind: .diaper, start: yesterday)
         ]
 
@@ -170,7 +170,7 @@ final class TimelineViewModelTests: XCTestCase {
         // Given
         eventsRepo.events = [
             EventDTO(kind: .sleep, start: Date()),
-            EventDTO(kind: .feed, start: Date())
+            EventDTO(kind: .feeding, start: Date())
         ]
         await viewModel.refresh()
 
@@ -191,7 +191,7 @@ final class TimelineViewModelTests: XCTestCase {
         // Given
         eventsRepo.events = [
             EventDTO(kind: .sleep, start: Date(), notes: "Great sleep"),
-            EventDTO(kind: .feed, start: Date(), notes: "Quick feeding")
+            EventDTO(kind: .feeding, start: Date(), notes: "Quick feeding")
         ]
         await viewModel.refresh()
 
@@ -287,7 +287,7 @@ final class TimelineViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.sections.isEmpty)
 
         // When
-        let event = EventDTO(kind: .feed, start: Date())
+        let event = EventDTO(kind: .feeding, start: Date())
         viewModel.append(event: event)
 
         // Then

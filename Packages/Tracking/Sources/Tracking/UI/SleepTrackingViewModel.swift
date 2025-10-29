@@ -187,7 +187,7 @@ public final class SleepTrackingViewModel: ObservableObject {
 
             // Track analytics
             analytics.track(AnalyticsEvent(
-                type: .sleepDurationTracked,
+                type: .sleepTrackingStopped,
                 metadata: [
                     "action": "completed",
                     "durationMinutes": String(Int(duration / 60)),

@@ -154,8 +154,8 @@ public final class FeedingTrackingViewModel: ObservableObject {
 
         // Track analytics
         analytics.track(AnalyticsEvent(
-            type: .feedingTypeSelected,
-            metadata: ["type": type.rawValue]
+            type: .feedingTracked,
+            metadata: ["action": "typeSelected", "type": type.rawValue]
         ))
 
         // Reset state when switching types
@@ -181,8 +181,9 @@ public final class FeedingTrackingViewModel: ObservableObject {
 
         // Track analytics
         analytics.track(AnalyticsEvent(
-            type: .feedingStarted,
+            type: .feedingTracked,
             metadata: [
+                "action": "started",
                 "type": "breast",
                 "side": currentSide.rawValue
             ]
@@ -326,8 +327,9 @@ public final class FeedingTrackingViewModel: ObservableObject {
 
             // Track analytics
             analytics.track(AnalyticsEvent(
-                type: .feedingCompleted,
+                type: .feedingTracked,
                 metadata: [
+                    "action": "completed",
                     "type": selectedType.rawValue,
                     "hasNotes": String(!notes.isEmpty)
                 ].merging(metadata) { $1 }
@@ -394,7 +396,7 @@ public final class FeedingTrackingViewModel: ObservableObject {
         }
     }
 
-    private func formatDuration(_ duration: TimeInterval) -> String {
+    public func formatDuration(_ duration: TimeInterval) -> String {
         let minutes = Int(duration) / 60
         let seconds = Int(duration) % 60
         return String(format: "%d:%02d", minutes, seconds)

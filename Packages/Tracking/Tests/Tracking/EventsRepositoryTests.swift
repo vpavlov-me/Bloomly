@@ -48,7 +48,7 @@ final class EventsRepositoryTests: XCTestCase {
     func testCreateFeedingEvent() async throws {
         let now = Date()
         let event = EventDTO(
-            kind: .feed,
+            kind: .feeding,
             start: now,
             end: now.addingTimeInterval(600),
             notes: "Bottle 120ml"
@@ -104,7 +104,7 @@ final class EventsRepositoryTests: XCTestCase {
     // MARK: - Delete Tests
 
     func testDeleteEvent() async throws {
-        let event = EventDTO(kind: .feed, start: Date())
+        let event = EventDTO(kind: .feeding, start: Date())
         let created = try await repository.create(event)
 
         try await repository.delete(id: created.id)
@@ -170,7 +170,7 @@ final class EventsRepositoryTests: XCTestCase {
 
         // Create events at different times
         _ = try await repository.create(EventDTO(kind: .sleep, start: yesterday))
-        _ = try await repository.create(EventDTO(kind: .feed, start: now))
+        _ = try await repository.create(EventDTO(kind: .feeding, start: now))
         _ = try await repository.create(EventDTO(kind: .diaper, start: tomorrow))
 
         // Fetch only today and future
@@ -178,14 +178,14 @@ final class EventsRepositoryTests: XCTestCase {
         let events = try await repository.events(in: interval, kind: nil)
 
         XCTAssertEqual(events.count, 2)
-        XCTAssertTrue(events.contains(where: { $0.kind == .feed }))
+        XCTAssertTrue(events.contains(where: { $0.kind == .feeding }))
         XCTAssertTrue(events.contains(where: { $0.kind == .diaper }))
     }
 
     func testFetchEventsForBaby() async throws {
         let babyID = UUID()
         _ = try await repository.create(EventDTO(kind: .sleep, start: Date()))
-        _ = try await repository.create(EventDTO(kind: .feed, start: Date()))
+        _ = try await repository.create(EventDTO(kind: .feeding, start: Date()))
 
         // Note: Baby relationship not yet implemented, so this returns all events
         let events = try await repository.events(for: babyID, in: nil)
@@ -197,7 +197,7 @@ final class EventsRepositoryTests: XCTestCase {
     func testBatchCreate() async throws {
         let events = [
             EventDTO(kind: .sleep, start: Date(), notes: "Event 1"),
-            EventDTO(kind: .feed, start: Date().addingTimeInterval(100), notes: "Event 2"),
+            EventDTO(kind: .feeding, start: Date().addingTimeInterval(100), notes: "Event 2"),
             EventDTO(kind: .diaper, start: Date().addingTimeInterval(200), notes: "Event 3")
         ]
 
@@ -212,7 +212,7 @@ final class EventsRepositoryTests: XCTestCase {
     func testBatchUpdate() async throws {
         // Create initial events
         let event1 = try await repository.create(EventDTO(kind: .sleep, start: Date(), notes: "Original 1"))
-        let event2 = try await repository.create(EventDTO(kind: .feed, start: Date(), notes: "Original 2"))
+        let event2 = try await repository.create(EventDTO(kind: .feeding, start: Date(), notes: "Original 2"))
 
         // Update them
         var updated1 = event1

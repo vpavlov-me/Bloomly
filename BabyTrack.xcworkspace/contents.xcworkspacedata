@@ -17,6 +17,9 @@
          location = "group:cloudkit.md">
       </FileRef>
       <FileRef
+         location = "group:design-system-guide.md">
+      </FileRef>
+      <FileRef
          location = "group:error-handling.md">
       </FileRef>
       <FileRef
@@ -25,6 +28,19 @@
       <FileRef
          location = "group:github-workflow.md">
       </FileRef>
+      <FileRef
+         location = "group:performance-optimization.md">
+      </FileRef>
+      <FileRef
+         location = "group:snapshot-testing.md">
+      </FileRef>
+      <Group
+         location = "group:QA"
+         name = "QA">
+         <FileRef
+            location = "group:qa-test-report.md">
+         </FileRef>
+      </Group>
       <Group
          location = "group:releases"
          name = "releases">
@@ -62,6 +78,13 @@
             <Group
                location = "group:checkouts"
                name = "checkouts">
+               <Group
+                  location = "group:SwiftSDK"
+                  name = "SwiftSDK">
+                  <FileRef
+                     location = "group:Package.swift">
+                  </FileRef>
+               </Group>
                <Group
                   location = "group:swift-custom-dump"
                   name = "swift-custom-dump">
@@ -219,6 +242,36 @@
          <FileRef
             location = "group:Package.swift">
          </FileRef>
+         <Group
+            location = "group:.build"
+            name = ".build">
+            <Group
+               location = "group:checkouts"
+               name = "checkouts">
+               <Group
+                  location = "group:SwiftSDK"
+                  name = "SwiftSDK">
+                  <FileRef
+                     location = "group:Package.swift">
+                  </FileRef>
+               </Group>
+            </Group>
+            <Group
+               location = "group:index-build"
+               name = "index-build">
+               <Group
+                  location = "group:checkouts"
+                  name = "checkouts">
+                  <Group
+                     location = "group:SwiftSDK"
+                     name = "SwiftSDK">
+                     <FileRef
+                        location = "group:Package.swift">
+                     </FileRef>
+                  </Group>
+               </Group>
+            </Group>
+         </Group>
       </Group>
       <Group
          location = "group:Timeline"
@@ -233,6 +286,162 @@
          <FileRef
             location = "group:Package.swift">
          </FileRef>
+         <Group
+            location = "group:.build"
+            name = ".build">
+            <Group
+               location = "group:checkouts"
+               name = "checkouts">
+               <Group
+                  location = "group:SwiftSDK"
+                  name = "SwiftSDK">
+                  <FileRef
+                     location = "group:Package.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:swift-custom-dump"
+                  name = "swift-custom-dump">
+                  <FileRef
+                     location = "group:Package.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:swift-snapshot-testing"
+                  name = "swift-snapshot-testing">
+                  <FileRef
+                     location = "group:Package.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:swift-syntax"
+                  name = "swift-syntax">
+                  <FileRef
+                     location = "group:Package.swift">
+                  </FileRef>
+                  <Group
+                     location = "group:CodeGeneration"
+                     name = "CodeGeneration">
+                     <FileRef
+                        location = "group:Package.swift">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:Examples"
+                     name = "Examples">
+                     <FileRef
+                        location = "group:Package.swift">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:SwiftParserCLI"
+                     name = "SwiftParserCLI">
+                     <FileRef
+                        location = "group:Package.swift">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:SwiftSyntaxDevUtils"
+                     name = "SwiftSyntaxDevUtils">
+                     <FileRef
+                        location = "group:Package.swift">
+                     </FileRef>
+                  </Group>
+               </Group>
+               <Group
+                  location = "group:xctest-dynamic-overlay"
+                  name = "xctest-dynamic-overlay">
+                  <FileRef
+                     location = "group:Package.swift">
+                  </FileRef>
+                  <Group
+                     location = "group:Examples"
+                     name = "Examples">
+                     <FileRef
+                        location = "group:Package.swift">
+                     </FileRef>
+                  </Group>
+               </Group>
+            </Group>
+            <Group
+               location = "group:index-build"
+               name = "index-build">
+               <Group
+                  location = "group:checkouts"
+                  name = "checkouts">
+                  <Group
+                     location = "group:SwiftSDK"
+                     name = "SwiftSDK">
+                     <FileRef
+                        location = "group:Package.swift">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:swift-custom-dump"
+                     name = "swift-custom-dump">
+                     <FileRef
+                        location = "group:Package.swift">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:swift-snapshot-testing"
+                     name = "swift-snapshot-testing">
+                     <FileRef
+                        location = "group:Package.swift">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:swift-syntax"
+                     name = "swift-syntax">
+                     <FileRef
+                        location = "group:Package.swift">
+                     </FileRef>
+                     <Group
+                        location = "group:CodeGeneration"
+                        name = "CodeGeneration">
+                        <FileRef
+                           location = "group:Package.swift">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:Examples"
+                        name = "Examples">
+                        <FileRef
+                           location = "group:Package.swift">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:SwiftParserCLI"
+                        name = "SwiftParserCLI">
+                        <FileRef
+                           location = "group:Package.swift">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:SwiftSyntaxDevUtils"
+                        name = "SwiftSyntaxDevUtils">
+                        <FileRef
+                           location = "group:Package.swift">
+                        </FileRef>
+                     </Group>
+                  </Group>
+                  <Group
+                     location = "group:xctest-dynamic-overlay"
+                     name = "xctest-dynamic-overlay">
+                     <FileRef
+                        location = "group:Package.swift">
+                     </FileRef>
+                     <Group
+                        location = "group:Examples"
+                        name = "Examples">
+                        <FileRef
+                           location = "group:Package.swift">
+                        </FileRef>
+                     </Group>
+                  </Group>
+               </Group>
+            </Group>
+         </Group>
       </Group>
       <Group
          location = "group:WatchApp"
@@ -240,6 +449,21 @@
          <FileRef
             location = "group:Package.swift">
          </FileRef>
+         <Group
+            location = "group:.build"
+            name = ".build">
+            <Group
+               location = "group:checkouts"
+               name = "checkouts">
+               <Group
+                  location = "group:SwiftSDK"
+                  name = "SwiftSDK">
+                  <FileRef
+                     location = "group:Package.swift">
+                  </FileRef>
+               </Group>
+            </Group>
+         </Group>
       </Group>
       <Group
          location = "group:Widgets"

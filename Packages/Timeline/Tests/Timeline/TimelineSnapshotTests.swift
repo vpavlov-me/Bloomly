@@ -29,7 +29,7 @@ final class TimelineSnapshotTests: XCTestCase {
             ),
             Event(
                 id: UUID(),
-                kind: .feed,
+                kind: .feeding,
                 start: now.addingTimeInterval(-1200),
                 end: nil,
                 notes: "120ml",
@@ -131,7 +131,7 @@ final class TimelineSnapshotTests: XCTestCase {
         let events = [
             Event(
                 id: UUID(),
-                kind: .feed,
+                kind: .feeding,
                 start: now.addingTimeInterval(-1200),
                 end: nil,
                 notes: "120ml",
@@ -162,7 +162,7 @@ final class TimelineSnapshotTests: XCTestCase {
         let events = [
             Event(
                 id: UUID(),
-                kind: .feed,
+                kind: .feeding,
                 start: now.addingTimeInterval(-1200),
                 end: nil,
                 notes: "120ml",
