@@ -45,17 +45,17 @@ final class ChartDataAggregatorTests: XCTestCase {
     func testFeedAverageDurationProducesCorrectTotalsAndStatistics() async throws {
         let events = [
             EventDTO(
-                kind: .feed,
+                kind: .feeding,
                 start: date(year: 2024, month: 3, day: 4, hour: 8),
                 end: date(year: 2024, month: 3, day: 4, hour: 8, minute: 20)
             ),
             EventDTO(
-                kind: .feed,
+                kind: .feeding,
                 start: date(year: 2024, month: 3, day: 4, hour: 12),
                 end: date(year: 2024, month: 3, day: 4, hour: 12, minute: 10)
             ),
             EventDTO(
-                kind: .feed,
+                kind: .feeding,
                 start: date(year: 2024, month: 3, day: 5, hour: 9),
                 end: date(year: 2024, month: 3, day: 5, hour: 9, minute: 15)
             )
@@ -81,9 +81,9 @@ final class ChartDataAggregatorTests: XCTestCase {
 
     func testFeedFrequencyWeeklyAggregation() async throws {
         let events = [
-            EventDTO(kind: .feed, start: date(year: 2024, month: 3, day: 3, hour: 7)),
-            EventDTO(kind: .feed, start: date(year: 2024, month: 3, day: 4, hour: 8)),
-            EventDTO(kind: .feed, start: date(year: 2024, month: 3, day: 10, hour: 9))
+            EventDTO(kind: .feeding, start: date(year: 2024, month: 3, day: 3, hour: 7)),
+            EventDTO(kind: .feeding, start: date(year: 2024, month: 3, day: 4, hour: 8)),
+            EventDTO(kind: .feeding, start: date(year: 2024, month: 3, day: 10, hour: 9))
         ]
         let repository = CountingEventsRepository(events: events)
         let aggregator = ChartDataAggregator(eventsRepository: repository, calendar: calendar, cacheTTL: 600)
@@ -131,8 +131,8 @@ final class ChartDataAggregatorTests: XCTestCase {
 
     func testCachingAvoidsRepeatedRepositoryCalls() async throws {
         let events = [
-            EventDTO(kind: .feed, start: date(year: 2024, month: 4, day: 2)),
-            EventDTO(kind: .feed, start: date(year: 2024, month: 4, day: 3))
+            EventDTO(kind: .feeding, start: date(year: 2024, month: 4, day: 2)),
+            EventDTO(kind: .feeding, start: date(year: 2024, month: 4, day: 3))
         ]
         let repository = CountingEventsRepository(events: events)
         let aggregator = ChartDataAggregator(eventsRepository: repository, calendar: calendar, cacheTTL: 600)
@@ -152,7 +152,7 @@ final class ChartDataAggregatorTests: XCTestCase {
 
     func testCacheInvalidationForMetricForcesNewFetch() async throws {
         let events = [
-            EventDTO(kind: .feed, start: date(year: 2024, month: 4, day: 2))
+            EventDTO(kind: .feeding, start: date(year: 2024, month: 4, day: 2))
         ]
         let repository = CountingEventsRepository(events: events)
         let aggregator = ChartDataAggregator(eventsRepository: repository, calendar: calendar, cacheTTL: 600)

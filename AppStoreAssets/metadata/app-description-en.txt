@@ -1,0 +1,125 @@
+APP NAME: BabyTrack - Baby Care Tracker
+
+SUBTITLE (30 chars max): Sleep, Feed, Diaper & Growth
+
+PROMOTIONAL TEXT (170 chars max - shown above description):
+Track every precious moment of your baby's early days. Beautiful, simple, and private tracking for sleep, feeding, diapers, and growth milestones.
+
+DESCRIPTION (4000 chars max):
+
+Track your baby's daily routines with ease and confidence. BabyTrack is the beautifully designed app that helps parents monitor sleep, feeding, diaper changes, and growth measurements—all in one place.
+
+⭐ WHY BABYTRACK?
+
+• Simple & Intuitive: Log events with just a few taps
+• Private & Secure: Your data stays on your devices with optional iCloud sync
+• No Ads, No Tracking: We respect your family's privacy
+• Beautiful Design: Modern interface that's a joy to use
+• Multi-Device Sync: Access your data on iPhone, iPad, and Apple Watch
+
+📊 COMPREHENSIVE TRACKING
+
+SLEEP TRACKING
+• Log sleep sessions with start and end times
+• Track sleep quality and patterns
+• View daily and weekly sleep charts
+• Identify sleep trends and routines
+
+FEEDING LOGS
+• Track breastfeeding (left/right breast)
+• Record bottle feeding with volume
+• Log solid food introduction
+• Monitor feeding frequency and volume
+
+DIAPER CHANGES
+• Quick logging of wet, dirty, or mixed diapers
+• Track diaper patterns
+• Never miss a change
+
+PUMPING SESSIONS
+• Record pumping time and volume
+• Track total daily output
+• Export data for lactation consultants
+
+GROWTH MEASUREMENTS
+• Record height, weight, and head circumference
+• Beautiful growth charts
+• WHO percentile curves (Premium)
+• Share with your pediatrician
+
+📱 APPLE WATCH COMPANION
+
+• Quick event logging from your wrist
+• View recent activities
+• Perfect for middle-of-the-night feeds
+• Apple Watch complications
+
+🏠 HOME SCREEN WIDGETS
+
+• "Last Feeding" widget - see when baby last ate
+• "Sleep Today" widget - track total sleep hours
+• Glanceable information at a glance
+
+📈 INSIGHTS & ANALYTICS
+
+• Daily, weekly, and monthly summaries
+• Beautiful charts and visualizations
+• Identify patterns and routines
+• Export data as CSV or JSON
+
+💎 PREMIUM FEATURES (Optional)
+
+• WHO Growth Percentile Curves
+• Head Circumference Tracking
+• Advanced Analytics Dashboard
+• Priority Support
+
+🔒 YOUR DATA, YOUR CONTROL
+
+• Local-first storage with Core Data
+• Optional iCloud sync (private to your account)
+• Export all your data anytime
+• No data sharing with third parties
+• COPPA compliant
+
+👨‍👩‍👧 PERFECT FOR
+
+• New parents tracking their newborn
+• Parents with multiple children
+• Sharing data with pediatricians
+• Lactation consultants
+• Anyone who wants to understand baby patterns
+
+🌍 MULTILINGUAL
+
+• English
+• Russian
+• More languages coming soon
+
+Need help? Contact us at support@vibecoding.com
+
+Privacy Policy: https://vibecoding.com/bloomly/privacy
+Terms of Service: https://vibecoding.com/bloomly/terms
+
+Start tracking your baby's journey today with BabyTrack!
+
+KEYWORDS (100 chars max - comma separated):
+baby,tracker,sleep,feed,diaper,growth,newborn,infant,parenting,health,feeding,journal,log
+
+SUPPORT URL:
+https://vibecoding.com/bloomly/support
+
+MARKETING URL:
+https://vibecoding.com/bloomly
+
+PRIVACY POLICY URL:
+https://vibecoding.com/bloomly/privacy
+
+CATEGORY:
+Primary: Health & Fitness
+Secondary: Lifestyle
+
+AGE RATING: 4+
+
+COPYRIGHT:
+© 2025 Vibecoding. All rights reserved.

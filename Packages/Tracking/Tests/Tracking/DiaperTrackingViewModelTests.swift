@@ -181,7 +181,7 @@ final class DiaperTrackingViewModelTests: XCTestCase {
         // Create mixed events
         _ = try? await mockRepository.create(EventDTO(kind: .diaper, start: Date()))
         _ = try? await mockRepository.create(EventDTO(kind: .sleep, start: Date()))
-        _ = try? await mockRepository.create(EventDTO(kind: .feed, start: Date()))
+        _ = try? await mockRepository.create(EventDTO(kind: .feeding, start: Date()))
 
         await viewModel.loadTodayCount()
         XCTAssertEqual(viewModel.todayCount, 1) // Only diaper event

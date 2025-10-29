@@ -13,7 +13,7 @@ final class TimelineViewTests: XCTestCase {
     func testTimelineViewRendering() {
         let events = [
             EventDTO(kind: .sleep, start: Date().addingTimeInterval(-3600), end: Date().addingTimeInterval(-1800), notes: "Morning nap"),
-            EventDTO(kind: .feed, start: Date().addingTimeInterval(-7200), end: Date().addingTimeInterval(-6900), notes: "Bottle")
+            EventDTO(kind: .feeding, start: Date().addingTimeInterval(-7200), end: Date().addingTimeInterval(-6900), notes: "Bottle")
         ]
         let measurements = [
             MeasurementDTO(type: .height, value: 62.4, unit: "cm", date: Date().addingTimeInterval(-86400))

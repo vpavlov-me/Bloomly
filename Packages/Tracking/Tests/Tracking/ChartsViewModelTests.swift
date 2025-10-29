@@ -81,7 +81,7 @@ final class ChartsViewModelTests: XCTestCase {
         // Given
         mockRepository.storage = [
             EventDTO(kind: .sleep, start: date(year: 2024, month: 3, day: 1)),
-            EventDTO(kind: .feed, start: date(year: 2024, month: 3, day: 1)),
+            EventDTO(kind: .feeding, start: date(year: 2024, month: 3, day: 1)),
             EventDTO(kind: .diaper, start: date(year: 2024, month: 3, day: 1))
         ]
 
@@ -176,7 +176,7 @@ final class ChartsViewModelTests: XCTestCase {
     func testRefreshChartInvalidatesCacheAndReloads() async throws {
         // Given
         mockRepository.storage = [
-            EventDTO(kind: .feed, start: date(year: 2024, month: 4, day: 2))
+            EventDTO(kind: .feeding, start: date(year: 2024, month: 4, day: 2))
         ]
         await viewModel.loadChart(for: .feedFrequency)
         let callCountBefore = mockRepository.callCount
@@ -193,7 +193,7 @@ final class ChartsViewModelTests: XCTestCase {
         // Given
         mockRepository.storage = [
             EventDTO(kind: .sleep, start: date(year: 2024, month: 3, day: 1)),
-            EventDTO(kind: .feed, start: date(year: 2024, month: 3, day: 1))
+            EventDTO(kind: .feeding, start: date(year: 2024, month: 3, day: 1))
         ]
         await viewModel.loadChart(for: .sleepTotal)
         await viewModel.loadChart(for: .feedFrequency)
@@ -253,7 +253,7 @@ final class ChartsViewModelTests: XCTestCase {
         // Given
         mockRepository.storage = [
             EventDTO(kind: .sleep, start: date(year: 2024, month: 3, day: 1)),
-            EventDTO(kind: .feed, start: date(year: 2024, month: 3, day: 1))
+            EventDTO(kind: .feeding, start: date(year: 2024, month: 3, day: 1))
         ]
 
         // When

@@ -32,7 +32,7 @@ final class EventsRepositoryTests: XCTestCase {
     }
 
     func testUpdateEvent() async throws {
-        let event = EventDTO(kind: .feed, start: Date(), end: Date().addingTimeInterval(1200))
+        let event = EventDTO(kind: .feeding, start: Date(), end: Date().addingTimeInterval(1200))
         var created = try await repository.create(event)
         created.notes = "Updated"
         created.end = created.start.addingTimeInterval(1500)
@@ -68,7 +68,7 @@ final class EventsRepositoryTests: XCTestCase {
 
     func testCreateEventWithLongNotes() async throws {
         let longNotes = String(repeating: "Test note ", count: 100)
-        let event = EventDTO(kind: .feed, start: Date(), notes: longNotes)
+        let event = EventDTO(kind: .feeding, start: Date(), notes: longNotes)
         let created = try await repository.create(event)
 
         XCTAssertEqual(created.notes, longNotes, "Should handle long notes correctly")
@@ -107,7 +107,7 @@ final class EventsRepositoryTests: XCTestCase {
         let tomorrow = calendar.date(byAdding: .day, value: 1, to: now)!
 
         _ = try await repository.create(EventDTO(kind: .sleep, start: yesterday))
-        _ = try await repository.create(EventDTO(kind: .feed, start: now))
+        _ = try await repository.create(EventDTO(kind: .feeding, start: now))
         _ = try await repository.create(EventDTO(kind: .diaper, start: tomorrow))
 
         // Fetch only today's events
@@ -123,7 +123,7 @@ final class EventsRepositoryTests: XCTestCase {
     func testFetchEventsByKind() async throws {
         _ = try await repository.create(EventDTO(kind: .sleep, start: Date()))
         _ = try await repository.create(EventDTO(kind: .sleep, start: Date().addingTimeInterval(-100)))
-        _ = try await repository.create(EventDTO(kind: .feed, start: Date()))
+        _ = try await repository.create(EventDTO(kind: .feeding, start: Date()))
 
         let sleepEvents = try await repository.events(in: nil, kind: .sleep)
         XCTAssertEqual(sleepEvents.count, 2, "Should filter events by kind")
@@ -133,7 +133,7 @@ final class EventsRepositoryTests: XCTestCase {
     func testLastEventForKind() async throws {
         let older = try await repository.create(EventDTO(kind: .sleep, start: Date().addingTimeInterval(-3600)))
         let newer = try await repository.create(EventDTO(kind: .sleep, start: Date()))
-        _ = try await repository.create(EventDTO(kind: .feed, start: Date()))
+        _ = try await repository.create(EventDTO(kind: .feeding, start: Date()))
 
         let lastSleep = try await repository.lastEvent(for: .sleep)
         XCTAssertNotNil(lastSleep)
@@ -151,7 +151,7 @@ final class EventsRepositoryTests: XCTestCase {
 
         // Create multiple events for today
         _ = try await repository.create(EventDTO(kind: .sleep, start: now, end: now.addingTimeInterval(1800)))
-        _ = try await repository.create(EventDTO(kind: .feed, start: now, end: now.addingTimeInterval(900)))
+        _ = try await repository.create(EventDTO(kind: .feeding, start: now, end: now.addingTimeInterval(900)))
 
         // Create event for yesterday (should not be included)
         let yesterday = calendar.date(byAdding: .day, value: -1, to: now)!
@@ -258,7 +258,7 @@ final class EventsRepositoryTests: XCTestCase {
             for i in 0..<5 {
                 group.addTask {
                     do {
-                        let event = EventDTO(kind: .feed, start: Date().addingTimeInterval(TimeInterval(-i * 100)))
+                        let event = EventDTO(kind: .feeding, start: Date().addingTimeInterval(TimeInterval(-i * 100)))
                         _ = try await self.repository.create(event)
                     } catch {
                         XCTFail("Concurrent write failed: \(error)")

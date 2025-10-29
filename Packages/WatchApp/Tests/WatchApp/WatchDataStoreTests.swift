@@ -18,7 +18,7 @@ final class WatchDataStoreTests: XCTestCase {
                         expectation.fulfill()
                     }
                 }
-            store.log(draft: EventDraft(kind: .feed, start: Date()))
+            store.log(draft: EventDraft(kind: .feeding, start: Date()))
         }
 
         wait(for: [expectation], timeout: 1.0)

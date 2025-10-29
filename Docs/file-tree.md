@@ -1,22 +1,32 @@
 # File Tree
 
+High-level layout of the BabyTrack repository. Individual modules may include additional subfolders not listed here.
+
 ```
 .
 ├── App
+│   ├── BabyTrackApp.swift
+│   ├── Composition/
 │   ├── CoreData/
-│   │   └── BabyTrackModel.xcdatamodeld/
+│   ├── Onboarding/
+│   ├── Persistence/
+│   ├── Profile/
 │   ├── Resources/
-│   │   └── BabyTrack.entitlements
-│   └── Sources/
-│       ├── AppEnvironment.swift
-│       ├── BabyTrackApp.swift
-│       ├── PersistenceController.swift
-│       └── PreviewData.swift
-├── Docs/
+│   ├── Services/
+│   ├── Settings/
+│   ├── UI/
+│   └── Widgets/
+├── Docs
+│   ├── QA/
 │   ├── architecture.md
 │   ├── cloudkit.md
-│   └── file-tree.md
-├── Packages/
+│   ├── design-system-guide.md
+│   ├── error-handling.md
+│   ├── performance-optimization.md
+│   ├── snapshot-testing.md
+│   └── watch-app-guide.md
+├── Packages
+│   ├── AppSupport/
 │   ├── Content/
 │   ├── DesignSystem/
 │   ├── Measurements/
@@ -26,20 +36,32 @@
 │   ├── Tracking/
 │   ├── WatchApp/
 │   └── Widgets/
-├── Targets/
+├── Targets
+│   ├── BabyTrackWidgets/
 │   ├── BabyTrackWatch/
-│   ├── BabyTrackWatchExtension/
-│   └── BabyTrackWidgets/
-├── Tests/
+│   └── BabyTrackWatchExtension/
+├── Tests
+│   ├── Mocks/
+│   ├── Snapshot/
 │   ├── UI/
-│   │   └── BabyTrackUITests.swift
 │   └── Unit/
-│       └── AppEnvironmentTests.swift
-├── .github/workflows/ci.yml
+├── Tuist/
+│   └── Config.swift
+├── .github
+│   ├── ISSUE_TEMPLATE/
+│   ├── labeler.yml
+│   ├── auto_assign.yml
+│   └── workflows/
+├── scripts/
+│   └── bootstrap.sh
+├── IMPLEMENTATION_SUMMARY.md
 ├── Project.swift
 ├── Workspace.swift
-├── Tuist/Config.swift
-├── scripts/bootstrap.sh
-├── scripts/template.tar.gz.base64
-└── README.md
+├── README.md
+├── mise.toml
+├── Dangerfile
+├── Gemfile
+├── CONTRIBUTING.md
+├── CODE_OF_CONDUCT.md
+└── SECURITY.md
 ```

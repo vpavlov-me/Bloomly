@@ -95,7 +95,7 @@ public struct MainTabView: View {
             handleDeepLink(deepLink)
             widgetDeepLink = nil
         }
-        .sheet(isPresented: $showEventForm, onDismiss: { editingEvent = nil }) {
+        .sheet(isPresented: $showEventForm) {
             EventFormView(
                 eventsRepository: container.eventsRepository,
                 analytics: container.analytics,
@@ -203,7 +203,10 @@ public struct MainTabView: View {
     private var settingsTab: some View {
         Form {
             Section(header: Text(AppCopy.string(for: "settings.notifications"))) {
-                Toggle(AppCopy.string(for: "settings.notifications.enable"), isOn: $container.notificationManager.isNotificationEnabled)
+                Toggle(
+                    AppCopy.string(for: "settings.notifications.enable"),
+                    isOn: $container.notificationManager.isNotificationEnabled
+                )
                     .onChange(of: container.notificationManager.isNotificationEnabled) { _, newValue in
                         if newValue {
                             Task {
@@ -215,7 +218,11 @@ public struct MainTabView: View {
 
             Section(header: Text(AppCopy.string(for: "settings.premium.status"))) {
                 HStack {
-                    Text(container.premiumState.isPremium ? AppCopy.string(for: "settings.premium.active") : AppCopy.string(for: "settings.premium.inactive"))
+                    Text(
+                        container.premiumState.isPremium
+                            ? AppCopy.string(for: "settings.premium.active")
+                            : AppCopy.string(for: "settings.premium.inactive")
+                    )
                     Spacer()
                     if container.premiumState.isPremium {
                         Image(systemName: Symbols.premium)

@@ -131,7 +131,7 @@ final class EventsRepositoryPerformanceTests: XCTestCase {
     // MARK: - Upsert Performance
 
     func testUpsertPerformance() async throws {
-        let event = EventDTO(kind: .feed, start: Date(), notes: "Performance test")
+        let event = EventDTO(kind: .feeding, start: Date(), notes: "Performance test")
 
         // Measure first upsert (insert)
         let insertStart = Date()

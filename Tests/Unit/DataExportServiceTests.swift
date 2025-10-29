@@ -52,7 +52,7 @@ final class DataExportServiceTests: XCTestCase {
 
     func testExportToJSON() async throws {
         // Create test data
-        let event = EventDTO(kind: .feed, start: Date(), end: Date().addingTimeInterval(1200))
+        let event = EventDTO(kind: .feeding, start: Date(), end: Date().addingTimeInterval(1200))
         _ = try await eventsRepository.create(event)
 
         let measurement = MeasurementDTO(type: .weight, value: 5.2, unit: "kg", date: Date())

@@ -83,8 +83,8 @@ public final class EventDetailViewModel: ObservableObject {
         mode = .edit
 
         analytics.track(AnalyticsEvent(
-            type: .eventEditStarted,
-            metadata: ["kind": event.kind.rawValue]
+            type: .eventUpdated,
+            metadata: ["action": "editStarted", "kind": event.kind.rawValue]
         ))
     }
 
@@ -146,7 +146,7 @@ public final class EventDetailViewModel: ObservableObject {
 
             // Track analytics
             analytics.track(AnalyticsEvent(
-                type: .eventEdited,
+                type: .eventUpdated,
                 metadata: ["kind": event.kind.rawValue]
             ))
 

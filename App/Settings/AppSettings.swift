@@ -141,9 +141,9 @@ public final class AppSettings: ObservableObject {
 // MARK: - Enums
 
 public enum AppearanceMode: String, CaseIterable, Identifiable {
-    case auto = "auto"
-    case light = "light"
-    case dark = "dark"
+    case auto
+    case light
+    case dark
 
     public var id: String { rawValue }
 

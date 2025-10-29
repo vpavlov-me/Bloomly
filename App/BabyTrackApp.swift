@@ -1,3 +1,4 @@
+import AppSupport
 import CoreData
 import SwiftUI
 
@@ -29,11 +30,10 @@ struct BabyTrackApp: App {
             .environment(\.managedObjectContext, container.persistence.viewContext)
             .handleWidgetDeepLinks { deepLink in
                 widgetDeepLink = deepLink
-                // TODO: Fix AnalyticsEvent import
-                // container.analytics.track(AnalyticsEvent(
-                //     name: "widget_tapped",
-                //     metadata: ["destination": deepLink.rawValue]
-                // ))
+                container.analytics.track(AnalyticsEvent(
+                    name: "widget_tapped",
+                    metadata: ["destination": deepLink.rawValue]
+                ))
             }
         }
         .onChange(of: scenePhase) { _, newPhase in
