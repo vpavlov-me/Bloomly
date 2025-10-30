@@ -33,199 +33,29 @@ public struct SettingsView: View {
                 NavigationLink {
                     BabyProfileView(eventsRepository: container.eventsRepository)
                 } label: {
-                    HStack(spacing: BloomyTheme.spacing.md) {
-                        if let profile = profileStore.currentProfile {
-                            if let photoData = profile.photoData, let uiImage = UIImage(data: photoData) {
-                                Image(uiImage: uiImage)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 50, height: 50)
-                                    .clipShape(Circle())
-                            } else {
-                                Circle()
-                                    .fill(BloomyTheme.palette.mutedBackground)
-                                    .frame(width: 50, height: 50)
-                                    .overlay {
-                                        Image(systemName: "person.fill")
-                                            .foregroundStyle(BloomyTheme.palette.mutedText)
-                                    }
-                            }
-
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(profile.name)
-                                    .font(BloomyTheme.typography.headline.font)
-                                Text(profile.ageText)
-                                    .font(BloomyTheme.typography.caption.font)
-                                    .foregroundStyle(BloomyTheme.palette.mutedText)
-                            }
-                        } else {
-                            HStack(spacing: BloomyTheme.spacing.md) {
-                                Circle()
-                                    .fill(BloomyTheme.palette.mutedBackground)
-                                    .frame(width: 50, height: 50)
-                                    .overlay {
-                                        Image(systemName: "person.fill")
-                                            .foregroundStyle(BloomyTheme.palette.mutedText)
-                                    }
-
-                                Text(AppCopy.string(for: "profile.create"))
-                                    .font(BloomyTheme.typography.body.font)
-                            }
-                        }
-                    }
+                    profileLinkContent
                 }
             } header: {
                 Text(AppCopy.string(for: "profile.title"))
             }
 
             // MARK: - Notifications Section
-            Section {
-                Toggle(AppCopy.string(for: "settings.notifications.enable"), isOn: $notificationManager.isNotificationEnabled)
-                    .onChange(of: notificationManager.isNotificationEnabled) { _, newValue in
-                        if newValue {
-                            Task {
-                                await notificationManager.requestNotificationPermission()
-                            }
-                        }
-                    }
-
-                if notificationManager.isNotificationEnabled {
-                    Picker(AppCopy.string(for: "settings.notifications.feeding.interval"), selection: $settings.feedingReminderInterval) {
-                        ForEach(ReminderInterval.allCases) { interval in
-                            Text(interval.localizedName).tag(interval)
-                        }
-                    }
-
-                    Toggle(AppCopy.string(for: "settings.notifications.sleep.enable"), isOn: $settings.sleepReminderEnabled)
-
-                    if settings.sleepReminderEnabled {
-                        DatePicker(
-                            AppCopy.string(for: "settings.notifications.sleep.time"),
-                            selection: $settings.sleepReminderTime,
-                            displayedComponents: .hourAndMinute
-                        )
-                    }
-                }
-            } header: {
-                Text(AppCopy.string(for: "settings.notifications"))
-            }
+            notificationsSection
 
             // MARK: - Appearance Section
-            Section {
-                Picker(AppCopy.string(for: "settings.appearance.theme"), selection: $settings.appearanceMode) {
-                    ForEach(AppearanceMode.allCases) { mode in
-                        Text(mode.localizedName).tag(mode)
-                    }
-                }
-            } header: {
-                Text(AppCopy.string(for: "settings.appearance"))
-            }
+            appearanceSection
 
             // MARK: - Language Section
-            Section {
-                Picker(AppCopy.string(for: "settings.language"), selection: $settings.preferredLanguage) {
-                    ForEach(LanguageOption.allCases) { language in
-                        Text(language.localizedName).tag(language)
-                    }
-                }
-            } header: {
-                Text(AppCopy.string(for: "settings.language"))
-            } footer: {
-                Text(AppCopy.string(for: "settings.language.footer"))
-            }
+            languageSection
 
             // MARK: - Premium Section
-            Section {
-                HStack {
-                    Text(AppCopy.string(for: "settings.premium.status"))
-                    Spacer()
-                    Text(container.premiumState.isPremium ? AppCopy.string(for: "settings.premium.active") : AppCopy.string(for: "settings.premium.inactive"))
-                        .foregroundStyle(container.premiumState.isPremium ? .green : BloomyTheme.palette.mutedText)
-                    if container.premiumState.isPremium {
-                        Image(systemName: Symbols.premium)
-                            .foregroundStyle(.yellow)
-                    }
-                }
-
-                Button(AppCopy.string(for: "settings.premium.manage")) {
-                    showPaywall = true
-                    container.analytics.track(AnalyticsEvent(name: "settings_premium_tapped"))
-                }
-            } header: {
-                Text(AppCopy.string(for: "settings.premium"))
-            }
+            premiumSection
 
             // MARK: - Privacy Section
-            Section {
-                Toggle(AppCopy.string(for: "settings.privacy.analytics"), isOn: $settings.analyticsEnabled)
-                    .onChange(of: settings.analyticsEnabled) { _, newValue in
-                        container.analytics.track(AnalyticsEvent(
-                            name: "setting_changed",
-                            metadata: ["setting": "analytics", "value": "\(newValue)"]
-                        ))
-                    }
-
-                Button(AppCopy.string(for: "settings.export.csv")) {
-                    Task { await performExport(format: .csv) }
-                }
-                .disabled(isExporting)
-
-                Button(AppCopy.string(for: "settings.export.json")) {
-                    Task { await performExport(format: .json) }
-                }
-                .disabled(isExporting)
-
-                if isExporting {
-                    HStack {
-                        ProgressView()
-                        Text(AppCopy.string(for: "settings.export.progress"))
-                            .font(BloomyTheme.typography.caption.font)
-                    }
-                }
-
-                Button(role: .destructive) {
-                    showDeleteConfirmation = true
-                } label: {
-                    Text(AppCopy.string(for: "settings.privacy.deleteData"))
-                }
-            } header: {
-                Text(AppCopy.string(for: "settings.privacy"))
-            } footer: {
-                Text(AppCopy.string(for: "settings.privacy.footer"))
-            }
+            privacySection
 
             // MARK: - About Section
-            Section {
-                HStack {
-                    Text(AppCopy.string(for: "settings.about.version"))
-                    Spacer()
-                    Text(appVersion)
-                        .foregroundStyle(BloomyTheme.palette.mutedText)
-                }
-
-                Link(AppCopy.string(for: "settings.about.privacy"), destination: URL(string: "https://example.com/privacy")!)
-
-                Link(AppCopy.string(for: "settings.about.terms"), destination: URL(string: "https://example.com/terms")!)
-
-                Button(AppCopy.string(for: "settings.about.licenses")) {
-                    // Open licenses view
-                }
-
-                Button(AppCopy.string(for: "settings.about.support")) {
-                    if let url = URL(string: "mailto:support@bloomy.app") {
-                        UIApplication.shared.open(url)
-                    }
-                }
-
-                Button(AppCopy.string(for: "settings.about.rate")) {
-                    // Request App Store review
-                    if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                        SKStoreReviewController.requestReview(in: scene)
-                    }
-                }
-            } header: {
-                Text(AppCopy.string(for: "settings.about"))
-            }
+            aboutSection
         }
         .navigationTitle(Text(AppCopy.SettingsCopy.title))
         .sheet(isPresented: $showPaywall) {
@@ -236,7 +66,10 @@ public struct SettingsView: View {
                 ShareSheet(items: [exportURL])
             }
         }
-        .alert(AppCopy.string(for: "settings.privacy.deleteData.title"), isPresented: $showDeleteConfirmation) {
+        .alert(
+            AppCopy.string(for: "settings.privacy.deleteData.title"),
+            isPresented: $showDeleteConfirmation
+        ) {
             Button(AppCopy.string(for: "settings.privacy.deleteData.confirm"), role: .destructive) {
                 Task { await deleteAllData() }
             }
@@ -247,6 +80,243 @@ public struct SettingsView: View {
         .toast($toastMessage)
         .task {
             container.analytics.track(AnalyticsEvent(name: "settings_viewed"))
+        }
+    }
+
+    // MARK: - Profile Link Content
+
+    @ViewBuilder
+    private var profileLinkContent: some View {
+        HStack(spacing: BloomyTheme.spacing.md) {
+            if let profile = profileStore.currentProfile {
+                profilePhoto(profile: profile)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(profile.name)
+                        .font(BloomyTheme.typography.headline.font)
+                    Text(profile.ageText)
+                        .font(BloomyTheme.typography.caption.font)
+                        .foregroundStyle(BloomyTheme.palette.mutedText)
+                }
+            } else {
+                HStack(spacing: BloomyTheme.spacing.md) {
+                    Circle()
+                        .fill(BloomyTheme.palette.mutedBackground)
+                        .frame(width: 50, height: 50)
+                        .overlay {
+                            Image(systemName: "person.fill")
+                                .foregroundStyle(BloomyTheme.palette.mutedText)
+                        }
+
+                    Text(AppCopy.string(for: "profile.create"))
+                        .font(BloomyTheme.typography.body.font)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func profilePhoto(profile: BabyProfile) -> some View {
+        if let photoData = profile.photoData, let uiImage = UIImage(data: photoData) {
+            Image(uiImage: uiImage)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 50, height: 50)
+                .clipShape(Circle())
+        } else {
+            Circle()
+                .fill(BloomyTheme.palette.mutedBackground)
+                .frame(width: 50, height: 50)
+                .overlay {
+                    Image(systemName: "person.fill")
+                        .foregroundStyle(BloomyTheme.palette.mutedText)
+                }
+        }
+    }
+
+    // MARK: - Sections
+
+    private var notificationsSection: some View {
+        Section {
+            Toggle(
+                AppCopy.string(for: "settings.notifications.enable"),
+                isOn: $notificationManager.isNotificationEnabled
+            )
+            .onChange(of: notificationManager.isNotificationEnabled) { _, newValue in
+                if newValue {
+                    Task {
+                        await notificationManager.requestNotificationPermission()
+                    }
+                }
+            }
+
+            if notificationManager.isNotificationEnabled {
+                Picker(
+                    AppCopy.string(for: "settings.notifications.feeding.interval"),
+                    selection: $settings.feedingReminderInterval
+                ) {
+                    ForEach(ReminderInterval.allCases) { interval in
+                        Text(interval.localizedName).tag(interval)
+                    }
+                }
+
+                Toggle(
+                    AppCopy.string(for: "settings.notifications.sleep.enable"),
+                    isOn: $settings.sleepReminderEnabled
+                )
+
+                if settings.sleepReminderEnabled {
+                    DatePicker(
+                        AppCopy.string(for: "settings.notifications.sleep.time"),
+                        selection: $settings.sleepReminderTime,
+                        displayedComponents: .hourAndMinute
+                    )
+                }
+            }
+        } header: {
+            Text(AppCopy.string(for: "settings.notifications"))
+        }
+    }
+
+    private var appearanceSection: some View {
+        Section {
+            Picker(
+                AppCopy.string(for: "settings.appearance.theme"),
+                selection: $settings.appearanceMode
+            ) {
+                ForEach(AppearanceMode.allCases) { mode in
+                    Text(mode.localizedName).tag(mode)
+                }
+            }
+        } header: {
+            Text(AppCopy.string(for: "settings.appearance"))
+        }
+    }
+
+    private var languageSection: some View {
+        Section {
+            Picker(AppCopy.string(for: "settings.language"), selection: $settings.preferredLanguage) {
+                ForEach(LanguageOption.allCases) { language in
+                    Text(language.localizedName).tag(language)
+                }
+            }
+        } header: {
+            Text(AppCopy.string(for: "settings.language"))
+        } footer: {
+            Text(AppCopy.string(for: "settings.language.footer"))
+        }
+    }
+
+    private var premiumSection: some View {
+        Section {
+            HStack {
+                Text(AppCopy.string(for: "settings.premium.status"))
+                Spacer()
+                Text(
+                    container.premiumState.isPremium
+                        ? AppCopy.string(for: "settings.premium.active")
+                        : AppCopy.string(for: "settings.premium.inactive")
+                )
+                .foregroundStyle(
+                    container.premiumState.isPremium
+                        ? .green
+                        : BloomyTheme.palette.mutedText
+                )
+                if container.premiumState.isPremium {
+                    Image(systemName: Symbols.premium)
+                        .foregroundStyle(.yellow)
+                }
+            }
+
+            Button(AppCopy.string(for: "settings.premium.manage")) {
+                showPaywall = true
+                container.analytics.track(AnalyticsEvent(name: "settings_premium_tapped"))
+            }
+        } header: {
+            Text(AppCopy.string(for: "settings.premium"))
+        }
+    }
+
+    private var privacySection: some View {
+        Section {
+            Toggle(
+                AppCopy.string(for: "settings.privacy.analytics"),
+                isOn: $settings.analyticsEnabled
+            )
+            .onChange(of: settings.analyticsEnabled) { _, newValue in
+                container.analytics.track(AnalyticsEvent(
+                    name: "setting_changed",
+                    metadata: ["setting": "analytics", "value": "\(newValue)"]
+                ))
+            }
+
+            Button(AppCopy.string(for: "settings.export.csv")) {
+                Task { await performExport(format: .csv) }
+            }
+            .disabled(isExporting)
+
+            Button(AppCopy.string(for: "settings.export.json")) {
+                Task { await performExport(format: .json) }
+            }
+            .disabled(isExporting)
+
+            if isExporting {
+                HStack {
+                    ProgressView()
+                    Text(AppCopy.string(for: "settings.export.progress"))
+                        .font(BloomyTheme.typography.caption.font)
+                }
+            }
+
+            Button(role: .destructive) {
+                showDeleteConfirmation = true
+            } label: {
+                Text(AppCopy.string(for: "settings.privacy.deleteData"))
+            }
+        } header: {
+            Text(AppCopy.string(for: "settings.privacy"))
+        } footer: {
+            Text(AppCopy.string(for: "settings.privacy.footer"))
+        }
+    }
+
+    private var aboutSection: some View {
+        Section {
+            HStack {
+                Text(AppCopy.string(for: "settings.about.version"))
+                Spacer()
+                Text(appVersion)
+                    .foregroundStyle(BloomyTheme.palette.mutedText)
+            }
+
+            Link(
+                AppCopy.string(for: "settings.about.privacy"),
+                destination: URL(string: "https://example.com/privacy")!
+            )
+
+            Link(
+                AppCopy.string(for: "settings.about.terms"),
+                destination: URL(string: "https://example.com/terms")!
+            )
+
+            Button(AppCopy.string(for: "settings.about.licenses")) {
+                // Open licenses view
+            }
+
+            Button(AppCopy.string(for: "settings.about.support")) {
+                if let url = URL(string: "mailto:support@bloomy.app") {
+                    UIApplication.shared.open(url)
+                }
+            }
+
+            Button(AppCopy.string(for: "settings.about.rate")) {
+                // Request App Store review
+                if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                    SKStoreReviewController.requestReview(in: scene)
+                }
+            }
+        } header: {
+            Text(AppCopy.string(for: "settings.about"))
         }
     }
 
@@ -281,7 +351,8 @@ public struct SettingsView: View {
             await MainActor.run {
                 exportURL = url
                 showExportSheet = true
-                toastMessage = ToastMessage(type: .success, message: AppCopy.string(for: "settings.export.success"))
+                let message = AppCopy.string(for: "settings.export.success")
+                toastMessage = ToastMessage(type: .success, message: message)
                 container.analytics.track(AnalyticsEvent(
                     name: "data_exported",
                     metadata: ["format": format == .csv ? "csv" : "json"]
@@ -289,7 +360,10 @@ public struct SettingsView: View {
             }
         } catch {
             await MainActor.run {
-                toastMessage = ToastMessage(type: .error, message: AppCopy.string(for: "errors.export"))
+                toastMessage = ToastMessage(
+                    type: .error,
+                    message: AppCopy.string(for: "errors.export")
+                )
             }
         }
     }
@@ -303,15 +377,22 @@ public struct SettingsView: View {
             }
 
             // Delete all measurements
-            let measurements = try await container.measurementsRepository.measurements(in: nil, type: nil)
+            let measurements = try await container.measurementsRepository.measurements(
+                in: nil,
+                type: nil
+            )
             for measurement in measurements {
                 try await container.measurementsRepository.delete(id: measurement.id)
             }
 
-            toastMessage = ToastMessage(type: .success, message: AppCopy.string(for: "settings.privacy.deleteData.success"))
+            let message = AppCopy.string(for: "settings.privacy.deleteData.success")
+            toastMessage = ToastMessage(type: .success, message: message)
             container.analytics.track(AnalyticsEvent(name: "data_deleted"))
         } catch {
-            toastMessage = ToastMessage(type: .error, message: AppCopy.string(for: "errors.generic"))
+            toastMessage = ToastMessage(
+                type: .error,
+                message: AppCopy.string(for: "errors.generic")
+            )
         }
     }
 }

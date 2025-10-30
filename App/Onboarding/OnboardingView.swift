@@ -19,16 +19,14 @@ public struct OnboardingView: View {
             WelcomeScreen(onContinue: nextPage)
                 .tag(0)
 
-            CreateProfileScreen(
-                onContinue: { name, birthDate, photo in
-                    _ = profileStore.createProfile(name: name, birthDate: birthDate, photo: photo)
-                    container.analytics.track(AnalyticsEvent(
-                        name: "onboarding_profile_created",
-                        metadata: ["has_photo": "\(photo != nil)"]
-                    ))
-                    nextPage()
-                }
-            )
+            CreateProfileScreen { name, birthDate, photo in
+                _ = profileStore.createProfile(name: name, birthDate: birthDate, photo: photo)
+                container.analytics.track(AnalyticsEvent(
+                    name: "onboarding_profile_created",
+                    metadata: ["has_photo": "\(photo != nil)"]
+                ))
+                nextPage()
+            }
             .tag(1)
 
             NotificationPermissionScreen(
@@ -44,12 +42,10 @@ public struct OnboardingView: View {
             )
             .tag(2)
 
-            DashboardIntroScreen(
-                onComplete: {
-                    manager.completeOnboarding()
-                    container.analytics.track(AnalyticsEvent(name: "onboarding_completed"))
-                }
-            )
+            DashboardIntroScreen {
+                manager.completeOnboarding()
+                container.analytics.track(AnalyticsEvent(name: "onboarding_completed"))
+            }
             .tag(3)
         }
         .tabViewStyle(.page(indexDisplayMode: .always))
@@ -506,7 +502,8 @@ private struct FeatureRow: View {
 
 private struct ImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
 
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
@@ -529,7 +526,10 @@ private struct ImagePicker: UIViewControllerRepresentable {
             self.parent = parent
         }
 
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        func imagePickerController(
+            _ picker: UIImagePickerController,
+            didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+        ) {
             if let editedImage = info[.editedImage] as? UIImage {
                 parent.image = editedImage
             } else if let originalImage = info[.originalImage] as? UIImage {

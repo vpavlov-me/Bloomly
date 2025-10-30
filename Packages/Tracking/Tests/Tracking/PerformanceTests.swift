@@ -113,10 +113,10 @@ final class PerformanceTests: XCTestCase {
 
     /// Batch create should be efficient
     func testBatchCreatePerformance() async throws {
-        let events = (0..<100).map { i in
+        let events = (0..<100).map { index in
             EventDTO(
                 kind: .sleep,
-                start: Date().addingTimeInterval(TimeInterval(-i * 3600))
+                start: Date().addingTimeInterval(TimeInterval(-index * 3600))
             )
         }
 
@@ -183,10 +183,10 @@ final class PerformanceTests: XCTestCase {
     // MARK: - Helper Methods
 
     private func createTestEvents(count: Int) async throws -> [EventDTO] {
-        let events = (0..<count).map { i in
+        let events = (0..<count).map { index in
             EventDTO(
                 kind: EventKind.allCases.randomElement()!,
-                start: Date().addingTimeInterval(TimeInterval(-i * 3600))
+                start: Date().addingTimeInterval(TimeInterval(-index * 3600))
             )
         }
         return try await repository.batchCreate(events)
@@ -199,9 +199,9 @@ final class PerformanceTests: XCTestCase {
         let kerr: kern_return_t = withUnsafeMutablePointer(to: &info) {
             $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
                 task_info(mach_task_self_,
-                         task_flavor_t(MACH_TASK_BASIC_INFO),
-                         $0,
-                         &count)
+                          task_flavor_t(MACH_TASK_BASIC_INFO),
+                          $0,
+                          &count)
             }
         }
 

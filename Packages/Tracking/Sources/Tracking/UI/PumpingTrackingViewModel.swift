@@ -209,7 +209,6 @@ public final class PumpingTrackingViewModel: ObservableObject {
             // Hide success after delay
             try? await Task.sleep(nanoseconds: 2_000_000_000)
             showSuccess = false
-
         } catch {
             logger.error("Failed to save pumping: \(error.localizedDescription)")
             self.error = "Failed to save pumping session. Please try again."

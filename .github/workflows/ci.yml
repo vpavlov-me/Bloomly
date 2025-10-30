@@ -89,10 +89,12 @@ jobs:
         if: success()
         run: |
           xcrun xccov view --report --json ./TestResults.xcresult > coverage.json
-          echo "## Test Coverage Report" >> $GITHUB_STEP_SUMMARY
-          echo '```json' >> $GITHUB_STEP_SUMMARY
-          xcrun xccov view --report ./TestResults.xcresult >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
+          {
+            echo "## Test Coverage Report"
+            echo '```json'
+            xcrun xccov view --report ./TestResults.xcresult
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload Test Results
         if: always()

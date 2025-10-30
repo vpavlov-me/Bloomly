@@ -79,10 +79,9 @@ struct QuickLogBar_Previews: PreviewProvider {
             eventsRepository: MockEventsRepository(),
             analytics: AnalyticsLogger()
         ) { _ in }
-            .padding()
-            .background(BloomyTheme.palette.background)
-            .previewLayout(.sizeThatFits)
+        .padding()
+        .background(BloomyTheme.palette.background)
+        .previewLayout(.sizeThatFits)
     }
-
 }
 #endif

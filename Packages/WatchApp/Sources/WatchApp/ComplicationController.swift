@@ -8,7 +8,7 @@ import Tracking
 public final class ComplicationController: NSObject, CLKComplicationDataSource {
     private let dataProvider: ComplicationDataProvider
 
-    public override init() {
+    override public init() {
         self.dataProvider = ComplicationDataProvider()
         super.init()
     }

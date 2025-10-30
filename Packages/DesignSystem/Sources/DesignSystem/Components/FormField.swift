@@ -6,7 +6,12 @@ public struct FormField<Content: View>: View {
     private let error: String?
     private let content: Content
 
-    public init(title: String, helper: String? = nil, error: String? = nil, @ViewBuilder content: () -> Content) {
+    public init(
+        title: String,
+        helper: String? = nil,
+        error: String? = nil,
+        @ViewBuilder content: () -> Content
+    ) {
         self.title = title
         self.helper = helper
         self.error = error
@@ -22,7 +27,10 @@ public struct FormField<Content: View>: View {
                 .padding(.vertical, BloomyTheme.spacing.xs)
                 .background(
                     RoundedRectangle(cornerRadius: BloomyTheme.radii.soft, style: .continuous)
-                        .strokeBorder(error == nil ? BloomyTheme.palette.outline : BloomyTheme.palette.destructive, lineWidth: 1)
+                        .strokeBorder(
+                            error == nil ? BloomyTheme.palette.outline : BloomyTheme.palette.destructive,
+                            lineWidth: 1
+                        )
                         .background(
                             RoundedRectangle(cornerRadius: BloomyTheme.radii.soft, style: .continuous)
                                 .fill(BloomyTheme.palette.secondaryBackground)

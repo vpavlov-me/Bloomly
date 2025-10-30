@@ -26,14 +26,22 @@ public extension BloomyTheme {
         public let background = Color(.systemBackground)
         public let secondaryBackground = Color(.secondarySystemBackground)
         public let tertiaryBackground = Color(.tertiarySystemBackground)
-        public let elevatedSurface = Color.dynamic(light: UIColor.white, dark: UIColor.secondarySystemBackground)
-        public let accent = Color.dynamic(light: UIColor(red: 0.99, green: 0.52, blue: 0.57, alpha: 1),
-                                          dark: UIColor(red: 0.98, green: 0.44, blue: 0.48, alpha: 1))
+        public let elevatedSurface = Color.dynamic(
+            light: UIColor.white,
+            dark: UIColor.secondarySystemBackground
+        )
+        public let accent = Color.dynamic(
+            light: UIColor(red: 0.99, green: 0.52, blue: 0.57, alpha: 1),
+            dark: UIColor(red: 0.98, green: 0.44, blue: 0.48, alpha: 1)
+        )
         public let accentContrast = Color.white
         public let success = Color(.systemGreen)
         public let warning = Color(.systemOrange)
         public let destructive = Color(.systemRed)
-        public let outline = Color.dynamic(light: UIColor.systemGray4, dark: UIColor.systemGray5)
+        public let outline = Color.dynamic(
+            light: UIColor.systemGray4,
+            dark: UIColor.systemGray5
+        )
         public let mutedText = Color(.secondaryLabel)
         public let primaryText = Color(.label)
 
@@ -60,38 +68,38 @@ public extension BloomyTheme {
     }
 
     struct Typography {
-        public struct TextStyle {
-            public let font: Font
-            public let color: Color
-
-            public init(font: Font, color: Color) {
-                self.font = font
-                self.color = color
-            }
-
-            public func text(_ value: String) -> some View {
-                Text(value)
-                    .font(font)
-                    .foregroundStyle(color)
-            }
-        }
-
-        public let largeTitle = TextStyle(font: .system(.largeTitle, design: .rounded).weight(.bold),
-                                          color: BloomyTheme.palette.primaryText)
-        public let title = TextStyle(font: .system(.title2, design: .rounded).weight(.semibold),
-                                     color: BloomyTheme.palette.primaryText)
-        public let title3 = TextStyle(font: .system(.title3, design: .rounded).weight(.semibold),
-                                      color: BloomyTheme.palette.primaryText)
-        public let headline = TextStyle(font: .system(.headline, design: .rounded),
-                                        color: BloomyTheme.palette.primaryText)
-        public let body = TextStyle(font: .system(.body, design: .rounded),
-                                    color: BloomyTheme.palette.primaryText)
-        public let callout = TextStyle(font: .system(.callout, design: .rounded),
-                                       color: BloomyTheme.palette.primaryText)
-        public let footnote = TextStyle(font: .system(.footnote, design: .rounded),
-                                        color: BloomyTheme.palette.mutedText)
-        public let caption = TextStyle(font: .system(.caption, design: .rounded),
-                                       color: BloomyTheme.palette.mutedText)
+        public let largeTitle = TextStyle(
+            font: .system(.largeTitle, design: .rounded).weight(.bold),
+            color: BloomyTheme.palette.primaryText
+        )
+        public let title = TextStyle(
+            font: .system(.title2, design: .rounded).weight(.semibold),
+            color: BloomyTheme.palette.primaryText
+        )
+        public let title3 = TextStyle(
+            font: .system(.title3, design: .rounded).weight(.semibold),
+            color: BloomyTheme.palette.primaryText
+        )
+        public let headline = TextStyle(
+            font: .system(.headline, design: .rounded),
+            color: BloomyTheme.palette.primaryText
+        )
+        public let body = TextStyle(
+            font: .system(.body, design: .rounded),
+            color: BloomyTheme.palette.primaryText
+        )
+        public let callout = TextStyle(
+            font: .system(.callout, design: .rounded),
+            color: BloomyTheme.palette.primaryText
+        )
+        public let footnote = TextStyle(
+            font: .system(.footnote, design: .rounded),
+            color: BloomyTheme.palette.mutedText
+        )
+        public let caption = TextStyle(
+            font: .system(.caption, design: .rounded),
+            color: BloomyTheme.palette.mutedText
+        )
     }
 
     struct Spacing {
@@ -123,24 +131,42 @@ public extension BloomyTheme {
     }
 }
 
+public extension BloomyTheme.Typography {
+    struct TextStyle {
+        public let font: Font
+        public let color: Color
+
+        public init(font: Font, color: Color) {
+            self.font = font
+            self.color = color
+        }
+
+        public func text(_ value: String) -> some View {
+            Text(value)
+                .font(font)
+                .foregroundStyle(color)
+        }
+    }
+}
+
 private extension Color {
     /// Initialize Color from hex string (e.g., "#667BC6")
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0
         Scanner(string: hex).scanHexInt64(&int)
-        let r, g, b: UInt64
+        let red, green, blue: UInt64
         switch hex.count {
-        case 6: // RGB (24-bit)
-            (r, g, b) = ((int >> 16) & 0xFF, (int >> 8) & 0xFF, int & 0xFF)
+        case 6:  // RGB (24-bit)
+            (red, green, blue) = ((int >> 16) & 0xFF, (int >> 8) & 0xFF, int & 0xFF)
         default:
-            (r, g, b) = (0, 0, 0)
+            (red, green, blue) = (0, 0, 0)
         }
         self.init(
             .sRGB,
-            red: Double(r) / 255,
-            green: Double(g) / 255,
-            blue: Double(b) / 255
+            red: Double(red) / 255,
+            green: Double(green) / 255,
+            blue: Double(blue) / 255
         )
     }
 
@@ -152,9 +178,9 @@ private extension Color {
     }
     #else
     static func dynamic(light: NSColor, dark: NSColor) -> Color {
-        Color(NSColor(name: nil, dynamicProvider: { appearance in
+        Color(NSColor(name: nil) { appearance in
             appearance.name == .darkAqua ? dark : light
-        }))
+        })
     }
     #endif
 }
@@ -178,11 +204,17 @@ struct BloomyTheme_Previews: PreviewProvider {
                 RoundedRectangle(cornerRadius: BloomyTheme.radii.card)
                     .fill(BloomyTheme.palette.accent)
                     .frame(height: 60)
-                    .overlay(Text("Accent").foregroundStyle(.white).font(.headline))
+                    .overlay(
+                        Text("Accent").foregroundStyle(.white).font(.headline)
+                    )
                 RoundedRectangle(cornerRadius: BloomyTheme.radii.card)
                     .fill(BloomyTheme.palette.elevatedSurface)
                     .frame(height: 60)
-                    .overlay(Text("Elevated").foregroundStyle(BloomyTheme.palette.primaryText).font(.headline))
+                    .overlay(
+                        Text("Elevated")
+                            .foregroundStyle(BloomyTheme.palette.primaryText)
+                            .font(.headline)
+                    )
             }
             .padding(BloomyTheme.spacing.lg)
             .background(BloomyTheme.palette.secondaryBackground)
@@ -190,13 +222,43 @@ struct BloomyTheme_Previews: PreviewProvider {
             // Event colors preview
             VStack(alignment: .leading, spacing: BloomyTheme.spacing.sm) {
                 Text("Event Colors").font(.headline)
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: BloomyTheme.spacing.sm) {
-                    EventColorCard(title: "Sleep", color: BloomyTheme.palette.sleep, icon: "moon.fill")
-                    EventColorCard(title: "Feeding", color: BloomyTheme.palette.feeding, icon: "bottle.fill")
-                    EventColorCard(title: "Diaper", color: BloomyTheme.palette.diaper, icon: "sparkles")
-                    EventColorCard(title: "Pumping", color: BloomyTheme.palette.pumping, icon: "drop.fill")
-                    EventColorCard(title: "Measurement", color: BloomyTheme.palette.measurement, icon: "ruler")
-                    EventColorCard(title: "Medication", color: BloomyTheme.palette.medication, icon: "pills")
+                LazyVGrid(
+                    columns: [
+                        GridItem(.flexible()),
+                        GridItem(.flexible())
+                    ],
+                    spacing: BloomyTheme.spacing.sm
+                ) {
+                    EventColorCard(
+                        title: "Sleep",
+                        color: BloomyTheme.palette.sleep,
+                        icon: "moon.fill"
+                    )
+                    EventColorCard(
+                        title: "Feeding",
+                        color: BloomyTheme.palette.feeding,
+                        icon: "bottle.fill"
+                    )
+                    EventColorCard(
+                        title: "Diaper",
+                        color: BloomyTheme.palette.diaper,
+                        icon: "sparkles"
+                    )
+                    EventColorCard(
+                        title: "Pumping",
+                        color: BloomyTheme.palette.pumping,
+                        icon: "drop.fill"
+                    )
+                    EventColorCard(
+                        title: "Measurement",
+                        color: BloomyTheme.palette.measurement,
+                        icon: "ruler"
+                    )
+                    EventColorCard(
+                        title: "Medication",
+                        color: BloomyTheme.palette.medication,
+                        icon: "pills"
+                    )
                 }
             }
             .padding(BloomyTheme.spacing.lg)

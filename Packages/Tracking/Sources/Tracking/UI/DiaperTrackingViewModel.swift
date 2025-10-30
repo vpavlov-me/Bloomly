@@ -107,7 +107,6 @@ public final class DiaperTrackingViewModel: ObservableObject {
             // Hide success after delay
             try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
             showSuccess = false
-
         } catch {
             logger.error("Failed to log diaper: \(error.localizedDescription)")
             self.error = "Failed to save diaper change. Please try again."

@@ -22,7 +22,9 @@ public struct ProfileView: View {
 
     public init(container: DependencyContainer) {
         self._container = ObservedObject(initialValue: container)
-        self._notificationManager = ObservedObject(initialValue: container.notificationManager)
+        self._notificationManager = ObservedObject(
+            initialValue: container.notificationManager
+        )
     }
 
     public var body: some View {
@@ -48,7 +50,10 @@ public struct ProfileView: View {
             .background(BloomyTheme.palette.background)
             .navigationTitle(Text(AppCopy.string(for: "profile.title")))
             .sheet(isPresented: $showPaywall) {
-                PaywallView(storeClient: container.storeClient, premiumState: container.premiumState)
+                PaywallView(
+                    storeClient: container.storeClient,
+                    premiumState: container.premiumState
+                )
             }
             .toast($toastMessage)
             .task {
@@ -67,51 +72,9 @@ public struct ProfileView: View {
                 HStack(spacing: BloomyTheme.spacing.md) {
                     // Profile photo
                     if let profile = profileStore.currentProfile {
-                        if let photoData = profile.photoData, let uiImage = UIImage(data: photoData) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 80)
-                                .clipShape(Circle())
-                        } else {
-                            Circle()
-                                .fill(BloomyTheme.palette.accent.opacity(0.2))
-                                .frame(width: 80, height: 80)
-                                .overlay {
-                                    Image(systemName: "person.fill")
-                                        .font(.system(size: 36))
-                                        .foregroundStyle(BloomyTheme.palette.accent)
-                                }
-                        }
-
-                        VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
-                            Text(profile.name)
-                                .font(BloomyTheme.typography.title.font)
-                                .foregroundStyle(BloomyTheme.palette.primaryText)
-
-                            Text(profile.ageText)
-                                .font(BloomyTheme.typography.body.font)
-                                .foregroundStyle(BloomyTheme.palette.secondaryText)
-
-                            if let birthDate = profile.birthDate {
-                                Text(formatBirthDate(birthDate))
-                                    .font(BloomyTheme.typography.caption.font)
-                                    .foregroundStyle(BloomyTheme.palette.mutedText)
-                            }
-                        }
+                        profileContent(for: profile)
                     } else {
-                        Circle()
-                            .fill(BloomyTheme.palette.accent.opacity(0.2))
-                            .frame(width: 80, height: 80)
-                            .overlay {
-                                Image(systemName: "plus")
-                                    .font(.system(size: 36))
-                                    .foregroundStyle(BloomyTheme.palette.accent)
-                            }
-
-                        Text(AppCopy.string(for: "profile.create"))
-                            .font(BloomyTheme.typography.body.font)
-                            .foregroundStyle(BloomyTheme.palette.primaryText)
+                        emptyProfileContent
                     }
 
                     Spacer()
@@ -121,6 +84,59 @@ public struct ProfileView: View {
                 }
             }
             .buttonStyle(.plain)
+        }
+    }
+
+    @ViewBuilder
+    private func profileContent(for profile: BabyProfile) -> some View {
+        if let photoData = profile.photoData, let uiImage = UIImage(data: photoData) {
+            Image(uiImage: uiImage)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 80, height: 80)
+                .clipShape(Circle())
+        } else {
+            Circle()
+                .fill(BloomyTheme.palette.accent.opacity(0.2))
+                .frame(width: 80, height: 80)
+                .overlay {
+                    Image(systemName: "person.fill")
+                        .font(.system(size: 36))
+                        .foregroundStyle(BloomyTheme.palette.accent)
+                }
+        }
+
+        VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
+            Text(profile.name)
+                .font(BloomyTheme.typography.title.font)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
+
+            Text(profile.ageText)
+                .font(BloomyTheme.typography.body.font)
+                .foregroundStyle(BloomyTheme.palette.secondaryText)
+
+            if let birthDate = profile.birthDate {
+                Text(formatBirthDate(birthDate))
+                    .font(BloomyTheme.typography.caption.font)
+                    .foregroundStyle(BloomyTheme.palette.mutedText)
+            }
+        }
+    }
+
+    private var emptyProfileContent: some View {
+        HStack(spacing: BloomyTheme.spacing.md) {
+            Circle()
+                .fill(BloomyTheme.palette.accent.opacity(0.2))
+                .frame(width: 80, height: 80)
+                .overlay {
+                    Image(systemName: "plus")
+                        .font(.system(size: 36))
+                        .foregroundStyle(BloomyTheme.palette.accent)
+                }
+
+            Text(AppCopy.string(for: "profile.create"))
+                .font(BloomyTheme.typography.body.font)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
         }
     }
 
@@ -191,9 +207,11 @@ public struct ProfileView: View {
                         Divider()
 
                         VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
-                            Text(AppCopy.string(for: "settings.notifications.feeding.interval"))
-                                .font(BloomyTheme.typography.caption.font)
-                                .foregroundStyle(BloomyTheme.palette.mutedText)
+                            Text(
+                                AppCopy.string(for: "settings.notifications.feeding.interval")
+                            )
+                            .font(BloomyTheme.typography.caption.font)
+                            .foregroundStyle(BloomyTheme.palette.mutedText)
 
                             Picker("", selection: $settings.feedingReminderInterval) {
                                 ForEach(ReminderInterval.allCases) { interval in
@@ -337,7 +355,8 @@ public struct ProfileView: View {
                     Divider()
 
                     Button {
-                        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                        if let scene = UIApplication.shared.connectedScenes.first
+                            as? UIWindowScene {
                             SKStoreReviewController.requestReview(in: scene)
                         }
                     } label: {
@@ -443,7 +462,10 @@ private struct DataExportView: View {
             await MainActor.run {
                 exportURL = url
                 showExportSheet = true
-                toastMessage = ToastMessage(type: .success, message: AppCopy.string(for: "settings.export.success"))
+                toastMessage = ToastMessage(
+                    type: .success,
+                    message: AppCopy.string(for: "settings.export.success")
+                )
                 container.analytics.track(AnalyticsEvent(
                     name: "data_exported",
                     metadata: ["format": format == .csv ? "csv" : "json"]
@@ -451,7 +473,10 @@ private struct DataExportView: View {
             }
         } catch {
             await MainActor.run {
-                toastMessage = ToastMessage(type: .error, message: AppCopy.string(for: "errors.export"))
+                toastMessage = ToastMessage(
+                    type: .error,
+                    message: AppCopy.string(for: "errors.export")
+                )
             }
         }
     }

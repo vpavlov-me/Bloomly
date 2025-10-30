@@ -30,7 +30,7 @@ public final class WidgetDataManager {
         storeDescription.type = NSSQLiteStoreType
         container.persistentStoreDescriptions = [storeDescription]
 
-        container.loadPersistentStores { description, error in
+        container.loadPersistentStores { _, error in
             if let error = error {
                 print("⚠️ Core Data failed to load: \(error.localizedDescription)")
             }

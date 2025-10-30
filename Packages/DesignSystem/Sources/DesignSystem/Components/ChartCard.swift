@@ -7,7 +7,12 @@ public struct ChartCard<Content: View>: View {
     private let content: Content
     private let accessory: AnyView?
 
-    public init(title: String, subtitle: String? = nil, accessory: AnyView? = nil, @ViewBuilder content: () -> Content) {
+    public init(
+        title: String,
+        subtitle: String? = nil,
+        accessory: AnyView? = nil,
+        @ViewBuilder content: () -> Content
+    ) {
         self.title = title
         self.subtitle = subtitle
         self.accessory = accessory
@@ -42,7 +47,10 @@ struct ChartCard_Previews: PreviewProvider {
         ChartCard(title: "Sleep", subtitle: "Last 7 days") {
             Chart {
                 ForEach(0..<7, id: \.self) { day in
-                    LineMark(x: .value("Day", day), y: .value("Hours", Double.random(in: 8...11)))
+                    LineMark(
+                        x: .value("Day", day),
+                        y: .value("Hours", Double.random(in: 8...11))
+                    )
                 }
             }
         }

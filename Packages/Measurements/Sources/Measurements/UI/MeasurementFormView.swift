@@ -138,9 +138,8 @@ extension MeasurementFormView {
 struct MeasurementFormView_Previews: PreviewProvider {
     static var previews: some View {
         MeasurementFormView(
-            repository: PreviewMeasurementsRepository(),
-            onComplete: { _ in }
-        )
+            repository: PreviewMeasurementsRepository()
+        )            { _ in }
     }
 
     private struct PreviewMeasurementsRepository: MeasurementsRepository {

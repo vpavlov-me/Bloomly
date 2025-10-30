@@ -111,7 +111,7 @@ final class EventsRepositoryTests: XCTestCase {
 
         // Should not be found in normal queries (soft deleted)
         let events = try await repository.events(in: nil, kind: nil)
-        XCTAssertFalse(events.contains(where: { $0.id == created.id }))
+        XCTAssertFalse(events.contains { $0.id == created.id })
     }
 
     // MARK: - Upsert Tests
@@ -178,8 +178,8 @@ final class EventsRepositoryTests: XCTestCase {
         let events = try await repository.events(in: interval, kind: nil)
 
         XCTAssertEqual(events.count, 2)
-        XCTAssertTrue(events.contains(where: { $0.kind == .feeding }))
-        XCTAssertTrue(events.contains(where: { $0.kind == .diaper }))
+        XCTAssertTrue(events.contains { $0.kind == .feeding })
+        XCTAssertTrue(events.contains { $0.kind == .diaper })
     }
 
     func testFetchEventsForBaby() async throws {
@@ -204,9 +204,9 @@ final class EventsRepositoryTests: XCTestCase {
         let created = try await repository.batchCreate(events)
 
         XCTAssertEqual(created.count, 3)
-        XCTAssertTrue(created.contains(where: { $0.notes == "Event 1" }))
-        XCTAssertTrue(created.contains(where: { $0.notes == "Event 2" }))
-        XCTAssertTrue(created.contains(where: { $0.notes == "Event 3" }))
+        XCTAssertTrue(created.contains { $0.notes == "Event 1" })
+        XCTAssertTrue(created.contains { $0.notes == "Event 2" })
+        XCTAssertTrue(created.contains { $0.notes == "Event 3" })
     }
 
     func testBatchUpdate() async throws {
@@ -223,8 +223,8 @@ final class EventsRepositoryTests: XCTestCase {
         let results = try await repository.batchUpdate([updated1, updated2])
 
         XCTAssertEqual(results.count, 2)
-        XCTAssertTrue(results.contains(where: { $0.notes == "Updated 1" }))
-        XCTAssertTrue(results.contains(where: { $0.notes == "Updated 2" }))
+        XCTAssertTrue(results.contains { $0.notes == "Updated 1" })
+        XCTAssertTrue(results.contains { $0.notes == "Updated 2" })
     }
 
     // MARK: - Timezone Handling Tests

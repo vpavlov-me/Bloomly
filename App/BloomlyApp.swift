@@ -6,7 +6,8 @@ import SwiftUI
 struct BloomlyApp: App {
     @StateObject private var container = DependencyContainer()
     @StateObject private var onboardingManager = OnboardingManager.shared
-    @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.scenePhase)
+    private var scenePhase
 
     @State private var widgetDeepLink: WidgetDeepLink?
 

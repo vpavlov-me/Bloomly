@@ -9,7 +9,11 @@ public actor ErrorLogger {
     private var errorHistory: [ErrorRecord] = []
     private let maxHistorySize = 100
 
-    public init(subsystem: String = "com.vibecoding.bloomly", category: String = "Errors", analytics: Analytics? = nil) {
+    public init(
+        subsystem: String = "com.vibecoding.bloomly",
+        category: String = "Errors",
+        analytics: Analytics? = nil
+    ) {
         self.logger = Logger(subsystem: subsystem, category: category)
         self.analytics = analytics
     }

@@ -24,7 +24,7 @@ public final class MockAnalytics: Analytics, @unchecked Sendable {
     public func wasTracked(_ eventName: String) -> Bool {
         lock.lock()
         defer { lock.unlock() }
-        return trackedEvents.contains(where: { $0.name == eventName })
+        return trackedEvents.contains { $0.name == eventName }
     }
 
     /// Count how many times an event was tracked

@@ -190,7 +190,9 @@ public struct InlineErrorView: View {
                 .fill(BloomyTheme.palette.destructive.opacity(0.1))
         )
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(error.errorDescription ?? "Error"). \(error.recoverySuggestion ?? "")")
+        .accessibilityLabel(
+            "\(error.errorDescription ?? "Error"). \(error.recoverySuggestion ?? "")"
+        )
     }
 }
 

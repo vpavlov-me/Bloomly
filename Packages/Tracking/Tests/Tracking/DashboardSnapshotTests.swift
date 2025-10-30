@@ -151,11 +151,22 @@ final class DashboardSnapshotTests: XCTestCase {
     func testDashboardiPhoneSE() throws {
         let now = Date()
         let events = [
-            EventDTO(kind: .sleep, start: now.addingTimeInterval(-7200), end: now.addingTimeInterval(-3600)),
-            EventDTO(kind: .feeding, start: now.addingTimeInterval(-1800), end: now.addingTimeInterval(-1200))
+            EventDTO(
+                kind: .sleep,
+                start: now.addingTimeInterval(-7200),
+                end: now.addingTimeInterval(-3600)
+            ),
+            EventDTO(
+                kind: .feeding,
+                start: now.addingTimeInterval(-1800),
+                end: now.addingTimeInterval(-1200)
+            )
         ]
 
-        let repository = MockEventsRepository(events: events, lastEvents: [.sleep: events[0], .feeding: events[1]])
+        let repository = MockEventsRepository(
+            events: events,
+            lastEvents: [.sleep: events[0], .feeding: events[1]]
+        )
         let viewModel = DashboardViewModel(eventsRepository: repository)
         let analytics = MockAnalytics()
 
@@ -177,11 +188,22 @@ final class DashboardSnapshotTests: XCTestCase {
     func testDashboardiPhone15ProMax() throws {
         let now = Date()
         let events = [
-            EventDTO(kind: .sleep, start: now.addingTimeInterval(-7200), end: now.addingTimeInterval(-3600)),
-            EventDTO(kind: .feeding, start: now.addingTimeInterval(-1800), end: now.addingTimeInterval(-1200))
+            EventDTO(
+                kind: .sleep,
+                start: now.addingTimeInterval(-7200),
+                end: now.addingTimeInterval(-3600)
+            ),
+            EventDTO(
+                kind: .feeding,
+                start: now.addingTimeInterval(-1800),
+                end: now.addingTimeInterval(-1200)
+            )
         ]
 
-        let repository = MockEventsRepository(events: events, lastEvents: [.sleep: events[0], .feeding: events[1]])
+        let repository = MockEventsRepository(
+            events: events,
+            lastEvents: [.sleep: events[0], .feeding: events[1]]
+        )
         let viewModel = DashboardViewModel(eventsRepository: repository)
         let analytics = MockAnalytics()
 

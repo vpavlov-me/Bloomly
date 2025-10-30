@@ -7,7 +7,13 @@ public struct EmptyStateView: View {
     private let actionTitle: String?
     private let action: (() -> Void)?
 
-    public init(icon: String = "face.smiling", title: String, message: String, actionTitle: String? = nil, action: (() -> Void)? = nil) {
+    public init(
+        icon: String = "face.smiling",
+        title: String,
+        message: String,
+        actionTitle: String? = nil,
+        action: (() -> Void)? = nil
+    ) {
         self.icon = icon
         self.title = title
         self.message = message
@@ -49,7 +55,9 @@ public struct EmptyStateView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(transparentBackground)
         .accessibilityElement(children: .contain)
-        .accessibilityLabel(AccessibilityLabels.EmptyState.message(title: title, description: message))
+        .accessibilityLabel(
+            AccessibilityLabels.EmptyState.message(title: title, description: message)
+        )
         .accessibilityIdentifier(AccessibilityIdentifiers.EmptyState.message)
     }
 
@@ -65,9 +73,8 @@ struct EmptyStateView_Previews: PreviewProvider {
             icon: "chart.line.uptrend.xyaxis",
             title: "No Data",
             message: "Start logging events to see insights.",
-            actionTitle: "Add first event",
-            action: {}
-        )
+            actionTitle: "Add first event"
+        ) { }
         .previewLayout(.sizeThatFits)
     }
 }

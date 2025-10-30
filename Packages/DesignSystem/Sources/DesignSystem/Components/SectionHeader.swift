@@ -38,7 +38,7 @@ struct SectionHeader_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: BloomyTheme.spacing.lg) {
             SectionHeader(title: "Today", subtitle: "Tuesday, 12 March")
-            SectionHeader(title: "Feedings", actionTitle: "See all", action: {})
+            SectionHeader(title: "Feedings", actionTitle: "See all") {}
         }
         .padding()
         .background(BloomyTheme.palette.background)

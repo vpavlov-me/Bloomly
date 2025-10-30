@@ -4,7 +4,8 @@ import DesignSystem
 import SwiftUI
 
 public struct EventFormView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
 
     @StateObject private var viewModel: ViewModel
 

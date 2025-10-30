@@ -135,7 +135,7 @@ extension PaywallView {
             message = nil
             defer { isLoading = false }
             do {
-                products = try await client.loadProducts().sorted(by: { $0.displayPrice < $1.displayPrice })
+                products = try await client.loadProducts().sorted { $0.displayPrice < $1.displayPrice }
             } catch {
                 message = AppCopy.string(for: "paywall.error.generic")
             }
