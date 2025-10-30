@@ -35,7 +35,11 @@ struct TodaySleepWidgetEntryView: View {
 
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.blue.opacity(0.8), .indigo.opacity(0.7)], startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(
+                colors: [.blue.opacity(0.8), .indigo.opacity(0.7)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
             VStack(alignment: .leading, spacing: 6) {
                 Label(AppCopy.string(for: "event.kind.sleep"), systemImage: Symbols.sleep)
                     .font(.headline)

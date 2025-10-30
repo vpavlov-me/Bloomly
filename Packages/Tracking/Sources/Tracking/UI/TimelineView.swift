@@ -4,7 +4,8 @@ import SwiftUI
 /// Timeline view showing event history
 public struct TimelineView: View {
     @StateObject private var viewModel: TimelineViewModel
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
 
     public init(viewModel: TimelineViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)

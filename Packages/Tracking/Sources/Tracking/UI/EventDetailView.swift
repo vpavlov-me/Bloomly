@@ -4,7 +4,8 @@ import SwiftUI
 /// Event detail/edit modal view
 public struct EventDetailView: View {
     @StateObject private var viewModel: EventDetailViewModel
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
     @FocusState private var focusedField: Field?
 
     private enum Field: Hashable {
@@ -244,7 +245,7 @@ public struct EventDetailView: View {
                             .fontWeight(.medium)
                     }
 
-                    if key != metadata.keys.sorted().last {
+                    if key != metadata.keys.max() {
                         Divider()
                     }
                 }

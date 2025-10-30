@@ -4,7 +4,8 @@ import SwiftUI
 /// Pumping tracking view with timer and volume inputs
 public struct PumpingTrackingView: View {
     @StateObject private var viewModel: PumpingTrackingViewModel
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
     @FocusState private var focusedField: Field?
 
     private enum Field: Hashable {

@@ -221,7 +221,9 @@ private struct CreateProfileScreen: View {
                     showImagePicker = true
                 } label: {
                     Label(
-                        selectedImage == nil ? AppCopy.string(for: "onboarding.profile.addPhoto") : AppCopy.string(for: "onboarding.profile.changePhoto"),
+                        selectedImage == nil
+                            ? AppCopy.string(for: "onboarding.profile.addPhoto")
+                            : AppCopy.string(for: "onboarding.profile.changePhoto"),
                         systemImage: "camera.fill"
                     )
                     .font(BloomyTheme.typography.body.font)

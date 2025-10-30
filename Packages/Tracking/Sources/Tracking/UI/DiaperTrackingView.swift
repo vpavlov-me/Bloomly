@@ -4,7 +4,8 @@ import SwiftUI
 /// Diaper tracking view with quick log buttons
 public struct DiaperTrackingView: View {
     @StateObject private var viewModel: DiaperTrackingViewModel
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
 
     public init(viewModel: DiaperTrackingViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
