@@ -96,7 +96,7 @@ jobs:
 
       - name: Upload Test Results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: TestResults
           path: |
@@ -105,7 +105,7 @@ jobs:
 
       - name: Upload Snapshot Failures
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: FailedSnapshots
           path: Tests/__Snapshots__
