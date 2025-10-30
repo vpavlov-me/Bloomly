@@ -152,12 +152,10 @@ public struct BabyProfileView: View {
                     }
                 )
             } else {
-                CreateProfileView(
-                    onCreate: { name, birthDate, photo in
-                        _ = profileStore.createProfile(name: name, birthDate: birthDate, photo: photo)
-                        container.analytics.track(AnalyticsEvent(name: "profile_created"))
-                    }
-                )
+                CreateProfileView { name, birthDate, photo in
+                    _ = profileStore.createProfile(name: name, birthDate: birthDate, photo: photo)
+                    container.analytics.track(AnalyticsEvent(name: "profile_created"))
+                }
             }
         }
         .sheet(isPresented: $showImagePicker) {
@@ -260,7 +258,8 @@ public struct BabyProfileView: View {
 // MARK: - Edit Profile View
 
 private struct EditProfileView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
 
     let profile: BabyProfile
     let onSave: (String, UIImage?) -> Void
@@ -340,7 +339,8 @@ private struct EditProfileView: View {
 // MARK: - Create Profile View
 
 private struct CreateProfileView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
 
     let onCreate: (String, Date, UIImage?) -> Void
 
@@ -425,7 +425,8 @@ private struct CreateProfileView: View {
 
 private struct ImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
 
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
@@ -448,7 +449,10 @@ private struct ImagePicker: UIViewControllerRepresentable {
             self.parent = parent
         }
 
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        func imagePickerController(
+            _ picker: UIImagePickerController,
+            didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+        ) {
             if let editedImage = info[.editedImage] as? UIImage {
                 parent.image = editedImage
             } else if let originalImage = info[.originalImage] as? UIImage {

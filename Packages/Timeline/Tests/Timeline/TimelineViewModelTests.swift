@@ -393,7 +393,7 @@ private actor MockEventsRepository: EventsRepository {
     }
 
     func lastEvent(for kind: EventKind) async throws -> EventDTO? {
-        events.filter { $0.kind == kind }.sorted { $0.start > $1.start }.first
+        events.filter { $0.kind == kind }.max { $0.start < $1.start }
     }
 
     func stats(for day: Date) async throws -> EventDayStats {

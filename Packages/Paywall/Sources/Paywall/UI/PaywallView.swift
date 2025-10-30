@@ -43,8 +43,12 @@ public struct PaywallView: View {
         VStack(alignment: .leading, spacing: BloomyTheme.spacing.sm) {
             BloomyTheme.typography.title.text(AppCopy.string(for: "paywall.subtitle"))
             Tag(
-                title: premiumState.isPremium ? AppCopy.string(for: "settings.premium.active") : AppCopy.string(for: "settings.premium.inactive"),
-                color: premiumState.isPremium ? BloomyTheme.palette.success : BloomyTheme.palette.warning,
+                title: premiumState.isPremium
+                    ? AppCopy.string(for: "settings.premium.active")
+                    : AppCopy.string(for: "settings.premium.inactive"),
+                color: premiumState.isPremium
+                    ? BloomyTheme.palette.success
+                    : BloomyTheme.palette.warning,
                 icon: Symbols.premium
             )
         }
@@ -135,7 +139,7 @@ extension PaywallView {
             message = nil
             defer { isLoading = false }
             do {
-                products = try await client.loadProducts().sorted(by: { $0.displayPrice < $1.displayPrice })
+                products = try await client.loadProducts().sorted { $0.displayPrice < $1.displayPrice }
             } catch {
                 message = AppCopy.string(for: "paywall.error.generic")
             }

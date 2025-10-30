@@ -70,7 +70,8 @@ public struct StoreClient: Sendable {
 
 @MainActor
 public final class PremiumState: ObservableObject {
-    @AppStorage("isPremium") private var storage: Bool = false
+    @AppStorage("isPremium")
+    private var storage: Bool = false
     @Published public private(set) var isPremium: Bool = false
 
     private var updatesTask: Task<Void, Never>?

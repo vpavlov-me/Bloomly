@@ -84,7 +84,6 @@ public final class TimelineViewModel: ObservableObject {
 
             logger.info("Timeline loaded: \(events.count) events")
             isLoading = false
-
         } catch {
             logger.error("Failed to load timeline: \(error.localizedDescription)")
             self.error = "Failed to load timeline. Please try again."
@@ -158,7 +157,6 @@ public final class TimelineViewModel: ObservableObject {
             // Reset state
             eventToDelete = nil
             showDeleteConfirmation = false
-
         } catch {
             logger.error("Failed to delete event: \(error.localizedDescription)")
             self.error = "Failed to delete event. Please try again."

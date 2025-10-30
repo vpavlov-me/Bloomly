@@ -25,7 +25,9 @@ public struct PrimaryButton<Content: View>: View {
     }
 
     public var body: some View {
-        Button(action: action) {
+        Button {
+            action()
+        } label: {
             ZStack {
                 content.opacity(isLoading ? 0 : 1)
                 if isLoading {
@@ -81,13 +83,19 @@ public struct PrimaryButtonStyle: ButtonStyle {
 struct PrimaryButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: BloomyTheme.spacing.md) {
-            PrimaryButton(action: {}) {
+            PrimaryButton {
+                // Action
+            } label: {
                 Text("Save")
             }
-            PrimaryButton(isLoading: true, action: {}) {
+            PrimaryButton(isLoading: true) {
+                // Action
+            } label: {
                 Text("Loading")
             }
-            PrimaryButton(disabled: true, action: {}) {
+            PrimaryButton(disabled: true) {
+                // Action
+            } label: {
                 Text("Disabled")
             }
         }

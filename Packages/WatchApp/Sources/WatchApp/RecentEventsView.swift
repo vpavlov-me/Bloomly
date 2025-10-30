@@ -3,7 +3,8 @@ import SwiftUI
 import Tracking
 
 public struct RecentEventsView: View {
-    @Environment(\.eventsRepository) private var eventsRepository
+    @Environment(\.eventsRepository)
+    private var eventsRepository
     @State private var events: [EventDTO] = []
 
     public init() {}

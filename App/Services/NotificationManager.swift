@@ -13,7 +13,7 @@ public final class NotificationManager: NSObject, UNUserNotificationCenterDelega
     private var quietHoursStart: DateComponents = DateComponents(hour: 21, minute: 0)
     private var quietHoursEnd: DateComponents = DateComponents(hour: 8, minute: 0)
 
-    public override init() {
+    override public init() {
         super.init()
         notificationCenter.delegate = self
         checkNotificationStatus()
@@ -24,7 +24,8 @@ public final class NotificationManager: NSObject, UNUserNotificationCenterDelega
     /// Request user permission for notifications
     public func requestNotificationPermission() async -> Bool {
         do {
-            let granted = try await notificationCenter.requestAuthorization(options: [.alert, .sound, .badge])
+            let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+            let granted = try await notificationCenter.requestAuthorization(options: options)
             await MainActor.run {
                 self.isNotificationEnabled = granted
             }
@@ -73,7 +74,10 @@ public final class NotificationManager: NSObject, UNUserNotificationCenterDelega
         ]
 
         // Create trigger
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: max(interval, 1), repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(
+            timeInterval: max(interval, 1),
+            repeats: false
+        )
         let request = UNNotificationRequest(
             identifier: "reminder_\(eventKind.rawValue)_\(UUID().uuidString)",
             content: content,
@@ -192,8 +196,6 @@ public final class NotificationManager: NSObject, UNUserNotificationCenterDelega
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
-        let userInfo = notification.request.content.userInfo
-
         // Always show notifications even when app is in foreground
         completionHandler([.banner, .sound, .badge])
     }

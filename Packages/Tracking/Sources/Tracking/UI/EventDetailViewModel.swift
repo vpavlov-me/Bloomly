@@ -156,7 +156,6 @@ public final class EventDetailViewModel: ObservableObject {
             onSave?()
 
             isLoading = false
-
         } catch {
             logger.error("Failed to save event: \(error.localizedDescription)")
             self.error = "Failed to save changes. Please try again."
@@ -196,7 +195,6 @@ public final class EventDetailViewModel: ObservableObject {
 
             // Notify parent
             onDelete?()
-
         } catch {
             logger.error("Failed to delete event: \(error.localizedDescription)")
             self.error = "Failed to delete event. Please try again."

@@ -35,7 +35,11 @@ struct LastFeedWidgetEntryView: View {
 
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.pink.opacity(0.8), .purple.opacity(0.6)], startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(
+                colors: [.pink.opacity(0.8), .purple.opacity(0.6)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
             VStack(alignment: .leading, spacing: 8) {
                 Label(AppCopy.string(for: "event.kind.feed"), systemImage: Symbols.feed)
                     .font(.headline)

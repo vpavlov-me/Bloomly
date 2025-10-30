@@ -71,7 +71,13 @@ public struct ChartSeries: Equatable, Sendable {
     public let points: [ChartDataPoint]
     public let statistics: ChartStatistics
 
-    public init(metric: ChartMetric, period: AggregationPeriod, unit: ChartUnit, points: [ChartDataPoint], statistics: ChartStatistics) {
+    public init(
+        metric: ChartMetric,
+        period: AggregationPeriod,
+        unit: ChartUnit,
+        points: [ChartDataPoint],
+        statistics: ChartStatistics
+    ) {
         self.metric = metric
         self.period = period
         self.unit = unit

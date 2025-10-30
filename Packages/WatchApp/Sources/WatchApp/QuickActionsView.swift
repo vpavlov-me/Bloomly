@@ -6,8 +6,10 @@ import WatchKit
 
 /// Quick action view with large, prominent buttons for common tracking actions
 public struct QuickActionsView: View {
-    @Environment(\.eventsRepository) private var eventsRepository
-    @Environment(\.analytics) private var analytics
+    @Environment(\.eventsRepository)
+    private var eventsRepository
+    @Environment(\.analytics)
+    private var analytics
     @StateObject private var connectivity = WatchConnectivityService.shared
 
     @State private var isLoggingSleep = false

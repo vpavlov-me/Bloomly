@@ -4,7 +4,8 @@ import SwiftUI
 /// Sleep tracking view with prominent timer
 public struct SleepTrackingView: View {
     @StateObject private var viewModel: SleepTrackingViewModel
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
     @FocusState private var focusedField: Field?
 
     private enum Field: Hashable {

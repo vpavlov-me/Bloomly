@@ -3,7 +3,8 @@ import SwiftUI
 import Tracking
 
 public struct QuickLogView: View {
-    @Environment(\.eventsRepository) private var eventsRepository
+    @Environment(\.eventsRepository)
+    private var eventsRepository
     @State private var processingKind: EventKind?
     @State private var errorMessage: String?
 

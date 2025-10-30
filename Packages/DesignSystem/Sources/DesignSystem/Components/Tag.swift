@@ -10,7 +10,11 @@ public struct Tag: View {
     private let color: Color
     private let icon: String?
 
-    public init(title: String, color: Color = BloomyTheme.palette.accent, icon: String? = nil) {
+    public init(
+        title: String,
+        color: Color = BloomyTheme.palette.accent,
+        icon: String? = nil
+    ) {
         self.title = title
         self.color = color
         self.icon = icon
@@ -44,8 +48,13 @@ private extension Color {
         let luminance = 0.299 * red + 0.587 * green + 0.114 * blue
         return luminance > 0.6 ? .black : .white
         #elseif canImport(AppKit)
-        guard let converted = NSColor(self).usingColorSpace(.deviceRGB) else { return .white }
-        let luminance = 0.299 * converted.redComponent + 0.587 * converted.greenComponent + 0.114 * converted.blueComponent
+        guard let converted = NSColor(self).usingColorSpace(.deviceRGB) else {
+            return .white
+        }
+        let redComponent = converted.redComponent
+        let greenComponent = converted.greenComponent
+        let blueComponent = converted.blueComponent
+        let luminance = 0.299 * redComponent + 0.587 * greenComponent + 0.114 * blueComponent
         return luminance > 0.6 ? .black : .white
         #else
         return .white

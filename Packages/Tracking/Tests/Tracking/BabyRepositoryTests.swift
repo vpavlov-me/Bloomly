@@ -197,8 +197,8 @@ final class BabyRepositoryTests: XCTestCase {
         let all = try await repository.fetchAll()
 
         XCTAssertEqual(all.count, 2)
-        XCTAssertTrue(all.contains(where: { $0.name == "Hannah" }))
-        XCTAssertTrue(all.contains(where: { $0.name == "Isaac" }))
+        XCTAssertTrue(all.contains { $0.name == "Hannah" })
+        XCTAssertTrue(all.contains { $0.name == "Isaac" })
     }
 
     func testFetchAllWhenEmpty() async throws {

@@ -7,7 +7,11 @@ public struct MeasurementRow: View {
     private let onEdit: (MeasurementDTO) -> Void
     private let onDelete: (MeasurementDTO) -> Void
 
-    public init(measurement: MeasurementDTO, onEdit: @escaping (MeasurementDTO) -> Void, onDelete: @escaping (MeasurementDTO) -> Void) {
+    public init(
+        measurement: MeasurementDTO,
+        onEdit: @escaping (MeasurementDTO) -> Void,
+        onDelete: @escaping (MeasurementDTO) -> Void
+    ) {
         self.measurement = measurement
         self.onEdit = onEdit
         self.onDelete = onDelete

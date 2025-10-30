@@ -13,7 +13,8 @@ import SwiftUI
 /// - Dark mode support
 public struct SleepChartsView: View {
     @StateObject private var viewModel: ChartsViewModel
-    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.colorScheme)
+    private var colorScheme
 
     public init(viewModel: ChartsViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -279,12 +280,12 @@ public struct SleepChartsView: View {
 
     private func formatHours(_ hours: Double) -> String {
         let totalMinutes = Int(hours * 60)
-        let h = totalMinutes / 60
-        let m = totalMinutes % 60
-        if m == 0 {
-            return "\(h)h"
+        let hoursValue = totalMinutes / 60
+        let minutesValue = totalMinutes % 60
+        if minutesValue == 0 {
+            return "\(hoursValue)h"
         }
-        return "\(h)h \(m)m"
+        return "\(hoursValue)h \(minutesValue)m"
     }
 
     private func formatDate(_ date: Date) -> String {

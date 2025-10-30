@@ -4,7 +4,8 @@ import DesignSystem
 import SwiftUI
 
 public struct EventFormView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
 
     @StateObject private var viewModel: ViewModel
 
@@ -40,7 +41,11 @@ public struct EventFormView: View {
                                 helper: viewModel.hasEnd ? nil : AppCopy.string(for: "event.form.duration")
                             ) {
                                 Toggle(isOn: $viewModel.hasEnd) {
-                                    Text(viewModel.hasEnd ? LocalizedStringKey("event.form.end") : LocalizedStringKey("event.form.duration"))
+                                    Text(
+                                        viewModel.hasEnd
+                                            ? LocalizedStringKey("event.form.end")
+                                            : LocalizedStringKey("event.form.duration")
+                                    )
                                 }
                                 .toggleStyle(.switch)
                                 if viewModel.hasEnd {
@@ -70,7 +75,11 @@ public struct EventFormView: View {
                 .padding(.vertical, BloomyTheme.spacing.lg)
             }
             .background(BloomyTheme.palette.background.ignoresSafeArea())
-            .navigationTitle(viewModel.isEditing ? Text(LocalizedStringKey("event.form.title.edit")) : Text(LocalizedStringKey("event.form.title.new")))
+            .navigationTitle(
+                viewModel.isEditing
+                    ? Text(LocalizedStringKey("event.form.title.edit"))
+                    : Text(LocalizedStringKey("event.form.title.new"))
+            )
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(AppCopy.string(for: "event.form.cancel"), action: dismiss.callAsFunction)

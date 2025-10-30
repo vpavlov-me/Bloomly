@@ -32,7 +32,10 @@ public struct MainTabView: View {
         )
     }
 
-    public init(container: DependencyContainer, widgetDeepLink: Binding<WidgetDeepLink?> = .constant(nil)) {
+    public init(
+        container: DependencyContainer,
+        widgetDeepLink: Binding<WidgetDeepLink?> = .constant(nil)
+    ) {
         self._container = ObservedObject(initialValue: container)
         self._widgetDeepLink = widgetDeepLink
         _timelineViewModel = StateObject(
@@ -102,19 +105,26 @@ public struct MainTabView: View {
                 event: editingEvent
             ) { event in
                 timelineViewModel.append(event: event)
-                toastMessage = ToastMessage(type: .success, message: AppCopy.string(for: "event.saved"))
+                toastMessage = ToastMessage(
+                    type: .success,
+                    message: AppCopy.string(for: "event.saved")
+                )
             }
         }
         .sheet(isPresented: $showMeasurementForm, onDismiss: { editingMeasurement = nil }) {
             MeasurementFormView(
                 repository: container.measurementsRepository,
-                measurement: editingMeasurement
-            ) { _ in
-                Task {
-                    await loadMeasurements()
-                    toastMessage = ToastMessage(type: .success, message: AppCopy.string(for: "measurement.saved"))
+                measurement: editingMeasurement,
+                onSave: { _ in
+                    Task {
+                        await loadMeasurements()
+                        toastMessage = ToastMessage(
+                            type: .success,
+                            message: AppCopy.string(for: "measurement.saved")
+                        )
+                    }
                 }
-            }
+            )
         }
         .sheet(isPresented: $showPaywall) {
             PaywallView(storeClient: container.storeClient, premiumState: container.premiumState)
@@ -144,7 +154,10 @@ public struct MainTabView: View {
             Section {
                 QuickLogBar { event in
                     timelineViewModel.append(event: event)
-                    toastMessage = ToastMessage(type: .success, message: AppCopy.string(for: "event.saved"))
+                    toastMessage = ToastMessage(
+                        type: .success,
+                        message: AppCopy.string(for: "event.saved")
+                    )
                 }
                 .environment(\.eventsRepository, container.eventsRepository)
                 .environment(\.analytics, container.analytics)
@@ -207,13 +220,13 @@ public struct MainTabView: View {
                     AppCopy.string(for: "settings.notifications.enable"),
                     isOn: $container.notificationManager.isNotificationEnabled
                 )
-                    .onChange(of: container.notificationManager.isNotificationEnabled) { _, newValue in
-                        if newValue {
-                            Task {
-                                await container.notificationManager.requestNotificationPermission()
-                            }
+                .onChange(of: container.notificationManager.isNotificationEnabled) { _, newValue in
+                    if newValue {
+                        Task {
+                            await container.notificationManager.requestNotificationPermission()
                         }
                     }
+                }
             }
 
             Section(header: Text(AppCopy.string(for: "settings.premium.status"))) {
@@ -267,12 +280,18 @@ public struct MainTabView: View {
                 start: Calendar.current.date(byAdding: .month, value: -6, to: Date()) ?? Date(),
                 end: Date()
             )
-            let data = try await container.measurementsRepository.measurements(in: interval, type: nil)
+            let data = try await container.measurementsRepository.measurements(
+                in: interval,
+                type: nil
+            )
             await MainActor.run { measurements = data.sorted { $0.date > $1.date } }
         } catch {
             await MainActor.run {
                 measurements = []
-                toastMessage = ToastMessage(type: .error, message: AppCopy.string(for: "errors.load"))
+                toastMessage = ToastMessage(
+                    type: .error,
+                    message: AppCopy.string(for: "errors.load")
+                )
             }
         }
     }
@@ -281,9 +300,15 @@ public struct MainTabView: View {
         do {
             try await container.measurementsRepository.delete(id: measurement.id)
             await loadMeasurements()
-            toastMessage = ToastMessage(type: .success, message: AppCopy.string(for: "measurement.deleted"))
+            toastMessage = ToastMessage(
+                type: .success,
+                message: AppCopy.string(for: "measurement.deleted")
+            )
         } catch {
-            toastMessage = ToastMessage(type: .error, message: AppCopy.string(for: "errors.delete"))
+            toastMessage = ToastMessage(
+                type: .error,
+                message: AppCopy.string(for: "errors.delete")
+            )
         }
     }
 
@@ -308,11 +333,17 @@ public struct MainTabView: View {
             await MainActor.run {
                 exportURL = url
                 showExportSheet = true
-                toastMessage = ToastMessage(type: .success, message: AppCopy.string(for: "settings.export.success"))
+                toastMessage = ToastMessage(
+                    type: .success,
+                    message: AppCopy.string(for: "settings.export.success")
+                )
             }
         } catch {
             await MainActor.run {
-                toastMessage = ToastMessage(type: .error, message: AppCopy.string(for: "errors.export"))
+                toastMessage = ToastMessage(
+                    type: .error,
+                    message: AppCopy.string(for: "errors.export")
+                )
             }
         }
     }

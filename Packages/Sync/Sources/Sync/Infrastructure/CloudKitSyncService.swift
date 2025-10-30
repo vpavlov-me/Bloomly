@@ -110,7 +110,7 @@ public actor CloudKitSyncService: SyncService {
     }
 
     public func registerBackgroundSync() {
-#if canImport(UIKit) && !os(watchOS)
+        #if canImport(UIKit) && !os(watchOS)
         Task { @MainActor in
             let identifier = backgroundTaskIdentifier
             BGTaskScheduler.shared.register(forTaskWithIdentifier: identifier, using: nil) { task in
@@ -122,7 +122,7 @@ public actor CloudKitSyncService: SyncService {
             }
             scheduleBackgroundSync()
         }
-#endif
+        #endif
     }
 
     // MARK: - Zone & Token Management
@@ -465,7 +465,7 @@ public actor CloudKitSyncService: SyncService {
         }
     }
 
-#if canImport(UIKit) && !os(watchOS)
+    #if canImport(UIKit) && !os(watchOS)
     private func scheduleBackgroundSync() {
         let logger = self.logger
         let identifier = backgroundTaskIdentifier
@@ -499,7 +499,7 @@ public actor CloudKitSyncService: SyncService {
             }
         }
     }
-#endif
+    #endif
 }
 
 private extension NSManagedObjectContext {

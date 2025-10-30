@@ -21,28 +21,47 @@ public final class PersistenceController {
             storeURL = URL(fileURLWithPath: "/dev/null")
         } else {
             // Prefer App Group container, fall back to app support directory
-            let appGroupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.vibecoding.bloomly")
-            let defaultURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
+            let groupIdentifier = "group.com.vibecoding.bloomly"
+            let appGroupURL = FileManager.default.containerURL(
+                forSecurityApplicationGroupIdentifier: groupIdentifier
+            )
+            let defaultURL = FileManager.default.urls(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask
+            ).first
             let url = appGroupURL ?? defaultURL ?? FileManager.default.temporaryDirectory
             storeURL = url.appendingPathComponent("bloomly.sqlite")
         }
 
-        let description = container.persistentStoreDescriptions.first ?? NSPersistentStoreDescription()
+        let description = container.persistentStoreDescriptions.first
+            ?? NSPersistentStoreDescription()
         description.url = storeURL
         description.shouldMigrateStoreAutomatically = true
         description.shouldInferMappingModelAutomatically = true
-        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
-        description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        description.setOption(
+            true as NSNumber,
+            forKey: NSPersistentHistoryTrackingKey
+        )
+        let remoteChangeKey = NSPersistentStoreRemoteChangeNotificationPostOptionKey
+        description.setOption(true as NSNumber, forKey: remoteChangeKey)
 
-        if let identifier = bundle.object(forInfoDictionaryKey: "CloudKitContainerIdentifier") as? String, !identifier.isEmpty {
-            description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: identifier)
+        if let identifier = bundle.object(forInfoDictionaryKey: "CloudKitContainerIdentifier")
+            as? String,
+           !identifier.isEmpty {
+            let options = NSPersistentCloudKitContainerOptions(containerIdentifier: identifier)
+            description.cloudKitContainerOptions = options
         }
 
         container.persistentStoreDescriptions = [description]
 
         container.loadPersistentStores { _, error in
             if let error {
-                os_log("Unresolved Core Data error: %{public}@", log: .default, type: .fault, error.localizedDescription)
+                os_log(
+                    "Unresolved Core Data error: %{public}@",
+                    log: .default,
+                    type: .fault,
+                    error.localizedDescription
+                )
             }
         }
 
@@ -77,8 +96,15 @@ private extension PersistenceController {
             let date = calendar.date(byAdding: .day, value: -offset, to: now) ?? now
             let event = NSEntityDescription.insertNewObject(forEntityName: "Event", into: context)
             event.setValue(UUID(), forKey: "id")
-            event.setValue(["sleep", "feed", "diaper"].randomElement() ?? "sleep", forKey: "kind")
-            let start = calendar.date(byAdding: .hour, value: -Int.random(in: 1...4), to: date) ?? date
+            event.setValue(
+                ["sleep", "feed", "diaper"].randomElement() ?? "sleep",
+                forKey: "kind"
+            )
+            let start = calendar.date(
+                byAdding: .hour,
+                value: -Int.random(in: 1...4),
+                to: date
+            ) ?? date
             let end = calendar.date(byAdding: .minute, value: Int.random(in: 20...90), to: start)
             event.setValue(start, forKey: "start")
             event.setValue(end, forKey: "end")
@@ -91,12 +117,21 @@ private extension PersistenceController {
         }
 
         for offset in 0..<5 {
-            let measurement = NSEntityDescription.insertNewObject(forEntityName: "Measurement", into: context)
+            let measurement = NSEntityDescription.insertNewObject(
+                forEntityName: "Measurement",
+                into: context
+            )
             measurement.setValue(UUID(), forKey: "id")
-            measurement.setValue(["height", "weight", "head"].randomElement() ?? "height", forKey: "type")
+            measurement.setValue(
+                ["height", "weight", "head"].randomElement() ?? "height",
+                forKey: "type"
+            )
             measurement.setValue(Double.random(in: 48...80), forKey: "value")
             measurement.setValue("cm", forKey: "unit")
-            measurement.setValue(calendar.date(byAdding: .day, value: -offset, to: now), forKey: "date")
+            measurement.setValue(
+                calendar.date(byAdding: .day, value: -offset, to: now),
+                forKey: "date"
+            )
             measurement.setValue(false, forKey: "isSynced")
             measurement.setValue(baby, forKey: "baby")
         }

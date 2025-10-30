@@ -10,7 +10,7 @@ jobs:
     name: SwiftLint
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install SwiftLint
         run: brew install swiftlint
@@ -24,7 +24,7 @@ jobs:
       DEVELOPER_DIR: /Applications/Xcode.app
       OTHER_SWIFT_FLAGS: -warnings-as-errors
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Select Xcode
         run: |
@@ -89,14 +89,16 @@ jobs:
         if: success()
         run: |
           xcrun xccov view --report --json ./TestResults.xcresult > coverage.json
-          echo "## Test Coverage Report" >> $GITHUB_STEP_SUMMARY
-          echo '```json' >> $GITHUB_STEP_SUMMARY
-          xcrun xccov view --report ./TestResults.xcresult >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
+          {
+            echo "## Test Coverage Report"
+            echo '```json'
+            xcrun xccov view --report ./TestResults.xcresult
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload Test Results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: TestResults
           path: |
@@ -105,7 +107,7 @@ jobs:
 
       - name: Upload Snapshot Failures
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: FailedSnapshots
           path: Tests/__Snapshots__

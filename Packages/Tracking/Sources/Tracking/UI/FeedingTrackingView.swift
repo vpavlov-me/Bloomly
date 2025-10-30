@@ -4,7 +4,8 @@ import SwiftUI
 /// Feeding tracking view supporting breast, bottle, and solid food
 public struct FeedingTrackingView: View {
     @StateObject private var viewModel: FeedingTrackingViewModel
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
     @FocusState private var focusedField: Field?
 
     private enum Field: Hashable {

@@ -207,9 +207,8 @@ final class EventDetailViewModelTests: XCTestCase {
         let vmWithCallback = EventDetailViewModel(
             event: testEvent,
             repository: mockRepository,
-            analytics: mockAnalytics,
-            onDelete: { deleteCalled = true }
-        )
+            analytics: mockAnalytics
+        ) { deleteCalled = true }
 
         await vmWithCallback.deleteEvent()
 
@@ -246,9 +245,8 @@ final class EventDetailViewModelTests: XCTestCase {
         let vmWithCallback = EventDetailViewModel(
             event: testEvent,
             repository: mockRepository,
-            analytics: mockAnalytics,
-            onSave: { saveCalled = true }
-        )
+            analytics: mockAnalytics
+        ) { saveCalled = true }
 
         _ = try? await mockRepository.create(testEvent)
 
@@ -265,9 +263,8 @@ final class EventDetailViewModelTests: XCTestCase {
         let vmWithCallback = EventDetailViewModel(
             event: testEvent,
             repository: mockRepository,
-            analytics: mockAnalytics,
-            onDelete: { deleteCalled = true }
-        )
+            analytics: mockAnalytics
+        ) { deleteCalled = true }
 
         _ = try? await mockRepository.create(testEvent)
 

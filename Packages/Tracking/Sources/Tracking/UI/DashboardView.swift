@@ -337,7 +337,12 @@ struct DashboardView_Previews: PreviewProvider {
 
         NavigationStack {
             DashboardView(
-                viewModel: DashboardViewModel(eventsRepository: MockEventsRepository(events: events, lastEvents: lastEvents)),
+                viewModel: DashboardViewModel(
+                    eventsRepository: MockEventsRepository(
+                        events: events,
+                        lastEvents: lastEvents
+                    )
+                ),
                 analytics: AnalyticsLogger()
             ) { kind in
                 print("Quick action: \(kind)")

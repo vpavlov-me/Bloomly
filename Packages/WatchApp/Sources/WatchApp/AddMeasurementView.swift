@@ -3,7 +3,8 @@ import Measurements
 import SwiftUI
 
 public struct AddMeasurementView: View {
-    @Environment(\.measurementsRepository) private var measurementsRepository
+    @Environment(\.measurementsRepository)
+    private var measurementsRepository
     @State private var type: MeasurementType = .height
     @State private var value: String = ""
     @State private var unit: String = MeasurementType.height.defaultUnit

@@ -345,7 +345,6 @@ public final class FeedingTrackingViewModel: ObservableObject {
             // Hide success after delay
             try? await Task.sleep(nanoseconds: 2_000_000_000)
             showSuccess = false
-
         } catch {
             logger.error("Failed to save feeding: \(error.localizedDescription)")
             self.error = "Failed to save feeding. Please try again."

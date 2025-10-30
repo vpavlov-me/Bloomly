@@ -3,7 +3,8 @@ import DesignSystem
 import SwiftUI
 
 public struct MeasurementFormView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
 
     @StateObject private var viewModel: ViewModel
     private let repository: any MeasurementsRepository
@@ -138,9 +139,8 @@ extension MeasurementFormView {
 struct MeasurementFormView_Previews: PreviewProvider {
     static var previews: some View {
         MeasurementFormView(
-            repository: PreviewMeasurementsRepository(),
-            onComplete: { _ in }
-        )
+            repository: PreviewMeasurementsRepository()
+        ) { _ in }
     }
 
     private struct PreviewMeasurementsRepository: MeasurementsRepository {

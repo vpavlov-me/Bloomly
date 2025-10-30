@@ -13,7 +13,8 @@ import SwiftUI
 /// - Dark mode support
 public struct FeedingChartsView: View {
     @StateObject private var viewModel: ChartsViewModel
-    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.colorScheme)
+    private var colorScheme
 
     public init(viewModel: ChartsViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
