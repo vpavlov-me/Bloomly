@@ -2,11 +2,11 @@
 
 # Error Handling Guide
 
-This document outlines the comprehensive error handling strategy implemented in BabyTrack.
+This document outlines the comprehensive error handling strategy implemented in bloomy.
 
 ## Overview
 
-BabyTrack implements a robust error handling system that:
+bloomy implements a robust error handling system that:
 - Provides user-friendly error messages
 - Offers automatic recovery mechanisms
 - Logs errors for debugging and analytics
@@ -525,7 +525,7 @@ func updateEvent(_ event: EventDTO) async {
 
 ## Summary
 
-BabyTrack's error handling system ensures:
+bloomy's error handling system ensures:
 - ✅ User-friendly error messages
 - ✅ Automatic recovery for transient failures
 - ✅ Comprehensive logging and analytics

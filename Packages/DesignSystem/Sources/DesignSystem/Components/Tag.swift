@@ -10,14 +10,14 @@ public struct Tag: View {
     private let color: Color
     private let icon: String?
 
-    public init(title: String, color: Color = BabyTrackTheme.palette.accent, icon: String? = nil) {
+    public init(title: String, color: Color = BloomyTheme.palette.accent, icon: String? = nil) {
         self.title = title
         self.color = color
         self.icon = icon
     }
 
     public var body: some View {
-        HStack(spacing: BabyTrackTheme.spacing.xs) {
+        HStack(spacing: BloomyTheme.spacing.xs) {
             if let icon {
                 Image(systemName: icon)
                     .font(.system(size: 12, weight: .semibold))
@@ -25,8 +25,8 @@ public struct Tag: View {
             Text(title)
                 .font(.system(size: 12, weight: .semibold, design: .rounded))
         }
-        .padding(.horizontal, BabyTrackTheme.spacing.sm)
-        .padding(.vertical, BabyTrackTheme.spacing.xs)
+        .padding(.horizontal, BloomyTheme.spacing.sm)
+        .padding(.vertical, BloomyTheme.spacing.xs)
         .foregroundStyle(color.accessibleTextColor)
         .background(color)
         .clipShape(Capsule())
@@ -56,13 +56,13 @@ private extension Color {
 #if DEBUG
 struct Tag_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: BabyTrackTheme.spacing.sm) {
+        VStack(spacing: BloomyTheme.spacing.sm) {
             Tag(title: "Sleep", icon: "moon.fill")
             Tag(title: "Feeding", color: .blue, icon: "bottle.fill")
             Tag(title: "Diaper", color: .green)
         }
         .padding()
-        .background(BabyTrackTheme.palette.background)
+        .background(BloomyTheme.palette.background)
         .previewLayout(.sizeThatFits)
     }
 }

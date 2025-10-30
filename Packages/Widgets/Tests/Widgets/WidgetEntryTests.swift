@@ -3,8 +3,8 @@ import XCTest
 
 final class WidgetEntryTests: XCTestCase {
     func testEntryStoresValues() {
-        let entry = BabyTrackEntry(date: Date(), lastFeed: "1h", sleepSummary: "6h")
-        XCTAssertEqual(entry.lastFeed, "1h")
-        XCTAssertEqual(entry.sleepSummary, "6h")
+        let entry = SmallWidgetEntry(date: Date(), timeSinceLastFeed: "1h", lastFeedType: "Bottle")
+        XCTAssertEqual(entry.timeSinceLastFeed, "1h")
+        XCTAssertEqual(entry.lastFeedType, "Bottle")
     }
 }

@@ -21,7 +21,7 @@ public struct DashboardView: View {
 
     public var body: some View {
         ScrollView {
-            VStack(spacing: BabyTrackTheme.spacing.lg) {
+            VStack(spacing: BloomyTheme.spacing.lg) {
                 if viewModel.isLoading {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -31,7 +31,7 @@ public struct DashboardView: View {
                     contentView
                 }
             }
-            .padding(BabyTrackTheme.spacing.lg)
+            .padding(BloomyTheme.spacing.lg)
         }
         .navigationTitle(Text(AppCopy.string(for: "dashboard.title")))
         .task {
@@ -44,7 +44,7 @@ public struct DashboardView: View {
     }
 
     private var contentView: some View {
-        VStack(spacing: BabyTrackTheme.spacing.lg) {
+        VStack(spacing: BloomyTheme.spacing.lg) {
             // Active event banner (if any)
             if !viewModel.activeEvents.isEmpty {
                 activeEventsBanner
@@ -64,7 +64,7 @@ public struct DashboardView: View {
     }
 
     private var activeEventsBanner: some View {
-        VStack(spacing: BabyTrackTheme.spacing.sm) {
+        VStack(spacing: BloomyTheme.spacing.sm) {
             ForEach(viewModel.activeEvents) { event in
                 ActiveEventBanner(event: event)
             }
@@ -73,8 +73,8 @@ public struct DashboardView: View {
 
     private var quickActionsGrid: some View {
         Card {
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.md) {
-                BabyTrackTheme.typography.headline.text(
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.md) {
+                BloomyTheme.typography.headline.text(
                     String(localized: "dashboard.quickActions.title")
                 )
 
@@ -83,7 +83,7 @@ public struct DashboardView: View {
                         GridItem(.flexible()),
                         GridItem(.flexible())
                     ],
-                    spacing: BabyTrackTheme.spacing.sm
+                    spacing: BloomyTheme.spacing.sm
                 ) {
                     // Show only implemented tracking features
                     ForEach([EventKind.sleep, .feeding, .diaper, .pumping]) { kind in
@@ -101,7 +101,7 @@ public struct DashboardView: View {
     }
 
     private var timeSinceLastSection: some View {
-        VStack(spacing: BabyTrackTheme.spacing.sm) {
+        VStack(spacing: BloomyTheme.spacing.sm) {
             // Show only implemented tracking features
             ForEach([EventKind.sleep, .feeding, .diaper, .pumping]) { kind in
                 if let timeSince = viewModel.timeSinceLastEvent(for: kind) {
@@ -113,12 +113,12 @@ public struct DashboardView: View {
 
     private func todaySummarySection(stats: DashboardStats) -> some View {
         Card {
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.md) {
-                BabyTrackTheme.typography.headline.text(
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.md) {
+                BloomyTheme.typography.headline.text(
                     String(localized: "dashboard.todaySummary.title")
                 )
 
-                VStack(spacing: BabyTrackTheme.spacing.sm) {
+                VStack(spacing: BloomyTheme.spacing.sm) {
                     StatRow(
                         icon: EventKind.sleep.symbol,
                         title: String(localized: "dashboard.stats.sleep"),
@@ -183,19 +183,19 @@ private struct ActiveEventBanner: View {
 
     var body: some View {
         Card {
-            HStack(spacing: BabyTrackTheme.spacing.md) {
+            HStack(spacing: BloomyTheme.spacing.md) {
                 Image(systemName: event.kind.symbol)
                     .font(.system(size: 28))
-                    .foregroundStyle(BabyTrackTheme.palette.accent)
+                    .foregroundStyle(BloomyTheme.palette.accent)
 
-                VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.xs) {
-                    BabyTrackTheme.typography.headline.text(
+                VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
+                    BloomyTheme.typography.headline.text(
                         AppCopy.string(for: event.kind.titleKey)
                     )
-                    BabyTrackTheme.typography.body.text(
+                    BloomyTheme.typography.body.text(
                         AppCopy.string(for: "dashboard.activeEvent.ongoing")
                     )
-                    .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                    .foregroundStyle(BloomyTheme.palette.mutedText)
                 }
 
                 Spacer()
@@ -203,7 +203,7 @@ private struct ActiveEventBanner: View {
                 ElapsedTimeView(startDate: event.start)
             }
         }
-        .background(BabyTrackTheme.palette.accent.opacity(0.1))
+        .background(BloomyTheme.palette.accent.opacity(0.1))
     }
 }
 
@@ -213,19 +213,19 @@ private struct QuickActionButton: View {
 
     var body: some View {
         Button(action: action) {
-            VStack(spacing: BabyTrackTheme.spacing.sm) {
+            VStack(spacing: BloomyTheme.spacing.sm) {
                 Image(systemName: kind.symbol)
                     .font(.system(size: 32))
-                    .foregroundStyle(BabyTrackTheme.palette.accent)
+                    .foregroundStyle(BloomyTheme.palette.accent)
 
                 Text(LocalizedStringKey(kind.titleKey))
                     .font(.system(.subheadline, design: .rounded).weight(.medium))
                     .multilineTextAlignment(.center)
             }
             .frame(maxWidth: .infinity)
-            .padding(.vertical, BabyTrackTheme.spacing.md)
-            .background(BabyTrackTheme.palette.secondaryBackground)
-            .clipShape(RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft))
+            .padding(.vertical, BloomyTheme.spacing.md)
+            .background(BloomyTheme.palette.secondaryBackground)
+            .clipShape(RoundedRectangle(cornerRadius: BloomyTheme.radii.soft))
         }
         .buttonStyle(.plain)
     }
@@ -240,14 +240,14 @@ private struct TimeSinceCard: View {
             HStack {
                 Image(systemName: kind.symbol)
                     .font(.system(size: 24))
-                    .foregroundStyle(BabyTrackTheme.palette.accent)
+                    .foregroundStyle(BloomyTheme.palette.accent)
 
-                VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.xs) {
+                VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
                     Text(LocalizedStringKey(kind.titleKey))
                         .font(.system(.subheadline, design: .rounded).weight(.medium))
                     Text(formatTimeSince(timeSince))
                         .font(.system(.caption, design: .rounded))
-                        .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                        .foregroundStyle(BloomyTheme.palette.mutedText)
                 }
 
                 Spacer()
@@ -278,7 +278,7 @@ private struct StatRow: View {
         HStack {
             Image(systemName: icon)
                 .font(.system(size: 20))
-                .foregroundStyle(BabyTrackTheme.palette.accent)
+                .foregroundStyle(BloomyTheme.palette.accent)
                 .frame(width: 24)
 
             Text(title)

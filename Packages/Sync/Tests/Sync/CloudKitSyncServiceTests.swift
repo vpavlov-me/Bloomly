@@ -109,7 +109,7 @@ final class CloudKitSyncServiceTests: XCTestCase {
 
         model.entities = [event, measurement]
 
-        let container = NSPersistentContainer(name: "BabyTrackModel", managedObjectModel: model)
+        let container = NSPersistentContainer(name: "BloomyModel", managedObjectModel: model)
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         container.persistentStoreDescriptions = [description]
@@ -197,7 +197,7 @@ private final class InMemoryTokenStore: CloudKitTokenStore {
 extension InMemoryTokenStore: @unchecked Sendable {}
 
 private final class CKDatabaseMock: CKDatabase {
-    let zoneID = CKRecordZone.ID(zoneName: "BabyTrackZone", ownerName: CKCurrentUserDefaultName)
+    let zoneID = CKRecordZone.ID(zoneName: "BloomyZone", ownerName: CKCurrentUserDefaultName)
 
     var savedRecords: [CKRecord] = []
     var recordIDsToDelete: [CKRecord.ID] = []

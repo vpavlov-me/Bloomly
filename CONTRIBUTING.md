@@ -1,6 +1,6 @@
 # Contributor Guide
 
-Thanks for helping improve BabyTrack! This guide documents how we work with the repository—from filing issues to shipping releases and handling urgent fixes.
+Thanks for helping improve bloomy! This guide documents how we work with the repository—from filing issues to shipping releases and handling urgent fixes.
 
 ## 📋 Prerequisites
 - macOS 14+ and Xcode 16 (see `README.md` for details).
@@ -25,8 +25,8 @@ Thanks for helping improve BabyTrack! This guide documents how we work with the 
 4. **Test:**
    ```bash
    tuist generate --path .
-   xcodebuild -workspace BabyTrack.xcworkspace \
-     -scheme BabyTrack \
+   xcodebuild -workspace Bloomy.xcworkspace \
+     -scheme Bloomy \
      -destination 'platform=iOS Simulator,name=iPhone 15' \
      -skipPackagePluginValidation \
      test

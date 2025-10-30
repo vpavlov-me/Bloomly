@@ -15,7 +15,7 @@ public struct PaywallView: View {
     public var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.lg) {
+                VStack(alignment: .leading, spacing: BloomyTheme.spacing.lg) {
                     hero
                     features
                     if viewModel.isLoading {
@@ -28,23 +28,23 @@ public struct PaywallView: View {
                     if let message = viewModel.message {
                         Text(message)
                             .font(.footnote)
-                            .foregroundStyle(BabyTrackTheme.palette.destructive)
+                            .foregroundStyle(BloomyTheme.palette.destructive)
                     }
                 }
-                .padding(BabyTrackTheme.spacing.lg)
+                .padding(BloomyTheme.spacing.lg)
             }
-            .background(BabyTrackTheme.palette.background.ignoresSafeArea())
+            .background(BloomyTheme.palette.background.ignoresSafeArea())
             .navigationTitle(Text(AppCopy.PaywallCopy.title))
             .task { await viewModel.loadProducts() }
         }
     }
 
     private var hero: some View {
-        VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.sm) {
-            BabyTrackTheme.typography.title.text(AppCopy.string(for: "paywall.subtitle"))
+        VStack(alignment: .leading, spacing: BloomyTheme.spacing.sm) {
+            BloomyTheme.typography.title.text(AppCopy.string(for: "paywall.subtitle"))
             Tag(
                 title: premiumState.isPremium ? AppCopy.string(for: "settings.premium.active") : AppCopy.string(for: "settings.premium.inactive"),
-                color: premiumState.isPremium ? BabyTrackTheme.palette.success : BabyTrackTheme.palette.warning,
+                color: premiumState.isPremium ? BloomyTheme.palette.success : BloomyTheme.palette.warning,
                 icon: Symbols.premium
             )
         }
@@ -52,20 +52,20 @@ public struct PaywallView: View {
     }
 
     private var features: some View {
-        VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.sm) {
+        VStack(alignment: .leading, spacing: BloomyTheme.spacing.sm) {
             featureRow(icon: Symbols.chart, title: AppCopy.string(for: "paywall.feature.charts"))
             featureRow(icon: "externaldrive", title: AppCopy.string(for: "paywall.feature.export"))
             featureRow(icon: "icloud", title: AppCopy.string(for: "paywall.feature.sync"))
         }
         .padding()
-        .background(BabyTrackTheme.palette.secondaryBackground)
-        .clipShape(RoundedRectangle(cornerRadius: BabyTrackTheme.radii.card, style: .continuous))
+        .background(BloomyTheme.palette.secondaryBackground)
+        .clipShape(RoundedRectangle(cornerRadius: BloomyTheme.radii.card, style: .continuous))
     }
 
     private func featureRow(icon: String, title: String) -> some View {
-        HStack(spacing: BabyTrackTheme.spacing.md) {
+        HStack(spacing: BloomyTheme.spacing.md) {
             Image(systemName: icon)
-                .foregroundStyle(BabyTrackTheme.palette.accent)
+                .foregroundStyle(BloomyTheme.palette.accent)
             Text(title)
                 .font(.system(.body, design: .rounded))
             Spacer()
@@ -73,7 +73,7 @@ public struct PaywallView: View {
     }
 
     private var productButtons: some View {
-        VStack(spacing: BabyTrackTheme.spacing.sm) {
+        VStack(spacing: BloomyTheme.spacing.sm) {
             ForEach(viewModel.products, id: \.id) { product in
                 PrimaryButton(isLoading: viewModel.currentPurchaseID == product.id, action: {
                     Task { await purchase(product: product) }
@@ -89,16 +89,16 @@ public struct PaywallView: View {
     }
 
     private var restore: some View {
-        VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.xs) {
+        VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
             Button(AppCopy.string(for: "paywall.restore")) {
                 Task { await restorePurchases() }
             }
             .buttonStyle(.plain)
-            .foregroundStyle(BabyTrackTheme.palette.accent)
+            .foregroundStyle(BloomyTheme.palette.accent)
 
             Text(AppCopy.string(for: "paywall.restore.description"))
                 .font(.footnote)
-                .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                .foregroundStyle(BloomyTheme.palette.mutedText)
         }
     }
 

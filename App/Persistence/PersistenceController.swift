@@ -13,7 +13,7 @@ public final class PersistenceController {
     public var viewContext: NSManagedObjectContext { container.viewContext }
 
     public init(inMemory: Bool = false, bundle: Bundle = .main) {
-        let modelName = "BabyTrackModel"
+        let modelName = "BloomlyModel"
         container = NSPersistentCloudKitContainer(name: modelName)
 
         let storeURL: URL
@@ -21,10 +21,10 @@ public final class PersistenceController {
             storeURL = URL(fileURLWithPath: "/dev/null")
         } else {
             // Prefer App Group container, fall back to app support directory
-            let appGroupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.example.babytrack")
+            let appGroupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.vibecoding.bloomly")
             let defaultURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
             let url = appGroupURL ?? defaultURL ?? FileManager.default.temporaryDirectory
-            storeURL = url.appendingPathComponent("BabyTrack.sqlite")
+            storeURL = url.appendingPathComponent("bloomly.sqlite")
         }
 
         let description = container.persistentStoreDescriptions.first ?? NSPersistentStoreDescription()

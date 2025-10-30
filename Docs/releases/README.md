@@ -3,7 +3,7 @@
 Store release notes in `Docs/releases/<version>.md`. Recommended structure:
 
 ```markdown
-# BabyTrack <version> — <date>
+# bloomy <version> — <date>
 
 ## 🚀 Highlights
 - ...

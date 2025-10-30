@@ -58,7 +58,7 @@ final class MeasurementsRepositoryTests: XCTestCase {
         entity.properties = attributes
         model.entities = [entity]
 
-        let container = NSPersistentContainer(name: "BabyTrackModel", managedObjectModel: model)
+        let container = NSPersistentContainer(name: "BloomyModel", managedObjectModel: model)
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         description.shouldAddStoreAsynchronously = false

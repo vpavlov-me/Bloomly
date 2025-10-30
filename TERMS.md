@@ -1,14 +1,14 @@
-# Terms of Service for BabyTrack
+# Terms of Service for bloomy
 
 **Last Updated: October 29, 2025**
 
 ## 1. Acceptance of Terms
 
-By downloading, installing, or using BabyTrack ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.
+By downloading, installing, or using bloomy ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.
 
 ## 2. Description of Service
 
-BabyTrack is a mobile application that helps parents track their baby's daily activities, including:
+bloomy is a mobile application that helps parents track their baby's daily activities, including:
 - Sleep tracking
 - Feeding logs
 - Diaper changes
@@ -73,7 +73,7 @@ You agree NOT to:
 ## 7. Medical Disclaimer
 
 ### 7.1 Not Medical Advice
-- BabyTrack is for informational and tracking purposes only
+- bloomy is for informational and tracking purposes only
 - The App does NOT provide medical advice, diagnosis, or treatment
 - WHO percentile curves are for reference only
 - Always consult qualified healthcare professionals for medical decisions
@@ -86,7 +86,7 @@ You agree NOT to:
 ## 8. Intellectual Property
 
 ### 8.1 Our Rights
-- BabyTrack and all related content are protected by copyright, trademark, and other laws
+- bloomy and all related content are protected by copyright, trademark, and other laws
 - The App's design, code, and functionality are our proprietary property
 - You may not copy, modify, distribute, or create derivative works without permission
 
@@ -230,7 +230,7 @@ Apple and its subsidiaries are third-party beneficiaries of these Terms and may 
 
 ---
 
-**BabyTrack Terms of Service v1.0**
+**bloomy Terms of Service v1.0**
 
 Effective Date: October 29, 2025
 
@@ -238,4 +238,4 @@ Published by: Vibecoding
 
 For the latest version, visit: https://vibecoding.com/bloomly/terms
 
-**By using BabyTrack, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.**
+**By using bloomy, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.**

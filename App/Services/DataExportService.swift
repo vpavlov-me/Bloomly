@@ -36,7 +36,7 @@ public final class DataExportService {
         \(measurementsCSV)
         """
 
-        return try saveToTemporaryFile(combinedCSV, filename: "BabyTrack_Export.csv")
+        return try saveToTemporaryFile(combinedCSV, filename: "bloomy_Export.csv")
     }
 
     /// Export all data to JSON format
@@ -60,7 +60,7 @@ public final class DataExportService {
             throw ExportError.encodingFailed
         }
 
-        return try saveToTemporaryFile(jsonString, filename: "BabyTrack_Export.json")
+        return try saveToTemporaryFile(jsonString, filename: "bloomy_Export.json")
     }
 
     // MARK: - Private Helpers

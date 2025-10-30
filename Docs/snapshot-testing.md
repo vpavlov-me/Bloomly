@@ -40,14 +40,14 @@ When creating new tests or updating UI, you need to record reference snapshots:
 
 ```bash
 # Record snapshots for all tests
-SNAPSHOT_RECORD=1 xcodebuild -workspace BabyTrack.xcworkspace \
-  -scheme BabyTrack \
+SNAPSHOT_RECORD=1 xcodebuild -workspace Bloomy.xcworkspace \
+  -scheme Bloomy \
   -destination 'platform=iOS Simulator,id=<DEVICE_ID>' \
   -skipPackagePluginValidation test
 
 # Or for a specific test
-SNAPSHOT_RECORD=1 xcodebuild -workspace BabyTrack.xcworkspace \
-  -scheme BabyTrack \
+SNAPSHOT_RECORD=1 xcodebuild -workspace Bloomy.xcworkspace \
+  -scheme Bloomy \
   -destination 'platform=iOS Simulator,id=<DEVICE_ID>' \
   -only-testing:TrackingTests/DashboardSnapshotTests \
   -skipPackagePluginValidation test
@@ -58,8 +58,8 @@ SNAPSHOT_RECORD=1 xcodebuild -workspace BabyTrack.xcworkspace \
 Run tests without the `SNAPSHOT_RECORD` environment variable to verify against recorded snapshots:
 
 ```bash
-xcodebuild -workspace BabyTrack.xcworkspace \
-  -scheme BabyTrack \
+xcodebuild -workspace Bloomy.xcworkspace \
+  -scheme Bloomy \
   -destination 'platform=iOS Simulator,id=<DEVICE_ID>' \
   -skipPackagePluginValidation test
 ```
@@ -162,8 +162,8 @@ Snapshot tests run automatically on all PRs:
 ```yaml
 - name: Run Tests
   run: |
-    xcodebuild -workspace BabyTrack.xcworkspace \
-      -scheme BabyTrack \
+    xcodebuild -workspace Bloomy.xcworkspace \
+      -scheme Bloomy \
       -destination 'platform=iOS Simulator,name=iPhone 16' \
       -skipPackagePluginValidation test
 ```

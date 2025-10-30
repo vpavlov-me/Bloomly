@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document outlines performance optimizations implemented in BabyTrack and provides guidelines for maintaining optimal performance.
+This document outlines performance optimizations implemented in bloomy and provides guidelines for maintaining optimal performance.
 
 ## Performance Targets
 
@@ -47,7 +47,7 @@ Add composite index on frequently queried fields in the Core Data model:
 
 **Implementation**:
 ```xml
-<!-- In BabyTrack.xcdatamodeld Event entity -->
+<!-- In bloomy.xcdatamodeld Event entity -->
 <index>
     <indexAttribute name="start" />
     <indexAttribute name="kind" />
@@ -290,8 +290,8 @@ func thumbnail(from image: UIImage, size: CGSize) -> UIImage {
 
 ```bash
 # 1. Build for profiling
-xcodebuild -workspace BabyTrack.xcworkspace \
-  -scheme BabyTrack \
+xcodebuild -workspace Bloomy.xcworkspace \
+  -scheme Bloomy \
   -configuration Release \
   -destination 'platform=iOS Simulator,name=iPhone 16' \
   build
@@ -341,8 +341,8 @@ open -a Instruments
 ### Running Performance Tests
 
 ```bash
-xcodebuild -workspace BabyTrack.xcworkspace \
-  -scheme BabyTrack \
+xcodebuild -workspace Bloomy.xcworkspace \
+  -scheme Bloomy \
   -destination 'platform=iOS Simulator,name=iPhone 16' \
   -only-testing:TrackingTests/PerformanceTests \
   test

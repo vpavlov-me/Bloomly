@@ -42,7 +42,7 @@ public struct MeasurementFormView: View {
                 if let error = viewModel.error {
                     Section {
                         Text(error)
-                            .foregroundStyle(BabyTrackTheme.palette.destructive)
+                            .foregroundStyle(BloomyTheme.palette.destructive)
                     }
                 }
             }

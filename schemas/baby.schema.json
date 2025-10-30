@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://babytrack.app/schemas/baby.schema.json",
-  "title": "BabyTrack Baby Profile Schema",
-  "description": "Schema for baby profile data in BabyTrack application",
+  "$id": "https://bloomy.app/schemas/baby.schema.json",
+  "title": "bloomy Baby Profile Schema",
+  "description": "Schema for baby profile data in bloomy application",
   "type": "object",
   "required": ["id", "name", "birthDate", "createdAt", "updatedAt"],
   "properties": {

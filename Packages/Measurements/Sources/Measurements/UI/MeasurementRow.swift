@@ -14,17 +14,17 @@ public struct MeasurementRow: View {
     }
 
     public var body: some View {
-        HStack(spacing: BabyTrackTheme.spacing.md) {
+        HStack(spacing: BloomyTheme.spacing.md) {
             Image(systemName: measurement.type.icon)
                 .font(.system(size: 20))
-                .foregroundStyle(BabyTrackTheme.palette.accent)
+                .foregroundStyle(BloomyTheme.palette.accent)
                 .frame(width: 32, height: 32)
             VStack(alignment: .leading, spacing: 4) {
                 Text("\(measurement.formattedValue) \(measurement.unit)")
                     .font(.system(.headline, design: .rounded))
                 Text(dateString)
                     .font(.system(.caption, design: .rounded))
-                    .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                    .foregroundStyle(BloomyTheme.palette.mutedText)
             }
             Spacer()
             Menu {
@@ -34,10 +34,10 @@ public struct MeasurementRow: View {
                 }
             } label: {
                 Image(systemName: "ellipsis")
-                    .padding(BabyTrackTheme.spacing.xs)
+                    .padding(BloomyTheme.spacing.xs)
             }
         }
-        .padding(.vertical, BabyTrackTheme.spacing.sm)
+        .padding(.vertical, BloomyTheme.spacing.sm)
     }
 
     private var dateString: String {

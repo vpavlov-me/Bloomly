@@ -33,7 +33,7 @@ public struct SettingsView: View {
                 NavigationLink {
                     BabyProfileView(eventsRepository: container.eventsRepository)
                 } label: {
-                    HStack(spacing: BabyTrackTheme.spacing.md) {
+                    HStack(spacing: BloomyTheme.spacing.md) {
                         if let profile = profileStore.currentProfile {
                             if let photoData = profile.photoData, let uiImage = UIImage(data: photoData) {
                                 Image(uiImage: uiImage)
@@ -43,33 +43,33 @@ public struct SettingsView: View {
                                     .clipShape(Circle())
                             } else {
                                 Circle()
-                                    .fill(BabyTrackTheme.palette.mutedBackground)
+                                    .fill(BloomyTheme.palette.mutedBackground)
                                     .frame(width: 50, height: 50)
                                     .overlay {
                                         Image(systemName: "person.fill")
-                                            .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                                            .foregroundStyle(BloomyTheme.palette.mutedText)
                                     }
                             }
 
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(profile.name)
-                                    .font(BabyTrackTheme.typography.headline.font)
+                                    .font(BloomyTheme.typography.headline.font)
                                 Text(profile.ageText)
-                                    .font(BabyTrackTheme.typography.caption.font)
-                                    .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                                    .font(BloomyTheme.typography.caption.font)
+                                    .foregroundStyle(BloomyTheme.palette.mutedText)
                             }
                         } else {
-                            HStack(spacing: BabyTrackTheme.spacing.md) {
+                            HStack(spacing: BloomyTheme.spacing.md) {
                                 Circle()
-                                    .fill(BabyTrackTheme.palette.mutedBackground)
+                                    .fill(BloomyTheme.palette.mutedBackground)
                                     .frame(width: 50, height: 50)
                                     .overlay {
                                         Image(systemName: "person.fill")
-                                            .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                                            .foregroundStyle(BloomyTheme.palette.mutedText)
                                     }
 
                                 Text(AppCopy.string(for: "profile.create"))
-                                    .font(BabyTrackTheme.typography.body.font)
+                                    .font(BloomyTheme.typography.body.font)
                             }
                         }
                     }
@@ -140,7 +140,7 @@ public struct SettingsView: View {
                     Text(AppCopy.string(for: "settings.premium.status"))
                     Spacer()
                     Text(container.premiumState.isPremium ? AppCopy.string(for: "settings.premium.active") : AppCopy.string(for: "settings.premium.inactive"))
-                        .foregroundStyle(container.premiumState.isPremium ? .green : BabyTrackTheme.palette.mutedText)
+                        .foregroundStyle(container.premiumState.isPremium ? .green : BloomyTheme.palette.mutedText)
                     if container.premiumState.isPremium {
                         Image(systemName: Symbols.premium)
                             .foregroundStyle(.yellow)
@@ -179,7 +179,7 @@ public struct SettingsView: View {
                     HStack {
                         ProgressView()
                         Text(AppCopy.string(for: "settings.export.progress"))
-                            .font(BabyTrackTheme.typography.caption.font)
+                            .font(BloomyTheme.typography.caption.font)
                     }
                 }
 
@@ -200,7 +200,7 @@ public struct SettingsView: View {
                     Text(AppCopy.string(for: "settings.about.version"))
                     Spacer()
                     Text(appVersion)
-                        .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                        .foregroundStyle(BloomyTheme.palette.mutedText)
                 }
 
                 Link(AppCopy.string(for: "settings.about.privacy"), destination: URL(string: "https://example.com/privacy")!)
@@ -212,7 +212,7 @@ public struct SettingsView: View {
                 }
 
                 Button(AppCopy.string(for: "settings.about.support")) {
-                    if let url = URL(string: "mailto:support@babytrack.app") {
+                    if let url = URL(string: "mailto:support@bloomy.app") {
                         UIApplication.shared.open(url)
                     }
                 }

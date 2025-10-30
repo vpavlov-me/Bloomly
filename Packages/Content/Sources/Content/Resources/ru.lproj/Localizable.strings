@@ -50,7 +50,7 @@
 "measurement.unit.lb" = "фунт";
 
 /* Paywall */
-"paywall.title" = "BabyTrack Премиум";
+"paywall.title" = "bloomy Премиум";
 "paywall.subtitle" = "Получите безлимитную историю и синхронизацию";
 "paywall.loading" = "Загрузка...";
 "paywall.error.generic" = "Не удалось загрузить продукты. Попробуйте снова.";
@@ -143,7 +143,7 @@
 "date.format.time" = "HH:mm";
 
 /* Onboarding */
-"onboarding.welcome.title" = "Добро пожаловать в BabyTrack";
+"onboarding.welcome.title" = "Добро пожаловать в bloomy";
 "onboarding.welcome.subtitle" = "Отслеживайте ежедневные активности и рост малыша";
 "onboarding.features.title" = "Всё что нужно";
 "onboarding.features.subtitle" = "Сон, кормление, подгузники и измерения";

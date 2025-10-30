@@ -1,6 +1,6 @@
 # GitHub Workflow Guide
 
-This document describes how we use GitHub for BabyTrack: branching, pull requests, issues, releases, and repository configuration.
+This document describes how we use GitHub for bloomy: branching, pull requests, issues, releases, and repository configuration.
 
 ## 1. Branches
 - `main` — stable branch. Protect it in repository settings (Settings → Branches):
@@ -55,7 +55,7 @@ It runs weekly, creates PRs with changelog references, and can auto-assign revie
 
 ```
 # Modular example
-*           @vpavlov-me @babytrack-core
+*           @vpavlov-me @bloomy-core
 App/        @ios-team
 Packages/   @module-leads
 Docs/       @techwriters
@@ -75,7 +75,7 @@ Docs/       @techwriters
 
 ## 9. Security
 - Maintain `CODE_OF_CONDUCT.md` and `SECURITY.md`.
-- For private reports use babytrack@vibecoding.com.
+- For private reports use bloomy@vibecoding.com.
 - Monitor Security Advisories and Dependabot alerts.
 
 ## 10. GitHub Automation

@@ -72,21 +72,21 @@
 
 ### 5. Apple Watch Companion
 **Что показать**:
-- Watch face с BabyTrack complications
+- Watch face с bloomy complications
 - Quick log screen на часах
 - Recent events на часах
 
 **Как сделать**:
 ```
 1. Запустите Watch Simulator
-2. Откройте BabyTrack Watch app
+2. Откройте bloomy Watch app
 3. Quick Log view
 4. Скриншот (Cmd+S)
 ```
 
 ### 6. Home Screen Widgets
 **Что показать**:
-- iPhone Home Screen с виджетами BabyTrack
+- iPhone Home Screen с виджетами bloomy
 - Last Feeding widget
 - Sleep Today widget
 - Красивый wallpaper
@@ -161,7 +161,7 @@ fastlane snapshot init
 
 ### Настройка UI Tests для Snapshot
 ```swift
-// В BabyTrackUITests.swift
+// В BloomyUITests.swift
 
 func testGenerateScreenshots() {
     let app = XCUIApplication()

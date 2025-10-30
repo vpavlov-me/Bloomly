@@ -8,7 +8,7 @@
   },
   "subscription": {
     "isPremium": true,
-    "productId": "com.example.babytrack.premium.monthly",
+    "productId": "com.example.bloomy.premium.monthly",
     "expiresAt": "2025-11-28T12:00:00Z",
     "isAutoRenewing": true,
     "originalPurchaseDate": "2025-09-01T14:30:00Z"

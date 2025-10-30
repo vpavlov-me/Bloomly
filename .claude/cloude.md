@@ -1,7 +1,7 @@
-# BabyTrack - Конфигурация Claude Code
+# bloomy - Конфигурация Claude Code
 
 ## 📱 О проекте
-BabyTrack — модульный iOS/watchOS проект для отслеживания развития малыша, построенный на SwiftUI, Core Data, CloudKit и Tuist.
+bloomy — модульный iOS/watchOS проект для отслеживания развития малыша, построенный на SwiftUI, Core Data, CloudKit и Tuist.
 
 ---
 
@@ -219,8 +219,8 @@ tuist generate            # Генерация workspace
 ### Тесты
 ```bash
 # Все тесты
-xcodebuild -workspace BabyTrack.xcworkspace \
-  -scheme BabyTrack \
+xcodebuild -workspace Bloomy.xcworkspace \
+  -scheme Bloomy \
   -destination 'platform=iOS Simulator,name=iPhone 15' \
   test
 

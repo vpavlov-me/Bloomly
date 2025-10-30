@@ -1,7 +1,7 @@
 # Apple Watch App Guide
 
 ## Overview
-The BabyTrack Apple Watch app provides quick, convenient event logging right from your wrist. With large, easy-to-tap buttons and haptic feedback, you can track events without reaching for your iPhone.
+The bloomy Apple Watch app provides quick, convenient event logging right from your wrist. With large, easy-to-tap buttons and haptic feedback, you can track events without reaching for your iPhone.
 
 ## Features
 
@@ -79,7 +79,7 @@ The Watch app has three tabs:
 
 ### For Quick Logging
 1. **Raise to Wake**: Enable raise-to-wake for instant access
-2. **Add to Dock**: Add BabyTrack to your Watch dock for quick switching
+2. **Add to Dock**: Add bloomy to your Watch dock for quick switching
 3. **Use Complications**: Tap your complication to jump directly to the app
 
 ### Battery Optimization
@@ -109,7 +109,7 @@ The Watch app tracks anonymous usage:
 
 ### Complications Not Updating
 1. Force touch the watch face and select "Edit"
-2. Remove and re-add the BabyTrack complication
+2. Remove and re-add the bloomy complication
 3. Log a new event to trigger an update
 
 ### Haptic Feedback Not Working

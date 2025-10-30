@@ -1,11 +1,11 @@
 # File Tree
 
-High-level layout of the BabyTrack repository. Individual modules may include additional subfolders not listed here.
+High-level layout of the bloomy repository. Individual modules may include additional subfolders not listed here.
 
 ```
 .
 ├── App
-│   ├── BabyTrackApp.swift
+│   ├── BloomyApp.swift
 │   ├── Composition/
 │   ├── CoreData/
 │   ├── Onboarding/
@@ -37,9 +37,9 @@ High-level layout of the BabyTrack repository. Individual modules may include ad
 │   ├── WatchApp/
 │   └── Widgets/
 ├── Targets
-│   ├── BabyTrackWidgets/
-│   ├── BabyTrackWatch/
-│   └── BabyTrackWatchExtension/
+│   ├── BloomyWidgets/
+│   ├── BloomyWatch/
+│   └── BloomyWatchExtension/
 ├── Tests
 │   ├── Mocks/
 │   ├── Snapshot/

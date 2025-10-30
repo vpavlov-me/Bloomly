@@ -74,7 +74,7 @@ public final class FeedingTrackingViewModel: ObservableObject {
     private let repository: EventsRepository
     private let analytics: Analytics
     private let userDefaults: UserDefaults
-    private let logger = Logger(subsystem: "com.example.babytrack", category: "FeedingTracking")
+    private let logger = Logger(subsystem: "com.vibecoding.bloomly", category: "FeedingTracking")
     private var timerCancellable: AnyCancellable?
 
     // MARK: - Constants

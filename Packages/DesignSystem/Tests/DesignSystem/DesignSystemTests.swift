@@ -5,12 +5,22 @@ import SnapshotTesting
 
 final class DesignSystemTests: XCTestCase {
     func testSpacingValuesArePositive() {
-        XCTAssertTrue(BabyTrackSpacing.allCases.allSatisfy { $0.rawValue > 0 })
+        let spacing = BloomyTheme.spacing
+        let values: [CGFloat] = [
+            spacing.xxs,
+            spacing.xs,
+            spacing.sm,
+            spacing.md,
+            spacing.lg,
+            spacing.xl
+        ]
+        XCTAssertTrue(values.allSatisfy { $0 > 0 })
     }
 
     #if os(iOS)
     func testHeadingSnapshot() {
-        let view = Text("BabyTrack").font(BabyTrackFont.heading(24))
+        let view = Text("Bloomy")
+            .font(BloomyTheme.typography.headline.font)
         assertSnapshot(matching: view, as: .image(layout: .device(config: .iPhoneSe)))
     }
     #endif

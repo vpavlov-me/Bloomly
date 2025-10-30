@@ -1,131 +1,131 @@
 # DesignSystem Usage Guide
 
 ## Overview
-The DesignSystem module provides a comprehensive design system with colors, typography, spacing, radii, and animation constants for the BabyTrack app.
+The DesignSystem module provides a comprehensive design system with colors, typography, spacing, radii, and animation constants for the bloomy app.
 
 ## Theme Structure
 
 ### Palette
-Access via `BabyTrackTheme.palette`
+Access via `BloomyTheme.palette`
 
 #### Base Colors
 ```swift
-BabyTrackTheme.palette.background           // System background
-BabyTrackTheme.palette.secondaryBackground  // Secondary background
-BabyTrackTheme.palette.elevatedSurface      // Elevated cards/surfaces
-BabyTrackTheme.palette.accent               // Primary accent color
-BabyTrackTheme.palette.success              // Success states
-BabyTrackTheme.palette.warning              // Warning states
-BabyTrackTheme.palette.destructive          // Destructive actions
-BabyTrackTheme.palette.primaryText          // Primary text
-BabyTrackTheme.palette.mutedText            // Secondary/muted text
+BloomyTheme.palette.background           // System background
+BloomyTheme.palette.secondaryBackground  // Secondary background
+BloomyTheme.palette.elevatedSurface      // Elevated cards/surfaces
+BloomyTheme.palette.accent               // Primary accent color
+BloomyTheme.palette.success              // Success states
+BloomyTheme.palette.warning              // Warning states
+BloomyTheme.palette.destructive          // Destructive actions
+BloomyTheme.palette.primaryText          // Primary text
+BloomyTheme.palette.mutedText            // Secondary/muted text
 ```
 
 #### Event-Specific Colors
 Each event type has a semantic color:
 
 ```swift
-BabyTrackTheme.palette.sleep        // #667BC6 - Soft blue
-BabyTrackTheme.palette.feeding      // #DA7297 - Warm pink
-BabyTrackTheme.palette.diaper       // #FFDC7F - Soft yellow
-BabyTrackTheme.palette.pumping      // #7BA8E5 - Light blue
-BabyTrackTheme.palette.measurement  // #9B85C9 - Purple
-BabyTrackTheme.palette.medication   // #82C997 - Green
-BabyTrackTheme.palette.note         // #95A5A6 - Gray
+BloomyTheme.palette.sleep        // #667BC6 - Soft blue
+BloomyTheme.palette.feeding      // #DA7297 - Warm pink
+BloomyTheme.palette.diaper       // #FFDC7F - Soft yellow
+BloomyTheme.palette.pumping      // #7BA8E5 - Light blue
+BloomyTheme.palette.measurement  // #9B85C9 - Purple
+BloomyTheme.palette.medication   // #82C997 - Green
+BloomyTheme.palette.note         // #95A5A6 - Gray
 ```
 
 **Usage Example:**
 ```swift
-Tag(title: "Sleep", color: BabyTrackTheme.palette.sleep, icon: "moon.fill")
+Tag(title: "Sleep", color: BloomyTheme.palette.sleep, icon: "moon.fill")
 
 Circle()
-    .fill(BabyTrackTheme.palette.feeding)
+    .fill(BloomyTheme.palette.feeding)
 ```
 
 ### Typography
-Access via `BabyTrackTheme.typography`
+Access via `BloomyTheme.typography`
 
 ```swift
-BabyTrackTheme.typography.largeTitle  // Large title style
-BabyTrackTheme.typography.title       // Title 2 style
-BabyTrackTheme.typography.title3      // Title 3 style
-BabyTrackTheme.typography.headline    // Headline style
-BabyTrackTheme.typography.body        // Body text
-BabyTrackTheme.typography.callout     // Callout style
-BabyTrackTheme.typography.footnote    // Footnote style
-BabyTrackTheme.typography.caption     // Caption style
+BloomyTheme.typography.largeTitle  // Large title style
+BloomyTheme.typography.title       // Title 2 style
+BloomyTheme.typography.title3      // Title 3 style
+BloomyTheme.typography.headline    // Headline style
+BloomyTheme.typography.body        // Body text
+BloomyTheme.typography.callout     // Callout style
+BloomyTheme.typography.footnote    // Footnote style
+BloomyTheme.typography.caption     // Caption style
 ```
 
 **Usage Example:**
 ```swift
-BabyTrackTheme.typography.title.text("Hello, World!")
+BloomyTheme.typography.title.text("Hello, World!")
 
 // Or apply manually:
 Text("Custom Text")
-    .font(BabyTrackTheme.typography.body.font)
-    .foregroundStyle(BabyTrackTheme.typography.body.color)
+    .font(BloomyTheme.typography.body.font)
+    .foregroundStyle(BloomyTheme.typography.body.color)
 ```
 
 ### Spacing
-Access via `BabyTrackTheme.spacing`
+Access via `BloomyTheme.spacing`
 
 ```swift
-BabyTrackTheme.spacing.xxs  // 4pt
-BabyTrackTheme.spacing.xs   // 8pt
-BabyTrackTheme.spacing.sm   // 12pt
-BabyTrackTheme.spacing.md   // 16pt
-BabyTrackTheme.spacing.lg   // 24pt
-BabyTrackTheme.spacing.xl   // 32pt
+BloomyTheme.spacing.xxs  // 4pt
+BloomyTheme.spacing.xs   // 8pt
+BloomyTheme.spacing.sm   // 12pt
+BloomyTheme.spacing.md   // 16pt
+BloomyTheme.spacing.lg   // 24pt
+BloomyTheme.spacing.xl   // 32pt
 ```
 
 **Usage Example:**
 ```swift
-VStack(spacing: BabyTrackTheme.spacing.md) {
+VStack(spacing: BloomyTheme.spacing.md) {
     Text("Item 1")
     Text("Item 2")
 }
-.padding(BabyTrackTheme.spacing.lg)
+.padding(BloomyTheme.spacing.lg)
 ```
 
 ### Corner Radii
-Access via `BabyTrackTheme.radii`
+Access via `BloomyTheme.radii`
 
 ```swift
-BabyTrackTheme.radii.pill  // 20pt - For pill-shaped buttons
-BabyTrackTheme.radii.soft  // 12pt - For moderate rounding
-BabyTrackTheme.radii.card  // 18pt - For cards and containers
+BloomyTheme.radii.pill  // 20pt - For pill-shaped buttons
+BloomyTheme.radii.soft  // 12pt - For moderate rounding
+BloomyTheme.radii.card  // 18pt - For cards and containers
 ```
 
 **Usage Example:**
 ```swift
-RoundedRectangle(cornerRadius: BabyTrackTheme.radii.card)
-    .fill(BabyTrackTheme.palette.elevatedSurface)
+RoundedRectangle(cornerRadius: BloomyTheme.radii.card)
+    .fill(BloomyTheme.palette.elevatedSurface)
 
 Text("Button")
     .padding()
-    .background(BabyTrackTheme.palette.accent)
-    .clipShape(RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft))
+    .background(BloomyTheme.palette.accent)
+    .clipShape(RoundedRectangle(cornerRadius: BloomyTheme.radii.soft))
 ```
 
 ### Animations
-Access via `BabyTrackTheme.animation`
+Access via `BloomyTheme.animation`
 
 ```swift
-BabyTrackTheme.animation.fast      // 0.2s - Micro-interactions
-BabyTrackTheme.animation.standard  // 0.3s - Most UI changes
-BabyTrackTheme.animation.slow      // 0.4s - Larger transitions
-BabyTrackTheme.animation.spring    // Spring animation - Bouncy effects
-BabyTrackTheme.animation.smooth    // Smooth animation - Fluid transitions
+BloomyTheme.animation.fast      // 0.2s - Micro-interactions
+BloomyTheme.animation.standard  // 0.3s - Most UI changes
+BloomyTheme.animation.slow      // 0.4s - Larger transitions
+BloomyTheme.animation.spring    // Spring animation - Bouncy effects
+BloomyTheme.animation.smooth    // Smooth animation - Fluid transitions
 ```
 
 **Usage Example:**
 ```swift
-withAnimation(BabyTrackTheme.animation.spring) {
+withAnimation(BloomyTheme.animation.spring) {
     isExpanded.toggle()
 }
 
 Button("Animate") {
-    withAnimation(BabyTrackTheme.animation.standard) {
+    withAnimation(BloomyTheme.animation.standard) {
         offset = 100
     }
 }
@@ -142,8 +142,8 @@ Button("Animate") {
 
 ✅ **Do:**
 ```swift
-.padding(BabyTrackTheme.spacing.md)
-.foregroundStyle(BabyTrackTheme.palette.accent)
+.padding(BloomyTheme.spacing.md)
+.foregroundStyle(BloomyTheme.palette.accent)
 ```
 
 ### 2. Use Semantic Color Names
@@ -154,7 +154,7 @@ Button("Animate") {
 
 ✅ **Do:**
 ```swift
-.foregroundStyle(BabyTrackTheme.palette.sleep)
+.foregroundStyle(BloomyTheme.palette.sleep)
 ```
 
 ### 3. Consistent Animations
@@ -165,7 +165,7 @@ withAnimation(.easeInOut(duration: 0.25)) { ... }
 
 ✅ **Do:**
 ```swift
-withAnimation(BabyTrackTheme.animation.standard) { ... }
+withAnimation(BloomyTheme.animation.standard) { ... }
 ```
 
 ### 4. Dark Mode Support
@@ -174,19 +174,19 @@ All theme colors automatically adapt to dark mode. No additional work needed!
 ```swift
 // This works perfectly in both light and dark mode
 Text("Hello")
-    .foregroundStyle(BabyTrackTheme.palette.primaryText)
-    .background(BabyTrackTheme.palette.background)
+    .foregroundStyle(BloomyTheme.palette.primaryText)
+    .background(BloomyTheme.palette.background)
 ```
 
 ## Initialization
 
-Call `BabyTrackTheme.configureAppearance()` at app launch to configure global UIKit appearance:
+Call `BloomyTheme.configureAppearance()` at app launch to configure global UIKit appearance:
 
 ```swift
 @main
-struct BabyTrackApp: App {
+struct BloomyApp: App {
     init() {
-        BabyTrackTheme.configureAppearance()
+        BloomyTheme.configureAppearance()
     }
 
     var body: some Scene {

@@ -28,7 +28,7 @@ public final class EventDetailViewModel: ObservableObject {
 
     private let repository: EventsRepository
     private let analytics: Analytics
-    private let logger = Logger(subsystem: "com.example.babytrack", category: "EventDetail")
+    private let logger = Logger(subsystem: "com.vibecoding.bloomly", category: "EventDetail")
     private let onDelete: (() -> Void)?
     private let onSave: (() -> Void)?
 

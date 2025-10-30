@@ -1,6 +1,6 @@
 # Implementation Summary
 
-This document summarizes the components implemented while wrapping up the BabyTrack project.
+This document summarizes the components implemented while wrapping up the bloomy project.
 
 ## ✅ Delivered Components
 

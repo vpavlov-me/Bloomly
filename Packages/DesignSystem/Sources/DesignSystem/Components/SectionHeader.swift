@@ -16,32 +16,32 @@ public struct SectionHeader: View {
     public var body: some View {
         HStack(alignment: .firstTextBaseline) {
             VStack(alignment: .leading, spacing: 4) {
-                BabyTrackTheme.typography.headline.text(title)
+                BloomyTheme.typography.headline.text(title)
                 if let subtitle {
-                    BabyTrackTheme.typography.caption.text(subtitle)
+                    BloomyTheme.typography.caption.text(subtitle)
                 }
             }
             Spacer()
             if let actionTitle, let action {
                 Button(actionTitle, action: action)
                     .font(.system(.subheadline, design: .rounded).weight(.medium))
-                    .foregroundStyle(BabyTrackTheme.palette.accent)
+                    .foregroundStyle(BloomyTheme.palette.accent)
             }
         }
-        .padding(.horizontal, BabyTrackTheme.spacing.md)
-        .padding(.bottom, BabyTrackTheme.spacing.xs)
+        .padding(.horizontal, BloomyTheme.spacing.md)
+        .padding(.bottom, BloomyTheme.spacing.xs)
     }
 }
 
 #if DEBUG
 struct SectionHeader_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: BabyTrackTheme.spacing.lg) {
+        VStack(spacing: BloomyTheme.spacing.lg) {
             SectionHeader(title: "Today", subtitle: "Tuesday, 12 March")
             SectionHeader(title: "Feedings", actionTitle: "See all", action: {})
         }
         .padding()
-        .background(BabyTrackTheme.palette.background)
+        .background(BloomyTheme.palette.background)
         .previewLayout(.sizeThatFits)
     }
 }

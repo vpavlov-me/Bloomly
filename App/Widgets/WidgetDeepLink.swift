@@ -10,12 +10,12 @@ public enum WidgetDeepLink: String {
 
     /// Create URL for widget deep link
     public var url: URL {
-        URL(string: "babytrack://widget/\(rawValue)")!
+        URL(string: "bloomy://widget/\(rawValue)")!
     }
 
     /// Parse URL to deep link
     public static func parse(_ url: URL) -> WidgetDeepLink? {
-        guard url.scheme == "babytrack",
+        guard url.scheme == "bloomy",
               url.host == "widget",
               let path = url.pathComponents.last else {
             return nil

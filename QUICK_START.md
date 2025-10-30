@@ -71,7 +71,7 @@ tuist clean
 tuist generate
 
 # Откройте в Xcode
-open BabyTrack.xcworkspace
+open Bloomy.xcworkspace
 ```
 
 #### Этап 3: Создайте Ресурсы (3-4 часа)
@@ -89,7 +89,7 @@ open BabyTrack.xcworkspace
 #### Этап 4: Build & Upload (1-2 часа)
 ```bash
 # В Xcode:
-1. Scheme: BabyTrack
+1. Scheme: Bloomy
 2. Destination: Any iOS Device
 3. Product → Archive
 4. Validate App
@@ -175,4 +175,3 @@ open BabyTrack.xcworkspace
 Всё готово для того, чтобы начать процесс релиза. Следуйте инструкции в [RELEASE_MANUAL.md](RELEASE_MANUAL.md) и через 3-4 недели ваше приложение будет в App Store!
 
 **Первый шаг**: Откройте https://developer.apple.com/account и начните с регистрации Bundle IDs.
-

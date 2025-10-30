@@ -18,17 +18,17 @@ public final class ComplicationController: NSObject, CLKComplicationDataSource {
     public func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
         let descriptors = [
             CLKComplicationDescriptor(
-                identifier: "babytrack_circular",
+                identifier: "bloomy_circular",
                 displayName: "Last Feed",
                 supportedFamilies: [.circularSmall]
             ),
             CLKComplicationDescriptor(
-                identifier: "babytrack_rectangular",
+                identifier: "bloomy_rectangular",
                 displayName: "Today Stats",
                 supportedFamilies: [.graphicRectangular]
             ),
             CLKComplicationDescriptor(
-                identifier: "babytrack_corner",
+                identifier: "bloomy_corner",
                 displayName: "Events Count",
                 supportedFamilies: [.graphicCorner]
             )
@@ -114,7 +114,7 @@ public final class ComplicationController: NSObject, CLKComplicationDataSource {
 
     private func makeRectangularTemplate(eventsCount: Int, sleepHours: String) -> CLKComplicationTemplate {
         let template = CLKComplicationTemplateGraphicRectangularStandardBody()
-        template.headerTextProvider = CLKSimpleTextProvider(text: "BabyTrack")
+        template.headerTextProvider = CLKSimpleTextProvider(text: "bloomy")
         template.body1TextProvider = CLKSimpleTextProvider(text: "\(eventsCount) events today")
         template.body2TextProvider = CLKSimpleTextProvider(text: "Sleep: \(sleepHours)")
         return template

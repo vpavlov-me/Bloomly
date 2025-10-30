@@ -1,10 +1,10 @@
 # Accessibility Guide
 
-This document outlines the accessibility features implemented in BabyTrack and provides guidelines for maintaining accessibility standards.
+This document outlines the accessibility features implemented in bloomy and provides guidelines for maintaining accessibility standards.
 
 ## Overview
 
-BabyTrack is designed to be accessible to all users, including those who rely on assistive technologies. Our accessibility implementation follows Apple's Human Interface Guidelines and meets WCAG 2.1 Level AA standards.
+bloomy is designed to be accessible to all users, including those who rely on assistive technologies. Our accessibility implementation follows Apple's Human Interface Guidelines and meets WCAG 2.1 Level AA standards.
 
 ## Implemented Features
 

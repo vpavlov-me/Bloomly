@@ -61,7 +61,7 @@ public extension EventsRepository {
 }
 
 public struct AnalyticsLogger: Analytics {
-    private let logger = Logger(subsystem: "com.example.babytrack", category: "analytics")
+    private let logger = Logger(subsystem: "com.vibecoding.bloomly", category: "analytics")
 
     public init() {}
 

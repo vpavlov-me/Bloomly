@@ -48,14 +48,14 @@ resolve_packages() {
     (cd "$ROOT" && tuist generate --path "$ROOT" >/dev/null)
     if command -v xcodebuild >/dev/null 2>&1; then
         log "Resolving packages"
-        (cd "$ROOT" && xcodebuild -resolvePackageDependencies -workspace BabyTrack.xcworkspace -scheme BabyTrack >/dev/null)
+        (cd "$ROOT" && xcodebuild -resolvePackageDependencies -workspace Bloomly.xcworkspace -scheme Bloomly >/dev/null)
     fi
 }
 
 open_workspace() {
     if [ "$(uname -s)" = "Darwin" ] && command -v open >/dev/null 2>&1; then
         log "Opening workspace"
-        open "$ROOT/BabyTrack.xcworkspace"
+        open "$ROOT/Bloomly.xcworkspace"
     fi
 }
 

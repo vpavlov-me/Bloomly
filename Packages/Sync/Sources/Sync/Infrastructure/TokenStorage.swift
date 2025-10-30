@@ -11,7 +11,7 @@ public protocol CloudKitTokenStore: Sendable {
 
 public final class UserDefaultsTokenStore {
     private let defaults: UserDefaults
-    private let queue = DispatchQueue(label: "com.example.babytrack.cloudkit-token-store")
+    private let queue = DispatchQueue(label: "com.vibecoding.bloomly.cloudkit-token-store")
 
     public init(defaults: UserDefaults = .standard) {
         self.defaults = defaults

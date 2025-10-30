@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://babytrack.app/schemas/measurement.schema.json",
-  "title": "BabyTrack Measurement Schema",
-  "description": "Schema for baby measurements (height, weight, head circumference) in BabyTrack application",
+  "$id": "https://bloomy.app/schemas/measurement.schema.json",
+  "title": "bloomy Measurement Schema",
+  "description": "Schema for baby measurements (height, weight, head circumference) in bloomy application",
   "type": "object",
   "required": ["id", "type", "value", "unit", "date"],
   "properties": {

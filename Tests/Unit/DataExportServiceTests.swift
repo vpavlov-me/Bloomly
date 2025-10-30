@@ -1,5 +1,5 @@
 import XCTest
-@testable import BabyTrack
+@testable import bloomy
 @testable import Tracking
 @testable import Measurements
 

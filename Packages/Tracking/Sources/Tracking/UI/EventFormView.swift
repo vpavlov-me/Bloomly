@@ -25,9 +25,9 @@ public struct EventFormView: View {
     public var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: BabyTrackTheme.spacing.lg) {
+                VStack(spacing: BloomyTheme.spacing.lg) {
                     Card {
-                        VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.md) {
+                        VStack(alignment: .leading, spacing: BloomyTheme.spacing.md) {
                             SegmentedControl(options: EventKind.allCases, selection: $viewModel.kind) { kind in
                                 LocalizedStringKey(kind.titleKey)
                             }
@@ -58,18 +58,18 @@ public struct EventFormView: View {
                     }
                     if let error = viewModel.error {
                         Text(error)
-                            .foregroundStyle(BabyTrackTheme.palette.destructive)
+                            .foregroundStyle(BloomyTheme.palette.destructive)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.horizontal, BabyTrackTheme.spacing.md)
+                            .padding(.horizontal, BloomyTheme.spacing.md)
                     }
                     PrimaryButton(isLoading: viewModel.isSaving, action: save) {
                         Text(LocalizedStringKey("event.form.save"))
                     }
-                    .padding(.horizontal, BabyTrackTheme.spacing.md)
+                    .padding(.horizontal, BloomyTheme.spacing.md)
                 }
-                .padding(.vertical, BabyTrackTheme.spacing.lg)
+                .padding(.vertical, BloomyTheme.spacing.lg)
             }
-            .background(BabyTrackTheme.palette.background.ignoresSafeArea())
+            .background(BloomyTheme.palette.background.ignoresSafeArea())
             .navigationTitle(viewModel.isEditing ? Text(LocalizedStringKey("event.form.title.edit")) : Text(LocalizedStringKey("event.form.title.new")))
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

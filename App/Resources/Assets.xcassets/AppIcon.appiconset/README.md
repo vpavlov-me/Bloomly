@@ -24,7 +24,7 @@ Place your app icon PNG files in this directory with the following names and siz
 - **No rounded corners**: iOS automatically applies corners
 - **No text**: Icon should be recognizable without text
 
-### Design Tips for BabyTrack
+### Design Tips for bloomy
 1. **Theme**: Baby care, growth, tracking
 2. **Colors**: Soft, warm colors (pastels work well for baby apps)
 3. **Style**: Modern, minimal, friendly
@@ -51,7 +51,7 @@ Place your app icon PNG files in this directory with the following names and siz
 ## watchOS Icons (Separate)
 
 For Apple Watch companion app, create similar structure in:
-`Targets/BabyTrackWatch/Assets.xcassets/AppIcon.appiconset/`
+`Targets/BloomyWatch/Assets.xcassets/AppIcon.appiconset/`
 
 Required sizes:
 - 48x48 (Notification Center - @2x)

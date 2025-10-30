@@ -23,30 +23,30 @@ public struct QuickLogBar: View {
 
     public var body: some View {
         Card {
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.sm) {
-                BabyTrackTheme.typography.headline.text(AppCopy.string(for: "event.form.title.new"))
-                HStack(spacing: BabyTrackTheme.spacing.sm) {
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.sm) {
+                BloomyTheme.typography.headline.text(AppCopy.string(for: "event.form.title.new"))
+                HStack(spacing: BloomyTheme.spacing.sm) {
                     ForEach(EventKind.allCases) { kind in
                         Button {
                             Task { await log(kind: kind) }
                         } label: {
-                            HStack(spacing: BabyTrackTheme.spacing.xs) {
+                            HStack(spacing: BloomyTheme.spacing.xs) {
                                 Image(systemName: kind.symbol)
                                 Text(LocalizedStringKey(kind.titleKey))
                                     .font(.system(.subheadline, design: .rounded).weight(.medium))
                             }
                             .frame(maxWidth: .infinity)
-                            .padding(.vertical, BabyTrackTheme.spacing.xs)
+                            .padding(.vertical, BloomyTheme.spacing.xs)
                         }
                         .buttonStyle(.borderedProminent)
-                        .tint(BabyTrackTheme.palette.accent)
+                        .tint(BloomyTheme.palette.accent)
                         .disabled(isLogging)
                     }
                 }
                 if let error {
                     Text(error)
                         .font(.footnote)
-                        .foregroundStyle(BabyTrackTheme.palette.destructive)
+                        .foregroundStyle(BloomyTheme.palette.destructive)
                 }
             }
         }
@@ -80,7 +80,7 @@ struct QuickLogBar_Previews: PreviewProvider {
             analytics: AnalyticsLogger()
         ) { _ in }
             .padding()
-            .background(BabyTrackTheme.palette.background)
+            .background(BloomyTheme.palette.background)
             .previewLayout(.sizeThatFits)
     }
 

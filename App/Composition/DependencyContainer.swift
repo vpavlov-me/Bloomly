@@ -35,7 +35,7 @@ public final class DependencyContainer: ObservableObject {
         analytics: (any Analytics)? = nil,
         notificationManager: NotificationManager? = nil
     ) {
-        BabyTrackTheme.configureAppearance()
+        BloomyTheme.configureAppearance()
 
         self.persistence = persistence
         let viewContext = persistence.viewContext

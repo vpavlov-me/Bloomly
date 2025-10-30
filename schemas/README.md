@@ -1,6 +1,6 @@
-# BabyTrack JSON Schemas
+# bloomy JSON Schemas
 
-This directory contains JSON Schema definitions for all data models in the BabyTrack application. These schemas serve as the **source of truth** for data structure, validation, and documentation.
+This directory contains JSON Schema definitions for all data models in the bloomy application. These schemas serve as the **source of truth** for data structure, validation, and documentation.
 
 ## Overview
 
@@ -16,7 +16,7 @@ JSON Schemas provide a consistent way to define, validate, and document data str
 
 ### 📄 [event.schema.json](./event.schema.json)
 
-Defines all event types tracked in BabyTrack:
+Defines all event types tracked in bloomy:
 
 - **Sleep Events**: Track sleep duration, quality, and location
 - **Feeding Events**: Support breast, bottle, and solid feeding with detailed metadata
@@ -121,7 +121,7 @@ Defines application state, settings, and preferences:
   "version": "1.0.0",
   "subscription": {
     "isPremium": true,
-    "productId": "com.example.babytrack.premium.monthly"
+    "productId": "com.example.bloomy.premium.monthly"
   },
   "preferences": {
     "locale": "en",
@@ -302,4 +302,4 @@ When modifying schemas:
 
 ## License
 
-These schemas are part of the BabyTrack project and follow the same MIT license.
+These schemas are part of the bloomy project and follow the same MIT license.

@@ -5,7 +5,7 @@ import os.log
 /// Core Data implementation of BabyRepository
 public actor CoreDataBabyRepository: BabyRepository {
     private let context: NSManagedObjectContext
-    private let logger = Logger(subsystem: "com.example.babytrack", category: "BabyRepository")
+    private let logger = Logger(subsystem: "com.vibecoding.bloomly", category: "BabyRepository")
 
     public init(context: NSManagedObjectContext) {
         self.context = context

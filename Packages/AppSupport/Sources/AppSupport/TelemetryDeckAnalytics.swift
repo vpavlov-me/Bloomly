@@ -5,7 +5,7 @@ import os.log
 /// TelemetryDeck implementation of Analytics protocol
 /// Privacy-first analytics with GDPR compliance
 public final class TelemetryDeckAnalytics: Analytics, @unchecked Sendable {
-    private let logger = Logger(subsystem: "com.example.babytrack", category: "Analytics")
+    private let logger = Logger(subsystem: "com.vibecoding.bloomly", category: "Analytics")
     private var isEnabled: Bool
     private let userDefaults: UserDefaults
     private let analyticsEnabledKey = "AnalyticsEnabled"

@@ -28,7 +28,7 @@ public struct ProfileView: View {
     public var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: BabyTrackTheme.spacing.lg) {
+                VStack(spacing: BloomyTheme.spacing.lg) {
                     // Baby profile card
                     babyProfileCard
 
@@ -36,16 +36,16 @@ public struct ProfileView: View {
                     premiumStatusCard
 
                     // Settings sections
-                    VStack(spacing: BabyTrackTheme.spacing.md) {
+                    VStack(spacing: BloomyTheme.spacing.md) {
                         notificationsSection
                         appearanceSection
                         privacySection
                         aboutSection
                     }
                 }
-                .padding(BabyTrackTheme.spacing.lg)
+                .padding(BloomyTheme.spacing.lg)
             }
-            .background(BabyTrackTheme.palette.background)
+            .background(BloomyTheme.palette.background)
             .navigationTitle(Text(AppCopy.string(for: "profile.title")))
             .sheet(isPresented: $showPaywall) {
                 PaywallView(storeClient: container.storeClient, premiumState: container.premiumState)
@@ -64,7 +64,7 @@ public struct ProfileView: View {
             Button {
                 // Navigate to baby profile edit
             } label: {
-                HStack(spacing: BabyTrackTheme.spacing.md) {
+                HStack(spacing: BloomyTheme.spacing.md) {
                     // Profile photo
                     if let profile = profileStore.currentProfile {
                         if let photoData = profile.photoData, let uiImage = UIImage(data: photoData) {
@@ -75,49 +75,49 @@ public struct ProfileView: View {
                                 .clipShape(Circle())
                         } else {
                             Circle()
-                                .fill(BabyTrackTheme.palette.accent.opacity(0.2))
+                                .fill(BloomyTheme.palette.accent.opacity(0.2))
                                 .frame(width: 80, height: 80)
                                 .overlay {
                                     Image(systemName: "person.fill")
                                         .font(.system(size: 36))
-                                        .foregroundStyle(BabyTrackTheme.palette.accent)
+                                        .foregroundStyle(BloomyTheme.palette.accent)
                                 }
                         }
 
-                        VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.xs) {
+                        VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
                             Text(profile.name)
-                                .font(BabyTrackTheme.typography.title.font)
-                                .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                                .font(BloomyTheme.typography.title.font)
+                                .foregroundStyle(BloomyTheme.palette.primaryText)
 
                             Text(profile.ageText)
-                                .font(BabyTrackTheme.typography.body.font)
-                                .foregroundStyle(BabyTrackTheme.palette.secondaryText)
+                                .font(BloomyTheme.typography.body.font)
+                                .foregroundStyle(BloomyTheme.palette.secondaryText)
 
                             if let birthDate = profile.birthDate {
                                 Text(formatBirthDate(birthDate))
-                                    .font(BabyTrackTheme.typography.caption.font)
-                                    .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                                    .font(BloomyTheme.typography.caption.font)
+                                    .foregroundStyle(BloomyTheme.palette.mutedText)
                             }
                         }
                     } else {
                         Circle()
-                            .fill(BabyTrackTheme.palette.accent.opacity(0.2))
+                            .fill(BloomyTheme.palette.accent.opacity(0.2))
                             .frame(width: 80, height: 80)
                             .overlay {
                                 Image(systemName: "plus")
                                     .font(.system(size: 36))
-                                    .foregroundStyle(BabyTrackTheme.palette.accent)
+                                    .foregroundStyle(BloomyTheme.palette.accent)
                             }
 
                         Text(AppCopy.string(for: "profile.create"))
-                            .font(BabyTrackTheme.typography.body.font)
-                            .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                            .font(BloomyTheme.typography.body.font)
+                            .foregroundStyle(BloomyTheme.palette.primaryText)
                     }
 
                     Spacer()
 
                     Image(systemName: "chevron.right")
-                        .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                        .foregroundStyle(BloomyTheme.palette.mutedText)
                 }
             }
             .buttonStyle(.plain)
@@ -137,28 +137,28 @@ public struct ProfileView: View {
                         .font(.system(size: 24))
                         .foregroundStyle(.yellow)
 
-                    VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.xs) {
+                    VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
                         Text(AppCopy.string(for: "settings.premium"))
-                            .font(BabyTrackTheme.typography.headline.font)
-                            .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                            .font(BloomyTheme.typography.headline.font)
+                            .foregroundStyle(BloomyTheme.palette.primaryText)
 
                         Text(
                             container.premiumState.isPremium
                                 ? AppCopy.string(for: "settings.premium.active")
                                 : AppCopy.string(for: "settings.premium.inactive")
                         )
-                        .font(BabyTrackTheme.typography.caption.font)
+                        .font(BloomyTheme.typography.caption.font)
                         .foregroundStyle(
                             container.premiumState.isPremium
                                 ? .green
-                                : BabyTrackTheme.palette.secondaryText
+                                : BloomyTheme.palette.secondaryText
                         )
                     }
 
                     Spacer()
 
                     Image(systemName: "chevron.right")
-                        .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                        .foregroundStyle(BloomyTheme.palette.mutedText)
                 }
             }
             .buttonStyle(.plain)
@@ -169,12 +169,12 @@ public struct ProfileView: View {
 
     private var notificationsSection: some View {
         Card {
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.md) {
-                BabyTrackTheme.typography.headline.text(
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.md) {
+                BloomyTheme.typography.headline.text(
                     AppCopy.string(for: "settings.notifications")
                 )
 
-                VStack(spacing: BabyTrackTheme.spacing.sm) {
+                VStack(spacing: BloomyTheme.spacing.sm) {
                     Toggle(
                         AppCopy.string(for: "settings.notifications.enable"),
                         isOn: $notificationManager.isNotificationEnabled
@@ -190,10 +190,10 @@ public struct ProfileView: View {
                     if notificationManager.isNotificationEnabled {
                         Divider()
 
-                        VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.xs) {
+                        VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
                             Text(AppCopy.string(for: "settings.notifications.feeding.interval"))
-                                .font(BabyTrackTheme.typography.caption.font)
-                                .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                                .font(BloomyTheme.typography.caption.font)
+                                .foregroundStyle(BloomyTheme.palette.mutedText)
 
                             Picker("", selection: $settings.feedingReminderInterval) {
                                 ForEach(ReminderInterval.allCases) { interval in
@@ -227,15 +227,15 @@ public struct ProfileView: View {
 
     private var appearanceSection: some View {
         Card {
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.md) {
-                BabyTrackTheme.typography.headline.text(
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.md) {
+                BloomyTheme.typography.headline.text(
                     AppCopy.string(for: "settings.appearance")
                 )
 
-                VStack(spacing: BabyTrackTheme.spacing.sm) {
-                    VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.xs) {
+                VStack(spacing: BloomyTheme.spacing.sm) {
+                    VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
                         Text(AppCopy.string(for: "settings.appearance.theme"))
-                            .font(BabyTrackTheme.typography.body.font)
+                            .font(BloomyTheme.typography.body.font)
 
                         Picker("", selection: $settings.appearanceMode) {
                             ForEach(AppearanceMode.allCases) { mode in
@@ -247,9 +247,9 @@ public struct ProfileView: View {
 
                     Divider()
 
-                    VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.xs) {
+                    VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
                         Text(AppCopy.string(for: "settings.language"))
-                            .font(BabyTrackTheme.typography.body.font)
+                            .font(BloomyTheme.typography.body.font)
 
                         Picker("", selection: $settings.preferredLanguage) {
                             ForEach(LanguageOption.allCases) { language in
@@ -267,12 +267,12 @@ public struct ProfileView: View {
 
     private var privacySection: some View {
         Card {
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.md) {
-                BabyTrackTheme.typography.headline.text(
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.md) {
+                BloomyTheme.typography.headline.text(
                     AppCopy.string(for: "settings.privacy")
                 )
 
-                VStack(spacing: BabyTrackTheme.spacing.sm) {
+                VStack(spacing: BloomyTheme.spacing.sm) {
                     Toggle(
                         AppCopy.string(for: "settings.privacy.analytics"),
                         isOn: $settings.analyticsEnabled
@@ -291,10 +291,10 @@ public struct ProfileView: View {
                     } label: {
                         HStack {
                             Text(AppCopy.string(for: "settings.export"))
-                                .font(BabyTrackTheme.typography.body.font)
+                                .font(BloomyTheme.typography.body.font)
                             Spacer()
                             Image(systemName: "chevron.right")
-                                .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                                .foregroundStyle(BloomyTheme.palette.mutedText)
                         }
                     }
                 }
@@ -306,31 +306,31 @@ public struct ProfileView: View {
 
     private var aboutSection: some View {
         Card {
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.md) {
-                BabyTrackTheme.typography.headline.text(
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.md) {
+                BloomyTheme.typography.headline.text(
                     AppCopy.string(for: "settings.about")
                 )
 
-                VStack(spacing: BabyTrackTheme.spacing.sm) {
+                VStack(spacing: BloomyTheme.spacing.sm) {
                     HStack {
                         Text(AppCopy.string(for: "settings.about.version"))
-                            .font(BabyTrackTheme.typography.body.font)
+                            .font(BloomyTheme.typography.body.font)
                         Spacer()
                         Text(appVersion)
-                            .font(BabyTrackTheme.typography.body.font)
-                            .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                            .font(BloomyTheme.typography.body.font)
+                            .foregroundStyle(BloomyTheme.palette.mutedText)
                     }
 
                     Divider()
 
-                    Link(destination: URL(string: "mailto:support@babytrack.app")!) {
+                    Link(destination: URL(string: "mailto:support@bloomy.app")!) {
                         HStack {
                             Text(AppCopy.string(for: "settings.about.support"))
-                                .font(BabyTrackTheme.typography.body.font)
+                                .font(BloomyTheme.typography.body.font)
                             Spacer()
                             Image(systemName: "arrow.up.right")
                                 .font(.caption)
-                                .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                                .foregroundStyle(BloomyTheme.palette.mutedText)
                         }
                     }
 
@@ -343,7 +343,7 @@ public struct ProfileView: View {
                     } label: {
                         HStack {
                             Text(AppCopy.string(for: "settings.about.rate"))
-                                .font(BabyTrackTheme.typography.body.font)
+                                .font(BloomyTheme.typography.body.font)
                             Spacer()
                             Image(systemName: "star.fill")
                                 .foregroundStyle(.yellow)
@@ -404,7 +404,7 @@ private struct DataExportView: View {
                     HStack {
                         ProgressView()
                         Text(AppCopy.string(for: "settings.export.progress"))
-                            .font(BabyTrackTheme.typography.caption.font)
+                            .font(BloomyTheme.typography.caption.font)
                     }
                 }
             } header: {

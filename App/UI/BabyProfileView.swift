@@ -21,10 +21,10 @@ public struct BabyProfileView: View {
 
     public var body: some View {
         ScrollView {
-            VStack(spacing: BabyTrackTheme.spacing.xl) {
+            VStack(spacing: BloomyTheme.spacing.xl) {
                 if let profile = profileStore.currentProfile {
                     // MARK: - Profile Header
-                    VStack(spacing: BabyTrackTheme.spacing.lg) {
+                    VStack(spacing: BloomyTheme.spacing.lg) {
                         // Photo
                         ZStack(alignment: .bottomTrailing) {
                             if let photo = profile.photo {
@@ -35,16 +35,16 @@ public struct BabyProfileView: View {
                                     .clipShape(Circle())
                                     .overlay(
                                         Circle()
-                                            .stroke(BabyTrackTheme.palette.accent, lineWidth: 3)
+                                            .stroke(BloomyTheme.palette.accent, lineWidth: 3)
                                     )
                             } else {
                                 Circle()
-                                    .fill(BabyTrackTheme.palette.accent.opacity(0.2))
+                                    .fill(BloomyTheme.palette.accent.opacity(0.2))
                                     .frame(width: 120, height: 120)
                                     .overlay(
                                         Image(systemName: "person.fill")
                                             .font(.system(size: 50))
-                                            .foregroundStyle(BabyTrackTheme.palette.accent)
+                                            .foregroundStyle(BloomyTheme.palette.accent)
                                     )
                             }
 
@@ -55,25 +55,25 @@ public struct BabyProfileView: View {
                                     .font(.system(size: 14))
                                     .foregroundStyle(.white)
                                     .padding(8)
-                                    .background(BabyTrackTheme.palette.accent)
+                                    .background(BloomyTheme.palette.accent)
                                     .clipShape(Circle())
                             }
                         }
-                        .padding(.top, BabyTrackTheme.spacing.xl)
+                        .padding(.top, BloomyTheme.spacing.xl)
 
                         // Name
                         Text(profile.name)
-                            .font(BabyTrackTheme.typography.title.font)
-                            .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                            .font(BloomyTheme.typography.title.font)
+                            .foregroundStyle(BloomyTheme.palette.primaryText)
 
                         // Age
                         Text(profile.ageText)
-                            .font(BabyTrackTheme.typography.body.font)
-                            .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                            .font(BloomyTheme.typography.body.font)
+                            .foregroundStyle(BloomyTheme.palette.mutedText)
                     }
 
                     // MARK: - Profile Info
-                    VStack(spacing: BabyTrackTheme.spacing.md) {
+                    VStack(spacing: BloomyTheme.spacing.md) {
                         InfoRow(
                             icon: "calendar",
                             label: AppCopy.string(for: "profile.birthDate"),
@@ -89,9 +89,9 @@ public struct BabyProfileView: View {
                         if isLoadingStats {
                             HStack {
                                 ProgressView()
-                                    .padding(.trailing, BabyTrackTheme.spacing.sm)
+                                    .padding(.trailing, BloomyTheme.spacing.sm)
                                 Text(AppCopy.Common.loading)
-                                    .font(BabyTrackTheme.typography.caption.font)
+                                    .font(BloomyTheme.typography.caption.font)
                             }
                         } else {
                             InfoRow(
@@ -101,10 +101,10 @@ public struct BabyProfileView: View {
                             )
                         }
                     }
-                    .padding(.horizontal, BabyTrackTheme.spacing.lg)
+                    .padding(.horizontal, BloomyTheme.spacing.lg)
 
                     // MARK: - Actions
-                    VStack(spacing: BabyTrackTheme.spacing.md) {
+                    VStack(spacing: BloomyTheme.spacing.md) {
                         PrimaryButton(
                             accessibilityLabel: AppCopy.string(for: "profile.edit"),
                             accessibilityHint: "Double tap to edit profile",
@@ -120,12 +120,12 @@ public struct BabyProfileView: View {
                             showDeleteConfirmation = true
                         } label: {
                             Label(AppCopy.string(for: "profile.delete"), systemImage: "trash")
-                                .font(BabyTrackTheme.typography.body.font)
+                                .font(BloomyTheme.typography.body.font)
                                 .foregroundStyle(.red)
                         }
                     }
-                    .padding(.horizontal, BabyTrackTheme.spacing.lg)
-                    .padding(.top, BabyTrackTheme.spacing.lg)
+                    .padding(.horizontal, BloomyTheme.spacing.lg)
+                    .padding(.top, BloomyTheme.spacing.lg)
                 } else {
                     // MARK: - No Profile State
                     EmptyStateView(
@@ -138,7 +138,7 @@ public struct BabyProfileView: View {
                     }
                 }
 
-                Spacer(minLength: BabyTrackTheme.spacing.xl)
+                Spacer(minLength: BloomyTheme.spacing.xl)
             }
         }
         .navigationTitle(Text(AppCopy.string(for: "profile.title")))
@@ -194,27 +194,27 @@ public struct BabyProfileView: View {
         let value: String
 
         var body: some View {
-            HStack(spacing: BabyTrackTheme.spacing.md) {
+            HStack(spacing: BloomyTheme.spacing.md) {
                 Image(systemName: icon)
                     .font(.system(size: 20))
-                    .foregroundStyle(BabyTrackTheme.palette.accent)
+                    .foregroundStyle(BloomyTheme.palette.accent)
                     .frame(width: 32)
 
                 Text(label)
-                    .font(BabyTrackTheme.typography.body.font)
-                    .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                    .font(BloomyTheme.typography.body.font)
+                    .foregroundStyle(BloomyTheme.palette.mutedText)
 
                 Spacer()
 
                 Text(value)
-                    .font(BabyTrackTheme.typography.bodyBold.font)
-                    .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                    .font(BloomyTheme.typography.bodyBold.font)
+                    .foregroundStyle(BloomyTheme.palette.primaryText)
             }
-            .padding(.vertical, BabyTrackTheme.spacing.sm)
-            .padding(.horizontal, BabyTrackTheme.spacing.md)
+            .padding(.vertical, BloomyTheme.spacing.sm)
+            .padding(.horizontal, BloomyTheme.spacing.md)
             .background(
-                RoundedRectangle(cornerRadius: BabyTrackTheme.radii.medium)
-                    .fill(BabyTrackTheme.palette.elevatedSurface)
+                RoundedRectangle(cornerRadius: BloomyTheme.radii.medium)
+                    .fill(BloomyTheme.palette.elevatedSurface)
             )
         }
     }
@@ -290,17 +290,17 @@ private struct EditProfileView: View {
                                 .clipShape(Circle())
                         } else {
                             Circle()
-                                .fill(BabyTrackTheme.palette.accent.opacity(0.2))
+                                .fill(BloomyTheme.palette.accent.opacity(0.2))
                                 .frame(width: 100, height: 100)
                                 .overlay(
                                     Image(systemName: "person.fill")
                                         .font(.system(size: 40))
-                                        .foregroundStyle(BabyTrackTheme.palette.accent)
+                                        .foregroundStyle(BloomyTheme.palette.accent)
                                 )
                         }
                         Spacer()
                     }
-                    .padding(.vertical, BabyTrackTheme.spacing.md)
+                    .padding(.vertical, BloomyTheme.spacing.md)
 
                     Button(AppCopy.string(for: "profile.changePhoto")) {
                         showImagePicker = true
@@ -363,17 +363,17 @@ private struct CreateProfileView: View {
                                 .clipShape(Circle())
                         } else {
                             Circle()
-                                .fill(BabyTrackTheme.palette.accent.opacity(0.2))
+                                .fill(BloomyTheme.palette.accent.opacity(0.2))
                                 .frame(width: 100, height: 100)
                                 .overlay(
                                     Image(systemName: "person.fill")
                                         .font(.system(size: 40))
-                                        .foregroundStyle(BabyTrackTheme.palette.accent)
+                                        .foregroundStyle(BloomyTheme.palette.accent)
                                 )
                         }
                         Spacer()
                     }
-                    .padding(.vertical, BabyTrackTheme.spacing.md)
+                    .padding(.vertical, BloomyTheme.spacing.md)
 
                     Button(AppCopy.string(for: "profile.addPhoto")) {
                         showImagePicker = true

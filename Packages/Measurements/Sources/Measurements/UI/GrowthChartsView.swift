@@ -30,7 +30,7 @@ public struct GrowthChartsView: View {
             )
             .frame(maxWidth: .infinity, minHeight: 200)
         } else {
-            VStack(spacing: BabyTrackTheme.spacing.lg) {
+            VStack(spacing: BloomyTheme.spacing.lg) {
                 if let heightSeries = series(for: .height) {
                     chartCard(
                         titleKey: MeasurementType.height.titleKey,
@@ -59,18 +59,18 @@ public struct GrowthChartsView: View {
     }
 
     private var premiumBanner: some View {
-        HStack(spacing: BabyTrackTheme.spacing.sm) {
+        HStack(spacing: BloomyTheme.spacing.sm) {
             Image(systemName: Symbols.premium)
                 .foregroundStyle(.yellow)
             Text(AppCopy.string(for: "measurements.growth.premium"))
-                .font(BabyTrackTheme.typography.callout.font)
-                .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                .font(BloomyTheme.typography.callout.font)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
         }
-        .padding(BabyTrackTheme.spacing.md)
+        .padding(BloomyTheme.spacing.md)
         .frame(maxWidth: .infinity)
         .background(
-            RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft)
-                .fill(BabyTrackTheme.palette.secondaryBackground)
+            RoundedRectangle(cornerRadius: BloomyTheme.radii.soft)
+                .fill(BloomyTheme.palette.secondaryBackground)
         )
     }
 
@@ -96,7 +96,7 @@ public struct GrowthChartsView: View {
                         y: .value("Value", measurement.value)
                     )
                     .symbol(.circle)
-                    .foregroundStyle(BabyTrackTheme.palette.accent)
+                    .foregroundStyle(BloomyTheme.palette.accent)
                     .lineStyle(StrokeStyle(lineWidth: 3))
 
                     PointMark(
@@ -105,7 +105,7 @@ public struct GrowthChartsView: View {
                     )
                     .symbol(.circle)
                     .symbolSize(60)
-                    .foregroundStyle(BabyTrackTheme.palette.accent)
+                    .foregroundStyle(BloomyTheme.palette.accent)
                 }
             }
             .chartXAxis {
@@ -165,11 +165,11 @@ public struct GrowthChartsView: View {
     private func percentileColor(for curve: WHOPercentiles.Curve) -> Color {
         switch curve {
         case .p3, .p97:
-            return BabyTrackTheme.palette.warning
+            return BloomyTheme.palette.warning
         case .p50:
-            return BabyTrackTheme.palette.success
+            return BloomyTheme.palette.success
         default:
-            return BabyTrackTheme.palette.mutedText
+            return BloomyTheme.palette.mutedText
         }
     }
 

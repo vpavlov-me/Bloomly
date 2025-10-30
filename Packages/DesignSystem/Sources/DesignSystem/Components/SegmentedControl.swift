@@ -19,7 +19,7 @@ public struct SegmentedControl<Option: Hashable>: View {
             }
         }
         .pickerStyle(.segmented)
-        .padding(.horizontal, BabyTrackTheme.spacing.md)
+        .padding(.horizontal, BloomyTheme.spacing.md)
     }
 }
 
@@ -50,7 +50,7 @@ struct SegmentedControl_Previews: PreviewProvider {
             }
         }
         .padding()
-        .background(BabyTrackTheme.palette.background)
+        .background(BloomyTheme.palette.background)
         .previewLayout(.sizeThatFits)
     }
 }

@@ -1,6 +1,6 @@
 //
 //  Localization.swift
-//  BabyTrack
+//  bloomy
 //
 //  Provides typed accessors to localized strings.
 //

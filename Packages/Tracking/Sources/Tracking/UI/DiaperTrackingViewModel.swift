@@ -45,7 +45,7 @@ public final class DiaperTrackingViewModel: ObservableObject {
 
     private let repository: EventsRepository
     private let analytics: Analytics
-    private let logger = Logger(subsystem: "com.example.babytrack", category: "DiaperTracking")
+    private let logger = Logger(subsystem: "com.vibecoding.bloomly", category: "DiaperTracking")
     private let calendar: Calendar
 
     // MARK: - Initialization

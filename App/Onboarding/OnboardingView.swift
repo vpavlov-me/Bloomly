@@ -72,7 +72,7 @@ private struct WelcomeScreen: View {
     let onContinue: () -> Void
 
     var body: some View {
-        VStack(spacing: BabyTrackTheme.spacing.xl) {
+        VStack(spacing: BloomyTheme.spacing.xl) {
             Spacer()
 
             // App Icon
@@ -80,31 +80,31 @@ private struct WelcomeScreen: View {
                 .font(.system(size: 100))
                 .foregroundStyle(
                     LinearGradient(
-                        colors: [BabyTrackTheme.palette.accent, BabyTrackTheme.palette.accent.opacity(0.6)],
+                        colors: [BloomyTheme.palette.accent, BloomyTheme.palette.accent.opacity(0.6)],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
                 )
-                .padding(.bottom, BabyTrackTheme.spacing.lg)
+                .padding(.bottom, BloomyTheme.spacing.lg)
 
             // Title
             Text(AppCopy.string(for: "onboarding.welcome.title"))
-                .font(BabyTrackTheme.typography.largeTitle.font)
+                .font(BloomyTheme.typography.largeTitle.font)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
-                .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
 
             // Subtitle
             Text(AppCopy.string(for: "onboarding.welcome.subtitle"))
-                .font(BabyTrackTheme.typography.body.font)
+                .font(BloomyTheme.typography.body.font)
                 .multilineTextAlignment(.center)
-                .foregroundStyle(BabyTrackTheme.palette.mutedText)
-                .padding(.horizontal, BabyTrackTheme.spacing.xl)
+                .foregroundStyle(BloomyTheme.palette.mutedText)
+                .padding(.horizontal, BloomyTheme.spacing.xl)
 
             Spacer()
 
             // Benefits
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.lg) {
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.lg) {
                 BenefitRow(
                     icon: "chart.line.uptrend.xyaxis",
                     title: AppCopy.string(for: "onboarding.welcome.benefit1.title"),
@@ -123,7 +123,7 @@ private struct WelcomeScreen: View {
                     description: AppCopy.string(for: "onboarding.welcome.benefit3.description")
                 )
             }
-            .padding(.horizontal, BabyTrackTheme.spacing.xl)
+            .padding(.horizontal, BloomyTheme.spacing.xl)
 
             Spacer()
 
@@ -135,8 +135,8 @@ private struct WelcomeScreen: View {
             ) {
                 Text(AppCopy.string(for: "onboarding.welcome.getStarted"))
             }
-            .padding(.horizontal, BabyTrackTheme.spacing.xl)
-            .padding(.bottom, BabyTrackTheme.spacing.xl)
+            .padding(.horizontal, BloomyTheme.spacing.xl)
+            .padding(.bottom, BloomyTheme.spacing.xl)
         }
     }
 }
@@ -149,20 +149,20 @@ private struct BenefitRow: View {
     let description: String
 
     var body: some View {
-        HStack(alignment: .top, spacing: BabyTrackTheme.spacing.md) {
+        HStack(alignment: .top, spacing: BloomyTheme.spacing.md) {
             Image(systemName: icon)
                 .font(.system(size: 24))
-                .foregroundStyle(BabyTrackTheme.palette.accent)
+                .foregroundStyle(BloomyTheme.palette.accent)
                 .frame(width: 40)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(BabyTrackTheme.typography.headline.font)
-                    .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                    .font(BloomyTheme.typography.headline.font)
+                    .foregroundStyle(BloomyTheme.palette.primaryText)
 
                 Text(description)
-                    .font(BabyTrackTheme.typography.caption.font)
-                    .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                    .font(BloomyTheme.typography.caption.font)
+                    .foregroundStyle(BloomyTheme.palette.mutedText)
             }
         }
     }
@@ -180,26 +180,26 @@ private struct CreateProfileScreen: View {
     @State private var showNameError = false
 
     var body: some View {
-        VStack(spacing: BabyTrackTheme.spacing.xl) {
+        VStack(spacing: BloomyTheme.spacing.xl) {
             // Header
-            VStack(spacing: BabyTrackTheme.spacing.md) {
+            VStack(spacing: BloomyTheme.spacing.md) {
                 Text(AppCopy.string(for: "onboarding.profile.title"))
-                    .font(BabyTrackTheme.typography.title.font)
+                    .font(BloomyTheme.typography.title.font)
                     .fontWeight(.bold)
-                    .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                    .foregroundStyle(BloomyTheme.palette.primaryText)
 
                 Text(AppCopy.string(for: "onboarding.profile.subtitle"))
-                    .font(BabyTrackTheme.typography.body.font)
+                    .font(BloomyTheme.typography.body.font)
                     .multilineTextAlignment(.center)
-                    .foregroundStyle(BabyTrackTheme.palette.mutedText)
-                    .padding(.horizontal, BabyTrackTheme.spacing.xl)
+                    .foregroundStyle(BloomyTheme.palette.mutedText)
+                    .padding(.horizontal, BloomyTheme.spacing.xl)
             }
-            .padding(.top, BabyTrackTheme.spacing.xxl)
+            .padding(.top, BloomyTheme.spacing.xxl)
 
             Spacer()
 
             // Photo Picker
-            VStack(spacing: BabyTrackTheme.spacing.md) {
+            VStack(spacing: BloomyTheme.spacing.md) {
                 if let image = selectedImage {
                     Image(uiImage: image)
                         .resizable()
@@ -208,16 +208,16 @@ private struct CreateProfileScreen: View {
                         .clipShape(Circle())
                         .overlay(
                             Circle()
-                                .stroke(BabyTrackTheme.palette.accent, lineWidth: 3)
+                                .stroke(BloomyTheme.palette.accent, lineWidth: 3)
                         )
                 } else {
                     Circle()
-                        .fill(BabyTrackTheme.palette.accent.opacity(0.2))
+                        .fill(BloomyTheme.palette.accent.opacity(0.2))
                         .frame(width: 120, height: 120)
                         .overlay(
                             Image(systemName: "person.fill")
                                 .font(.system(size: 50))
-                                .foregroundStyle(BabyTrackTheme.palette.accent)
+                                .foregroundStyle(BloomyTheme.palette.accent)
                         )
                 }
 
@@ -228,17 +228,17 @@ private struct CreateProfileScreen: View {
                         selectedImage == nil ? AppCopy.string(for: "onboarding.profile.addPhoto") : AppCopy.string(for: "onboarding.profile.changePhoto"),
                         systemImage: "camera.fill"
                     )
-                    .font(BabyTrackTheme.typography.body.font)
-                    .foregroundStyle(BabyTrackTheme.palette.accent)
+                    .font(BloomyTheme.typography.body.font)
+                    .foregroundStyle(BloomyTheme.palette.accent)
                 }
             }
 
             // Form Fields
-            VStack(spacing: BabyTrackTheme.spacing.lg) {
-                VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.sm) {
+            VStack(spacing: BloomyTheme.spacing.lg) {
+                VStack(alignment: .leading, spacing: BloomyTheme.spacing.sm) {
                     Text(AppCopy.string(for: "profile.name"))
-                        .font(BabyTrackTheme.typography.caption.font)
-                        .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                        .font(BloomyTheme.typography.caption.font)
+                        .foregroundStyle(BloomyTheme.palette.mutedText)
 
                     TextField(AppCopy.string(for: "profile.name.placeholder"), text: $name)
                         .textFieldStyle(.roundedBorder)
@@ -248,15 +248,15 @@ private struct CreateProfileScreen: View {
 
                     if showNameError {
                         Text(AppCopy.string(for: "onboarding.profile.nameError"))
-                            .font(BabyTrackTheme.typography.caption.font)
+                            .font(BloomyTheme.typography.caption.font)
                             .foregroundStyle(.red)
                     }
                 }
 
-                VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.sm) {
+                VStack(alignment: .leading, spacing: BloomyTheme.spacing.sm) {
                     Text(AppCopy.string(for: "profile.birthDate"))
-                        .font(BabyTrackTheme.typography.caption.font)
-                        .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                        .font(BloomyTheme.typography.caption.font)
+                        .foregroundStyle(BloomyTheme.palette.mutedText)
 
                     DatePicker(
                         "",
@@ -268,7 +268,7 @@ private struct CreateProfileScreen: View {
                     .labelsHidden()
                 }
             }
-            .padding(.horizontal, BabyTrackTheme.spacing.xl)
+            .padding(.horizontal, BloomyTheme.spacing.xl)
 
             Spacer()
 
@@ -280,8 +280,8 @@ private struct CreateProfileScreen: View {
             ) {
                 Text(AppCopy.Common.save)
             }
-            .padding(.horizontal, BabyTrackTheme.spacing.xl)
-            .padding(.bottom, BabyTrackTheme.spacing.xl)
+            .padding(.horizontal, BloomyTheme.spacing.xl)
+            .padding(.bottom, BloomyTheme.spacing.xl)
         }
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(image: $selectedImage)
@@ -309,33 +309,33 @@ private struct NotificationPermissionScreen: View {
     let onSkip: () -> Void
 
     var body: some View {
-        VStack(spacing: BabyTrackTheme.spacing.xl) {
+        VStack(spacing: BloomyTheme.spacing.xl) {
             Spacer()
 
             // Icon
             Image(systemName: "bell.badge.fill")
                 .font(.system(size: 80))
-                .foregroundStyle(BabyTrackTheme.palette.accent)
-                .padding(.bottom, BabyTrackTheme.spacing.lg)
+                .foregroundStyle(BloomyTheme.palette.accent)
+                .padding(.bottom, BloomyTheme.spacing.lg)
 
             // Title
             Text(AppCopy.string(for: "onboarding.notifications.title"))
-                .font(BabyTrackTheme.typography.title.font)
+                .font(BloomyTheme.typography.title.font)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
-                .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
 
             // Subtitle
             Text(AppCopy.string(for: "onboarding.notifications.subtitle"))
-                .font(BabyTrackTheme.typography.body.font)
+                .font(BloomyTheme.typography.body.font)
                 .multilineTextAlignment(.center)
-                .foregroundStyle(BabyTrackTheme.palette.mutedText)
-                .padding(.horizontal, BabyTrackTheme.spacing.xl)
+                .foregroundStyle(BloomyTheme.palette.mutedText)
+                .padding(.horizontal, BloomyTheme.spacing.xl)
 
             Spacer()
 
             // Benefits
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.lg) {
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.lg) {
                 NotificationBenefitRow(
                     icon: "clock.fill",
                     text: AppCopy.string(for: "onboarding.notifications.benefit1")
@@ -351,12 +351,12 @@ private struct NotificationPermissionScreen: View {
                     text: AppCopy.string(for: "onboarding.notifications.benefit3")
                 )
             }
-            .padding(.horizontal, BabyTrackTheme.spacing.xl)
+            .padding(.horizontal, BloomyTheme.spacing.xl)
 
             Spacer()
 
             // Buttons
-            VStack(spacing: BabyTrackTheme.spacing.md) {
+            VStack(spacing: BloomyTheme.spacing.md) {
                 PrimaryButton(
                     accessibilityLabel: AppCopy.string(for: "onboarding.notifications.enable"),
                     accessibilityHint: "Double tap to enable notifications",
@@ -374,12 +374,12 @@ private struct NotificationPermissionScreen: View {
                     onSkip()
                 } label: {
                     Text(AppCopy.string(for: "onboarding.notifications.skip"))
-                        .font(BabyTrackTheme.typography.body.font)
-                        .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                        .font(BloomyTheme.typography.body.font)
+                        .foregroundStyle(BloomyTheme.palette.mutedText)
                 }
             }
-            .padding(.horizontal, BabyTrackTheme.spacing.xl)
-            .padding(.bottom, BabyTrackTheme.spacing.xl)
+            .padding(.horizontal, BloomyTheme.spacing.xl)
+            .padding(.bottom, BloomyTheme.spacing.xl)
         }
     }
 }
@@ -391,15 +391,15 @@ private struct NotificationBenefitRow: View {
     let text: String
 
     var body: some View {
-        HStack(spacing: BabyTrackTheme.spacing.md) {
+        HStack(spacing: BloomyTheme.spacing.md) {
             Image(systemName: icon)
                 .font(.system(size: 20))
-                .foregroundStyle(BabyTrackTheme.palette.accent)
+                .foregroundStyle(BloomyTheme.palette.accent)
                 .frame(width: 32)
 
             Text(text)
-                .font(BabyTrackTheme.typography.body.font)
-                .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                .font(BloomyTheme.typography.body.font)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
 
             Spacer()
         }
@@ -412,33 +412,33 @@ private struct DashboardIntroScreen: View {
     let onComplete: () -> Void
 
     var body: some View {
-        VStack(spacing: BabyTrackTheme.spacing.xl) {
+        VStack(spacing: BloomyTheme.spacing.xl) {
             Spacer()
 
             // Icon
             Image(systemName: "checkmark.circle.fill")
                 .font(.system(size: 100))
                 .foregroundStyle(.green)
-                .padding(.bottom, BabyTrackTheme.spacing.lg)
+                .padding(.bottom, BloomyTheme.spacing.lg)
 
             // Title
             Text(AppCopy.string(for: "onboarding.intro.title"))
-                .font(BabyTrackTheme.typography.largeTitle.font)
+                .font(BloomyTheme.typography.largeTitle.font)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
-                .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
 
             // Subtitle
             Text(AppCopy.string(for: "onboarding.intro.subtitle"))
-                .font(BabyTrackTheme.typography.body.font)
+                .font(BloomyTheme.typography.body.font)
                 .multilineTextAlignment(.center)
-                .foregroundStyle(BabyTrackTheme.palette.mutedText)
-                .padding(.horizontal, BabyTrackTheme.spacing.xl)
+                .foregroundStyle(BloomyTheme.palette.mutedText)
+                .padding(.horizontal, BloomyTheme.spacing.xl)
 
             Spacer()
 
             // Features
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.lg) {
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.lg) {
                 FeatureRow(
                     icon: "list.bullet.clipboard",
                     title: AppCopy.string(for: "onboarding.intro.feature1.title"),
@@ -457,7 +457,7 @@ private struct DashboardIntroScreen: View {
                     description: AppCopy.string(for: "onboarding.intro.feature3.description")
                 )
             }
-            .padding(.horizontal, BabyTrackTheme.spacing.xl)
+            .padding(.horizontal, BloomyTheme.spacing.xl)
 
             Spacer()
 
@@ -469,8 +469,8 @@ private struct DashboardIntroScreen: View {
             ) {
                 Text(AppCopy.string(for: "onboarding.intro.getStarted"))
             }
-            .padding(.horizontal, BabyTrackTheme.spacing.xl)
-            .padding(.bottom, BabyTrackTheme.spacing.xl)
+            .padding(.horizontal, BloomyTheme.spacing.xl)
+            .padding(.bottom, BloomyTheme.spacing.xl)
         }
     }
 }
@@ -483,20 +483,20 @@ private struct FeatureRow: View {
     let description: String
 
     var body: some View {
-        HStack(alignment: .top, spacing: BabyTrackTheme.spacing.md) {
+        HStack(alignment: .top, spacing: BloomyTheme.spacing.md) {
             Image(systemName: icon)
                 .font(.system(size: 24))
-                .foregroundStyle(BabyTrackTheme.palette.accent)
+                .foregroundStyle(BloomyTheme.palette.accent)
                 .frame(width: 40)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(BabyTrackTheme.typography.headline.font)
-                    .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                    .font(BloomyTheme.typography.headline.font)
+                    .foregroundStyle(BloomyTheme.palette.primaryText)
 
                 Text(description)
-                    .font(BabyTrackTheme.typography.caption.font)
-                    .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                    .font(BloomyTheme.typography.caption.font)
+                    .foregroundStyle(BloomyTheme.palette.mutedText)
             }
         }
     }

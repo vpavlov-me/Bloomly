@@ -21,7 +21,7 @@ public struct SleepChartsView: View {
 
     public var body: some View {
         ScrollView {
-            VStack(spacing: BabyTrackTheme.spacing.lg) {
+            VStack(spacing: BloomyTheme.spacing.lg) {
                 // Date range selector
                 dateRangeSelector
 
@@ -33,9 +33,9 @@ public struct SleepChartsView: View {
                     statisticsSummary(for: series)
                 }
             }
-            .padding(.vertical, BabyTrackTheme.spacing.lg)
+            .padding(.vertical, BloomyTheme.spacing.lg)
         }
-        .background(BabyTrackTheme.palette.background.ignoresSafeArea())
+        .background(BloomyTheme.palette.background.ignoresSafeArea())
         .task {
             await viewModel.loadChart(for: .sleepTotal)
         }
@@ -44,19 +44,19 @@ public struct SleepChartsView: View {
     // MARK: - Date Range Selector
 
     private var dateRangeSelector: some View {
-        VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.sm) {
+        VStack(alignment: .leading, spacing: BloomyTheme.spacing.sm) {
             Text("Time Period")
-                .font(BabyTrackTheme.typography.headline.font)
-                .foregroundStyle(BabyTrackTheme.palette.primaryText)
-                .padding(.horizontal, BabyTrackTheme.spacing.md)
+                .font(BloomyTheme.typography.headline.font)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
+                .padding(.horizontal, BloomyTheme.spacing.md)
 
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: BabyTrackTheme.spacing.sm) {
+                HStack(spacing: BloomyTheme.spacing.sm) {
                     ForEach(DateRangePreset.allCases.filter { $0 != .custom }, id: \.self) { preset in
                         dateRangeButton(preset)
                     }
                 }
-                .padding(.horizontal, BabyTrackTheme.spacing.md)
+                .padding(.horizontal, BloomyTheme.spacing.md)
             }
         }
     }
@@ -68,20 +68,20 @@ public struct SleepChartsView: View {
             }
         } label: {
             Text(preset.displayName)
-                .font(BabyTrackTheme.typography.callout.font)
+                .font(BloomyTheme.typography.callout.font)
                 .foregroundStyle(
                     viewModel.selectedDateRange == preset
-                        ? BabyTrackTheme.palette.accentContrast
-                        : BabyTrackTheme.palette.primaryText
+                        ? BloomyTheme.palette.accentContrast
+                        : BloomyTheme.palette.primaryText
                 )
-                .padding(.horizontal, BabyTrackTheme.spacing.md)
-                .padding(.vertical, BabyTrackTheme.spacing.sm)
+                .padding(.horizontal, BloomyTheme.spacing.md)
+                .padding(.vertical, BloomyTheme.spacing.sm)
                 .background(
-                    RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft)
+                    RoundedRectangle(cornerRadius: BloomyTheme.radii.soft)
                         .fill(
                             viewModel.selectedDateRange == preset
-                                ? BabyTrackTheme.palette.accent
-                                : BabyTrackTheme.palette.secondaryBackground
+                                ? BloomyTheme.palette.accent
+                                : BloomyTheme.palette.secondaryBackground
                         )
                 )
         }
@@ -121,12 +121,12 @@ public struct SleepChartsView: View {
                     y: .value("Hours", point.value)
                 )
                 .foregroundStyle(sleepBarGradient)
-                .cornerRadius(BabyTrackTheme.radii.soft)
+                .cornerRadius(BloomyTheme.radii.soft)
                 .annotation(position: .top, alignment: .center) {
                     if point.value > 0 {
                         Text(formatHours(point.value))
-                            .font(BabyTrackTheme.typography.caption.font)
-                            .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                            .font(BloomyTheme.typography.caption.font)
+                            .foregroundStyle(BloomyTheme.palette.mutedText)
                     }
                 }
             }
@@ -134,17 +134,17 @@ public struct SleepChartsView: View {
             // Average line
             if series.statistics.sampleCount > 0 {
                 RuleMark(y: .value("Average", series.statistics.average))
-                    .foregroundStyle(BabyTrackTheme.palette.warning.opacity(0.6))
+                    .foregroundStyle(BloomyTheme.palette.warning.opacity(0.6))
                     .lineStyle(StrokeStyle(lineWidth: 2, dash: [5, 5]))
                     .annotation(position: .top, alignment: .trailing) {
                         Text("Avg: \(formatHours(series.statistics.average))")
-                            .font(BabyTrackTheme.typography.caption.font)
-                            .foregroundStyle(BabyTrackTheme.palette.warning)
-                            .padding(.horizontal, BabyTrackTheme.spacing.xs)
+                            .font(BloomyTheme.typography.caption.font)
+                            .foregroundStyle(BloomyTheme.palette.warning)
+                            .padding(.horizontal, BloomyTheme.spacing.xs)
                             .padding(.vertical, 2)
                             .background(
                                 RoundedRectangle(cornerRadius: 4)
-                                    .fill(BabyTrackTheme.palette.background)
+                                    .fill(BloomyTheme.palette.background)
                             )
                     }
             }
@@ -154,7 +154,7 @@ public struct SleepChartsView: View {
                 if let date = value.as(Date.self) {
                     AxisValueLabel {
                         Text(formatDate(date))
-                            .font(BabyTrackTheme.typography.caption.font)
+                            .font(BloomyTheme.typography.caption.font)
                     }
                     AxisGridLine()
                 }
@@ -165,7 +165,7 @@ public struct SleepChartsView: View {
                 AxisValueLabel {
                     if let hours = value.as(Double.self) {
                         Text("\(Int(hours))h")
-                            .font(BabyTrackTheme.typography.caption.font)
+                            .font(BloomyTheme.typography.caption.font)
                     }
                 }
                 AxisGridLine()
@@ -178,8 +178,8 @@ public struct SleepChartsView: View {
     private var sleepBarGradient: LinearGradient {
         LinearGradient(
             colors: [
-                BabyTrackTheme.palette.accent.opacity(0.8),
-                BabyTrackTheme.palette.accent
+                BloomyTheme.palette.accent.opacity(0.8),
+                BloomyTheme.palette.accent
             ],
             startPoint: .top,
             endPoint: .bottom
@@ -190,7 +190,7 @@ public struct SleepChartsView: View {
 
     private func statisticsSummary(for series: ChartSeries) -> some View {
         ChartCard(title: "Sleep Statistics") {
-            HStack(spacing: BabyTrackTheme.spacing.lg) {
+            HStack(spacing: BloomyTheme.spacing.lg) {
                 statisticItem(
                     title: "Average",
                     value: formatHours(series.statistics.average),
@@ -215,23 +215,23 @@ public struct SleepChartsView: View {
                     icon: "clock.fill"
                 )
             }
-            .padding(.vertical, BabyTrackTheme.spacing.sm)
+            .padding(.vertical, BloomyTheme.spacing.sm)
         }
     }
 
     private func statisticItem(title: String, value: String, icon: String) -> some View {
-        VStack(spacing: BabyTrackTheme.spacing.xs) {
+        VStack(spacing: BloomyTheme.spacing.xs) {
             Image(systemName: icon)
                 .font(.system(size: 20))
-                .foregroundStyle(BabyTrackTheme.palette.accent)
+                .foregroundStyle(BloomyTheme.palette.accent)
 
             Text(value)
-                .font(BabyTrackTheme.typography.title3.font)
-                .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                .font(BloomyTheme.typography.title3.font)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
 
             Text(title)
-                .font(BabyTrackTheme.typography.caption.font)
-                .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                .font(BloomyTheme.typography.caption.font)
+                .foregroundStyle(BloomyTheme.palette.mutedText)
         }
         .frame(maxWidth: .infinity)
     }
@@ -239,31 +239,31 @@ public struct SleepChartsView: View {
     // MARK: - State Views
 
     private var loadingView: some View {
-        VStack(spacing: BabyTrackTheme.spacing.md) {
+        VStack(spacing: BloomyTheme.spacing.md) {
             ProgressView()
-                .tint(BabyTrackTheme.palette.accent)
+                .tint(BloomyTheme.palette.accent)
             Text("Loading sleep data...")
-                .font(BabyTrackTheme.typography.callout.font)
-                .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                .font(BloomyTheme.typography.callout.font)
+                .foregroundStyle(BloomyTheme.palette.mutedText)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private func errorView(_ message: String) -> some View {
-        VStack(spacing: BabyTrackTheme.spacing.md) {
+        VStack(spacing: BloomyTheme.spacing.md) {
             Image(systemName: "exclamationmark.triangle.fill")
                 .font(.system(size: 40))
-                .foregroundStyle(BabyTrackTheme.palette.destructive)
+                .foregroundStyle(BloomyTheme.palette.destructive)
             Text("Error loading data")
-                .font(BabyTrackTheme.typography.headline.font)
-                .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                .font(BloomyTheme.typography.headline.font)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
             Text(message)
-                .font(BabyTrackTheme.typography.callout.font)
-                .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                .font(BloomyTheme.typography.callout.font)
+                .foregroundStyle(BloomyTheme.palette.mutedText)
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(BabyTrackTheme.spacing.md)
+        .padding(BloomyTheme.spacing.md)
     }
 
     private var emptyStateView: some View {

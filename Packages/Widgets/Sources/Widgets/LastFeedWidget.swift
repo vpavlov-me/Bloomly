@@ -8,7 +8,7 @@ struct LastFeedEntry: TimelineEntry {
 }
 
 struct LastFeedProvider: TimelineProvider {
-    private let userDefaults = UserDefaults(suiteName: "group.com.example.babytrack")
+    private let userDefaults = UserDefaults(suiteName: "group.com.vibecoding.bloomly")
 
     func placeholder(in context: Context) -> LastFeedEntry {
         LastFeedEntry(date: Date(), lastFeed: Date().addingTimeInterval(-3600))

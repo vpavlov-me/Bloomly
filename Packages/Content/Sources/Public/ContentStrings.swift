@@ -7,6 +7,6 @@ public enum ContentStrings {
 }
 
 public enum ProductIdentifiers: String, CaseIterable {
-    case premiumMonthly = "com.example.babytrack.premium.monthly"
-    case premiumAnnual = "com.example.babytrack.premium.annual"
+    case premiumMonthly = "com.vibecoding.bloomly.premium.monthly"
+    case premiumAnnual = "com.vibecoding.bloomly.premium.annual"
 }

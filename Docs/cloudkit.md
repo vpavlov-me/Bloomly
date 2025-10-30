@@ -1,8 +1,8 @@
 # CloudKit Setup
 
-BabyTrack relies on a dedicated CloudKit zone to synchronise Core Data entities. Follow the checklist below before running on device or shipping a build.
+bloomy relies on a dedicated CloudKit zone to synchronise Core Data entities. Follow the checklist below before running on device or shipping a build.
 
-1. Enable the **iCloud > CloudKit** capability for the App, Widget, and Watch Extension. Use the container `iCloud.com.example.BabyTrack` and the App Group `group.com.example.babytrack`.
+1. Enable the **iCloud > CloudKit** capability for the App, Widget, and Watch Extension. Use the container `iCloud.com.example.bloomy` and the App Group `group.com.example.bloomy`.
 2. In the [Apple Developer portal](https://developer.apple.com), create the container and link it to the bundle identifier.
 3. In CloudKit Dashboard (Private Database, Development environment):
    - Create record type **Event** with fields:
@@ -22,4 +22,4 @@ BabyTrack relies on a dedicated CloudKit zone to synchronise Core Data entities.
 4. Deploy the schema (`Deploy Schema to Production`) before releasing.
 5. For testing use CK Dashboard data reset, sandbox accounts, and trigger `AppEnvironment.syncService.pushPending()`.
 6. For rollbacks rely on CloudKit schema versioning and backups of the Core Data store.
-7. Add `com.example.babytrack.sync` to the app’s `Permitted background task scheduler identifiers` in Info.plist so BGTaskScheduler can refresh the zone.
+7. Add `com.example.bloomy.sync` to the app’s `Permitted background task scheduler identifiers` in Info.plist so BGTaskScheduler can refresh the zone.

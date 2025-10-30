@@ -1,16 +1,16 @@
-# Privacy Policy for BabyTrack
+# Privacy Policy for bloomy
 
 **Last Updated: October 29, 2025**
 
 ## Introduction
 
-BabyTrack ("we," "our," or "the app") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our baby tracking application.
+bloomy ("we," "our," or "the app") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our baby tracking application.
 
 ## Information We Collect
 
 ### Data You Provide
 
-BabyTrack collects and stores the following information that you voluntarily provide:
+bloomy collects and stores the following information that you voluntarily provide:
 
 - **Baby Profile Information**: Name, birth date, and optional profile photo
 - **Health & Tracking Data**:
@@ -79,7 +79,7 @@ We **ONLY** share anonymous analytics with TelemetryDeck (our analytics provider
 
 ## Children's Privacy
 
-BabyTrack is designed to help parents track their baby's information. The app:
+bloomy is designed to help parents track their baby's information. The app:
 - Stores information about children (babies and toddlers)
 - Requires parental consent and control
 - Does not knowingly collect information directly from children
@@ -148,7 +148,7 @@ If you have questions or concerns about this Privacy Policy:
 
 ## Your Consent
 
-By using BabyTrack, you consent to this Privacy Policy.
+By using bloomy, you consent to this Privacy Policy.
 
 ## Legal Basis (GDPR)
 
@@ -174,7 +174,7 @@ You have the right to:
 
 ---
 
-**BabyTrack Privacy Policy v1.0**
+**bloomy Privacy Policy v1.0**
 Effective Date: October 29, 2025
 Published by: Vibecoding
 

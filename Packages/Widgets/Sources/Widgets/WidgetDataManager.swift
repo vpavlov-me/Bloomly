@@ -6,7 +6,7 @@ import CoreData
 public final class WidgetDataManager {
     public static let shared = WidgetDataManager()
 
-    private let appGroupIdentifier = "group.com.babytrack.shared"
+    private let appGroupIdentifier = "group.com.vibecoding.bloomly"
     private var persistentContainer: NSPersistentContainer?
 
     private init() {
@@ -23,9 +23,9 @@ public final class WidgetDataManager {
             return
         }
 
-        let storeURL = containerURL.appendingPathComponent("BabyTrack.sqlite")
+        let storeURL = containerURL.appendingPathComponent("bloomly.sqlite")
 
-        let container = NSPersistentContainer(name: "BabyTrack")
+        let container = NSPersistentContainer(name: "BloomlyModel")
         let storeDescription = NSPersistentStoreDescription(url: storeURL)
         storeDescription.type = NSSQLiteStoreType
         container.persistentStoreDescriptions = [storeDescription]

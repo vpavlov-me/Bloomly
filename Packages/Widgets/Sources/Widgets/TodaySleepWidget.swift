@@ -8,7 +8,7 @@ struct TodaySleepEntry: TimelineEntry {
 }
 
 struct TodaySleepProvider: TimelineProvider {
-    private let userDefaults = UserDefaults(suiteName: "group.com.example.babytrack")
+    private let userDefaults = UserDefaults(suiteName: "group.com.vibecoding.bloomly")
 
     func placeholder(in context: Context) -> TodaySleepEntry {
         TodaySleepEntry(date: Date(), totalMinutes: 480)

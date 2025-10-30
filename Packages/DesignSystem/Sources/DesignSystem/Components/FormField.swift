@@ -14,27 +14,27 @@ public struct FormField<Content: View>: View {
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.xs) {
-            BabyTrackTheme.typography.caption.text(title.uppercased())
+        VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
+            BloomyTheme.typography.caption.text(title.uppercased())
                 .font(.system(size: 12, weight: .semibold, design: .rounded))
             content
-                .padding(.horizontal, BabyTrackTheme.spacing.sm)
-                .padding(.vertical, BabyTrackTheme.spacing.xs)
+                .padding(.horizontal, BloomyTheme.spacing.sm)
+                .padding(.vertical, BloomyTheme.spacing.xs)
                 .background(
-                    RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft, style: .continuous)
-                        .strokeBorder(error == nil ? BabyTrackTheme.palette.outline : BabyTrackTheme.palette.destructive, lineWidth: 1)
+                    RoundedRectangle(cornerRadius: BloomyTheme.radii.soft, style: .continuous)
+                        .strokeBorder(error == nil ? BloomyTheme.palette.outline : BloomyTheme.palette.destructive, lineWidth: 1)
                         .background(
-                            RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft, style: .continuous)
-                                .fill(BabyTrackTheme.palette.secondaryBackground)
+                            RoundedRectangle(cornerRadius: BloomyTheme.radii.soft, style: .continuous)
+                                .fill(BloomyTheme.palette.secondaryBackground)
                         )
                 )
             if let helper, error == nil {
-                BabyTrackTheme.typography.caption.text(helper)
+                BloomyTheme.typography.caption.text(helper)
             }
             if let error {
                 Text(error)
                     .font(.system(size: 12, weight: .semibold, design: .rounded))
-                    .foregroundStyle(BabyTrackTheme.palette.destructive)
+                    .foregroundStyle(BloomyTheme.palette.destructive)
             }
         }
     }
@@ -43,7 +43,7 @@ public struct FormField<Content: View>: View {
 #if DEBUG
 struct FormField_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: BabyTrackTheme.spacing.lg) {
+        VStack(spacing: BloomyTheme.spacing.lg) {
             FormField(title: "Notes", helper: "Optional") {
                 TextField("", text: .constant("Nursery nap"))
                     .textFieldStyle(.plain)
@@ -54,7 +54,7 @@ struct FormField_Previews: PreviewProvider {
             }
         }
         .padding()
-        .background(BabyTrackTheme.palette.background)
+        .background(BloomyTheme.palette.background)
         .previewLayout(.sizeThatFits)
     }
 }

@@ -49,7 +49,7 @@
 "measurement.unit.lb" = "lb";
 
 /* Paywall */
-"paywall.title" = "BabyTrack Premium";
+"paywall.title" = "bloomy Premium";
 "paywall.subtitle" = "Unlock unlimited history and sync";
 "paywall.loading" = "Loading...";
 "paywall.error.generic" = "Unable to load products. Please try again.";
@@ -142,7 +142,7 @@
 "date.format.time" = "h:mm a";
 
 /* Onboarding */
-"onboarding.welcome.title" = "Welcome to BabyTrack";
+"onboarding.welcome.title" = "Welcome to bloomy";
 "onboarding.welcome.subtitle" = "Track your baby's daily activities and growth";
 "onboarding.features.title" = "Everything you need";
 "onboarding.features.subtitle" = "Sleep, feeding, diapers, and measurements";

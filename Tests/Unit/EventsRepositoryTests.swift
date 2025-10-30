@@ -1,6 +1,6 @@
 import CoreData
 import XCTest
-@testable import BabyTrack
+@testable import bloomy
 @testable import Tracking
 
 final class EventsRepositoryTests: XCTestCase {

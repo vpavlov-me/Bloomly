@@ -46,7 +46,7 @@ public final class SleepTrackingViewModel: ObservableObject {
 
     private let repository: EventsRepository
     private let analytics: Analytics
-    private let logger = Logger(subsystem: "com.example.babytrack", category: "SleepTracking")
+    private let logger = Logger(subsystem: "com.vibecoding.bloomly", category: "SleepTracking")
     private let calendar: Calendar
     private var timerCancellable: AnyCancellable?
 

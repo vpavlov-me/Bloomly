@@ -1,6 +1,6 @@
 # Analytics Implementation Guide
 
-This document describes how to use and extend the analytics system in the BabyTrack app.
+This document describes how to use and extend the analytics system in the bloomy app.
 
 ## Overview
 

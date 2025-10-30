@@ -1,0 +1,3020 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0183B6952D1352894BE5B2E6 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E4A4E324E4E7F9D2521683B9 /* SnapshotTesting */; };
+		02C2A281288CBB528953B23C /* TimelineViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2685685059D1F83FDAD97D4 /* TimelineViewModelTests.swift */; };
+		0619F2039497AB5179653119 /* Measurements in Frameworks */ = {isa = PBXBuildFile; productRef = 7E532E15DDC94B7332259F3C /* Measurements */; };
+		074A7E3E75A35AAA818D528F /* BloomlyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575F8377E4AA3AE59B958F54 /* BloomlyApp.swift */; };
+		095FB6C5BE5BB2269E341C19 /* DataExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C0860072C4771EFD690A8 /* DataExportService.swift */; };
+		0BEC8B860E6A87FB51696A5F /* ChartDataAggregatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272C0F81DC55D43654A76A49 /* ChartDataAggregatorTests.swift */; };
+		0EC3148981E0621222D26F65 /* EventsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D0C9014E2A2C35BF15BD8D /* EventsRepositoryTests.swift */; };
+		10AE3FF5B5A0F04EB0323332 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DD4EE1C379939AA674BE2 /* MainTabView.swift */; };
+		13AD2653A087E6EA6352D726 /* Sync in Frameworks */ = {isa = PBXBuildFile; productRef = D6FF0356D04743721FD775CA /* Sync */; };
+		181517C7B952E1641E4947A4 /* FeedingTrackingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6DB830B2A76F844AC4A4FA /* FeedingTrackingViewModelTests.swift */; };
+		1D5F00C1DECACACDA4CC4478 /* Measurements in Frameworks */ = {isa = PBXBuildFile; productRef = 6BF6B211AA67B171AF45D3B0 /* Measurements */; };
+		1DA8DDFF07959813046320CC /* BabyRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DDDDF2E8C5DB0318E28C24 /* BabyRepositoryTests.swift */; };
+		1E67F81265037BF1AAAE09B1 /* BloomlyWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ADFC6EFFEE1280EF990399 /* BloomlyWidgets.swift */; };
+		1F7E641E49130388E34968BE /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3D2ABE6781AFB903DA3DF /* PersistenceController.swift */; };
+		1FD2FF24CC4A3198636D3A0C /* TuistBundle+Bloomly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F73ED5F06D043D0DBE961A3 /* TuistBundle+Bloomly.swift */; };
+		1FF55A0D8098D20C71351345 /* WidgetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6629761459C0B17764293E4A /* WidgetsTests.swift */; };
+		20AA361A74C9811D3539F4A7 /* Tracking in Frameworks */ = {isa = PBXBuildFile; productRef = 86DCB9AED0090669F25A4BCE /* Tracking */; };
+		222FE5E3D6CF5AC0028149AA /* WidgetDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0972EA821AA814AB43944 /* WidgetDeepLink.swift */; };
+		28AFEE512F78622E866A5C83 /* Timeline in Frameworks */ = {isa = PBXBuildFile; productRef = 83C0C6A834A7434FFC5603B1 /* Timeline */; };
+		2BB88832E48E109492793A03 /* Sync in Frameworks */ = {isa = PBXBuildFile; productRef = 30A1207ACB9A36153840214B /* Sync */; };
+		2D47B7E731499089AE5F985F /* DesignSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473523F58E1A06E876F148E5 /* DesignSystemTests.swift */; };
+		2FF674F69B12DB855EFC1C7A /* PaywallSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37D159F12834F386C66657E /* PaywallSnapshotTests.swift */; };
+		32FE64ABAA9694848E83F7AA /* Widgets in Frameworks */ = {isa = PBXBuildFile; productRef = A6A6D6EF05FD8DFA34318358 /* Widgets */; };
+		37CBECFDBE9915C1251FC8F5 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942A7799C30D518FEBC29FB8 /* Placeholder.swift */; };
+		37FF8982F9EC5E2BEF2EFB90 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA03DC483F7C148831E9B71 /* OnboardingView.swift */; };
+		3838A94D65A834B471A15CE3 /* BloomlyWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A27F8FD54F1B4EA694AF65 /* BloomlyWatchApp.swift */; };
+		3E4ACA48FF0978D131EF6491 /* ContentStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431608EC3D29273558706AA7 /* ContentStringsTests.swift */; };
+		415810C891BD992CBBFD83D9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E0BF23C7768F11B7BCD1CC /* SettingsView.swift */; };
+		43359EFD14BA2BBFA0ACE3D6 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA7154E58B4CC5E87AEF9C0 /* DependencyContainer.swift */; };
+		465966BEC2E5EF064FB322A4 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 97A235FBD554C6266684C86F /* SnapshotTesting */; };
+		48BEF183168141B380E82607 /* SleepTrackingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B954B682DEB1CFB3DF297648 /* SleepTrackingViewModelTests.swift */; };
+		4E67CC8E0F75A5C8221DDB07 /* EventDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E18BFA9E69288DC60B0FE17 /* EventDetailViewModelTests.swift */; };
+		5134D661EC26B2F299B86D22 /* WatchDashboardViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA5E68061A457BE485A04EA /* WatchDashboardViewTests.swift */; };
+		516F7BF792C98610FBAB64A5 /* PaywallViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593ED475B9578B8B2174CF65 /* PaywallViewModelTests.swift */; };
+		51CEA1A369EF3EC4D838D95F /* GrowthChartViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DAC205DBBD6D93283962F /* GrowthChartViewTests.swift */; };
+		52CA2FF3D73C2795C77E21F5 /* PumpingTrackingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673632580311D14136D522E0 /* PumpingTrackingViewModelTests.swift */; };
+		54CB1D30B9EE3CD806550A13 /* ButtonStyleSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B713FABD6F855421962176 /* ButtonStyleSnapshotTests.swift */; };
+		5B7C82E1437F9BFCDBAD7743 /* BabyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AD172600A79C9529EA1FC6 /* BabyProfile.swift */; };
+		5B8505672D77BCF8148B0494 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 981E1A655804F5A3DC3507E1 /* DesignSystem */; };
+		5EEB85A9739273E4E74E484F /* MeasurementsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B256E13A25630EF30825049 /* MeasurementsRepositoryTests.swift */; };
+		653ACF97BC66BBA93798B665 /* Tracking in Frameworks */ = {isa = PBXBuildFile; productRef = 367A94D7DF4D21A3D056B742 /* Tracking */; };
+		6542730656E14437442A585E /* Tracking in Frameworks */ = {isa = PBXBuildFile; productRef = 3A1135FA4F34ADEA19B9C64F /* Tracking */; };
+		66FF6ED532764111A47060B3 /* ChartsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272E4643FFBBA01FFC4EC1BC /* ChartsViewModelTests.swift */; };
+		6BE60ADE77BFF3015CFA2AEB /* WidgetEntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCE9ECA172F02D7364B2105 /* WidgetEntryTests.swift */; };
+		747D02471E37ABF47811F619 /* WatchApp in Frameworks */ = {isa = PBXBuildFile; productRef = 4F97655F85B72DFAF1E8856C /* WatchApp */; };
+		76356B9E99CA266EA105786E /* Bloomly.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 640173A572A15B7A998B04C5 /* Bloomly.entitlements */; };
+		77A0C8F6C985F69CB3016DE9 /* Tracking in Frameworks */ = {isa = PBXBuildFile; productRef = 0EC3B4F21758B3995B584317 /* Tracking */; };
+		793EB7BCF7BFE0D9BE264040 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = AB41E321E9B140052A9047C9 /* SnapshotTesting */; };
+		7AEE9AA0E2C62CCF4B88BB1E /* BloomlyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F86ECBFF2374A5B9A3C887B /* BloomlyModel.xcdatamodeld */; };
+		7C4EA0D3241699B617CB676F /* Measurements in Frameworks */ = {isa = PBXBuildFile; productRef = 97BC1CB35645984710647D4C /* Measurements */; };
+		7D567F08736854114DFFC19E /* InMemoryEventsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF40BF91D513ABA1BD922FA8 /* InMemoryEventsRepositoryTests.swift */; };
+		7F3172D72B5CF93D2A6BD3E9 /* TimelineViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8390FC7C604D57526D80B7 /* TimelineViewModelTests.swift */; };
+		8313E196EBC4F0ADA073B51E /* DiaperTrackingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3766A37C1D996E548EC714A /* DiaperTrackingViewModelTests.swift */; };
+		831A72E3A91D728ED97536E7 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 32340C60D131D72E60DF4046 /* DesignSystem */; };
+		8562AEE09DB53B9972E81209 /* WatchApp in Frameworks */ = {isa = PBXBuildFile; productRef = 6F8BDB5DEC451144100B220F /* WatchApp */; };
+		8B591DFC9706A08837675957 /* Content in Frameworks */ = {isa = PBXBuildFile; productRef = 7A4758F93266E8CF473F33F1 /* Content */; };
+		903179EA7C0E0CDAB9B7C6B7 /* AppSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 45C7285D5E97597B24AD9FB5 /* AppSupport */; };
+		92B8C214385D15BE55EFB8DF /* Tracking in Frameworks */ = {isa = PBXBuildFile; productRef = 61A2F808DE6B57500EF48ECE /* Tracking */; };
+		960A2AD416FA9D19A3E9FBA3 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 1C8213853465426F36B7A8B7 /* SnapshotTesting */; };
+		9617DCAFFCF6A0D85E600816 /* Paywall in Frameworks */ = {isa = PBXBuildFile; productRef = B19E888C024EDF9CAD90F99C /* Paywall */; };
+		970ACDD91E77542E9351765E /* Paywall in Frameworks */ = {isa = PBXBuildFile; productRef = 62FB4AB9D20B1391794CFA9C /* Paywall */; };
+		9DED211A76E93515C18A06FF /* WatchDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4EB7A83548B5A077216DA2 /* WatchDataStoreTests.swift */; };
+		9FABEB03167644C79FD161C9 /* EventsRepositoryPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F97DB3467B283708F8F77D7 /* EventsRepositoryPerformanceTests.swift */; };
+		A2FE33CAFE71752BEFE65446 /* TrackingSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B94A60271EA6A03A0894D04 /* TrackingSnapshotTests.swift */; };
+		B039A08010DA2C3D1E087247 /* WatchApp in Frameworks */ = {isa = PBXBuildFile; productRef = 39A7D4F739ADE332F7FBB53C /* WatchApp */; };
+		B07F652B5C275F16451CA73E /* TimelineSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E368B7D9453D993B626377A /* TimelineSnapshotTests.swift */; };
+		B79C0B31997EF98A28533E48 /* BloomlyWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 90CC5F47B2530714F5822B2D /* BloomlyWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BAF62E8917E49CDB5FA628F6 /* EventsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C659E907EC9FED21FE08DA /* EventsRepositoryTests.swift */; };
+		CA91782C0D7531D910E6B917 /* Widgets in Frameworks */ = {isa = PBXBuildFile; productRef = 7267FF2D4A7B6C0BFDB2923B /* Widgets */; };
+		CBCC04774F593D4B2C3D97F0 /* Content in Frameworks */ = {isa = PBXBuildFile; productRef = DC57EC8F611826691B118F71 /* Content */; };
+		CBDF61CC6C705297270C92AD /* BloomlyWatchExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AF6A80EF0BEF311F2AB90EF7 /* BloomlyWatchExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CF38CD27B166319EC66DE9FD /* Timeline in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5C27448BA57B27E43E7303 /* Timeline */; };
+		D04481864021F143FF2A5324 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18D7EF599BCD9D41840549E /* AppSettings.swift */; };
+		D82D45338DF35D5FF91C45FC /* DataExportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E2C57DC60C4A8EB3DAF0E4 /* DataExportServiceTests.swift */; };
+		D8D0014E3354F51F4751B53F /* BabyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9860754ED68D400EE9CE3A37 /* BabyProfileView.swift */; };
+		DC19AB609057CD855BBFF12F /* BloomlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D381F2A9710BD16CB83E8 /* BloomlyUITests.swift */; };
+		DDD032CA4E80395046E45AA7 /* MeasurementsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1939FF3EC6FA366E69B79A49 /* MeasurementsRepositoryTests.swift */; };
+		E13A29C79067EBC3D45B4375 /* Tracking in Frameworks */ = {isa = PBXBuildFile; productRef = C660EDBA7D2CAC9880ADBE85 /* Tracking */; };
+		E38754009F8CFFB679600AF2 /* WidgetReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB77E73907BF8717FE02E15F /* WidgetReloader.swift */; };
+		E6BC60DCD505FF1291E41EC8 /* CloudKitSyncServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549465DB242A72C982ECA662 /* CloudKitSyncServiceTests.swift */; };
+		E77ADCEA7D31F084CF56E25C /* Widgets in Frameworks */ = {isa = PBXBuildFile; productRef = 91C5E8E51C9D4563BE440454 /* Widgets */; };
+		EB0FFF3FA8CE054D3699F2AD /* Measurements in Frameworks */ = {isa = PBXBuildFile; productRef = 346729B9497997AF90D843A2 /* Measurements */; };
+		EB7BB6C9819CE6BFE09A58A0 /* WHOPercentilesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37510983B58681989442A107 /* WHOPercentilesTests.swift */; };
+		F4275F3A5DF2CFC43AF74F6A /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D25A626E673F226A4A8B250 /* OnboardingManager.swift */; };
+		F5805D69E972C4CB46898875 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428CBE4C6FE820B86BEFA2D /* ProfileView.swift */; };
+		F68071D0D1571593377CFDDB /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0430B34A5572CCE7D63F4 /* LocalizationTests.swift */; };
+		F6BFF1B669BE7797D1E434BA /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4DB1E9D61D07A6FD79DB19 /* PerformanceTests.swift */; };
+		FD6B0AAF23DD099E8626CD4F /* DashboardSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3844C70E51E5AD739F26D4B1 /* DashboardSnapshotTests.swift */; };
+		FED34ED298B608B01776CD86 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E194D367F0411F72D63FF /* NotificationManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3127291F80F279538A1E0901 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66DC424875DFB78C96FD6DA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8BCEAC13605256B1D02401A1;
+			remoteInfo = BloomlyWidgets;
+		};
+		6967BFB2E99E3CF4A35D217F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66DC424875DFB78C96FD6DA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 614173328BE3E8AF41047808;
+			remoteInfo = Bloomly;
+		};
+		847B390A01D7082349492195 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66DC424875DFB78C96FD6DA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA49D68634B8E0923D8B4843;
+			remoteInfo = BloomlyWatchExtension;
+		};
+		EAD480F18A233F0ECB449AA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66DC424875DFB78C96FD6DA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 614173328BE3E8AF41047808;
+			remoteInfo = Bloomly;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		04FA4284382987CEF5EC113C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstSubfolderSpec = 13;
+			files = (
+				B79C0B31997EF98A28533E48 /* BloomlyWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11ADF87518BE8501A4F0A554 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BFEFA9758E098F4B61B6066 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48A8FE015A46EA1E74632CD1 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstSubfolderSpec = 13;
+			files = (
+				CBDF61CC6C705297270C92AD /* BloomlyWatchExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C0D3012F37A6F9334915D58 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56DC49683DAFB81E233FD731 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D0DCFF3265D22FD629B6930 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		907430C551A06E974B88C82F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		972E4B82DE9B15E0A563630C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99CFBD1AEF6A305E271CA455 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA5B13E37F8BF76CC692D45F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C457BA6F65CF7ED4F6F046E4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C68DE6DD9164418BCC4D1993 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDE43C2B66F77F8D687860AB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D44DE6492435F47F1FBE3AC0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E865780A85832030D05C370F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F05DAE8058C48A16BBD59ED4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		02AD172600A79C9529EA1FC6 /* BabyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyProfile.swift; sourceTree = "<group>"; };
+		0428CBE4C6FE820B86BEFA2D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		0B256E13A25630EF30825049 /* MeasurementsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementsRepositoryTests.swift; sourceTree = "<group>"; };
+		0CB9170645FF14AD1DBE221A /* BloomlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloomlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E18BFA9E69288DC60B0FE17 /* EventDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModelTests.swift; sourceTree = "<group>"; };
+		0E368B7D9453D993B626377A /* TimelineSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineSnapshotTests.swift; sourceTree = "<group>"; };
+		1939FF3EC6FA366E69B79A49 /* MeasurementsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementsRepositoryTests.swift; sourceTree = "<group>"; };
+		198D031CBD52326EFE443B4A /* BloomlyWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BloomlyWidgets.entitlements; sourceTree = "<group>"; };
+		1B94A60271EA6A03A0894D04 /* TrackingSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSnapshotTests.swift; sourceTree = "<group>"; };
+		1BA12B1FC47F146CD863D6B4 /* TimelineTestsTarget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TimelineTestsTarget-Info.plist"; sourceTree = "<group>"; };
+		1EA738A80A5137D86DFE52AF /* Content */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Content; path = Packages/Content; sourceTree = "<group>"; };
+		22DDDDF2E8C5DB0318E28C24 /* BabyRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyRepositoryTests.swift; sourceTree = "<group>"; };
+		22EDA936E64128F70EC359D0 /* BloomlyUITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BloomlyUITests-Info.plist"; sourceTree = "<group>"; };
+		2444E3F24C306305A4E1D814 /* Measurements */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Measurements; path = Packages/Measurements; sourceTree = "<group>"; };
+		24E2C57DC60C4A8EB3DAF0E4 /* DataExportServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExportServiceTests.swift; sourceTree = "<group>"; };
+		272C0F81DC55D43654A76A49 /* ChartDataAggregatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataAggregatorTests.swift; sourceTree = "<group>"; };
+		272E4643FFBBA01FFC4EC1BC /* ChartsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewModelTests.swift; sourceTree = "<group>"; };
+		2AD416947ED40AF85EFADE04 /* BloomlyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloomlyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BFB88D0ABF4CFC55D379196 /* TimelineTestsTarget.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimelineTestsTarget.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D2B889FAEED6C1BD05D5A64 /* BloomlyModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BloomlyModel.xcdatamodel; sourceTree = "<group>"; };
+		2F209C116196D7A5438EB058 /* BloomlyWatchExtension-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BloomlyWatchExtension-Info.plist"; sourceTree = "<group>"; };
+		31A27F8FD54F1B4EA694AF65 /* BloomlyWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomlyWatchApp.swift; sourceTree = "<group>"; };
+		37510983B58681989442A107 /* WHOPercentilesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WHOPercentilesTests.swift; sourceTree = "<group>"; };
+		3844C70E51E5AD739F26D4B1 /* DashboardSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardSnapshotTests.swift; sourceTree = "<group>"; };
+		3B077BCC0447230C362022E8 /* SyncTestsTarget.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SyncTestsTarget.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CA7154E58B4CC5E87AEF9C0 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		3EE218F83B625D21211504C6 /* BloomlyWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BloomlyWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F21B6710167F4EA7CFD225C /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DesignSystem; path = Packages/DesignSystem; sourceTree = "<group>"; };
+		42E0BF23C7768F11B7BCD1CC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		431608EC3D29273558706AA7 /* ContentStringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStringsTests.swift; sourceTree = "<group>"; };
+		473523F58E1A06E876F148E5 /* DesignSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystemTests.swift; sourceTree = "<group>"; };
+		478DAC205DBBD6D93283962F /* GrowthChartViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthChartViewTests.swift; sourceTree = "<group>"; };
+		4FD3889254C3398E4086CAAB /* Bloomly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloomly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		549465DB242A72C982ECA662 /* CloudKitSyncServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncServiceTests.swift; sourceTree = "<group>"; };
+		55D0C9014E2A2C35BF15BD8D /* EventsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRepositoryTests.swift; sourceTree = "<group>"; };
+		5720F6800FAA6197B3B9C337 /* TrackingTestsTarget.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackingTestsTarget.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		575F8377E4AA3AE59B958F54 /* BloomlyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomlyApp.swift; sourceTree = "<group>"; };
+		58D0972EA821AA814AB43944 /* WidgetDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDeepLink.swift; sourceTree = "<group>"; };
+		593ED475B9578B8B2174CF65 /* PaywallViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewModelTests.swift; sourceTree = "<group>"; };
+		5B33DFCD227977DF4E88A71E /* Paywall */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Paywall; path = Packages/Paywall; sourceTree = "<group>"; };
+		5FC3D2ABE6781AFB903DA3DF /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		610147B4E5C79E1BFC22E22D /* MeasurementsTestsTarget.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeasurementsTestsTarget.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		62FABBB1C97B324DA7C07792 /* Bloomly-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bloomly-Info.plist"; sourceTree = "<group>"; };
+		640173A572A15B7A998B04C5 /* Bloomly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bloomly.entitlements; sourceTree = "<group>"; };
+		649DD4EE1C379939AA674BE2 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		6629761459C0B17764293E4A /* WidgetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsTests.swift; sourceTree = "<group>"; };
+		66C0430B34A5572CCE7D63F4 /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
+		66C659E907EC9FED21FE08DA /* EventsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRepositoryTests.swift; sourceTree = "<group>"; };
+		673632580311D14136D522E0 /* PumpingTrackingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpingTrackingViewModelTests.swift; sourceTree = "<group>"; };
+		69D9FCF7163CE0072C6B38CB /* DesignSystemTestsTarget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DesignSystemTestsTarget-Info.plist"; sourceTree = "<group>"; };
+		6B8390FC7C604D57526D80B7 /* TimelineViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModelTests.swift; sourceTree = "<group>"; };
+		6CCE9ECA172F02D7364B2105 /* WidgetEntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEntryTests.swift; sourceTree = "<group>"; };
+		6D25A626E673F226A4A8B250 /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
+		6FA5E68061A457BE485A04EA /* WatchDashboardViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDashboardViewTests.swift; sourceTree = "<group>"; };
+		728F63F35B525EEDD08064B4 /* WidgetsTestsTarget.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WidgetsTestsTarget.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F73ED5F06D043D0DBE961A3 /* TuistBundle+Bloomly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+Bloomly.swift"; sourceTree = "<group>"; };
+		7F97DB3467B283708F8F77D7 /* EventsRepositoryPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRepositoryPerformanceTests.swift; sourceTree = "<group>"; };
+		83EC11CE54B17DEF6AA1B70E /* DesignSystemTestsTarget.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesignSystemTestsTarget.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		882D381F2A9710BD16CB83E8 /* BloomlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomlyUITests.swift; sourceTree = "<group>"; };
+		8E7C0860072C4771EFD690A8 /* DataExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExportService.swift; sourceTree = "<group>"; };
+		8FA03DC483F7C148831E9B71 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		90CC5F47B2530714F5822B2D /* BloomlyWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BloomlyWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		942A7799C30D518FEBC29FB8 /* Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
+		9860754ED68D400EE9CE3A37 /* BabyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyProfileView.swift; sourceTree = "<group>"; };
+		9A4EB7A83548B5A077216DA2 /* WatchDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDataStoreTests.swift; sourceTree = "<group>"; };
+		9DFEFB99B3325672215E86D6 /* ContentTestsTarget.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContentTestsTarget.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A08509890E1B1EF971883DA4 /* SyncTestsTarget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "SyncTestsTarget-Info.plist"; sourceTree = "<group>"; };
+		A97DA635D0BA9B7DD6A82E12 /* Sync */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sync; path = Packages/Sync; sourceTree = "<group>"; };
+		AC4DB1E9D61D07A6FD79DB19 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		AD5E8F9C4216FDC01526E7AB /* BloomlyWidgets-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BloomlyWidgets-Info.plist"; sourceTree = "<group>"; };
+		AF6A80EF0BEF311F2AB90EF7 /* BloomlyWatchExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BloomlyWatchExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2387C5CB093FBC7CB988526 /* WatchApp */ = {isa = PBXFileReference; lastKnownFileType = folder; name = WatchApp; path = Packages/WatchApp; sourceTree = "<group>"; };
+		B267B5278D1652F15CAE5E12 /* Widgets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Widgets; path = Packages/Widgets; sourceTree = "<group>"; };
+		B3766A37C1D996E548EC714A /* DiaperTrackingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaperTrackingViewModelTests.swift; sourceTree = "<group>"; };
+		B954B682DEB1CFB3DF297648 /* SleepTrackingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTrackingViewModelTests.swift; sourceTree = "<group>"; };
+		BB97EE610255B1629280FDF5 /* AppSupport */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AppSupport; path = Packages/AppSupport; sourceTree = "<group>"; };
+		BC944BCB496F51B355FEF78D /* BloomlyWatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BloomlyWatch-Info.plist"; sourceTree = "<group>"; };
+		C18D7EF599BCD9D41840549E /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		C4ADFC6EFFEE1280EF990399 /* BloomlyWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomlyWidgets.swift; sourceTree = "<group>"; };
+		C589D6F588C6D7E4C828C337 /* TrackingTestsTarget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TrackingTestsTarget-Info.plist"; sourceTree = "<group>"; };
+		C82233E72A9E0EC8DE67FE8F /* BloomlyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BloomlyTests-Info.plist"; sourceTree = "<group>"; };
+		D856186885822CAF9DA79487 /* PaywallTestsTarget.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaywallTestsTarget.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB6090448632B836D1FC4870 /* WidgetsTestsTarget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WidgetsTestsTarget-Info.plist"; sourceTree = "<group>"; };
+		DE5E194D367F0411F72D63FF /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		DE6DB830B2A76F844AC4A4FA /* FeedingTrackingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedingTrackingViewModelTests.swift; sourceTree = "<group>"; };
+		DFADE14F3CAEF2F5720A2FE6 /* PaywallTestsTarget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PaywallTestsTarget-Info.plist"; sourceTree = "<group>"; };
+		E1B625BE4E5C2CBE463F4DC9 /* WatchAppTestsTarget.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchAppTestsTarget.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2685685059D1F83FDAD97D4 /* TimelineViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModelTests.swift; sourceTree = "<group>"; };
+		E27E1A13BB84C4B0BB7095C5 /* ContentTestsTarget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ContentTestsTarget-Info.plist"; sourceTree = "<group>"; };
+		E6B713FABD6F855421962176 /* ButtonStyleSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleSnapshotTests.swift; sourceTree = "<group>"; };
+		E9FD7E8FA5E75E086079712F /* Tracking */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Tracking; path = Packages/Tracking; sourceTree = "<group>"; };
+		EA54D72A4F4ADAE2875451F5 /* BloomlyWatchExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BloomlyWatchExtension.entitlements; sourceTree = "<group>"; };
+		EC58518990C63D307E7DFA74 /* WatchAppTestsTarget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WatchAppTestsTarget-Info.plist"; sourceTree = "<group>"; };
+		F17D0F0C3158D5CBC4CFB1AE /* Timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Timeline; path = Packages/Timeline; sourceTree = "<group>"; };
+		F37D159F12834F386C66657E /* PaywallSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallSnapshotTests.swift; sourceTree = "<group>"; };
+		FA1016B30C7C711F5395F2E7 /* MeasurementsTestsTarget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MeasurementsTestsTarget-Info.plist"; sourceTree = "<group>"; };
+		FB77E73907BF8717FE02E15F /* WidgetReloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetReloader.swift; sourceTree = "<group>"; };
+		FF40BF91D513ABA1BD922FA8 /* InMemoryEventsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryEventsRepositoryTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		12F6DABD58D3CDD20DC4D45F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B8505672D77BCF8148B0494 /* DesignSystem in Frameworks */,
+				0183B6952D1352894BE5B2E6 /* SnapshotTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15676611CBF315F15FDE4A41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				903179EA7C0E0CDAB9B7C6B7 /* AppSupport in Frameworks */,
+				831A72E3A91D728ED97536E7 /* DesignSystem in Frameworks */,
+				CBCC04774F593D4B2C3D97F0 /* Content in Frameworks */,
+				92B8C214385D15BE55EFB8DF /* Tracking in Frameworks */,
+				7C4EA0D3241699B617CB676F /* Measurements in Frameworks */,
+				CF38CD27B166319EC66DE9FD /* Timeline in Frameworks */,
+				970ACDD91E77542E9351765E /* Paywall in Frameworks */,
+				13AD2653A087E6EA6352D726 /* Sync in Frameworks */,
+				32FE64ABAA9694848E83F7AA /* Widgets in Frameworks */,
+				747D02471E37ABF47811F619 /* WatchApp in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3121BD32E395404E5AF806B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AFEE512F78622E866A5C83 /* Timeline in Frameworks */,
+				20AA361A74C9811D3539F4A7 /* Tracking in Frameworks */,
+				1D5F00C1DECACACDA4CC4478 /* Measurements in Frameworks */,
+				960A2AD416FA9D19A3E9FBA3 /* SnapshotTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AA7C0671E1A19B8DE1C2CB3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9617DCAFFCF6A0D85E600816 /* Paywall in Frameworks */,
+				793EB7BCF7BFE0D9BE264040 /* SnapshotTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67B47135860D0D3F5EB8E243 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA91782C0D7531D910E6B917 /* Widgets in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		710A7F3EAF5DDE8F1A8FC275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB0FFF3FA8CE054D3699F2AD /* Measurements in Frameworks */,
+				465966BEC2E5EF064FB322A4 /* SnapshotTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		783CA177C795319511433667 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AA1254CE659398A410E9E6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653ACF97BC66BBA93798B665 /* Tracking in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		895F28BFBF9099C4B1CBC3A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0E22112912EB1335A023E6E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8562AEE09DB53B9972E81209 /* WatchApp in Frameworks */,
+				E13A29C79067EBC3D45B4375 /* Tracking in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A22B11ECAF6B3A63658090BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E77ADCEA7D31F084CF56E25C /* Widgets in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6575370BF0361F89CC92BCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B039A08010DA2C3D1E087247 /* WatchApp in Frameworks */,
+				6542730656E14437442A585E /* Tracking in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF71F35F5185EE9B82F11F7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BB88832E48E109492793A03 /* Sync in Frameworks */,
+				77A0C8F6C985F69CB3016DE9 /* Tracking in Frameworks */,
+				0619F2039497AB5179653119 /* Measurements in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1447ED857F19513D072CEFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF302220ADFFEA32C9AFEEE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B591DFC9706A08837675957 /* Content in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0CDA01B2EE43A3A12105A312 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				881BDB938640DA1EEC4D6828 /* Paywall */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		0E3B253A3C2313E56A59C65D /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1870704F67548B352C4B1694 /* Measurements */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		0E88FF1F07C8F60B97109681 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				89E64F604CA7DBD79F19519D /* Tests */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
+		111CE7CA01D49CED168F55EF /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				7F73ED5F06D043D0DBE961A3 /* TuistBundle+Bloomly.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		1356DE1F8D200208DFE0BFB5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8E7C0860072C4771EFD690A8 /* DataExportService.swift */,
+				DE5E194D367F0411F72D63FF /* NotificationManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		15BC1E8F1D456C6F4E7E51B2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4FD3889254C3398E4086CAAB /* Bloomly.app */,
+				0CB9170645FF14AD1DBE221A /* BloomlyTests.xctest */,
+				2AD416947ED40AF85EFADE04 /* BloomlyUITests.xctest */,
+				3EE218F83B625D21211504C6 /* BloomlyWatch.app */,
+				AF6A80EF0BEF311F2AB90EF7 /* BloomlyWatchExtension.appex */,
+				90CC5F47B2530714F5822B2D /* BloomlyWidgets.appex */,
+				9DFEFB99B3325672215E86D6 /* ContentTestsTarget.xctest */,
+				83EC11CE54B17DEF6AA1B70E /* DesignSystemTestsTarget.xctest */,
+				610147B4E5C79E1BFC22E22D /* MeasurementsTestsTarget.xctest */,
+				D856186885822CAF9DA79487 /* PaywallTestsTarget.xctest */,
+				3B077BCC0447230C362022E8 /* SyncTestsTarget.xctest */,
+				2BFB88D0ABF4CFC55D379196 /* TimelineTestsTarget.xctest */,
+				5720F6800FAA6197B3B9C337 /* TrackingTestsTarget.xctest */,
+				E1B625BE4E5C2CBE463F4DC9 /* WatchAppTestsTarget.xctest */,
+				728F63F35B525EEDD08064B4 /* WidgetsTestsTarget.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		17F59C44C379F02401326D9D /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				431608EC3D29273558706AA7 /* ContentStringsTests.swift */,
+				66C0430B34A5572CCE7D63F4 /* LocalizationTests.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		1870704F67548B352C4B1694 /* Measurements */ = {
+			isa = PBXGroup;
+			children = (
+				478DAC205DBBD6D93283962F /* GrowthChartViewTests.swift */,
+				0B256E13A25630EF30825049 /* MeasurementsRepositoryTests.swift */,
+			);
+			path = Measurements;
+			sourceTree = "<group>";
+		};
+		1B330B1DE70171873FA169BA /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7D93AC2425728022E86FCB0B /* Widgets */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		207CA07B305BB74D70E38271 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				E6B713FABD6F855421962176 /* ButtonStyleSnapshotTests.swift */,
+				473523F58E1A06E876F148E5 /* DesignSystemTests.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		290CAF02F623C0696F1EAB86 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				5FC3D2ABE6781AFB903DA3DF /* PersistenceController.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		2C4DBDABEC0FD0C2427CBBEE /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				207CA07B305BB74D70E38271 /* DesignSystem */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		2D954474886F5BC21FFB2DF2 /* BloomlyWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				D229A4A5314EEDDC551786DA /* Sources */,
+				198D031CBD52326EFE443B4A /* BloomlyWidgets.entitlements */,
+			);
+			path = BloomlyWidgets;
+			sourceTree = "<group>";
+		};
+		2F45FC6C6A87EECB54EE4D43 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9860754ED68D400EE9CE3A37 /* BabyProfileView.swift */,
+				649DD4EE1C379939AA674BE2 /* MainTabView.swift */,
+				0428CBE4C6FE820B86BEFA2D /* ProfileView.swift */,
+				42E0BF23C7768F11B7BCD1CC /* SettingsView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		307FA1341DACEF768FC35015 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C18D7EF599BCD9D41840549E /* AppSettings.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		3AC3A7BC3F23CF7936957C04 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				6D25A626E673F226A4A8B250 /* OnboardingManager.swift */,
+				8FA03DC483F7C148831E9B71 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		3E49B9FDA6F0F6DC68030648 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				549465DB242A72C982ECA662 /* CloudKitSyncServiceTests.swift */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
+		4862C8EA10B4FA22F1649AF1 /* BloomlyWatch */ = {
+			isa = PBXGroup;
+			children = (
+				A38E8F5C0A6ECCB9B36E6B70 /* Sources */,
+			);
+			path = BloomlyWatch;
+			sourceTree = "<group>";
+		};
+		4ADDFCE24F7370A8EC2CFB62 /* BloomlyWatchExtension */ = {
+			isa = PBXGroup;
+			children = (
+				B5F37EEED2B64214542EB6BA /* Sources */,
+				EA54D72A4F4ADAE2875451F5 /* BloomlyWatchExtension.entitlements */,
+			);
+			path = BloomlyWatchExtension;
+			sourceTree = "<group>";
+		};
+		543107FD35E4E69D866EE59A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				882D381F2A9710BD16CB83E8 /* BloomlyUITests.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		5E9A088A5C7AE3F1081D45FD /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				D99984AE78F46312FC50CFD0 /* App */,
+				AD91356DA808DB6FC602766F /* Derived */,
+				CD87A800D9F68E9AE6124D01 /* Packages */,
+				6E536E9B166DF5EA171B803C /* Targets */,
+				F5DA2CB9667499143F79C2D9 /* Tests */,
+			);
+			name = Project;
+			sourceTree = "<group>";
+		};
+		607B85B018BDBD3307B714AA /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3E49B9FDA6F0F6DC68030648 /* Sync */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		65BE4D3F0AA5AEA12AFD03B8 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				22DDDDF2E8C5DB0318E28C24 /* BabyRepositoryTests.swift */,
+				272C0F81DC55D43654A76A49 /* ChartDataAggregatorTests.swift */,
+				272E4643FFBBA01FFC4EC1BC /* ChartsViewModelTests.swift */,
+				3844C70E51E5AD739F26D4B1 /* DashboardSnapshotTests.swift */,
+				B3766A37C1D996E548EC714A /* DiaperTrackingViewModelTests.swift */,
+				0E18BFA9E69288DC60B0FE17 /* EventDetailViewModelTests.swift */,
+				7F97DB3467B283708F8F77D7 /* EventsRepositoryPerformanceTests.swift */,
+				66C659E907EC9FED21FE08DA /* EventsRepositoryTests.swift */,
+				DE6DB830B2A76F844AC4A4FA /* FeedingTrackingViewModelTests.swift */,
+				FF40BF91D513ABA1BD922FA8 /* InMemoryEventsRepositoryTests.swift */,
+				AC4DB1E9D61D07A6FD79DB19 /* PerformanceTests.swift */,
+				673632580311D14136D522E0 /* PumpingTrackingViewModelTests.swift */,
+				B954B682DEB1CFB3DF297648 /* SleepTrackingViewModelTests.swift */,
+				6B8390FC7C604D57526D80B7 /* TimelineViewModelTests.swift */,
+				1B94A60271EA6A03A0894D04 /* TrackingSnapshotTests.swift */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
+		6BE4221DBF88B8A1F52860B2 /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+				0CDA01B2EE43A3A12105A312 /* Tests */,
+			);
+			path = Paywall;
+			sourceTree = "<group>";
+		};
+		6E13B45C7A2CDE065965FEFE /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F5076D2FC61861DC305313AB /* Timeline */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		6E536E9B166DF5EA171B803C /* Targets */ = {
+			isa = PBXGroup;
+			children = (
+				4862C8EA10B4FA22F1649AF1 /* BloomlyWatch */,
+				4ADDFCE24F7370A8EC2CFB62 /* BloomlyWatchExtension */,
+				2D954474886F5BC21FFB2DF2 /* BloomlyWidgets */,
+			);
+			path = Targets;
+			sourceTree = "<group>";
+		};
+		72502D8D5B2B66AFA9AEBA33 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				640173A572A15B7A998B04C5 /* Bloomly.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		73000DEA61E7DD32320AD9E6 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				6F86ECBFF2374A5B9A3C887B /* BloomlyModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		751E2DEC7FDA2A129669ED3F /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				17F59C44C379F02401326D9D /* Content */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		7D93AC2425728022E86FCB0B /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				6CCE9ECA172F02D7364B2105 /* WidgetEntryTests.swift */,
+				6629761459C0B17764293E4A /* WidgetsTests.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		7F9507A27A1B738471A9CA28 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				BB97EE610255B1629280FDF5 /* AppSupport */,
+				1EA738A80A5137D86DFE52AF /* Content */,
+				3F21B6710167F4EA7CFD225C /* DesignSystem */,
+				2444E3F24C306305A4E1D814 /* Measurements */,
+				5B33DFCD227977DF4E88A71E /* Paywall */,
+				A97DA635D0BA9B7DD6A82E12 /* Sync */,
+				F17D0F0C3158D5CBC4CFB1AE /* Timeline */,
+				E9FD7E8FA5E75E086079712F /* Tracking */,
+				B2387C5CB093FBC7CB988526 /* WatchApp */,
+				B267B5278D1652F15CAE5E12 /* Widgets */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		861B72D115CC9D4384299208 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				6E13B45C7A2CDE065965FEFE /* Tests */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		881BDB938640DA1EEC4D6828 /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+				F37D159F12834F386C66657E /* PaywallSnapshotTests.swift */,
+				593ED475B9578B8B2174CF65 /* PaywallViewModelTests.swift */,
+			);
+			path = Paywall;
+			sourceTree = "<group>";
+		};
+		89E64F604CA7DBD79F19519D /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				65BE4D3F0AA5AEA12AFD03B8 /* Tracking */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		93681002BBF06CCB857F8D9E /* WatchApp */ = {
+			isa = PBXGroup;
+			children = (
+				F235CD1F7004E6F9074DF069 /* Tests */,
+			);
+			path = WatchApp;
+			sourceTree = "<group>";
+		};
+		9777510860009A0C128C48C3 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				1B330B1DE70171873FA169BA /* Tests */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		98C0A375A281B01178F233C9 = {
+			isa = PBXGroup;
+			children = (
+				15BC1E8F1D456C6F4E7E51B2 /* Products */,
+				5E9A088A5C7AE3F1081D45FD /* Project */,
+				7F9507A27A1B738471A9CA28 /* Packages */,
+			);
+			indentWidth = 4;
+			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 0;
+		};
+		99FF697F8494ECFD69F99A2A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				02AD172600A79C9529EA1FC6 /* BabyProfile.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		A38E8F5C0A6ECCB9B36E6B70 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				942A7799C30D518FEBC29FB8 /* Placeholder.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A822D887198E7240A0426E2E /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				3CA7154E58B4CC5E87AEF9C0 /* DependencyContainer.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		A838E7D049B940AA54BC1AFD /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				607B85B018BDBD3307B714AA /* Tests */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
+		AD91356DA808DB6FC602766F /* Derived */ = {
+			isa = PBXGroup;
+			children = (
+				B6A9AD21397A17B3DC90C3E6 /* InfoPlists */,
+				111CE7CA01D49CED168F55EF /* Sources */,
+			);
+			path = Derived;
+			sourceTree = "<group>";
+		};
+		B05C5F58A0FDAC31CC5C7188 /* Measurements */ = {
+			isa = PBXGroup;
+			children = (
+				0E3B253A3C2313E56A59C65D /* Tests */,
+			);
+			path = Measurements;
+			sourceTree = "<group>";
+		};
+		B0F61A6BFF86F938F332D75F /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				58D0972EA821AA814AB43944 /* WidgetDeepLink.swift */,
+				FB77E73907BF8717FE02E15F /* WidgetReloader.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		B5F37EEED2B64214542EB6BA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				31A27F8FD54F1B4EA694AF65 /* BloomlyWatchApp.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B6A9AD21397A17B3DC90C3E6 /* InfoPlists */ = {
+			isa = PBXGroup;
+			children = (
+				62FABBB1C97B324DA7C07792 /* Bloomly-Info.plist */,
+				C82233E72A9E0EC8DE67FE8F /* BloomlyTests-Info.plist */,
+				22EDA936E64128F70EC359D0 /* BloomlyUITests-Info.plist */,
+				BC944BCB496F51B355FEF78D /* BloomlyWatch-Info.plist */,
+				2F209C116196D7A5438EB058 /* BloomlyWatchExtension-Info.plist */,
+				AD5E8F9C4216FDC01526E7AB /* BloomlyWidgets-Info.plist */,
+				E27E1A13BB84C4B0BB7095C5 /* ContentTestsTarget-Info.plist */,
+				69D9FCF7163CE0072C6B38CB /* DesignSystemTestsTarget-Info.plist */,
+				FA1016B30C7C711F5395F2E7 /* MeasurementsTestsTarget-Info.plist */,
+				DFADE14F3CAEF2F5720A2FE6 /* PaywallTestsTarget-Info.plist */,
+				A08509890E1B1EF971883DA4 /* SyncTestsTarget-Info.plist */,
+				1BA12B1FC47F146CD863D6B4 /* TimelineTestsTarget-Info.plist */,
+				C589D6F588C6D7E4C828C337 /* TrackingTestsTarget-Info.plist */,
+				EC58518990C63D307E7DFA74 /* WatchAppTestsTarget-Info.plist */,
+				DB6090448632B836D1FC4870 /* WidgetsTestsTarget-Info.plist */,
+			);
+			path = InfoPlists;
+			sourceTree = "<group>";
+		};
+		BEBAFFC3391E4C70F6AF3519 /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				24E2C57DC60C4A8EB3DAF0E4 /* DataExportServiceTests.swift */,
+				55D0C9014E2A2C35BF15BD8D /* EventsRepositoryTests.swift */,
+				1939FF3EC6FA366E69B79A49 /* MeasurementsRepositoryTests.swift */,
+				37510983B58681989442A107 /* WHOPercentilesTests.swift */,
+			);
+			path = Unit;
+			sourceTree = "<group>";
+		};
+		CD87A800D9F68E9AE6124D01 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				D0F06BDE11BD7E13FAF39344 /* Content */,
+				FB4F63F69882C397D54A2892 /* DesignSystem */,
+				B05C5F58A0FDAC31CC5C7188 /* Measurements */,
+				6BE4221DBF88B8A1F52860B2 /* Paywall */,
+				A838E7D049B940AA54BC1AFD /* Sync */,
+				861B72D115CC9D4384299208 /* Timeline */,
+				0E88FF1F07C8F60B97109681 /* Tracking */,
+				93681002BBF06CCB857F8D9E /* WatchApp */,
+				9777510860009A0C128C48C3 /* Widgets */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		D0F06BDE11BD7E13FAF39344 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				751E2DEC7FDA2A129669ED3F /* Tests */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		D229A4A5314EEDDC551786DA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C4ADFC6EFFEE1280EF990399 /* BloomlyWidgets.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		D99984AE78F46312FC50CFD0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A822D887198E7240A0426E2E /* Composition */,
+				73000DEA61E7DD32320AD9E6 /* CoreData */,
+				3AC3A7BC3F23CF7936957C04 /* Onboarding */,
+				290CAF02F623C0696F1EAB86 /* Persistence */,
+				99FF697F8494ECFD69F99A2A /* Profile */,
+				72502D8D5B2B66AFA9AEBA33 /* Resources */,
+				1356DE1F8D200208DFE0BFB5 /* Services */,
+				307FA1341DACEF768FC35015 /* Settings */,
+				2F45FC6C6A87EECB54EE4D43 /* UI */,
+				B0F61A6BFF86F938F332D75F /* Widgets */,
+				575F8377E4AA3AE59B958F54 /* BloomlyApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F235CD1F7004E6F9074DF069 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F7E311C873542B87915196BE /* WatchApp */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		F5076D2FC61861DC305313AB /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				0E368B7D9453D993B626377A /* TimelineSnapshotTests.swift */,
+				E2685685059D1F83FDAD97D4 /* TimelineViewModelTests.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		F5DA2CB9667499143F79C2D9 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				543107FD35E4E69D866EE59A /* UI */,
+				BEBAFFC3391E4C70F6AF3519 /* Unit */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		F7E311C873542B87915196BE /* WatchApp */ = {
+			isa = PBXGroup;
+			children = (
+				6FA5E68061A457BE485A04EA /* WatchDashboardViewTests.swift */,
+				9A4EB7A83548B5A077216DA2 /* WatchDataStoreTests.swift */,
+			);
+			path = WatchApp;
+			sourceTree = "<group>";
+		};
+		FB4F63F69882C397D54A2892 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				2C4DBDABEC0FD0C2427CBBEE /* Tests */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1BD8BED88D950DB348E08903 /* BloomlyWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73CCB0579FFFB8E643E20C03 /* Build configuration list for PBXNativeTarget "BloomlyWatch" */;
+			buildPhases = (
+				4945E017B36B339BD4D85D62 /* Sources */,
+				744F6A3815817161E81DF26F /* Resources */,
+				48A8FE015A46EA1E74632CD1 /* Embed Foundation Extensions */,
+				783CA177C795319511433667 /* Frameworks */,
+				56DC49683DAFB81E233FD731 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F5667DEED5DBEEFE20E1E41 /* PBXTargetDependency */,
+			);
+			name = BloomlyWatch;
+			packageProductDependencies = (
+			);
+			productName = BloomlyWatch;
+			productReference = 3EE218F83B625D21211504C6 /* BloomlyWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		2CBDC410830004F30F80DEC1 /* WidgetsTestsTarget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E1AEFBA0F3C6397DB5A9AE8 /* Build configuration list for PBXNativeTarget "WidgetsTestsTarget" */;
+			buildPhases = (
+				B83C8372E69E1C5E77D84616 /* Sources */,
+				1FBB6C6E33509C3FF9AC60C7 /* Resources */,
+				67B47135860D0D3F5EB8E243 /* Frameworks */,
+				AA5B13E37F8BF76CC692D45F /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WidgetsTestsTarget;
+			packageProductDependencies = (
+				7267FF2D4A7B6C0BFDB2923B /* Widgets */,
+			);
+			productName = WidgetsTestsTarget;
+			productReference = 728F63F35B525EEDD08064B4 /* WidgetsTestsTarget.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3027EE130299CA2DBF3FE3F7 /* BloomlyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4813D5CFE4FA0725468422D5 /* Build configuration list for PBXNativeTarget "BloomlyUITests" */;
+			buildPhases = (
+				BC583BFC0F32B213EFE86240 /* Sources */,
+				A0F473F09806DB0DDDF08664 /* Resources */,
+				B1447ED857F19513D072CEFF /* Frameworks */,
+				11ADF87518BE8501A4F0A554 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2F336611C43BFEB0079DCED2 /* PBXTargetDependency */,
+			);
+			name = BloomlyUITests;
+			packageProductDependencies = (
+			);
+			productName = BloomlyUITests;
+			productReference = 2AD416947ED40AF85EFADE04 /* BloomlyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		44C11F87C07ABF3A12BFC472 /* BloomlyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F3824ABC6B00238F3FA6C4A /* Build configuration list for PBXNativeTarget "BloomlyTests" */;
+			buildPhases = (
+				11F115A9C20FA87ABDA68044 /* Sources */,
+				C6C5098F60ACCF5D8A2AE822 /* Resources */,
+				895F28BFBF9099C4B1CBC3A5 /* Frameworks */,
+				D44DE6492435F47F1FBE3AC0 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				197DFE7A1B01F5DB87604450 /* PBXTargetDependency */,
+			);
+			name = BloomlyTests;
+			packageProductDependencies = (
+			);
+			productName = BloomlyTests;
+			productReference = 0CB9170645FF14AD1DBE221A /* BloomlyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		614173328BE3E8AF41047808 /* Bloomly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F45DDBEB88C21BDEF90EF1F5 /* Build configuration list for PBXNativeTarget "Bloomly" */;
+			buildPhases = (
+				B284DC0BC1B6780A50F81016 /* SwiftLint */,
+				3D02351FBAE46ACB2B383F12 /* Sources */,
+				30AF2AED849E29DE600F60A5 /* Resources */,
+				04FA4284382987CEF5EC113C /* Embed Foundation Extensions */,
+				15676611CBF315F15FDE4A41 /* Frameworks */,
+				C68DE6DD9164418BCC4D1993 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F2ACE9B04C79ED2AA0F52AA /* PBXTargetDependency */,
+			);
+			name = Bloomly;
+			packageProductDependencies = (
+				45C7285D5E97597B24AD9FB5 /* AppSupport */,
+				32340C60D131D72E60DF4046 /* DesignSystem */,
+				DC57EC8F611826691B118F71 /* Content */,
+				61A2F808DE6B57500EF48ECE /* Tracking */,
+				97BC1CB35645984710647D4C /* Measurements */,
+				5A5C27448BA57B27E43E7303 /* Timeline */,
+				62FB4AB9D20B1391794CFA9C /* Paywall */,
+				D6FF0356D04743721FD775CA /* Sync */,
+				A6A6D6EF05FD8DFA34318358 /* Widgets */,
+				4F97655F85B72DFAF1E8856C /* WatchApp */,
+			);
+			productName = Bloomly;
+			productReference = 4FD3889254C3398E4086CAAB /* Bloomly.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6D0E91250BAB561EA084FDA2 /* DesignSystemTestsTarget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 57947ABF681E9C25BA29235E /* Build configuration list for PBXNativeTarget "DesignSystemTestsTarget" */;
+			buildPhases = (
+				B3AECB4B9909949E345192A8 /* Sources */,
+				F93FACEA85560F53FE68274E /* Resources */,
+				12F6DABD58D3CDD20DC4D45F /* Frameworks */,
+				972E4B82DE9B15E0A563630C /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DesignSystemTestsTarget;
+			packageProductDependencies = (
+				981E1A655804F5A3DC3507E1 /* DesignSystem */,
+				E4A4E324E4E7F9D2521683B9 /* SnapshotTesting */,
+			);
+			productName = DesignSystemTestsTarget;
+			productReference = 83EC11CE54B17DEF6AA1B70E /* DesignSystemTestsTarget.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7F80DE89AF49710F37DE98A9 /* ContentTestsTarget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4090B7539A39610B5686513 /* Build configuration list for PBXNativeTarget "ContentTestsTarget" */;
+			buildPhases = (
+				284AFE818E6A8209EB972DE7 /* Sources */,
+				E4F946D1165B1149726C5403 /* Resources */,
+				CF302220ADFFEA32C9AFEEE1 /* Frameworks */,
+				E865780A85832030D05C370F /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ContentTestsTarget;
+			packageProductDependencies = (
+				7A4758F93266E8CF473F33F1 /* Content */,
+			);
+			productName = ContentTestsTarget;
+			productReference = 9DFEFB99B3325672215E86D6 /* ContentTestsTarget.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8BCEAC13605256B1D02401A1 /* BloomlyWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD9C4FEDBEF79394339C7D88 /* Build configuration list for PBXNativeTarget "BloomlyWidgets" */;
+			buildPhases = (
+				6A4DBE3225EEC8C29CB010E3 /* Sources */,
+				E62C10F342500AE8D72C5189 /* Resources */,
+				A22B11ECAF6B3A63658090BB /* Frameworks */,
+				2BFEFA9758E098F4B61B6066 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BloomlyWidgets;
+			packageProductDependencies = (
+				91C5E8E51C9D4563BE440454 /* Widgets */,
+			);
+			productName = BloomlyWidgets;
+			productReference = 90CC5F47B2530714F5822B2D /* BloomlyWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		AC4CAFEDEEA789F0980BDEF8 /* PaywallTestsTarget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7301DC442734C399E2C53DA5 /* Build configuration list for PBXNativeTarget "PaywallTestsTarget" */;
+			buildPhases = (
+				0F7C436475A55592F5330A4A /* Sources */,
+				987FCD071B6A84033F7E9108 /* Resources */,
+				3AA7C0671E1A19B8DE1C2CB3 /* Frameworks */,
+				6D0DCFF3265D22FD629B6930 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PaywallTestsTarget;
+			packageProductDependencies = (
+				B19E888C024EDF9CAD90F99C /* Paywall */,
+				AB41E321E9B140052A9047C9 /* SnapshotTesting */,
+			);
+			productName = PaywallTestsTarget;
+			productReference = D856186885822CAF9DA79487 /* PaywallTestsTarget.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D19B272B3B23FD28F05F94A1 /* TimelineTestsTarget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FFA9BDF2211A0A5D414AB37 /* Build configuration list for PBXNativeTarget "TimelineTestsTarget" */;
+			buildPhases = (
+				2C3930732D34D219CD3FCADA /* Sources */,
+				D86A42A815266F328D2E08CE /* Resources */,
+				3121BD32E395404E5AF806B8 /* Frameworks */,
+				F05DAE8058C48A16BBD59ED4 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimelineTestsTarget;
+			packageProductDependencies = (
+				83C0C6A834A7434FFC5603B1 /* Timeline */,
+				86DCB9AED0090669F25A4BCE /* Tracking */,
+				6BF6B211AA67B171AF45D3B0 /* Measurements */,
+				1C8213853465426F36B7A8B7 /* SnapshotTesting */,
+			);
+			productName = TimelineTestsTarget;
+			productReference = 2BFB88D0ABF4CFC55D379196 /* TimelineTestsTarget.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DB563DACD8F3A48546D7525C /* TrackingTestsTarget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E79AB2446620AB96403DAAB /* Build configuration list for PBXNativeTarget "TrackingTestsTarget" */;
+			buildPhases = (
+				EF7C93352407C3912652D13E /* Sources */,
+				B592895EDA22E099D0AAC1C9 /* Resources */,
+				7AA1254CE659398A410E9E6C /* Frameworks */,
+				4C0D3012F37A6F9334915D58 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrackingTestsTarget;
+			packageProductDependencies = (
+				367A94D7DF4D21A3D056B742 /* Tracking */,
+			);
+			productName = TrackingTestsTarget;
+			productReference = 5720F6800FAA6197B3B9C337 /* TrackingTestsTarget.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E0B4D412499F3BA3A3D771BA /* WatchAppTestsTarget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99D75A0A4027244AB94845B0 /* Build configuration list for PBXNativeTarget "WatchAppTestsTarget" */;
+			buildPhases = (
+				545FBC03621EB8B6E47DE648 /* Sources */,
+				EE9FE14012EC8D53FFDC75D4 /* Resources */,
+				A6575370BF0361F89CC92BCD /* Frameworks */,
+				CDE43C2B66F77F8D687860AB /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WatchAppTestsTarget;
+			packageProductDependencies = (
+				39A7D4F739ADE332F7FBB53C /* WatchApp */,
+				3A1135FA4F34ADEA19B9C64F /* Tracking */,
+			);
+			productName = WatchAppTestsTarget;
+			productReference = E1B625BE4E5C2CBE463F4DC9 /* WatchAppTestsTarget.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E79A851FFFF46200AE55A7AF /* MeasurementsTestsTarget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC74972A7990B5704DE41BE1 /* Build configuration list for PBXNativeTarget "MeasurementsTestsTarget" */;
+			buildPhases = (
+				A2E42B6900D886BA878E990C /* Sources */,
+				25BCBCCD8F1301D595F59FF2 /* Resources */,
+				710A7F3EAF5DDE8F1A8FC275 /* Frameworks */,
+				907430C551A06E974B88C82F /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeasurementsTestsTarget;
+			packageProductDependencies = (
+				346729B9497997AF90D843A2 /* Measurements */,
+				97A235FBD554C6266684C86F /* SnapshotTesting */,
+			);
+			productName = MeasurementsTestsTarget;
+			productReference = 610147B4E5C79E1BFC22E22D /* MeasurementsTestsTarget.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E7BF843373F144E4A76E9F49 /* SyncTestsTarget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9A4E2C84D36958931F4E608 /* Build configuration list for PBXNativeTarget "SyncTestsTarget" */;
+			buildPhases = (
+				F9DAD9098A1E8FE6560C679E /* Sources */,
+				992825B5823E38DFBF754AC4 /* Resources */,
+				AF71F35F5185EE9B82F11F7A /* Frameworks */,
+				C457BA6F65CF7ED4F6F046E4 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SyncTestsTarget;
+			packageProductDependencies = (
+				30A1207ACB9A36153840214B /* Sync */,
+				0EC3B4F21758B3995B584317 /* Tracking */,
+				7E532E15DDC94B7332259F3C /* Measurements */,
+			);
+			productName = SyncTestsTarget;
+			productReference = 3B077BCC0447230C362022E8 /* SyncTestsTarget.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FA49D68634B8E0923D8B4843 /* BloomlyWatchExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 498BD56F146874A8CF717BCB /* Build configuration list for PBXNativeTarget "BloomlyWatchExtension" */;
+			buildPhases = (
+				CBA79117DA9D7372DEBD330D /* Sources */,
+				071D9C215FC9F383082927BC /* Resources */,
+				A0E22112912EB1335A023E6E /* Frameworks */,
+				99CFBD1AEF6A305E271CA455 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BloomlyWatchExtension;
+			packageProductDependencies = (
+				6F8BDB5DEC451144100B220F /* WatchApp */,
+				C660EDBA7D2CAC9880ADBE85 /* Tracking */,
+			);
+			productName = BloomlyWatchExtension;
+			productReference = AF6A80EF0BEF311F2AB90EF7 /* BloomlyWatchExtension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		66DC424875DFB78C96FD6DA3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				ORGANIZATIONNAME = Bloomly;
+				TargetAttributes = {
+					3027EE130299CA2DBF3FE3F7 = {
+						TestTargetID = 614173328BE3E8AF41047808;
+					};
+					44C11F87C07ABF3A12BFC472 = {
+						TestTargetID = 614173328BE3E8AF41047808;
+					};
+				};
+			};
+			buildConfigurationList = 7EA2C5950935FEE2DA747C84 /* Build configuration list for PBXProject "Bloomly" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 98C0A375A281B01178F233C9;
+			packageReferences = (
+				F13C75B0788258D82F247B04 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				7371F23CC29C48B74AC50F31 /* XCLocalSwiftPackageReference "Packages/AppSupport" */,
+				FACC18913213157E54634A2D /* XCLocalSwiftPackageReference "Packages/Content" */,
+				0237F8D3DBE93F045EED294F /* XCLocalSwiftPackageReference "Packages/DesignSystem" */,
+				498668F043AF6C517CDC8398 /* XCLocalSwiftPackageReference "Packages/Measurements" */,
+				9BCF77C2A8AFD2B4A9F8FEF6 /* XCLocalSwiftPackageReference "Packages/Paywall" */,
+				9F20C69810788EE2750C1138 /* XCLocalSwiftPackageReference "Packages/Sync" */,
+				64EA283D3B66C97BC1B01C57 /* XCLocalSwiftPackageReference "Packages/Timeline" */,
+				65B7DBC11A3D565068C4A69A /* XCLocalSwiftPackageReference "Packages/Tracking" */,
+				13B076ABCFB7CC8DD7B66B8D /* XCLocalSwiftPackageReference "Packages/WatchApp" */,
+				E99260443742300FEEFC1FCA /* XCLocalSwiftPackageReference "Packages/Widgets" */,
+			);
+			productRefGroup = 15BC1E8F1D456C6F4E7E51B2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				614173328BE3E8AF41047808 /* Bloomly */,
+				44C11F87C07ABF3A12BFC472 /* BloomlyTests */,
+				3027EE130299CA2DBF3FE3F7 /* BloomlyUITests */,
+				1BD8BED88D950DB348E08903 /* BloomlyWatch */,
+				FA49D68634B8E0923D8B4843 /* BloomlyWatchExtension */,
+				8BCEAC13605256B1D02401A1 /* BloomlyWidgets */,
+				7F80DE89AF49710F37DE98A9 /* ContentTestsTarget */,
+				6D0E91250BAB561EA084FDA2 /* DesignSystemTestsTarget */,
+				E79A851FFFF46200AE55A7AF /* MeasurementsTestsTarget */,
+				AC4CAFEDEEA789F0980BDEF8 /* PaywallTestsTarget */,
+				E7BF843373F144E4A76E9F49 /* SyncTestsTarget */,
+				D19B272B3B23FD28F05F94A1 /* TimelineTestsTarget */,
+				DB563DACD8F3A48546D7525C /* TrackingTestsTarget */,
+				E0B4D412499F3BA3A3D771BA /* WatchAppTestsTarget */,
+				2CBDC410830004F30F80DEC1 /* WidgetsTestsTarget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		071D9C215FC9F383082927BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FBB6C6E33509C3FF9AC60C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25BCBCCD8F1301D595F59FF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30AF2AED849E29DE600F60A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76356B9E99CA266EA105786E /* Bloomly.entitlements in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		744F6A3815817161E81DF26F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		987FCD071B6A84033F7E9108 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		992825B5823E38DFBF754AC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0F473F09806DB0DDDF08664 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B592895EDA22E099D0AAC1C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6C5098F60ACCF5D8A2AE822 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D86A42A815266F328D2E08CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4F946D1165B1149726C5403 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E62C10F342500AE8D72C5189 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE9FE14012EC8D53FFDC75D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F93FACEA85560F53FE68274E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B284DC0BC1B6780A50F81016 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0F7C436475A55592F5330A4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FF674F69B12DB855EFC1C7A /* PaywallSnapshotTests.swift in Sources */,
+				516F7BF792C98610FBAB64A5 /* PaywallViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11F115A9C20FA87ABDA68044 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D82D45338DF35D5FF91C45FC /* DataExportServiceTests.swift in Sources */,
+				0EC3148981E0621222D26F65 /* EventsRepositoryTests.swift in Sources */,
+				DDD032CA4E80395046E45AA7 /* MeasurementsRepositoryTests.swift in Sources */,
+				EB7BB6C9819CE6BFE09A58A0 /* WHOPercentilesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		284AFE818E6A8209EB972DE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E4ACA48FF0978D131EF6491 /* ContentStringsTests.swift in Sources */,
+				F68071D0D1571593377CFDDB /* LocalizationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C3930732D34D219CD3FCADA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B07F652B5C275F16451CA73E /* TimelineSnapshotTests.swift in Sources */,
+				02C2A281288CBB528953B23C /* TimelineViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D02351FBAE46ACB2B383F12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				074A7E3E75A35AAA818D528F /* BloomlyApp.swift in Sources */,
+				43359EFD14BA2BBFA0ACE3D6 /* DependencyContainer.swift in Sources */,
+				F4275F3A5DF2CFC43AF74F6A /* OnboardingManager.swift in Sources */,
+				37FF8982F9EC5E2BEF2EFB90 /* OnboardingView.swift in Sources */,
+				1F7E641E49130388E34968BE /* PersistenceController.swift in Sources */,
+				5B7C82E1437F9BFCDBAD7743 /* BabyProfile.swift in Sources */,
+				095FB6C5BE5BB2269E341C19 /* DataExportService.swift in Sources */,
+				FED34ED298B608B01776CD86 /* NotificationManager.swift in Sources */,
+				D04481864021F143FF2A5324 /* AppSettings.swift in Sources */,
+				D8D0014E3354F51F4751B53F /* BabyProfileView.swift in Sources */,
+				10AE3FF5B5A0F04EB0323332 /* MainTabView.swift in Sources */,
+				F5805D69E972C4CB46898875 /* ProfileView.swift in Sources */,
+				415810C891BD992CBBFD83D9 /* SettingsView.swift in Sources */,
+				222FE5E3D6CF5AC0028149AA /* WidgetDeepLink.swift in Sources */,
+				E38754009F8CFFB679600AF2 /* WidgetReloader.swift in Sources */,
+				1FD2FF24CC4A3198636D3A0C /* TuistBundle+Bloomly.swift in Sources */,
+				7AEE9AA0E2C62CCF4B88BB1E /* BloomlyModel.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4945E017B36B339BD4D85D62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37CBECFDBE9915C1251FC8F5 /* Placeholder.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		545FBC03621EB8B6E47DE648 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5134D661EC26B2F299B86D22 /* WatchDashboardViewTests.swift in Sources */,
+				9DED211A76E93515C18A06FF /* WatchDataStoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A4DBE3225EEC8C29CB010E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E67F81265037BF1AAAE09B1 /* BloomlyWidgets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2E42B6900D886BA878E990C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51CEA1A369EF3EC4D838D95F /* GrowthChartViewTests.swift in Sources */,
+				5EEB85A9739273E4E74E484F /* MeasurementsRepositoryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3AECB4B9909949E345192A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54CB1D30B9EE3CD806550A13 /* ButtonStyleSnapshotTests.swift in Sources */,
+				2D47B7E731499089AE5F985F /* DesignSystemTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B83C8372E69E1C5E77D84616 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BE60ADE77BFF3015CFA2AEB /* WidgetEntryTests.swift in Sources */,
+				1FF55A0D8098D20C71351345 /* WidgetsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC583BFC0F32B213EFE86240 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC19AB609057CD855BBFF12F /* BloomlyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBA79117DA9D7372DEBD330D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3838A94D65A834B471A15CE3 /* BloomlyWatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF7C93352407C3912652D13E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DA8DDFF07959813046320CC /* BabyRepositoryTests.swift in Sources */,
+				0BEC8B860E6A87FB51696A5F /* ChartDataAggregatorTests.swift in Sources */,
+				66FF6ED532764111A47060B3 /* ChartsViewModelTests.swift in Sources */,
+				FD6B0AAF23DD099E8626CD4F /* DashboardSnapshotTests.swift in Sources */,
+				8313E196EBC4F0ADA073B51E /* DiaperTrackingViewModelTests.swift in Sources */,
+				4E67CC8E0F75A5C8221DDB07 /* EventDetailViewModelTests.swift in Sources */,
+				9FABEB03167644C79FD161C9 /* EventsRepositoryPerformanceTests.swift in Sources */,
+				BAF62E8917E49CDB5FA628F6 /* EventsRepositoryTests.swift in Sources */,
+				181517C7B952E1641E4947A4 /* FeedingTrackingViewModelTests.swift in Sources */,
+				7D567F08736854114DFFC19E /* InMemoryEventsRepositoryTests.swift in Sources */,
+				F6BFF1B669BE7797D1E434BA /* PerformanceTests.swift in Sources */,
+				52CA2FF3D73C2795C77E21F5 /* PumpingTrackingViewModelTests.swift in Sources */,
+				48BEF183168141B380E82607 /* SleepTrackingViewModelTests.swift in Sources */,
+				7F3172D72B5CF93D2A6BD3E9 /* TimelineViewModelTests.swift in Sources */,
+				A2FE33CAFE71752BEFE65446 /* TrackingSnapshotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9DAD9098A1E8FE6560C679E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6BC60DCD505FF1291E41EC8 /* CloudKitSyncServiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		197DFE7A1B01F5DB87604450 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Bloomly;
+			target = 614173328BE3E8AF41047808 /* Bloomly */;
+			targetProxy = 6967BFB2E99E3CF4A35D217F /* PBXContainerItemProxy */;
+		};
+		2F336611C43BFEB0079DCED2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Bloomly;
+			target = 614173328BE3E8AF41047808 /* Bloomly */;
+			targetProxy = EAD480F18A233F0ECB449AA0 /* PBXContainerItemProxy */;
+		};
+		3F2ACE9B04C79ED2AA0F52AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BloomlyWidgets;
+			target = 8BCEAC13605256B1D02401A1 /* BloomlyWidgets */;
+			targetProxy = 3127291F80F279538A1E0901 /* PBXContainerItemProxy */;
+		};
+		4F5667DEED5DBEEFE20E1E41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BloomlyWatchExtension;
+			target = FA49D68634B8E0923D8B4843 /* BloomlyWatchExtension */;
+			targetProxy = 847B390A01D7082349492195 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		046C6F1AF467BD651E8D1E77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/DesignSystemTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.designsystemtests;
+				PRODUCT_NAME = DesignSystemTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		095B565DAF9B221D13AA1D1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/MeasurementsTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.measurementstests;
+				PRODUCT_NAME = MeasurementsTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		17830229B182E3D1AE5ED1F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/MeasurementsTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.measurementstests;
+				PRODUCT_NAME = MeasurementsTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		26C1B0B6924F1E785D00C34D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/PaywallTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.paywalltests;
+				PRODUCT_NAME = PaywallTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		360B6ABDDFBCA6C49AD8AFA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/BloomlyTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.tests;
+				PRODUCT_NAME = BloomlyTests;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bloomly.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bloomly";
+				TEST_TARGET_NAME = Bloomly;
+			};
+			name = Release;
+		};
+		3F853393343FDA3044AFD9EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/PaywallTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.paywalltests;
+				PRODUCT_NAME = PaywallTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4874622DB4EAE9C77E31EB24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/SyncTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.synctests;
+				PRODUCT_NAME = SyncTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4EB347F475927328250EFE1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/BloomlyUITests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.uitests;
+				PRODUCT_NAME = BloomlyUITests;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Bloomly;
+			};
+			name = Release;
+		};
+		524923E43481850831226EC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/TrackingTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.trackingtests;
+				PRODUCT_NAME = TrackingTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		641AF7E51F14183E1EAD3A00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ENABLE_PREVIEWS = YES;
+				IBSC_MODULE = BloomlyWatchExtension;
+				INFOPLIST_FILE = "Derived/InfoPlists/BloomlyWatch-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.watchapp;
+				PRODUCT_NAME = BloomlyWatch;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		67124EA5FA319B9B2872C948 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/WatchAppTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.watchapptests;
+				PRODUCT_NAME = WatchAppTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		71286440261A7C5867A05EF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/TimelineTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.timelinetests;
+				PRODUCT_NAME = TimelineTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9551301BED9D5B8548E7B3C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = App/Resources/Bloomly.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Derived/InfoPlists/Bloomly-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy;
+				PRODUCT_NAME = Bloomly;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		96E51EC38EA9208386E5A1DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Targets/BloomlyWidgets/BloomlyWidgets.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/BloomlyWidgets-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.widgets;
+				PRODUCT_NAME = BloomlyWidgets;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		99E73672EA81A53F87657D26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = ABCDE12345;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_SWIFT_FLAGS = "-warnings-as-errors";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.10;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		99EF1DAB13BE49F40CDF96BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = ABCDE12345;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-warnings-as-errors";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.10;
+			};
+			name = Debug;
+		};
+		9E9F9395939D22C9DA90B98A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/DesignSystemTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.designsystemtests;
+				PRODUCT_NAME = DesignSystemTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A4EA5CFCF810889ADD55303F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/WatchAppTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.watchapptests;
+				PRODUCT_NAME = WatchAppTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AB1F2DAB610ECA878385B8DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Targets/BloomlyWatchExtension/BloomlyWatchExtension.entitlements;
+				INFOPLIST_FILE = "Derived/InfoPlists/BloomlyWatchExtension-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.watchkitextension;
+				PRODUCT_NAME = BloomlyWatchExtension;
+				SDKROOT = watchos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		AD5DA26908537B92E5D02885 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/BloomlyTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.tests;
+				PRODUCT_NAME = BloomlyTests;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bloomly.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bloomly";
+				TEST_TARGET_NAME = Bloomly;
+			};
+			name = Debug;
+		};
+		B6F8E28613D16D121E27F31D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/TimelineTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.timelinetests;
+				PRODUCT_NAME = TimelineTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B9736E081916F647DD24404E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/TrackingTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.trackingtests;
+				PRODUCT_NAME = TrackingTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BE75B31B546D24F094C25F61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/SyncTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.synctests;
+				PRODUCT_NAME = SyncTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C5CA244DF5741DE9C193FC5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/BloomlyUITests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.uitests;
+				PRODUCT_NAME = BloomlyUITests;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Bloomly;
+			};
+			name = Debug;
+		};
+		C86C2F65A4D757431F73BF20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/WidgetsTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.widgetstests;
+				PRODUCT_NAME = WidgetsTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CB65AD8AD836365E5FE5F23C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = App/Resources/Bloomly.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Derived/InfoPlists/Bloomly-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy;
+				PRODUCT_NAME = Bloomly;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D768E72BE925E682E0E5DB20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Targets/BloomlyWidgets/BloomlyWidgets.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/BloomlyWidgets-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.widgets;
+				PRODUCT_NAME = BloomlyWidgets;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D7ADCD5BEA4CC6A157B4DB57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/ContentTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.contenttests;
+				PRODUCT_NAME = ContentTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F01D73F83E8095DCDB79A536 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/WidgetsTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.widgetstests;
+				PRODUCT_NAME = WidgetsTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F590BB0CDAC3CEDDFE39233E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Targets/BloomlyWatchExtension/BloomlyWatchExtension.entitlements;
+				INFOPLIST_FILE = "Derived/InfoPlists/BloomlyWatchExtension-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.watchkitextension;
+				PRODUCT_NAME = BloomlyWatchExtension;
+				SDKROOT = watchos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		F856075B1AEBFD23292AAE5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Derived/InfoPlists/ContentTestsTarget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.contenttests;
+				PRODUCT_NAME = ContentTestsTarget;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F935501B95C6C4364CFA3010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ENABLE_PREVIEWS = YES;
+				IBSC_MODULE = BloomlyWatchExtension;
+				INFOPLIST_FILE = "Derived/InfoPlists/BloomlyWatch-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.bloomy.watchapp;
+				PRODUCT_NAME = BloomlyWatch;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0F3824ABC6B00238F3FA6C4A /* Build configuration list for PBXNativeTarget "BloomlyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD5DA26908537B92E5D02885 /* Debug */,
+				360B6ABDDFBCA6C49AD8AFA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FFA9BDF2211A0A5D414AB37 /* Build configuration list for PBXNativeTarget "TimelineTestsTarget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6F8E28613D16D121E27F31D /* Debug */,
+				71286440261A7C5867A05EF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4813D5CFE4FA0725468422D5 /* Build configuration list for PBXNativeTarget "BloomlyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5CA244DF5741DE9C193FC5C /* Debug */,
+				4EB347F475927328250EFE1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		498BD56F146874A8CF717BCB /* Build configuration list for PBXNativeTarget "BloomlyWatchExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB1F2DAB610ECA878385B8DA /* Debug */,
+				F590BB0CDAC3CEDDFE39233E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		57947ABF681E9C25BA29235E /* Build configuration list for PBXNativeTarget "DesignSystemTestsTarget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				046C6F1AF467BD651E8D1E77 /* Debug */,
+				9E9F9395939D22C9DA90B98A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7301DC442734C399E2C53DA5 /* Build configuration list for PBXNativeTarget "PaywallTestsTarget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F853393343FDA3044AFD9EB /* Debug */,
+				26C1B0B6924F1E785D00C34D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		73CCB0579FFFB8E643E20C03 /* Build configuration list for PBXNativeTarget "BloomlyWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F935501B95C6C4364CFA3010 /* Debug */,
+				641AF7E51F14183E1EAD3A00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7E1AEFBA0F3C6397DB5A9AE8 /* Build configuration list for PBXNativeTarget "WidgetsTestsTarget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F01D73F83E8095DCDB79A536 /* Debug */,
+				C86C2F65A4D757431F73BF20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7EA2C5950935FEE2DA747C84 /* Build configuration list for PBXProject "Bloomly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99EF1DAB13BE49F40CDF96BD /* Debug */,
+				99E73672EA81A53F87657D26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E79AB2446620AB96403DAAB /* Build configuration list for PBXNativeTarget "TrackingTestsTarget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9736E081916F647DD24404E /* Debug */,
+				524923E43481850831226EC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99D75A0A4027244AB94845B0 /* Build configuration list for PBXNativeTarget "WatchAppTestsTarget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67124EA5FA319B9B2872C948 /* Debug */,
+				A4EA5CFCF810889ADD55303F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9A4E2C84D36958931F4E608 /* Build configuration list for PBXNativeTarget "SyncTestsTarget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE75B31B546D24F094C25F61 /* Debug */,
+				4874622DB4EAE9C77E31EB24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C4090B7539A39610B5686513 /* Build configuration list for PBXNativeTarget "ContentTestsTarget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F856075B1AEBFD23292AAE5A /* Debug */,
+				D7ADCD5BEA4CC6A157B4DB57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC74972A7990B5704DE41BE1 /* Build configuration list for PBXNativeTarget "MeasurementsTestsTarget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17830229B182E3D1AE5ED1F3 /* Debug */,
+				095B565DAF9B221D13AA1D1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD9C4FEDBEF79394339C7D88 /* Build configuration list for PBXNativeTarget "BloomlyWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96E51EC38EA9208386E5A1DE /* Debug */,
+				D768E72BE925E682E0E5DB20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F45DDBEB88C21BDEF90EF1F5 /* Build configuration list for PBXNativeTarget "Bloomly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB65AD8AD836365E5FE5F23C /* Debug */,
+				9551301BED9D5B8548E7B3C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		0237F8D3DBE93F045EED294F /* XCLocalSwiftPackageReference "Packages/DesignSystem" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/DesignSystem;
+		};
+		13B076ABCFB7CC8DD7B66B8D /* XCLocalSwiftPackageReference "Packages/WatchApp" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/WatchApp;
+		};
+		498668F043AF6C517CDC8398 /* XCLocalSwiftPackageReference "Packages/Measurements" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Measurements;
+		};
+		64EA283D3B66C97BC1B01C57 /* XCLocalSwiftPackageReference "Packages/Timeline" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Timeline;
+		};
+		65B7DBC11A3D565068C4A69A /* XCLocalSwiftPackageReference "Packages/Tracking" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Tracking;
+		};
+		7371F23CC29C48B74AC50F31 /* XCLocalSwiftPackageReference "Packages/AppSupport" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/AppSupport;
+		};
+		9BCF77C2A8AFD2B4A9F8FEF6 /* XCLocalSwiftPackageReference "Packages/Paywall" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Paywall;
+		};
+		9F20C69810788EE2750C1138 /* XCLocalSwiftPackageReference "Packages/Sync" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Sync;
+		};
+		E99260443742300FEEFC1FCA /* XCLocalSwiftPackageReference "Packages/Widgets" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Widgets;
+		};
+		FACC18913213157E54634A2D /* XCLocalSwiftPackageReference "Packages/Content" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Content;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F13C75B0788258D82F247B04 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0EC3B4F21758B3995B584317 /* Tracking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Tracking;
+		};
+		1C8213853465426F36B7A8B7 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SnapshotTesting;
+		};
+		30A1207ACB9A36153840214B /* Sync */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Sync;
+		};
+		32340C60D131D72E60DF4046 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+		346729B9497997AF90D843A2 /* Measurements */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Measurements;
+		};
+		367A94D7DF4D21A3D056B742 /* Tracking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Tracking;
+		};
+		39A7D4F739ADE332F7FBB53C /* WatchApp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WatchApp;
+		};
+		3A1135FA4F34ADEA19B9C64F /* Tracking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Tracking;
+		};
+		45C7285D5E97597B24AD9FB5 /* AppSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppSupport;
+		};
+		4F97655F85B72DFAF1E8856C /* WatchApp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WatchApp;
+		};
+		5A5C27448BA57B27E43E7303 /* Timeline */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Timeline;
+		};
+		61A2F808DE6B57500EF48ECE /* Tracking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Tracking;
+		};
+		62FB4AB9D20B1391794CFA9C /* Paywall */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Paywall;
+		};
+		6BF6B211AA67B171AF45D3B0 /* Measurements */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Measurements;
+		};
+		6F8BDB5DEC451144100B220F /* WatchApp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WatchApp;
+		};
+		7267FF2D4A7B6C0BFDB2923B /* Widgets */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Widgets;
+		};
+		7A4758F93266E8CF473F33F1 /* Content */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Content;
+		};
+		7E532E15DDC94B7332259F3C /* Measurements */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Measurements;
+		};
+		83C0C6A834A7434FFC5603B1 /* Timeline */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Timeline;
+		};
+		86DCB9AED0090669F25A4BCE /* Tracking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Tracking;
+		};
+		91C5E8E51C9D4563BE440454 /* Widgets */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Widgets;
+		};
+		97A235FBD554C6266684C86F /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SnapshotTesting;
+		};
+		97BC1CB35645984710647D4C /* Measurements */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Measurements;
+		};
+		981E1A655804F5A3DC3507E1 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+		A6A6D6EF05FD8DFA34318358 /* Widgets */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Widgets;
+		};
+		AB41E321E9B140052A9047C9 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SnapshotTesting;
+		};
+		B19E888C024EDF9CAD90F99C /* Paywall */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Paywall;
+		};
+		C660EDBA7D2CAC9880ADBE85 /* Tracking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Tracking;
+		};
+		D6FF0356D04743721FD775CA /* Sync */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Sync;
+		};
+		DC57EC8F611826691B118F71 /* Content */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Content;
+		};
+		E4A4E324E4E7F9D2521683B9 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		6F86ECBFF2374A5B9A3C887B /* BloomlyModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2D2B889FAEED6C1BD05D5A64 /* BloomlyModel.xcdatamodel */,
+			);
+			currentVersion = 2D2B889FAEED6C1BD05D5A64 /* BloomlyModel.xcdatamodel */;
+			path = BloomlyModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 66DC424875DFB78C96FD6DA3 /* Project object */;
+}

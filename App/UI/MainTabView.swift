@@ -160,7 +160,7 @@ public struct MainTabView: View {
 
     private var measurementsTab: some View {
         ScrollView {
-            VStack(spacing: BabyTrackTheme.spacing.lg) {
+            VStack(spacing: BloomyTheme.spacing.lg) {
                 if isLoadingMeasurements {
                     ProgressView()
                 }
@@ -174,7 +174,7 @@ public struct MainTabView: View {
                         showMeasurementForm = true
                     }
                 } else {
-                    VStack(spacing: BabyTrackTheme.spacing.sm) {
+                    VStack(spacing: BloomyTheme.spacing.sm) {
                         ForEach(measurements, id: \.id) { measurement in
                             MeasurementRow(
                                 measurement: measurement,
@@ -195,7 +195,7 @@ public struct MainTabView: View {
                     )
                 }
             }
-            .padding(BabyTrackTheme.spacing.lg)
+            .padding(BloomyTheme.spacing.lg)
         }
         .navigationTitle(Text(AppCopy.Measurements.title))
     }
@@ -249,7 +249,7 @@ public struct MainTabView: View {
                     HStack {
                         ProgressView()
                         Text(AppCopy.string(for: "settings.export.progress"))
-                            .font(BabyTrackTheme.typography.caption.font)
+                            .font(BloomyTheme.typography.caption.font)
                     }
                 }
             }

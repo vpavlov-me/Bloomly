@@ -18,7 +18,7 @@ public struct ErrorView: View {
     }
 
     public var body: some View {
-        VStack(spacing: BabyTrackTheme.spacing.lg) {
+        VStack(spacing: BloomyTheme.spacing.lg) {
             // Error Icon
             Image(systemName: iconName)
                 .font(.system(size: 48))
@@ -27,22 +27,22 @@ public struct ErrorView: View {
 
             // Error Title
             Text(error.errorDescription ?? "Error")
-                .font(BabyTrackTheme.typography.title.font)
-                .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                .font(BloomyTheme.typography.title.font)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
                 .multilineTextAlignment(.center)
                 .accessibilityAddTraits(.isHeader)
 
             // Error Details
             if let suggestion = error.recoverySuggestion {
                 Text(suggestion)
-                    .font(BabyTrackTheme.typography.body.font)
-                    .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                    .font(BloomyTheme.typography.body.font)
+                    .foregroundStyle(BloomyTheme.palette.mutedText)
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
             }
 
             // Action Buttons
-            VStack(spacing: BabyTrackTheme.spacing.sm) {
+            VStack(spacing: BloomyTheme.spacing.sm) {
                 if let onRetry = onRetry, error.isRetryable {
                     PrimaryButton(
                         accessibilityLabel: String(localized: "common.tryAgain"),
@@ -57,20 +57,20 @@ public struct ErrorView: View {
                     Button(action: onDismiss) {
                         Text("Dismiss")
                             .font(.system(.body, design: .rounded))
-                            .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                            .foregroundStyle(BloomyTheme.palette.mutedText)
                     }
                     .minimumTouchTarget()
                 }
             }
         }
-        .padding(BabyTrackTheme.spacing.xl)
+        .padding(BloomyTheme.spacing.xl)
         .frame(maxWidth: 400)
         .background(
-            RoundedRectangle(cornerRadius: BabyTrackTheme.radii.card)
-                .fill(BabyTrackTheme.palette.elevatedSurface)
+            RoundedRectangle(cornerRadius: BloomyTheme.radii.card)
+                .fill(BloomyTheme.palette.elevatedSurface)
                 .shadow(color: .black.opacity(0.1), radius: 10, y: 4)
         )
-        .padding(BabyTrackTheme.spacing.md)
+        .padding(BloomyTheme.spacing.md)
     }
 
     private var iconName: String {
@@ -97,13 +97,13 @@ public struct ErrorView: View {
     private var iconColor: Color {
         switch error.severity {
         case .critical:
-            return BabyTrackTheme.palette.destructive
+            return BloomyTheme.palette.destructive
         case .error:
-            return BabyTrackTheme.palette.warning
+            return BloomyTheme.palette.warning
         case .warning:
-            return BabyTrackTheme.palette.warning
+            return BloomyTheme.palette.warning
         case .info:
-            return BabyTrackTheme.palette.accent
+            return BloomyTheme.palette.accent
         }
     }
 }
@@ -165,29 +165,29 @@ public struct InlineErrorView: View {
     }
 
     public var body: some View {
-        HStack(spacing: BabyTrackTheme.spacing.sm) {
+        HStack(spacing: BloomyTheme.spacing.sm) {
             Image(systemName: "exclamationmark.circle.fill")
-                .foregroundStyle(BabyTrackTheme.palette.destructive)
+                .foregroundStyle(BloomyTheme.palette.destructive)
                 .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(error.errorDescription ?? "Error")
-                    .font(BabyTrackTheme.typography.callout.font)
-                    .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                    .font(BloomyTheme.typography.callout.font)
+                    .foregroundStyle(BloomyTheme.palette.primaryText)
 
                 if let suggestion = error.recoverySuggestion {
                     Text(suggestion)
-                        .font(BabyTrackTheme.typography.caption.font)
-                        .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                        .font(BloomyTheme.typography.caption.font)
+                        .foregroundStyle(BloomyTheme.palette.mutedText)
                 }
             }
 
             Spacer()
         }
-        .padding(BabyTrackTheme.spacing.sm)
+        .padding(BloomyTheme.spacing.sm)
         .background(
-            RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft)
-                .fill(BabyTrackTheme.palette.destructive.opacity(0.1))
+            RoundedRectangle(cornerRadius: BloomyTheme.radii.soft)
+                .fill(BloomyTheme.palette.destructive.opacity(0.1))
         )
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(error.errorDescription ?? "Error"). \(error.recoverySuggestion ?? "")")
@@ -217,12 +217,12 @@ public struct LoadingStateView<Content: View>: View {
             EmptyView()
 
         case .loading:
-            VStack(spacing: BabyTrackTheme.spacing.md) {
+            VStack(spacing: BloomyTheme.spacing.md) {
                 ProgressView()
                     .accessibilityLabel("Loading")
                 Text(AppCopy.Common.loading)
-                    .font(BabyTrackTheme.typography.caption.font)
-                    .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                    .font(BloomyTheme.typography.caption.font)
+                    .foregroundStyle(BloomyTheme.palette.mutedText)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
 

@@ -16,12 +16,12 @@ public struct ChartCard<Content: View>: View {
 
     public var body: some View {
         Card {
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.md) {
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.md) {
                 HStack(alignment: .firstTextBaseline) {
                     VStack(alignment: .leading, spacing: 4) {
-                        BabyTrackTheme.typography.headline.text(title)
+                        BloomyTheme.typography.headline.text(title)
                         if let subtitle {
-                            BabyTrackTheme.typography.caption.text(subtitle)
+                            BloomyTheme.typography.caption.text(subtitle)
                         }
                     }
                     Spacer()
@@ -47,7 +47,7 @@ struct ChartCard_Previews: PreviewProvider {
             }
         }
         .padding()
-        .background(BabyTrackTheme.palette.background)
+        .background(BloomyTheme.palette.background)
         .previewLayout(.sizeThatFits)
     }
 }

@@ -16,21 +16,21 @@ public struct EmptyStateView: View {
     }
 
     public var body: some View {
-        VStack(spacing: BabyTrackTheme.spacing.sm) {
+        VStack(spacing: BloomyTheme.spacing.sm) {
             Image(systemName: icon)
                 .font(.system(size: 36))
-                .foregroundStyle(BabyTrackTheme.palette.accent)
-                .padding(BabyTrackTheme.spacing.sm)
+                .foregroundStyle(BloomyTheme.palette.accent)
+                .padding(BloomyTheme.spacing.sm)
                 .background(
                     Circle()
-                        .fill(BabyTrackTheme.palette.secondaryBackground)
+                        .fill(BloomyTheme.palette.secondaryBackground)
                 )
                 .accessibilityHidden(true)
 
-            BabyTrackTheme.typography.title.text(title)
+            BloomyTheme.typography.title.text(title)
                 .accessibilityAddTraits(.isHeader)
 
-            BabyTrackTheme.typography.caption.text(message)
+            BloomyTheme.typography.caption.text(message)
                 .multilineTextAlignment(.center)
                 .dynamicTypeSize(.xSmall ... .xxxLarge)
 
@@ -45,7 +45,7 @@ public struct EmptyStateView: View {
                 .frame(maxWidth: 220)
             }
         }
-        .padding(BabyTrackTheme.spacing.lg)
+        .padding(BloomyTheme.spacing.lg)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(transparentBackground)
         .accessibilityElement(children: .contain)
@@ -54,7 +54,7 @@ public struct EmptyStateView: View {
     }
 
     private var transparentBackground: some View {
-        BabyTrackTheme.palette.background.opacity(0.001)
+        BloomyTheme.palette.background.opacity(0.001)
     }
 }
 

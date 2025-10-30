@@ -14,29 +14,29 @@ public struct TimelineEventRow: View {
     }
 
     public var body: some View {
-        HStack(alignment: .top, spacing: BabyTrackTheme.spacing.md) {
+        HStack(alignment: .top, spacing: BloomyTheme.spacing.md) {
             Image(systemName: event.kind.symbol)
                 .font(.system(size: 20))
-                .foregroundStyle(BabyTrackTheme.palette.accent)
+                .foregroundStyle(BloomyTheme.palette.accent)
                 .frame(width: 32, height: 32)
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.xs) {
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
                 HStack {
                     Text(LocalizedStringKey(event.kind.titleKey))
                         .font(.system(.headline, design: .rounded))
                     Spacer()
                     Text(timeRange)
                         .font(.system(.footnote, design: .rounded))
-                        .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                        .foregroundStyle(BloomyTheme.palette.mutedText)
                 }
                 if let durationString {
                     Text(durationString)
                         .font(.system(.caption, design: .rounded))
-                        .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                        .foregroundStyle(BloomyTheme.palette.mutedText)
                 }
                 if let notes = event.notes, !notes.isEmpty {
                     Text(notes)
                         .font(.system(.callout, design: .rounded))
-                        .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                        .foregroundStyle(BloomyTheme.palette.primaryText)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -49,10 +49,10 @@ public struct TimelineEventRow: View {
                 }
             } label: {
                 Image(systemName: "ellipsis")
-                    .padding(BabyTrackTheme.spacing.xs)
+                    .padding(BloomyTheme.spacing.xs)
             }
         }
-        .padding(.vertical, BabyTrackTheme.spacing.sm)
+        .padding(.vertical, BloomyTheme.spacing.sm)
     }
 
     private var timeRange: String {

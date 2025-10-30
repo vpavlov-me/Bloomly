@@ -1,4 +1,4 @@
-APP NAME: BabyTrack - Baby Care Tracker
+APP NAME: Bloomly - Baby Care Tracker
 
 SUBTITLE (30 chars max): Sleep, Feed, Diaper & Growth
 
@@ -7,9 +7,9 @@ Track every precious moment of your baby's early days. Beautiful, simple, and pr
 
 DESCRIPTION (4000 chars max):
 
-Track your baby's daily routines with ease and confidence. BabyTrack is the beautifully designed app that helps parents monitor sleep, feeding, diaper changes, and growth measurements—all in one place.
+Track your baby's daily routines with ease and confidence. Bloomly is the beautifully designed app that helps parents monitor sleep, feeding, diaper changes, and growth measurements—all in one place.
 
-⭐ WHY BABYTRACK?
+⭐ WHY Bloomly?
 
 • Simple & Intuitive: Log events with just a few taps
 • Private & Secure: Your data stays on your devices with optional iCloud sync
@@ -96,12 +96,12 @@ GROWTH MEASUREMENTS
 • Russian
 • More languages coming soon
 
-Need help? Contact us at support@vibecoding.com
+Need help? Contact us at support@bloomly.app
 
 Privacy Policy: https://vibecoding.com/bloomly/privacy
 Terms of Service: https://vibecoding.com/bloomly/terms
 
-Start tracking your baby's journey today with BabyTrack!
+Start tracking your baby's journey today with Bloomly!
 
 KEYWORDS (100 chars max - comma separated):
 baby,tracker,sleep,feed,diaper,growth,newborn,infant,parenting,health,feeding,journal,log

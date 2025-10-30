@@ -11,7 +11,7 @@ final class PerformanceTests: XCTestCase {
         try await super.setUp()
 
         // Create in-memory Core Data stack for testing
-        let container = NSPersistentContainer(name: "BabyTrack")
+        let container = NSPersistentContainer(name: "BloomyModel")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         container.persistentStoreDescriptions = [description]

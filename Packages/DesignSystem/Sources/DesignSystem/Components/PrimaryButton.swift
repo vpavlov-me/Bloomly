@@ -35,7 +35,7 @@ public struct PrimaryButton<Content: View>: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .padding(.vertical, BabyTrackTheme.spacing.sm)
+            .padding(.vertical, BloomyTheme.spacing.sm)
         }
         .buttonStyle(PrimaryButtonStyle())
         .disabled(isLoading || disabled)
@@ -68,10 +68,10 @@ public struct PrimaryButtonStyle: ButtonStyle {
         configuration.label
             .font(.system(.headline, design: .rounded))
             .foregroundStyle(.white)
-            .padding(.horizontal, BabyTrackTheme.spacing.md)
-            .padding(.vertical, BabyTrackTheme.spacing.sm)
-            .background(BabyTrackTheme.palette.accent)
-            .clipShape(RoundedRectangle(cornerRadius: BabyTrackTheme.radii.pill, style: .continuous))
+            .padding(.horizontal, BloomyTheme.spacing.md)
+            .padding(.vertical, BloomyTheme.spacing.sm)
+            .background(BloomyTheme.palette.accent)
+            .clipShape(RoundedRectangle(cornerRadius: BloomyTheme.radii.pill, style: .continuous))
             .opacity(configuration.isPressed ? 0.85 : 1)
             .accessibleAnimation(.easeOut(duration: 0.15), value: configuration.isPressed)
     }
@@ -80,7 +80,7 @@ public struct PrimaryButtonStyle: ButtonStyle {
 #if DEBUG
 struct PrimaryButton_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: BabyTrackTheme.spacing.md) {
+        VStack(spacing: BloomyTheme.spacing.md) {
             PrimaryButton(action: {}) {
                 Text("Save")
             }
@@ -92,7 +92,7 @@ struct PrimaryButton_Previews: PreviewProvider {
             }
         }
         .padding()
-        .background(BabyTrackTheme.palette.background)
+        .background(BloomyTheme.palette.background)
         .previewLayout(.sizeThatFits)
     }
 }

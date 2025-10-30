@@ -34,7 +34,7 @@ public final class TimelineViewModel: ObservableObject {
 
     private let repository: EventsRepository
     private let analytics: Analytics
-    private let logger = Logger(subsystem: "com.example.babytrack", category: "Timeline")
+    private let logger = Logger(subsystem: "com.vibecoding.bloomly", category: "Timeline")
     private let calendar: Calendar
 
     // MARK: - Pagination

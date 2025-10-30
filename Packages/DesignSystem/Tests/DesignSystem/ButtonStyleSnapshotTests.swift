@@ -11,7 +11,7 @@ final class ButtonStyleSnapshotTests: XCTestCase {
 
     func testPrimaryButton() throws {
         let view = Button("Continue") {}
-            .buttonStyle(BabyTrackPrimaryButtonStyle())
+            .buttonStyle(PrimaryButtonStyle())
             .padding()
             .background(Color.white)
 

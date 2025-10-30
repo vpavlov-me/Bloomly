@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://babytrack.app/schemas/app-state.schema.json",
-  "title": "BabyTrack Application State Schema",
-  "description": "Schema for application state, settings, and preferences in BabyTrack",
+  "$id": "https://bloomy.app/schemas/app-state.schema.json",
+  "title": "bloomy Application State Schema",
+  "description": "Schema for application state, settings, and preferences in bloomy",
   "type": "object",
   "properties": {
     "version": {

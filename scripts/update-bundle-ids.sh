@@ -28,9 +28,9 @@ NEW_TEAM_ID=$2
 # Extract base name (last component)
 BASE_NAME=$(echo "$NEW_BUNDLE_PREFIX" | awk -F. '{print $NF}')
 
-echo -e "${GREEN}=== BabyTrack Bundle ID Update Script ===${NC}"
+echo -e "${GREEN}=== Bloomly Bundle ID Update Script ===${NC}"
 echo ""
-echo "Old Bundle Prefix: com.example"
+echo "Old Bundle Prefix: com.vibecoding"
 echo "New Bundle Prefix: $NEW_BUNDLE_PREFIX"
 echo ""
 echo "Old Team ID: ABCDE12345"
@@ -52,13 +52,13 @@ fi
 echo -e "${YELLOW}Backing up files...${NC}"
 mkdir -p backups
 cp Project.swift backups/Project.swift.bak
-cp App/Resources/BabyTrack.entitlements backups/BabyTrack.entitlements.bak
+cp App/Resources/Bloomly.entitlements backups/Bloomly.entitlements.bak
 cp Packages/Paywall/Sources/Paywall/Domain/ProductIDs.swift backups/ProductIDs.swift.bak
 cp Configuration.storekit backups/Configuration.storekit.bak
 echo -e "${GREEN}✓ Backups created in ./backups/${NC}"
 
 echo -e "${YELLOW}Updating Project.swift...${NC}"
-sed -i.tmp "s/let bundlePrefix = \"com.example\"/let bundlePrefix = \"$(echo $NEW_BUNDLE_PREFIX | sed 's/\.[^.]*$//')\"/" Project.swift
+sed -i.tmp "s/let bundlePrefix = \"com.vibecoding\"/let bundlePrefix = \"$(echo $NEW_BUNDLE_PREFIX | sed 's/\.[^.]*$//')\"/" Project.swift
 sed -i.tmp "s/let teamID = \"ABCDE12345\"/let teamID = \"$NEW_TEAM_ID\"/" Project.swift
 rm Project.swift.tmp
 echo -e "${GREEN}✓ Updated Project.swift${NC}"
@@ -66,34 +66,34 @@ echo -e "${GREEN}✓ Updated Project.swift${NC}"
 echo -e "${YELLOW}Updating entitlements files...${NC}"
 
 # App entitlements
-sed -i.tmp "s/iCloud.com.example.BabyTrack/iCloud.$NEW_BUNDLE_PREFIX/" App/Resources/BabyTrack.entitlements
-sed -i.tmp "s/group.com.example.babytrack/group.$NEW_BUNDLE_PREFIX/" App/Resources/BabyTrack.entitlements
-rm App/Resources/BabyTrack.entitlements.tmp
-echo -e "${GREEN}✓ Updated App/Resources/BabyTrack.entitlements${NC}"
+sed -i.tmp "s/iCloud.com.vibecoding.bloomly/iCloud.$NEW_BUNDLE_PREFIX/" App/Resources/Bloomly.entitlements
+sed -i.tmp "s/group.com.vibecoding.bloomly/group.$NEW_BUNDLE_PREFIX/" App/Resources/Bloomly.entitlements
+rm App/Resources/Bloomly.entitlements.tmp
+echo -e "${GREEN}✓ Updated App/Resources/Bloomly.entitlements${NC}"
 
 # Widget entitlements
-if [ -f Targets/BabyTrackWidgets/BabyTrackWidgets.entitlements ]; then
-    sed -i.tmp "s/iCloud.com.example.BabyTrack/iCloud.$NEW_BUNDLE_PREFIX/" Targets/BabyTrackWidgets/BabyTrackWidgets.entitlements
-    sed -i.tmp "s/group.com.example.babytrack/group.$NEW_BUNDLE_PREFIX/" Targets/BabyTrackWidgets/BabyTrackWidgets.entitlements
-    rm Targets/BabyTrackWidgets/BabyTrackWidgets.entitlements.tmp
-    echo -e "${GREEN}✓ Updated Targets/BabyTrackWidgets/BabyTrackWidgets.entitlements${NC}"
+if [ -f Targets/BloomlyWidgets/BloomlyWidgets.entitlements ]; then
+    sed -i.tmp "s/iCloud.com.vibecoding.bloomly/iCloud.$NEW_BUNDLE_PREFIX/" Targets/BloomlyWidgets/BloomlyWidgets.entitlements
+    sed -i.tmp "s/group.com.vibecoding.bloomly/group.$NEW_BUNDLE_PREFIX/" Targets/BloomlyWidgets/BloomlyWidgets.entitlements
+    rm Targets/BloomlyWidgets/BloomlyWidgets.entitlements.tmp
+    echo -e "${GREEN}✓ Updated Targets/BloomlyWidgets/BloomlyWidgets.entitlements${NC}"
 fi
 
 # Watch entitlements
-if [ -f Targets/BabyTrackWatchExtension/BabyTrackWatchExtension.entitlements ]; then
-    sed -i.tmp "s/iCloud.com.example.BabyTrack/iCloud.$NEW_BUNDLE_PREFIX/" Targets/BabyTrackWatchExtension/BabyTrackWatchExtension.entitlements
-    sed -i.tmp "s/group.com.example.babytrack/group.$NEW_BUNDLE_PREFIX/" Targets/BabyTrackWatchExtension/BabyTrackWatchExtension.entitlements
-    rm Targets/BabyTrackWatchExtension/BabyTrackWatchExtension.entitlements.tmp
-    echo -e "${GREEN}✓ Updated Targets/BabyTrackWatchExtension/BabyTrackWatchExtension.entitlements${NC}"
+if [ -f Targets/BloomlyWatchExtension/BloomlyWatchExtension.entitlements ]; then
+    sed -i.tmp "s/iCloud.com.vibecoding.bloomly/iCloud.$NEW_BUNDLE_PREFIX/" Targets/BloomlyWatchExtension/BloomlyWatchExtension.entitlements
+    sed -i.tmp "s/group.com.vibecoding.bloomly/group.$NEW_BUNDLE_PREFIX/" Targets/BloomlyWatchExtension/BloomlyWatchExtension.entitlements
+    rm Targets/BloomlyWatchExtension/BloomlyWatchExtension.entitlements.tmp
+    echo -e "${GREEN}✓ Updated Targets/BloomlyWatchExtension/BloomlyWatchExtension.entitlements${NC}"
 fi
 
 echo -e "${YELLOW}Updating ProductIDs.swift...${NC}"
-sed -i.tmp "s/com.example.babytrack/$NEW_BUNDLE_PREFIX/g" Packages/Paywall/Sources/Paywall/Domain/ProductIDs.swift
+sed -i.tmp "s/com.vibecoding.bloomly/$NEW_BUNDLE_PREFIX/g" Packages/Paywall/Sources/Paywall/Domain/ProductIDs.swift
 rm Packages/Paywall/Sources/Paywall/Domain/ProductIDs.swift.tmp
 echo -e "${GREEN}✓ Updated Packages/Paywall/Sources/Paywall/Domain/ProductIDs.swift${NC}"
 
 echo -e "${YELLOW}Updating Configuration.storekit...${NC}"
-sed -i.tmp "s/com.example.babytrack/$NEW_BUNDLE_PREFIX/g" Configuration.storekit
+sed -i.tmp "s/com.vibecoding.bloomly/$NEW_BUNDLE_PREFIX/g" Configuration.storekit
 sed -i.tmp "s/\"ABCDE12345\"/\"$NEW_TEAM_ID\"/" Configuration.storekit
 rm Configuration.storekit.tmp
 echo -e "${GREEN}✓ Updated Configuration.storekit${NC}"
@@ -103,7 +103,7 @@ echo -e "${GREEN}=== Update Complete ===${NC}"
 echo ""
 echo "Next steps:"
 echo "1. Run 'tuist generate' to regenerate the Xcode project"
-echo "2. Open BabyTrack.xcworkspace in Xcode"
+echo "2. Open Bloomly.xcworkspace in Xcode"
 echo "3. Verify Bundle IDs in project settings"
 echo "4. Update provisioning profiles in Xcode"
 echo ""

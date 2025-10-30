@@ -1,6 +1,6 @@
 import SwiftUI
 
-public enum BabyTrackTheme {
+public enum BloomyTheme {
     public static let palette = Palette()
     public static let typography = Typography()
     public static let spacing = Spacing()
@@ -20,7 +20,7 @@ public enum BabyTrackTheme {
     }
 }
 
-public extension BabyTrackTheme {
+public extension BloomyTheme {
     struct Palette {
         // Base colors
         public let background = Color(.systemBackground)
@@ -77,21 +77,21 @@ public extension BabyTrackTheme {
         }
 
         public let largeTitle = TextStyle(font: .system(.largeTitle, design: .rounded).weight(.bold),
-                                          color: BabyTrackTheme.palette.primaryText)
+                                          color: BloomyTheme.palette.primaryText)
         public let title = TextStyle(font: .system(.title2, design: .rounded).weight(.semibold),
-                                     color: BabyTrackTheme.palette.primaryText)
+                                     color: BloomyTheme.palette.primaryText)
         public let title3 = TextStyle(font: .system(.title3, design: .rounded).weight(.semibold),
-                                      color: BabyTrackTheme.palette.primaryText)
+                                      color: BloomyTheme.palette.primaryText)
         public let headline = TextStyle(font: .system(.headline, design: .rounded),
-                                        color: BabyTrackTheme.palette.primaryText)
+                                        color: BloomyTheme.palette.primaryText)
         public let body = TextStyle(font: .system(.body, design: .rounded),
-                                    color: BabyTrackTheme.palette.primaryText)
+                                    color: BloomyTheme.palette.primaryText)
         public let callout = TextStyle(font: .system(.callout, design: .rounded),
-                                       color: BabyTrackTheme.palette.primaryText)
+                                       color: BloomyTheme.palette.primaryText)
         public let footnote = TextStyle(font: .system(.footnote, design: .rounded),
-                                        color: BabyTrackTheme.palette.mutedText)
+                                        color: BloomyTheme.palette.mutedText)
         public let caption = TextStyle(font: .system(.caption, design: .rounded),
-                                       color: BabyTrackTheme.palette.mutedText)
+                                       color: BloomyTheme.palette.mutedText)
     }
 
     struct Spacing {
@@ -160,47 +160,47 @@ private extension Color {
 }
 
 #if DEBUG
-struct BabyTrackTheme_Previews: PreviewProvider {
+struct BloomyTheme_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             // Typography preview
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.md) {
-                BabyTrackTheme.typography.largeTitle.text("Large Title")
-                BabyTrackTheme.typography.title.text("Title")
-                BabyTrackTheme.typography.body.text("Body")
-                BabyTrackTheme.typography.caption.text("Caption")
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.md) {
+                BloomyTheme.typography.largeTitle.text("Large Title")
+                BloomyTheme.typography.title.text("Title")
+                BloomyTheme.typography.body.text("Body")
+                BloomyTheme.typography.caption.text("Caption")
             }
-            .padding(BabyTrackTheme.spacing.lg)
-            .background(BabyTrackTheme.palette.background)
+            .padding(BloomyTheme.spacing.lg)
+            .background(BloomyTheme.palette.background)
 
             // Base colors preview
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.md) {
-                RoundedRectangle(cornerRadius: BabyTrackTheme.radii.card)
-                    .fill(BabyTrackTheme.palette.accent)
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.md) {
+                RoundedRectangle(cornerRadius: BloomyTheme.radii.card)
+                    .fill(BloomyTheme.palette.accent)
                     .frame(height: 60)
                     .overlay(Text("Accent").foregroundStyle(.white).font(.headline))
-                RoundedRectangle(cornerRadius: BabyTrackTheme.radii.card)
-                    .fill(BabyTrackTheme.palette.elevatedSurface)
+                RoundedRectangle(cornerRadius: BloomyTheme.radii.card)
+                    .fill(BloomyTheme.palette.elevatedSurface)
                     .frame(height: 60)
-                    .overlay(Text("Elevated").foregroundStyle(BabyTrackTheme.palette.primaryText).font(.headline))
+                    .overlay(Text("Elevated").foregroundStyle(BloomyTheme.palette.primaryText).font(.headline))
             }
-            .padding(BabyTrackTheme.spacing.lg)
-            .background(BabyTrackTheme.palette.secondaryBackground)
+            .padding(BloomyTheme.spacing.lg)
+            .background(BloomyTheme.palette.secondaryBackground)
 
             // Event colors preview
-            VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.sm) {
+            VStack(alignment: .leading, spacing: BloomyTheme.spacing.sm) {
                 Text("Event Colors").font(.headline)
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: BabyTrackTheme.spacing.sm) {
-                    EventColorCard(title: "Sleep", color: BabyTrackTheme.palette.sleep, icon: "moon.fill")
-                    EventColorCard(title: "Feeding", color: BabyTrackTheme.palette.feeding, icon: "bottle.fill")
-                    EventColorCard(title: "Diaper", color: BabyTrackTheme.palette.diaper, icon: "sparkles")
-                    EventColorCard(title: "Pumping", color: BabyTrackTheme.palette.pumping, icon: "drop.fill")
-                    EventColorCard(title: "Measurement", color: BabyTrackTheme.palette.measurement, icon: "ruler")
-                    EventColorCard(title: "Medication", color: BabyTrackTheme.palette.medication, icon: "pills")
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: BloomyTheme.spacing.sm) {
+                    EventColorCard(title: "Sleep", color: BloomyTheme.palette.sleep, icon: "moon.fill")
+                    EventColorCard(title: "Feeding", color: BloomyTheme.palette.feeding, icon: "bottle.fill")
+                    EventColorCard(title: "Diaper", color: BloomyTheme.palette.diaper, icon: "sparkles")
+                    EventColorCard(title: "Pumping", color: BloomyTheme.palette.pumping, icon: "drop.fill")
+                    EventColorCard(title: "Measurement", color: BloomyTheme.palette.measurement, icon: "ruler")
+                    EventColorCard(title: "Medication", color: BloomyTheme.palette.medication, icon: "pills")
                 }
             }
-            .padding(BabyTrackTheme.spacing.lg)
-            .background(BabyTrackTheme.palette.background)
+            .padding(BloomyTheme.spacing.lg)
+            .background(BloomyTheme.palette.background)
         }
         .previewLayout(.sizeThatFits)
     }
@@ -211,7 +211,7 @@ struct BabyTrackTheme_Previews: PreviewProvider {
         let icon: String
 
         var body: some View {
-            VStack(spacing: BabyTrackTheme.spacing.xs) {
+            VStack(spacing: BloomyTheme.spacing.xs) {
                 Image(systemName: icon)
                     .font(.title2)
                 Text(title)
@@ -220,9 +220,9 @@ struct BabyTrackTheme_Previews: PreviewProvider {
             }
             .foregroundStyle(.white)
             .frame(maxWidth: .infinity)
-            .padding(BabyTrackTheme.spacing.md)
+            .padding(BloomyTheme.spacing.md)
             .background(color)
-            .clipShape(RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft))
+            .clipShape(RoundedRectangle(cornerRadius: BloomyTheme.radii.soft))
         }
     }
 }

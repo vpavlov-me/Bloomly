@@ -1,4 +1,4 @@
-# Dangerfile for BabyTrack
+# Dangerfile for bloomy
 # Automated PR checks and suggestions
 
 # ------------------------------------------------------------------------------

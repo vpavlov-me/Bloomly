@@ -1,4 +1,4 @@
-# BabyTrack QA Testing Report
+# bloomy QA Testing Report
 
 **Test Date:** 2025-10-28
 **Tester:** Vladimir Pavlov
@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-This document contains comprehensive manual QA testing results for BabyTrack iOS application before beta release. Testing covers happy paths, edge cases, device compatibility, localization, and accessibility.
+This document contains comprehensive manual QA testing results for bloomy iOS application before beta release. Testing covers happy paths, edge cases, device compatibility, localization, and accessibility.
 
 **Overall Status:** 🟡 In Progress
 

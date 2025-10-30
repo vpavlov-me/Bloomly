@@ -43,15 +43,15 @@ public struct ChartsView: View {
 
     private var chartTabSelector: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: BabyTrackTheme.spacing.sm) {
+            HStack(spacing: BloomyTheme.spacing.sm) {
                 ForEach(ChartTab.allCases) { tab in
                     chartTabButton(tab)
                 }
             }
-            .padding(.horizontal, BabyTrackTheme.spacing.lg)
-            .padding(.vertical, BabyTrackTheme.spacing.sm)
+            .padding(.horizontal, BloomyTheme.spacing.lg)
+            .padding(.vertical, BloomyTheme.spacing.sm)
         }
-        .background(BabyTrackTheme.palette.secondaryBackground)
+        .background(BloomyTheme.palette.secondaryBackground)
     }
 
     private func chartTabButton(_ tab: ChartTab) -> some View {
@@ -60,24 +60,24 @@ public struct ChartsView: View {
                 selectedTab = tab
             }
         } label: {
-            HStack(spacing: BabyTrackTheme.spacing.xs) {
+            HStack(spacing: BloomyTheme.spacing.xs) {
                 Image(systemName: tab.icon)
                 Text(LocalizedStringKey(tab.titleKey))
                     .font(.system(.subheadline, design: .rounded).weight(.medium))
             }
-            .padding(.horizontal, BabyTrackTheme.spacing.md)
-            .padding(.vertical, BabyTrackTheme.spacing.sm)
+            .padding(.horizontal, BloomyTheme.spacing.md)
+            .padding(.vertical, BloomyTheme.spacing.sm)
             .background(
                 selectedTab == tab
-                    ? BabyTrackTheme.palette.accent
-                    : BabyTrackTheme.palette.background
+                    ? BloomyTheme.palette.accent
+                    : BloomyTheme.palette.background
             )
             .foregroundStyle(
                 selectedTab == tab
                     ? .white
-                    : BabyTrackTheme.palette.primaryText
+                    : BloomyTheme.palette.primaryText
             )
-            .clipShape(RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft))
+            .clipShape(RoundedRectangle(cornerRadius: BloomyTheme.radii.soft))
         }
     }
 }

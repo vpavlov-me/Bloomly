@@ -18,10 +18,10 @@ public enum ToastType {
 
     var color: Color {
         switch self {
-        case .success: return BabyTrackTheme.palette.success
-        case .error: return BabyTrackTheme.palette.destructive
-        case .warning: return BabyTrackTheme.palette.warning
-        case .info: return BabyTrackTheme.palette.accent
+        case .success: return BloomyTheme.palette.success
+        case .error: return BloomyTheme.palette.destructive
+        case .warning: return BloomyTheme.palette.warning
+        case .info: return BloomyTheme.palette.accent
         }
     }
 }
@@ -53,25 +53,25 @@ public struct ToastView: View {
     }
 
     public var body: some View {
-        HStack(spacing: BabyTrackTheme.spacing.sm) {
+        HStack(spacing: BloomyTheme.spacing.sm) {
             Image(systemName: toast.type.icon)
                 .foregroundStyle(toast.type.color)
                 .font(.system(size: 20, weight: .semibold))
 
             Text(toast.message)
-                .font(BabyTrackTheme.typography.body.font)
-                .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                .font(BloomyTheme.typography.body.font)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
                 .multilineTextAlignment(.leading)
 
             Spacer(minLength: 0)
         }
-        .padding(BabyTrackTheme.spacing.md)
+        .padding(BloomyTheme.spacing.md)
         .background(
-            RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft)
-                .fill(BabyTrackTheme.palette.elevatedSurface)
+            RoundedRectangle(cornerRadius: BloomyTheme.radii.soft)
+                .fill(BloomyTheme.palette.elevatedSurface)
                 .shadow(color: .black.opacity(0.1), radius: 8, y: 4)
         )
-        .padding(.horizontal, BabyTrackTheme.spacing.md)
+        .padding(.horizontal, BloomyTheme.spacing.md)
     }
 }
 
@@ -86,7 +86,7 @@ public struct ToastModifier: ViewModifier {
                     ToastView(toast: toast)
                         .transition(.move(edge: .top).combined(with: .opacity))
                         .zIndex(1000)
-                        .padding(.top, BabyTrackTheme.spacing.sm)
+                        .padding(.top, BloomyTheme.spacing.sm)
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + toast.duration) {
                                 withAnimation(.easeInOut) {
@@ -110,14 +110,14 @@ public extension View {
 #if DEBUG
 struct ToastView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: BabyTrackTheme.spacing.lg) {
+        VStack(spacing: BloomyTheme.spacing.lg) {
             ToastView(toast: ToastMessage(type: .success, message: "Event saved successfully"))
             ToastView(toast: ToastMessage(type: .error, message: "Failed to delete measurement"))
             ToastView(toast: ToastMessage(type: .warning, message: "Check your internet connection"))
             ToastView(toast: ToastMessage(type: .info, message: "Syncing data..."))
         }
         .padding()
-        .background(BabyTrackTheme.palette.background)
+        .background(BloomyTheme.palette.background)
         .previewLayout(.sizeThatFits)
     }
 }

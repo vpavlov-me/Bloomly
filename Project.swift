@@ -1,12 +1,12 @@
 import ProjectDescription
 
-let appName = "BabyTrack"
-let bundlePrefix = "com.example"
+let appName = "Bloomly"
+let bundlePrefix = "com.vibecoding"
 let teamID = "ABCDE12345"
 
 let project = Project(
     name: appName,
-    organizationName: "BabyTrack",
+    organizationName: "Bloomly",
     options: .options(
         textSettings: .textSettings(
             usesTabs: false,
@@ -40,7 +40,7 @@ let project = Project(
             name: appName,
             destinations: .iOS,
             product: .app,
-            bundleId: "\(bundlePrefix).babytrack",
+            bundleId: "\(bundlePrefix).bloomly",
             deploymentTargets: .iOS("17.0"),
             infoPlist: .extendingDefault(with: [
                 "UILaunchScreen": [:],
@@ -48,7 +48,7 @@ let project = Project(
             ]),
             sources: ["App/**/*.swift"],
             resources: ["App/Resources/**"],
-            entitlements: "App/Resources/BabyTrack.entitlements",
+            entitlements: "App/Resources/Bloomly.entitlements",
             scripts: [
                 .pre(
                     script: """
@@ -73,54 +73,54 @@ let project = Project(
                 .package(product: "Sync"),
                 .package(product: "Widgets"),
                 .package(product: "WatchApp"),
-                .target(name: "BabyTrackWidgets")
+                .target(name: "BloomlyWidgets")
             ],
-            coreDataModels: [.coreDataModel("App/CoreData/BabyTrackModel.xcdatamodeld")]
+            coreDataModels: [.coreDataModel("App/CoreData/BloomlyModel.xcdatamodeld")]
         ),
         .target(
-            name: "BabyTrackWidgets",
+            name: "BloomlyWidgets",
             destinations: .iOS,
             product: .appExtension,
-            bundleId: "\(bundlePrefix).babytrack.widgets",
+            bundleId: "\(bundlePrefix).bloomly.widgets",
             deploymentTargets: .iOS("17.0"),
             infoPlist: .default,
-            sources: ["Targets/BabyTrackWidgets/Sources/**"],
-            entitlements: "Targets/BabyTrackWidgets/BabyTrackWidgets.entitlements",
+            sources: ["Targets/BloomlyWidgets/Sources/**"],
+            entitlements: "Targets/BloomlyWidgets/BloomlyWidgets.entitlements",
             dependencies: [
                 .package(product: "Widgets")
             ]
         ),
         .target(
-            name: "BabyTrackWatchExtension",
+            name: "BloomlyWatchExtension",
             destinations: .watchOS,
             product: .watch2Extension,
-            bundleId: "\(bundlePrefix).babytrack.watchkitextension",
+            bundleId: "\(bundlePrefix).bloomly.watchkitextension",
             deploymentTargets: .watchOS("10.0"),
             infoPlist: .default,
-            sources: ["Targets/BabyTrackWatchExtension/Sources/**"],
-            entitlements: "Targets/BabyTrackWatchExtension/BabyTrackWatchExtension.entitlements",
+            sources: ["Targets/BloomlyWatchExtension/Sources/**"],
+            entitlements: "Targets/BloomlyWatchExtension/BloomlyWatchExtension.entitlements",
             dependencies: [
                 .package(product: "WatchApp"),
                 .package(product: "Tracking")
             ]
         ),
         .target(
-            name: "BabyTrackWatch",
+            name: "BloomlyWatch",
             destinations: .watchOS,
             product: .watch2App,
-            bundleId: "\(bundlePrefix).babytrack.watchapp",
+            bundleId: "\(bundlePrefix).bloomly.watchapp",
             deploymentTargets: .watchOS("10.0"),
             infoPlist: .default,
-            sources: ["Targets/BabyTrackWatch/Sources/**"],
+            sources: ["Targets/BloomlyWatch/Sources/**"],
             dependencies: [
-                .target(name: "BabyTrackWatchExtension")
+                .target(name: "BloomlyWatchExtension")
             ]
         ),
         .target(
-            name: "BabyTrackTests",
+            name: "BloomlyTests",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "\(bundlePrefix).babytrack.tests",
+            bundleId: "\(bundlePrefix).bloomly.tests",
             infoPlist: .default,
             sources: ["Tests/Unit/**"],
             dependencies: [
@@ -128,10 +128,10 @@ let project = Project(
             ]
         ),
         .target(
-            name: "BabyTrackUITests",
+            name: "BloomlyUITests",
             destinations: .iOS,
             product: .uiTests,
-            bundleId: "\(bundlePrefix).babytrack.uitests",
+            bundleId: "\(bundlePrefix).bloomly.uitests",
             infoPlist: .default,
             sources: ["Tests/UI/**"],
             dependencies: [
@@ -142,7 +142,7 @@ let project = Project(
             name: "DesignSystemTestsTarget",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "\(bundlePrefix).babytrack.designsystemtests",
+            bundleId: "\(bundlePrefix).bloomly.designsystemtests",
             infoPlist: .default,
             sources: ["Packages/DesignSystem/Tests/**"],
             dependencies: [
@@ -154,7 +154,7 @@ let project = Project(
             name: "ContentTestsTarget",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "\(bundlePrefix).babytrack.contenttests",
+            bundleId: "\(bundlePrefix).bloomly.contenttests",
             infoPlist: .default,
             sources: ["Packages/Content/Tests/**"],
             dependencies: [
@@ -165,7 +165,7 @@ let project = Project(
             name: "TrackingTestsTarget",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "\(bundlePrefix).babytrack.trackingtests",
+            bundleId: "\(bundlePrefix).bloomly.trackingtests",
             infoPlist: .default,
             sources: ["Packages/Tracking/Tests/**"],
             dependencies: [
@@ -176,7 +176,7 @@ let project = Project(
             name: "MeasurementsTestsTarget",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "\(bundlePrefix).babytrack.measurementstests",
+            bundleId: "\(bundlePrefix).bloomly.measurementstests",
             infoPlist: .default,
             sources: ["Packages/Measurements/Tests/**"],
             dependencies: [
@@ -188,7 +188,7 @@ let project = Project(
             name: "TimelineTestsTarget",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "\(bundlePrefix).babytrack.timelinetests",
+            bundleId: "\(bundlePrefix).bloomly.timelinetests",
             infoPlist: .default,
             sources: ["Packages/Timeline/Tests/**"],
             dependencies: [
@@ -202,7 +202,7 @@ let project = Project(
             name: "PaywallTestsTarget",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "\(bundlePrefix).babytrack.paywalltests",
+            bundleId: "\(bundlePrefix).bloomly.paywalltests",
             infoPlist: .default,
             sources: ["Packages/Paywall/Tests/**"],
             dependencies: [
@@ -214,7 +214,7 @@ let project = Project(
             name: "SyncTestsTarget",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "\(bundlePrefix).babytrack.synctests",
+            bundleId: "\(bundlePrefix).bloomly.synctests",
             infoPlist: .default,
             sources: ["Packages/Sync/Tests/**"],
             dependencies: [
@@ -227,7 +227,7 @@ let project = Project(
             name: "WidgetsTestsTarget",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "\(bundlePrefix).babytrack.widgetstests",
+            bundleId: "\(bundlePrefix).bloomly.widgetstests",
             infoPlist: .default,
             sources: ["Packages/Widgets/Tests/**"],
             dependencies: [
@@ -238,7 +238,7 @@ let project = Project(
             name: "WatchAppTestsTarget",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "\(bundlePrefix).babytrack.watchapptests",
+            bundleId: "\(bundlePrefix).bloomly.watchapptests",
             infoPlist: .default,
             sources: ["Packages/WatchApp/Tests/**"],
             dependencies: [

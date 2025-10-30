@@ -34,7 +34,7 @@ public final class PumpingTrackingViewModel: ObservableObject {
 
     private let repository: EventsRepository
     private let analytics: Analytics
-    private let logger = Logger(subsystem: "com.example.babytrack", category: "PumpingTracking")
+    private let logger = Logger(subsystem: "com.vibecoding.bloomly", category: "PumpingTracking")
     private let calendar: Calendar
     private var timerCancellable: AnyCancellable?
 

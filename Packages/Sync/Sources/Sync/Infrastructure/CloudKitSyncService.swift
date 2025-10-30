@@ -32,15 +32,15 @@ public actor CloudKitSyncService: SyncService {
     private let database: CKDatabase
     private let persistentContainer: NSPersistentContainer
     private let tokenStore: CloudKitTokenStore
-    private let logger = Logger(subsystem: "com.example.babytrack", category: "Sync")
-    private let zoneID = CKRecordZone.ID(zoneName: "BabyTrackZone", ownerName: CKCurrentUserDefaultName)
-    private let backgroundTaskIdentifier = "com.example.babytrack.sync"
+    private let logger = Logger(subsystem: "com.vibecoding.bloomly", category: "Sync")
+    private let zoneID = CKRecordZone.ID(zoneName: "BloomlyZone", ownerName: CKCurrentUserDefaultName)
+    private let backgroundTaskIdentifier = "com.vibecoding.bloomly.sync"
 
     private let changeTokenKey: String
     private let zoneCreatedKey: String
 
     public init(
-        containerIdentifier: String = "iCloud.com.example.BabyTrack",
+        containerIdentifier: String = "iCloud.com.vibecoding.bloomly",
         persistentContainer: NSPersistentContainer,
         tokenStore: CloudKitTokenStore = UserDefaultsTokenStore(),
         database: CKDatabase? = nil

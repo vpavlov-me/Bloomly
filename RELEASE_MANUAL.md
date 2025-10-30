@@ -1,8 +1,8 @@
-# 📱 Инструкция для Релиза BabyTrack в TestFlight и App Store
+# 📱 Инструкция для Релиза bloomy в TestFlight и App Store
 
 **Дата создания**: 29 октября 2025
 **Версия**: 1.0
-**Цель**: Подготовка приложения BabyTrack для бета-тестирования в TestFlight и последующего релиза в App Store
+**Цель**: Подготовка приложения bloomy для бета-тестирования в TestFlight и последующего релиза в App Store
 
 ---
 
@@ -42,7 +42,7 @@
 
 #### 1️⃣ Main App
 ```
-Description: BabyTrack
+Description: bloomy
 Bundle ID: com.vibecoding.bloomly (или ваш выбор)
 Capabilities:
   ☑ App Groups
@@ -53,7 +53,7 @@ Capabilities:
 
 #### 2️⃣ Widgets Extension
 ```
-Description: BabyTrack Widgets
+Description: bloomy Widgets
 Bundle ID: com.vibecoding.bloomly.widgets
 Capabilities:
   ☑ App Groups
@@ -61,7 +61,7 @@ Capabilities:
 
 #### 3️⃣ Watch App
 ```
-Description: BabyTrack Watch
+Description: bloomy Watch
 Bundle ID: com.vibecoding.bloomly.watchapp
 Capabilities:
   ☑ App Groups
@@ -69,7 +69,7 @@ Capabilities:
 
 #### 4️⃣ Watch Extension
 ```
-Description: BabyTrack Watch Extension
+Description: bloomy Watch Extension
 Bundle ID: com.vibecoding.bloomly.watchkitextension
 Capabilities:
   ☑ App Groups
@@ -84,7 +84,7 @@ Capabilities:
 **Действия**:
 1. Нажмите "+"
 2. Выберите "App Groups"
-3. Description: `BabyTrack Data Sharing`
+3. Description: `bloomy Data Sharing`
 4. Identifier: `group.com.vibecoding.bloomly`
 5. Нажмите "Continue" и "Register"
 
@@ -103,7 +103,7 @@ Capabilities:
 **Действия**:
 1. Нажмите "+"
 2. Выберите "iCloud Containers"
-3. Description: `BabyTrack CloudKit Container`
+3. Description: `bloomy CloudKit Container`
 4. Identifier: `iCloud.com.vibecoding.bloomly`
 5. Нажмите "Continue" и "Register"
 
@@ -195,10 +195,10 @@ Indexes:
 2. Заполните форму:
    ```
    Platforms: ☑ iOS  ☑ watchOS
-   Name: BabyTrack
+   Name: bloomy
    Primary Language: English (U.S.)
    Bundle ID: com.vibecoding.bloomly
-   SKU: BABYTRACK001 (любой уникальный)
+   SKU: bloomy001 (любой уникальный)
    User Access: Full Access
    ```
 3. Нажмите "Create"
@@ -296,19 +296,19 @@ tuist generate
 
 1. Откройте проект:
 ```bash
-open BabyTrack.xcworkspace
+open Bloomy.xcworkspace
 ```
 
-2. Выберите target "BabyTrack" → Signing & Capabilities:
+2. Выберите target "Bloomy" → Signing & Capabilities:
    - Team: выберите ваш Apple Developer Team
    - Provisioning Profile: Automatic
    - Проверьте, что Bundle ID правильный
 
 3. Повторите для всех targets:
-   - BabyTrack
-   - BabyTrackWidgets
-   - BabyTrackWatch
-   - BabyTrackWatchExtension
+   - bloomy
+   - BloomyWidgets
+   - BloomyWatch
+   - BloomyWatchExtension
 
 4. Убедитесь, что capabilities активны:
    - ✅ iCloud (CloudKit)
@@ -346,7 +346,7 @@ App/Resources/Assets.xcassets/AppIcon.appiconset/
 └── Icon-1024.png (1024x1024)
 ```
 
-3. **Watch App Icons**: Аналогично для `Targets/BabyTrackWatch/Assets.xcassets/`
+3. **Watch App Icons**: Аналогично для `Targets/BloomyWatch/Assets.xcassets/`
 
 ---
 
@@ -431,7 +431,7 @@ git push
 ### Шаг 4.2: Установка Version и Build Number
 
 В Xcode:
-1. Выберите target "BabyTrack"
+1. Выберите target "Bloomy"
 2. General → Identity:
    - Version: `1.0.0`
    - Build: `1`
@@ -441,7 +441,7 @@ git push
 ### Шаг 4.3: Archive Build
 
 1. В Xcode выберите:
-   - Scheme: `BabyTrack`
+   - Scheme: `Bloomy`
    - Destination: `Any iOS Device (arm64)`
 
 2. Product → Clean Build Folder (Cmd+Shift+K)
@@ -526,7 +526,7 @@ Feedback Email: testflight@vibecoding.com
 
 4. **Beta App Description**:
 ```
-BabyTrack is a comprehensive baby tracking app that helps parents monitor sleep, feeding, diaper changes, and growth measurements. This beta includes core tracking features, iCloud sync, Apple Watch integration, and Premium subscription functionality.
+bloomy is a comprehensive baby tracking app that helps parents monitor sleep, feeding, diaper changes, and growth measurements. This beta includes core tracking features, iCloud sync, Apple Watch integration, and Premium subscription functionality.
 ```
 
 5. **App Review Information**:
@@ -560,7 +560,7 @@ Premium subscription can be tested using Sandbox environment. No real charges wi
 **Где**: App Store Connect → Your App → App Information
 
 ```
-Name: BabyTrack
+Name: bloomy
 Subtitle: Sleep, Feed, Diaper & Growth
 Category:
   Primary: Health & Fitness
@@ -589,7 +589,7 @@ Age Rating: 4+ (No mature content)
 
 **ОЧЕНЬ ВАЖНО**: Честно заполните, что данные вы собираете.
 
-**Для BabyTrack**:
+**Для bloomy**:
 ```
 Data Types Collected:
 ☑ Health & Fitness
@@ -732,9 +732,8 @@ Pre-Order: No
 2. ✅ Готово к отправке в App Store Review
 3. ✅ Соответствовать всем требованиям Apple
 
-**Удачи с релизом BabyTrack! 🍼📱**
+**Удачи с релизом bloomy! 🍼📱**
 
 ---
 
 **Вопросы?** Создайте issue в репозитории или свяжитесь со мной.
-

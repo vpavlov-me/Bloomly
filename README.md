@@ -1,6 +1,6 @@
-# BabyTrack
+# Bloomly
 
-BabyTrack is a modular SwiftUI application for tracking sleep, feedings, diaper changes, and growth measurements. The architecture is designed for an offline-first experience with local Core Data storage, a CloudKit sync layer, a shared design system, and reusable feature modules that power iOS, watchOS, and WidgetKit surfaces.
+Bloomly is a modular SwiftUI application for tracking sleep, feedings, diaper changes, and growth measurements. The architecture is designed for an offline-first experience with local Core Data storage, a CloudKit sync layer, a shared design system, and reusable feature modules that power iOS, watchOS, and WidgetKit surfaces.
 
 ## Key Features
 - **Event Journal** for sleep, feedings, diaper changes, and pumping with local persistence, notes, and CloudKit-backed sync across devices.
@@ -41,32 +41,32 @@ BabyTrack is a modular SwiftUI application for tracking sleep, feedings, diaper 
 1. Install Xcode 16 with the iOS 17 / watchOS 10 SDKs.
 2. Install tooling: `brew install tuist swiftlint`.
 3. Run `tuist install` to fetch the compatible Tuist version (see `Tuist/Config.swift`).
-4. Run `tuist generate` to create `BabyTrack.xcworkspace`.
+4. Run `tuist generate` to create `Bloomly.xcworkspace`.
 5. Open the workspace and assign your Apple Developer team (placeholder Team ID is `ABCDE12345`).
-6. Update the bundle prefix `com.example` if necessary.
-7. Enable the iCloud container `iCloud.com.example.BabyTrack` and App Group `group.com.example.babytrack` for every target.
-8. Create StoreKit products `com.example.babytrack.premium.monthly` and `com.example.babytrack.premium.yearly`.
+6. Update the bundle prefix `com.vibecoding` if necessary.
+7. Enable the iCloud container `iCloud.com.vibecoding.bloomly` and App Group `group.com.vibecoding.bloomly` for every target.
+8. Create StoreKit products `com.vibecoding.bloomly.premium.monthly` and `com.vibecoding.bloomly.premium.yearly`.
 
 ## Tests & QA
 
 ```bash
 # Build the app
-xcodebuild -workspace BabyTrack.xcworkspace \
-  -scheme BabyTrack \
+xcodebuild -workspace Bloomly.xcworkspace \
+  -scheme Bloomly \
   -destination 'platform=iOS Simulator,name=iPhone 15' \
   -parallelizeTargets \
   -skipPackagePluginValidation build
 
 # Run unit, UI, and snapshot tests
-xcodebuild -workspace BabyTrack.xcworkspace \
-  -scheme BabyTrack \
+xcodebuild -workspace Bloomly.xcworkspace \
+  -scheme Bloomly \
   -destination 'platform=iOS Simulator,name=iPhone 15' \
   -parallelizeTargets \
   -skipPackagePluginValidation test
 ```
 
 ### Snapshot Testing
-BabyTrack uses [swift-snapshot-testing](https://github.com/pointfreeco/swift-snapshot-testing) to prevent UI regressions.
+Bloomly uses [swift-snapshot-testing](https://github.com/pointfreeco/swift-snapshot-testing) to prevent UI regressions.
 
 **Test coverage:**
 - Dashboard (empty state, populated state, active timers)
@@ -101,7 +101,7 @@ Detailed notes: [Docs/snapshot-testing.md](Docs/snapshot-testing.md)
 - The StoreKit 2 client (`StoreClient`) handles product load, purchase, restore, and entitlement validation.
 
 ## Data Export
-BabyTrack allows exporting all data for backups or migration:
+Bloomly allows exporting all data for backups or migration:
 - **CSV export**: Events and measurements in a tabular layout.
 - **JSON export**: Structured JSON with export metadata.
 - Access: Settings → Export Data → select the preferred format.
@@ -117,7 +117,7 @@ Follow the setup checklist below before shipping.
 
 ### CloudKit Setup (Preparation)
 1. Enable the CloudKit capability in Xcode.
-2. Create the CloudKit container `iCloud.com.example.BabyTrack`.
+2. Create the CloudKit container `iCloud.com.vibecoding.bloomly`.
 3. Prepare the Private Database schema (Record Types: `Event`, `Measurement`) and deploy it before releasing.
 
 ## Error Handling & UX

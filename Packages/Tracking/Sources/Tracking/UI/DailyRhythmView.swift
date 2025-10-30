@@ -23,7 +23,7 @@ public struct DailyRhythmView: View {
     }
 
     public var body: some View {
-        VStack(spacing: BabyTrackTheme.spacing.md) {
+        VStack(spacing: BloomyTheme.spacing.md) {
             // Date selector
             dateSelector
 
@@ -38,8 +38,8 @@ public struct DailyRhythmView: View {
                 timelineView
             }
         }
-        .padding(.vertical, BabyTrackTheme.spacing.lg)
-        .background(BabyTrackTheme.palette.background.ignoresSafeArea())
+        .padding(.vertical, BloomyTheme.spacing.lg)
+        .background(BloomyTheme.palette.background.ignoresSafeArea())
         .task {
             await viewModel.loadEvents(repository: eventsRepository)
         }
@@ -48,7 +48,7 @@ public struct DailyRhythmView: View {
     // MARK: - Date Selector
 
     private var dateSelector: some View {
-        VStack(spacing: BabyTrackTheme.spacing.sm) {
+        VStack(spacing: BloomyTheme.spacing.sm) {
             HStack {
                 Button {
                     viewModel.selectPreviousDay()
@@ -58,7 +58,7 @@ public struct DailyRhythmView: View {
                 } label: {
                     Image(systemName: "chevron.left")
                         .font(.title3)
-                        .foregroundStyle(BabyTrackTheme.palette.accent)
+                        .foregroundStyle(BloomyTheme.palette.accent)
                         .frame(width: 44, height: 44)
                 }
 
@@ -66,13 +66,13 @@ public struct DailyRhythmView: View {
 
                 VStack(spacing: 2) {
                     Text(formattedDate)
-                        .font(BabyTrackTheme.typography.headline.font)
-                        .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                        .font(BloomyTheme.typography.headline.font)
+                        .foregroundStyle(BloomyTheme.palette.primaryText)
 
                     if isToday {
                         Text("Today")
-                            .font(BabyTrackTheme.typography.caption.font)
-                            .foregroundStyle(BabyTrackTheme.palette.accent)
+                            .font(BloomyTheme.typography.caption.font)
+                            .foregroundStyle(BloomyTheme.palette.accent)
                     }
                 }
 
@@ -86,22 +86,22 @@ public struct DailyRhythmView: View {
                 } label: {
                     Image(systemName: "chevron.right")
                         .font(.title3)
-                        .foregroundStyle(isToday ? BabyTrackTheme.palette.mutedText : BabyTrackTheme.palette.accent)
+                        .foregroundStyle(isToday ? BloomyTheme.palette.mutedText : BloomyTheme.palette.accent)
                         .frame(width: 44, height: 44)
                 }
                 .disabled(isToday)
             }
-            .padding(.horizontal, BabyTrackTheme.spacing.md)
+            .padding(.horizontal, BloomyTheme.spacing.md)
 
             // Quick date buttons
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: BabyTrackTheme.spacing.sm) {
+                HStack(spacing: BloomyTheme.spacing.sm) {
                     quickDateButton(title: "Today", daysAgo: 0)
                     quickDateButton(title: "Yesterday", daysAgo: 1)
                     quickDateButton(title: "2 days ago", daysAgo: 2)
                     quickDateButton(title: "3 days ago", daysAgo: 3)
                 }
-                .padding(.horizontal, BabyTrackTheme.spacing.md)
+                .padding(.horizontal, BloomyTheme.spacing.md)
             }
         }
     }
@@ -117,20 +117,20 @@ public struct DailyRhythmView: View {
             }
         } label: {
             Text(title)
-                .font(BabyTrackTheme.typography.callout.font)
+                .font(BloomyTheme.typography.callout.font)
                 .foregroundStyle(
                     isSelected
-                        ? BabyTrackTheme.palette.accentContrast
-                        : BabyTrackTheme.palette.primaryText
+                        ? BloomyTheme.palette.accentContrast
+                        : BloomyTheme.palette.primaryText
                 )
-                .padding(.horizontal, BabyTrackTheme.spacing.md)
-                .padding(.vertical, BabyTrackTheme.spacing.sm)
+                .padding(.horizontal, BloomyTheme.spacing.md)
+                .padding(.vertical, BloomyTheme.spacing.sm)
                 .background(
-                    RoundedRectangle(cornerRadius: BabyTrackTheme.radii.soft)
+                    RoundedRectangle(cornerRadius: BloomyTheme.radii.soft)
                         .fill(
                             isSelected
-                                ? BabyTrackTheme.palette.accent
-                                : BabyTrackTheme.palette.secondaryBackground
+                                ? BloomyTheme.palette.accent
+                                : BloomyTheme.palette.secondaryBackground
                         )
                 )
         }
@@ -149,11 +149,11 @@ public struct DailyRhythmView: View {
     // MARK: - Timeline View
 
     private var timelineView: some View {
-        VStack(alignment: .leading, spacing: BabyTrackTheme.spacing.sm) {
+        VStack(alignment: .leading, spacing: BloomyTheme.spacing.sm) {
             Text("Daily Rhythm")
-                .font(BabyTrackTheme.typography.headline.font)
-                .foregroundStyle(BabyTrackTheme.palette.primaryText)
-                .padding(.horizontal, BabyTrackTheme.spacing.md)
+                .font(BloomyTheme.typography.headline.font)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
+                .padding(.horizontal, BloomyTheme.spacing.md)
 
             ScrollView(.horizontal, showsIndicators: false) {
                 ZStack(alignment: .topLeading) {
@@ -178,12 +178,12 @@ public struct DailyRhythmView: View {
                 ForEach(0..<24) { hour in
                     VStack(alignment: .leading, spacing: 4) {
                         Text(String(format: "%02d:00", hour))
-                            .font(BabyTrackTheme.typography.caption.font)
-                            .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                            .font(BloomyTheme.typography.caption.font)
+                            .foregroundStyle(BloomyTheme.palette.mutedText)
                             .frame(width: hourWidth, alignment: .leading)
 
                         Rectangle()
-                            .fill(BabyTrackTheme.palette.outline.opacity(0.3))
+                            .fill(BloomyTheme.palette.outline.opacity(0.3))
                             .frame(width: 1, height: trackHeight)
                     }
                 }
@@ -209,7 +209,7 @@ public struct DailyRhythmView: View {
                     Image(systemName: event.kind.symbol)
                         .font(.system(size: 12))
                     Text(event.kind.rawValue.capitalized)
-                        .font(BabyTrackTheme.typography.caption.font)
+                        .font(BloomyTheme.typography.caption.font)
                 }
                 .foregroundStyle(.white)
 
@@ -219,7 +219,7 @@ public struct DailyRhythmView: View {
                         .foregroundStyle(.white.opacity(0.9))
                 }
             }
-            .padding(BabyTrackTheme.spacing.xs)
+            .padding(BloomyTheme.spacing.xs)
             .frame(width: position.width, height: 60, alignment: .topLeading)
             .background(
                 RoundedRectangle(cornerRadius: 8)
@@ -276,50 +276,50 @@ public struct DailyRhythmView: View {
     }
 
     private var legendView: some View {
-        HStack(spacing: BabyTrackTheme.spacing.lg) {
+        HStack(spacing: BloomyTheme.spacing.lg) {
             ForEach(EventKind.allCases) { kind in
-                HStack(spacing: BabyTrackTheme.spacing.xs) {
+                HStack(spacing: BloomyTheme.spacing.xs) {
                     RoundedRectangle(cornerRadius: 4)
                         .fill(colorForEventKind(kind))
                         .frame(width: 16, height: 16)
 
                     Text(kind.rawValue.capitalized)
-                        .font(BabyTrackTheme.typography.caption.font)
-                        .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                        .font(BloomyTheme.typography.caption.font)
+                        .foregroundStyle(BloomyTheme.palette.mutedText)
                 }
             }
         }
-        .padding(.horizontal, BabyTrackTheme.spacing.md)
+        .padding(.horizontal, BloomyTheme.spacing.md)
     }
 
     // MARK: - State Views
 
     private var loadingView: some View {
-        VStack(spacing: BabyTrackTheme.spacing.md) {
+        VStack(spacing: BloomyTheme.spacing.md) {
             ProgressView()
-                .tint(BabyTrackTheme.palette.accent)
+                .tint(BloomyTheme.palette.accent)
             Text("Loading daily rhythm...")
-                .font(BabyTrackTheme.typography.callout.font)
-                .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                .font(BloomyTheme.typography.callout.font)
+                .foregroundStyle(BloomyTheme.palette.mutedText)
         }
         .frame(height: 200)
     }
 
     private func errorView(_ message: String) -> some View {
-        VStack(spacing: BabyTrackTheme.spacing.md) {
+        VStack(spacing: BloomyTheme.spacing.md) {
             Image(systemName: "exclamationmark.triangle.fill")
                 .font(.system(size: 40))
-                .foregroundStyle(BabyTrackTheme.palette.destructive)
+                .foregroundStyle(BloomyTheme.palette.destructive)
             Text("Error loading data")
-                .font(BabyTrackTheme.typography.headline.font)
-                .foregroundStyle(BabyTrackTheme.palette.primaryText)
+                .font(BloomyTheme.typography.headline.font)
+                .foregroundStyle(BloomyTheme.palette.primaryText)
             Text(message)
-                .font(BabyTrackTheme.typography.callout.font)
-                .foregroundStyle(BabyTrackTheme.palette.mutedText)
+                .font(BloomyTheme.typography.callout.font)
+                .foregroundStyle(BloomyTheme.palette.mutedText)
                 .multilineTextAlignment(.center)
         }
         .frame(height: 200)
-        .padding(BabyTrackTheme.spacing.md)
+        .padding(BloomyTheme.spacing.md)
     }
 
     private var emptyStateView: some View {
