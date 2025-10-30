@@ -8,6 +8,9 @@
       location = "group:Docs"
       name = "Docs">
       <FileRef
+         location = "group:.nojekyll">
+      </FileRef>
+      <FileRef
          location = "group:accessibility.md">
       </FileRef>
       <FileRef
@@ -27,6 +30,9 @@
       </FileRef>
       <FileRef
          location = "group:github-workflow.md">
+      </FileRef>
+      <FileRef
+         location = "group:index.html">
       </FileRef>
       <FileRef
          location = "group:performance-optimization.md">
@@ -158,6 +164,13 @@
                <Group
                   location = "group:checkouts"
                   name = "checkouts">
+                  <Group
+                     location = "group:SwiftSDK"
+                     name = "SwiftSDK">
+                     <FileRef
+                        location = "group:Package.swift">
+                     </FileRef>
+                  </Group>
                   <Group
                      location = "group:swift-custom-dump"
                      name = "swift-custom-dump">

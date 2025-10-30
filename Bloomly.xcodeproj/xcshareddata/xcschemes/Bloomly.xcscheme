@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "614173328BE3E8AF41047808"
+               BlueprintIdentifier = "632F845282F851F60815AD07"
                BuildableName = "Bloomly.app"
                BlueprintName = "Bloomly"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -33,7 +33,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "44C11F87C07ABF3A12BFC472"
+               BlueprintIdentifier = "AA02F76C55B8DB90B241A1C2"
                BuildableName = "BloomlyTests.xctest"
                BlueprintName = "BloomlyTests"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -44,7 +44,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3027EE130299CA2DBF3FE3F7"
+               BlueprintIdentifier = "0EBC79E75494EE6ED3920E69"
                BuildableName = "BloomlyUITests.xctest"
                BlueprintName = "BloomlyUITests"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -66,7 +66,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "614173328BE3E8AF41047808"
+            BlueprintIdentifier = "632F845282F851F60815AD07"
             BuildableName = "Bloomly.app"
             BlueprintName = "Bloomly"
             ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -83,7 +83,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "614173328BE3E8AF41047808"
+            BlueprintIdentifier = "632F845282F851F60815AD07"
             BuildableName = "Bloomly.app"
             BlueprintName = "Bloomly"
             ReferencedContainer = "container:Bloomly.xcodeproj">

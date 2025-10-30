@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "614173328BE3E8AF41047808"
+               BlueprintIdentifier = "632F845282F851F60815AD07"
                BuildableName = "Bloomly.app"
                BlueprintName = "Bloomly"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "44C11F87C07ABF3A12BFC472"
+               BlueprintIdentifier = "AA02F76C55B8DB90B241A1C2"
                BuildableName = "BloomlyTests.xctest"
                BlueprintName = "BloomlyTests"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -42,7 +42,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3027EE130299CA2DBF3FE3F7"
+               BlueprintIdentifier = "0EBC79E75494EE6ED3920E69"
                BuildableName = "BloomlyUITests.xctest"
                BlueprintName = "BloomlyUITests"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -56,7 +56,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1BD8BED88D950DB348E08903"
+               BlueprintIdentifier = "911D5C386861B31808F322D6"
                BuildableName = "BloomlyWatch.app"
                BlueprintName = "BloomlyWatch"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -70,7 +70,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FA49D68634B8E0923D8B4843"
+               BlueprintIdentifier = "AA0EE4C600B81E1BA2524BE0"
                BuildableName = "BloomlyWatchExtension.appex"
                BlueprintName = "BloomlyWatchExtension"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -84,7 +84,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8BCEAC13605256B1D02401A1"
+               BlueprintIdentifier = "BDCCB4B936B6BE4608715C0B"
                BuildableName = "BloomlyWidgets.appex"
                BlueprintName = "BloomlyWidgets"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -98,7 +98,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7F80DE89AF49710F37DE98A9"
+               BlueprintIdentifier = "42F23C5979F57F41718AC9D9"
                BuildableName = "ContentTestsTarget.xctest"
                BlueprintName = "ContentTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -112,7 +112,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6D0E91250BAB561EA084FDA2"
+               BlueprintIdentifier = "382A495A15993B02D323D4A1"
                BuildableName = "DesignSystemTestsTarget.xctest"
                BlueprintName = "DesignSystemTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -126,7 +126,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E79A851FFFF46200AE55A7AF"
+               BlueprintIdentifier = "A6A733126D5FEC84070BA1C2"
                BuildableName = "MeasurementsTestsTarget.xctest"
                BlueprintName = "MeasurementsTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -140,7 +140,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AC4CAFEDEEA789F0980BDEF8"
+               BlueprintIdentifier = "9DC73FC8CCB77F1C579FB73E"
                BuildableName = "PaywallTestsTarget.xctest"
                BlueprintName = "PaywallTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -154,7 +154,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E7BF843373F144E4A76E9F49"
+               BlueprintIdentifier = "C24FE852C5DF4FBEA981129E"
                BuildableName = "SyncTestsTarget.xctest"
                BlueprintName = "SyncTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -168,7 +168,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D19B272B3B23FD28F05F94A1"
+               BlueprintIdentifier = "D529B3FC807976E45D9E2A16"
                BuildableName = "TimelineTestsTarget.xctest"
                BlueprintName = "TimelineTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -182,7 +182,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DB563DACD8F3A48546D7525C"
+               BlueprintIdentifier = "42B4B6BE8E1F638510D260DA"
                BuildableName = "TrackingTestsTarget.xctest"
                BlueprintName = "TrackingTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -196,7 +196,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E0B4D412499F3BA3A3D771BA"
+               BlueprintIdentifier = "D5B912728FDE5D89741AF166"
                BuildableName = "WatchAppTestsTarget.xctest"
                BlueprintName = "WatchAppTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -210,7 +210,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2CBDC410830004F30F80DEC1"
+               BlueprintIdentifier = "9EE3655589918DA2D9873317"
                BuildableName = "WidgetsTestsTarget.xctest"
                BlueprintName = "WidgetsTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -229,7 +229,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "44C11F87C07ABF3A12BFC472"
+               BlueprintIdentifier = "AA02F76C55B8DB90B241A1C2"
                BuildableName = "BloomlyTests.xctest"
                BlueprintName = "BloomlyTests"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -240,7 +240,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3027EE130299CA2DBF3FE3F7"
+               BlueprintIdentifier = "0EBC79E75494EE6ED3920E69"
                BuildableName = "BloomlyUITests.xctest"
                BlueprintName = "BloomlyUITests"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -251,7 +251,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7F80DE89AF49710F37DE98A9"
+               BlueprintIdentifier = "42F23C5979F57F41718AC9D9"
                BuildableName = "ContentTestsTarget.xctest"
                BlueprintName = "ContentTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -262,7 +262,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6D0E91250BAB561EA084FDA2"
+               BlueprintIdentifier = "382A495A15993B02D323D4A1"
                BuildableName = "DesignSystemTestsTarget.xctest"
                BlueprintName = "DesignSystemTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -273,7 +273,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E79A851FFFF46200AE55A7AF"
+               BlueprintIdentifier = "A6A733126D5FEC84070BA1C2"
                BuildableName = "MeasurementsTestsTarget.xctest"
                BlueprintName = "MeasurementsTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -284,7 +284,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AC4CAFEDEEA789F0980BDEF8"
+               BlueprintIdentifier = "9DC73FC8CCB77F1C579FB73E"
                BuildableName = "PaywallTestsTarget.xctest"
                BlueprintName = "PaywallTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -295,7 +295,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E7BF843373F144E4A76E9F49"
+               BlueprintIdentifier = "C24FE852C5DF4FBEA981129E"
                BuildableName = "SyncTestsTarget.xctest"
                BlueprintName = "SyncTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -306,7 +306,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D19B272B3B23FD28F05F94A1"
+               BlueprintIdentifier = "D529B3FC807976E45D9E2A16"
                BuildableName = "TimelineTestsTarget.xctest"
                BlueprintName = "TimelineTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -317,7 +317,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DB563DACD8F3A48546D7525C"
+               BlueprintIdentifier = "42B4B6BE8E1F638510D260DA"
                BuildableName = "TrackingTestsTarget.xctest"
                BlueprintName = "TrackingTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -328,7 +328,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E0B4D412499F3BA3A3D771BA"
+               BlueprintIdentifier = "D5B912728FDE5D89741AF166"
                BuildableName = "WatchAppTestsTarget.xctest"
                BlueprintName = "WatchAppTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -339,7 +339,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2CBDC410830004F30F80DEC1"
+               BlueprintIdentifier = "9EE3655589918DA2D9873317"
                BuildableName = "WidgetsTestsTarget.xctest"
                BlueprintName = "WidgetsTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -361,7 +361,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "614173328BE3E8AF41047808"
+            BlueprintIdentifier = "632F845282F851F60815AD07"
             BuildableName = "Bloomly.app"
             BlueprintName = "Bloomly"
             ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -378,7 +378,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "614173328BE3E8AF41047808"
+            BlueprintIdentifier = "632F845282F851F60815AD07"
             BuildableName = "Bloomly.app"
             BlueprintName = "Bloomly"
             ReferencedContainer = "container:Bloomly.xcodeproj">

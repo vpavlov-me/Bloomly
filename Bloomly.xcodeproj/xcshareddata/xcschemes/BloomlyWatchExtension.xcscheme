@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FA49D68634B8E0923D8B4843"
+               BlueprintIdentifier = "AA0EE4C600B81E1BA2524BE0"
                BuildableName = "BloomlyWatchExtension.appex"
                BlueprintName = "BloomlyWatchExtension"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1BD8BED88D950DB348E08903"
+               BlueprintIdentifier = "911D5C386861B31808F322D6"
                BuildableName = "BloomlyWatch.app"
                BlueprintName = "BloomlyWatch"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -59,7 +59,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1BD8BED88D950DB348E08903"
+            BlueprintIdentifier = "911D5C386861B31808F322D6"
             BuildableName = "BloomlyWatch.app"
             BlueprintName = "BloomlyWatch"
             ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -76,7 +76,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1BD8BED88D950DB348E08903"
+            BlueprintIdentifier = "911D5C386861B31808F322D6"
             BuildableName = "BloomlyWatch.app"
             BlueprintName = "BloomlyWatch"
             ReferencedContainer = "container:Bloomly.xcodeproj">

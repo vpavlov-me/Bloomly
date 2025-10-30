@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AC4CAFEDEEA789F0980BDEF8"
+               BlueprintIdentifier = "9DC73FC8CCB77F1C579FB73E"
                BuildableName = "PaywallTestsTarget.xctest"
                BlueprintName = "PaywallTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -33,7 +33,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AC4CAFEDEEA789F0980BDEF8"
+               BlueprintIdentifier = "9DC73FC8CCB77F1C579FB73E"
                BuildableName = "PaywallTestsTarget.xctest"
                BlueprintName = "PaywallTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -54,7 +54,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AC4CAFEDEEA789F0980BDEF8"
+            BlueprintIdentifier = "9DC73FC8CCB77F1C579FB73E"
             BuildableName = "PaywallTestsTarget.xctest"
             BlueprintName = "PaywallTestsTarget"
             ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -70,7 +70,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AC4CAFEDEEA789F0980BDEF8"
+            BlueprintIdentifier = "9DC73FC8CCB77F1C579FB73E"
             BuildableName = "PaywallTestsTarget.xctest"
             BlueprintName = "PaywallTestsTarget"
             ReferencedContainer = "container:Bloomly.xcodeproj">

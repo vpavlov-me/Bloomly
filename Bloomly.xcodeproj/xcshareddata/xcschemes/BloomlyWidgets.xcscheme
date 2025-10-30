@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8BCEAC13605256B1D02401A1"
+               BlueprintIdentifier = "BDCCB4B936B6BE4608715C0B"
                BuildableName = "BloomlyWidgets.appex"
                BlueprintName = "BloomlyWidgets"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -29,7 +29,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "614173328BE3E8AF41047808"
+               BlueprintIdentifier = "632F845282F851F60815AD07"
                BuildableName = "Bloomly.app"
                BlueprintName = "Bloomly"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -62,7 +62,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "614173328BE3E8AF41047808"
+            BlueprintIdentifier = "632F845282F851F60815AD07"
             BuildableName = "Bloomly.app"
             BlueprintName = "Bloomly"
             ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -79,7 +79,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "614173328BE3E8AF41047808"
+            BlueprintIdentifier = "632F845282F851F60815AD07"
             BuildableName = "Bloomly.app"
             BlueprintName = "Bloomly"
             ReferencedContainer = "container:Bloomly.xcodeproj">

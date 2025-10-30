@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E79A851FFFF46200AE55A7AF"
+               BlueprintIdentifier = "A6A733126D5FEC84070BA1C2"
                BuildableName = "MeasurementsTestsTarget.xctest"
                BlueprintName = "MeasurementsTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -33,7 +33,7 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E79A851FFFF46200AE55A7AF"
+               BlueprintIdentifier = "A6A733126D5FEC84070BA1C2"
                BuildableName = "MeasurementsTestsTarget.xctest"
                BlueprintName = "MeasurementsTestsTarget"
                ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -54,7 +54,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E79A851FFFF46200AE55A7AF"
+            BlueprintIdentifier = "A6A733126D5FEC84070BA1C2"
             BuildableName = "MeasurementsTestsTarget.xctest"
             BlueprintName = "MeasurementsTestsTarget"
             ReferencedContainer = "container:Bloomly.xcodeproj">
@@ -70,7 +70,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E79A851FFFF46200AE55A7AF"
+            BlueprintIdentifier = "A6A733126D5FEC84070BA1C2"
             BuildableName = "MeasurementsTestsTarget.xctest"
             BlueprintName = "MeasurementsTestsTarget"
             ReferencedContainer = "container:Bloomly.xcodeproj">
