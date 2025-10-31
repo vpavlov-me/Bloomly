@@ -21,20 +21,6 @@
                ReferencedContainer = "container:Bloomly.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "632F845282F851F60815AD07"
-               BuildableName = "Bloomly.app"
-               BlueprintName = "Bloomly"
-               ReferencedContainer = "container:Bloomly.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -62,9 +48,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "632F845282F851F60815AD07"
-            BuildableName = "Bloomly.app"
-            BlueprintName = "Bloomly"
+            BlueprintIdentifier = "BDCCB4B936B6BE4608715C0B"
+            BuildableName = "BloomlyWidgets.appex"
+            BlueprintName = "BloomlyWidgets"
             ReferencedContainer = "container:Bloomly.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -79,9 +65,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "632F845282F851F60815AD07"
-            BuildableName = "Bloomly.app"
-            BlueprintName = "Bloomly"
+            BlueprintIdentifier = "BDCCB4B936B6BE4608715C0B"
+            BuildableName = "BloomlyWidgets.appex"
+            BlueprintName = "BloomlyWidgets"
             ReferencedContainer = "container:Bloomly.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

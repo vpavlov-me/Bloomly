@@ -26,7 +26,6 @@
 		2D59F9D46D9DED9ABB3E7A03 /* TimelineSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C80908667F476C3C731177 /* TimelineSnapshotTests.swift */; };
 		2E1E2D905BCF9FA84089FB5D /* ButtonStyleSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43737D3ECB755A76F7620518 /* ButtonStyleSnapshotTests.swift */; };
 		2F6079DA5ABC9164704DAAAD /* BloomlyWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51B6D1C71EEC9F94A68C1FE /* BloomlyWatchApp.swift */; };
-		32F415092463A13C0F858EE2 /* BloomlyWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AA4B7E16CD82FB3364BA6C40 /* BloomlyWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3EAD43C7D33FFF7F0BCF76C9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC80B5383C1A8BEBEAEC90F /* NotificationManager.swift */; };
 		438CA64A90D2CD27AECD2937 /* EventsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9028CE92A431AF2158CC1EE /* EventsRepositoryTests.swift */; };
 		445462A917E9877622BE1756 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 6648522C47072A412BF44D07 /* DesignSystem */; };
@@ -42,6 +41,7 @@
 		60133D2116BC62D3208B3376 /* SleepTrackingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410704932BF1A9B148FF4689 /* SleepTrackingViewModelTests.swift */; };
 		604129EE2FF1F72BC3CDADDA /* TrackingSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4352D1C9E116D2A6783AD2 /* TrackingSnapshotTests.swift */; };
 		61D98E44948AD06D9FA9CD07 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F730B0753CD3B817F4A0ACC /* Placeholder.swift */; };
+		6285176F8E84E965EC193B55 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E9B53A7DE5F9508FE4D2521 /* Localizable.strings */; };
 		628D46F3751D568077C0163E /* ChartDataAggregatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6AB9CCA807768095EAF7A2 /* ChartDataAggregatorTests.swift */; };
 		63467623DF5AF1E1863453F0 /* FeedingTrackingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81299D00815DE8C869845A /* FeedingTrackingViewModelTests.swift */; };
 		6412464A76170646F4BE4BDD /* InMemoryEventsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F920F0AC4C264EBCB62C90F /* InMemoryEventsRepositoryTests.swift */; };
@@ -86,6 +86,7 @@
 		D9FEB753B15608925E5ECF7A /* WatchApp in Frameworks */ = {isa = PBXBuildFile; productRef = 190499D84BE2641B47453064 /* WatchApp */; };
 		DD98FEB737E210C5C48B1324 /* EventsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E5CE7E855F82E7F5B6354F /* EventsRepositoryTests.swift */; };
 		E22DEE06A938949E69840981 /* DashboardSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B962408DF9571DAD8DEA22 /* DashboardSnapshotTests.swift */; };
+		E336786D20206018F1917EFC /* TuistStrings+Bloomly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06130071DC361DC36E68544F /* TuistStrings+Bloomly.swift */; };
 		E516404B81E8F9CC2E6DC0B7 /* WidgetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE36396E5C56EB5EE53B47C /* WidgetsTests.swift */; };
 		E8A31BFDBB6C97BBEC79C123 /* MeasurementsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278D7AAA8868FD8433BCF114 /* MeasurementsRepositoryTests.swift */; };
 		EB99E313E14D9A3F824DDA29 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E8F8D322263E373B9B28E24E /* SnapshotTesting */; };
@@ -101,13 +102,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2A9F7A5EFB333298556BD1E2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E5637F89F50998D3D2EEBED8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BDCCB4B936B6BE4608715C0B;
-			remoteInfo = BloomlyWidgets;
-		};
 		43C1058CD8A3DF8EE0DF7ED7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E5637F89F50998D3D2EEBED8 /* Project object */;
@@ -132,16 +126,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		05B04D71D2D7C9FD5793B24A /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstSubfolderSpec = 13;
-			files = (
-				32F415092463A13C0F858EE2 /* BloomlyWidgets.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0A2FE86594FCC7B69531AB81 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,6 +292,7 @@
 		00B962E570FD1720E68307FD /* BloomlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomlyUITests.swift; sourceTree = "<group>"; };
 		04C2550A466AF0BC91B80EA9 /* BloomlyWatchExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BloomlyWatchExtension.entitlements; sourceTree = "<group>"; };
 		053CC9C01098DF07B4D4A0B7 /* BloomlyWidgets-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BloomlyWidgets-Info.plist"; sourceTree = "<group>"; };
+		06130071DC361DC36E68544F /* TuistStrings+Bloomly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistStrings+Bloomly.swift"; sourceTree = "<group>"; };
 		094C122EA66FC547DFC53737 /* Bloomly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bloomly.entitlements; sourceTree = "<group>"; };
 		0A4C47BDAAA7F62F87933C15 /* BloomlyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomlyApp.swift; sourceTree = "<group>"; };
 		0C8443939A844210EE37BB68 /* MeasurementsTestsTarget.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeasurementsTestsTarget.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -345,6 +330,7 @@
 		4D8C5B22C00767874BA06FE2 /* WatchDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDataStoreTests.swift; sourceTree = "<group>"; };
 		4F1DFD5D8535A57E759D81DA /* BabyRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyRepositoryTests.swift; sourceTree = "<group>"; };
 		51284CBD32AAE2D0E212EE36 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		525807150EBF71636A64CB86 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		531657251E17B0E3FFA67E6E /* BloomlyUITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BloomlyUITests-Info.plist"; sourceTree = "<group>"; };
 		535BB1C328CC5B5557F9A721 /* ContentStringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStringsTests.swift; sourceTree = "<group>"; };
 		5697FE6F3AA8BE9F9BE98730 /* DesignSystemTestsTarget.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesignSystemTestsTarget.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -366,6 +352,7 @@
 		799746F8B895358049DDDADF /* DataExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExportService.swift; sourceTree = "<group>"; };
 		7C10AA50910B5EBDAF8869DD /* TimelineTestsTarget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TimelineTestsTarget-Info.plist"; sourceTree = "<group>"; };
 		88685FA49EE81FBF59691AF1 /* AppSupport */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AppSupport; path = Packages/AppSupport; sourceTree = "<group>"; };
+		89E8C46031DCF56B4BCC4563 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9047F800FB388D03CD4A7EE8 /* PaywallSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallSnapshotTests.swift; sourceTree = "<group>"; };
 		919AD740BA627220F7804115 /* Widgets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Widgets; path = Packages/Widgets; sourceTree = "<group>"; };
 		92511703E820212F560C8E06 /* DesignSystemTestsTarget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DesignSystemTestsTarget-Info.plist"; sourceTree = "<group>"; };
@@ -759,6 +746,7 @@
 		5687F3D9E78DDF7FDC8F498B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4E9B53A7DE5F9508FE4D2521 /* Localizable.strings */,
 				36D88A94BB642FE8FFAF77F6 /* Assets.xcassets */,
 				094C122EA66FC547DFC53737 /* Bloomly.entitlements */,
 			);
@@ -1066,6 +1054,7 @@
 			children = (
 				94C017309E3CF127137FACD8 /* TuistAssets+Bloomly.swift */,
 				BAB524953363C5427F10D558 /* TuistBundle+Bloomly.swift */,
+				06130071DC361DC36E68544F /* TuistStrings+Bloomly.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1191,14 +1180,12 @@
 				373B815914F79E01415F1C53 /* SwiftLint */,
 				74331143628E3677411C2321 /* Sources */,
 				6DFA4984BB0BF5BED0EE9FE3 /* Resources */,
-				05B04D71D2D7C9FD5793B24A /* Embed Foundation Extensions */,
 				F30D1CDC5D7577560905AB29 /* Frameworks */,
 				61E13B6C74A2F88D1A841682 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0F469708D4CC9B28D51B3B2A /* PBXTargetDependency */,
 			);
 			name = Bloomly;
 			packageProductDependencies = (
@@ -1461,6 +1448,7 @@
 			knownRegions = (
 				Base,
 				en,
+				ru,
 			);
 			mainGroup = 53D9A8597D44AFFB37C72270;
 			packageReferences = (
@@ -1548,6 +1536,7 @@
 			files = (
 				AE9BF86BEE69E41453ABCA53 /* Assets.xcassets in Resources */,
 				95409E27FD50378E5D5FEAFC /* Bloomly.entitlements in Resources */,
+				6285176F8E84E965EC193B55 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1724,6 +1713,7 @@
 				1B54CF1D2744EB2B9E49435E /* WidgetReloader.swift in Sources */,
 				22E5DF10131A9D03F4BAAC59 /* TuistAssets+Bloomly.swift in Sources */,
 				15D62C675204533DC54189C8 /* TuistBundle+Bloomly.swift in Sources */,
+				E336786D20206018F1917EFC /* TuistStrings+Bloomly.swift in Sources */,
 				7F82AF1BE192B937814FD7D5 /* BloomlyModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1796,12 +1786,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0F469708D4CC9B28D51B3B2A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BloomlyWidgets;
-			target = BDCCB4B936B6BE4608715C0B /* BloomlyWidgets */;
-			targetProxy = 2A9F7A5EFB333298556BD1E2 /* PBXContainerItemProxy */;
-		};
 		773A52888ADA1A3A2C1A9796 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BloomlyWatchExtension;
@@ -1821,6 +1805,18 @@
 			targetProxy = CDC5AAFF83EF4D7D374AD14A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4E9B53A7DE5F9508FE4D2521 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89E8C46031DCF56B4BCC4563 /* en */,
+				525807150EBF71636A64CB86 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0157A759A73B843D8BA877A9 /* Release */ = {

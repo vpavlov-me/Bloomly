@@ -43,6 +43,9 @@
       <FileRef
          location = "group:watch-app-guide.md">
       </FileRef>
+      <FileRef
+         location = "group:website-guide.md">
+      </FileRef>
       <Group
          location = "group:QA"
          name = "QA">
@@ -477,6 +480,21 @@
                   <FileRef
                      location = "group:Package.swift">
                   </FileRef>
+               </Group>
+            </Group>
+            <Group
+               location = "group:index-build"
+               name = "index-build">
+               <Group
+                  location = "group:checkouts"
+                  name = "checkouts">
+                  <Group
+                     location = "group:SwiftSDK"
+                     name = "SwiftSDK">
+                     <FileRef
+                        location = "group:Package.swift">
+                     </FileRef>
+                  </Group>
                </Group>
             </Group>
          </Group>

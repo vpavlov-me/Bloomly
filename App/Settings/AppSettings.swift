@@ -22,6 +22,7 @@ public final class AppSettings: ObservableObject {
     @Published public var preferredLanguage: LanguageOption {
         didSet {
             defaults.set(preferredLanguage.rawValue, forKey: Keys.preferredLanguage)
+            applyLanguage()
         }
     }
 
@@ -96,9 +97,22 @@ public final class AppSettings: ObservableObject {
         self.analyticsEnabled = defaults.object(forKey: Keys.analyticsEnabled) as? Bool ?? true
 
         applyAppearance()
+        applyLanguage()
     }
 
     // MARK: - Methods
+
+    private func applyLanguage() {
+        switch preferredLanguage {
+        case .system:
+            UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+        case .english:
+            UserDefaults.standard.set(["en"], forKey: "AppleLanguages")
+        case .russian:
+            UserDefaults.standard.set(["ru"], forKey: "AppleLanguages")
+        }
+        UserDefaults.standard.synchronize()
+    }
 
     private func applyAppearance() {
         let style: UIUserInterfaceStyle
