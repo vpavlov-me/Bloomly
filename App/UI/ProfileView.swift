@@ -1,3 +1,4 @@
+import AppSupport
 import Content
 import DesignSystem
 import Paywall
@@ -113,13 +114,11 @@ public struct ProfileView: View {
 
             Text(profile.ageText)
                 .font(BloomyTheme.typography.body.font)
-                .foregroundStyle(BloomyTheme.palette.secondaryText)
+                .foregroundStyle(BloomyTheme.palette.mutedText)
 
-            if let birthDate = profile.birthDate {
-                Text(formatBirthDate(birthDate))
-                    .font(BloomyTheme.typography.caption.font)
-                    .foregroundStyle(BloomyTheme.palette.mutedText)
-            }
+            Text(formatBirthDate(profile.birthDate))
+                .font(BloomyTheme.typography.caption.font)
+                .foregroundStyle(BloomyTheme.palette.mutedText)
         }
     }
 
@@ -167,7 +166,7 @@ public struct ProfileView: View {
                         .foregroundStyle(
                             container.premiumState.isPremium
                                 ? .green
-                                : BloomyTheme.palette.secondaryText
+                                : BloomyTheme.palette.mutedText
                         )
                     }
 

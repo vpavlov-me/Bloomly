@@ -37,13 +37,20 @@ struct WatchRootView_Previews: PreviewProvider {
 
     private struct PreviewEventsRepository: EventsRepository {
         func create(_ dto: EventDTO) async throws -> EventDTO { dto }
+        func read(id: UUID) async throws -> EventDTO { EventDTO(kind: .sleep, start: Date()) }
         func update(_ dto: EventDTO) async throws -> EventDTO { dto }
         func delete(id: UUID) async throws {}
+        func upsert(_ dto: EventDTO) async throws -> EventDTO { dto }
         func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] {
+            [EventDTO(kind: .sleep, start: Date(), end: Date().addingTimeInterval(1800))]
+        }
+        func events(for babyID: UUID, in interval: DateInterval?) async throws -> [EventDTO] {
             [EventDTO(kind: .sleep, start: Date(), end: Date().addingTimeInterval(1800))]
         }
         func lastEvent(for kind: EventKind) async throws -> EventDTO? { nil }
         func stats(for day: Date) async throws -> EventDayStats { .init(date: Date(), totalEvents: 0, totalDuration: 0) }
+        func batchCreate(_ dtos: [EventDTO]) async throws -> [EventDTO] { dtos }
+        func batchUpdate(_ dtos: [EventDTO]) async throws -> [EventDTO] { dtos }
     }
 
     private struct PreviewMeasurementsRepository: MeasurementsRepository {

@@ -1,3 +1,4 @@
+import AppSupport
 import Content
 import DesignSystem
 import PhotosUI
@@ -205,13 +206,13 @@ public struct BabyProfileView: View {
                 Spacer()
 
                 Text(value)
-                    .font(BloomyTheme.typography.bodyBold.font)
+                    .font(BloomyTheme.typography.body.font)
                     .foregroundStyle(BloomyTheme.palette.primaryText)
             }
             .padding(.vertical, BloomyTheme.spacing.sm)
             .padding(.horizontal, BloomyTheme.spacing.md)
             .background(
-                RoundedRectangle(cornerRadius: BloomyTheme.radii.medium)
+                RoundedRectangle(cornerRadius: BloomyTheme.radii.soft)
                     .fill(BloomyTheme.palette.elevatedSurface)
             )
         }

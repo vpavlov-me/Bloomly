@@ -1,5 +1,7 @@
+import AppSupport
 import Content
 import DesignSystem
+import Paywall
 import SwiftUI
 
 public struct SettingsView: View {
@@ -31,7 +33,7 @@ public struct SettingsView: View {
             // MARK: - Profile Section
             Section {
                 NavigationLink {
-                    BabyProfileView(eventsRepository: container.eventsRepository)
+                    BabyProfileView(container: container)
                 } label: {
                     profileLinkContent
                 }
@@ -101,7 +103,7 @@ public struct SettingsView: View {
             } else {
                 HStack(spacing: BloomyTheme.spacing.md) {
                     Circle()
-                        .fill(BloomyTheme.palette.mutedBackground)
+                        .fill(BloomyTheme.palette.secondaryBackground)
                         .frame(width: 50, height: 50)
                         .overlay {
                             Image(systemName: "person.fill")
@@ -125,7 +127,7 @@ public struct SettingsView: View {
                 .clipShape(Circle())
         } else {
             Circle()
-                .fill(BloomyTheme.palette.mutedBackground)
+                .fill(BloomyTheme.palette.secondaryBackground)
                 .frame(width: 50, height: 50)
                 .overlay {
                     Image(systemName: "person.fill")

@@ -1,3 +1,4 @@
+import AppSupport
 import Content
 import DesignSystem
 import PhotosUI
@@ -190,7 +191,7 @@ private struct CreateProfileScreen: View {
                     .foregroundStyle(BloomyTheme.palette.mutedText)
                     .padding(.horizontal, BloomyTheme.spacing.xl)
             }
-            .padding(.top, BloomyTheme.spacing.xxl)
+            .padding(.top, BloomyTheme.spacing.xl)
 
             Spacer()
 
@@ -272,7 +273,7 @@ private struct CreateProfileScreen: View {
 
             // Continue Button
             PrimaryButton(
-                accessibilityLabel: AppCopy.Common.save,
+                accessibilityLabel: AppCopy.string(for: "common.save"),
                 accessibilityHint: "Double tap to save profile",
                 action: handleContinue
             ) {
@@ -360,7 +361,7 @@ private struct NotificationPermissionScreen: View {
                     accessibilityHint: "Double tap to enable notifications",
                     action: {
                         Task {
-                            await notificationManager.requestNotificationPermission()
+                            _ = await notificationManager.requestNotificationPermission()
                             onContinue()
                         }
                     }

@@ -38,11 +38,16 @@ public extension EnvironmentValues {
 
 private struct NullEventsRepository: EventsRepository {
     func create(_ dto: EventDTO) async throws -> EventDTO { fatalError("EventsRepository not provided") }
+    func read(id: UUID) async throws -> EventDTO { fatalError("EventsRepository not provided") }
     func update(_ dto: EventDTO) async throws -> EventDTO { fatalError("EventsRepository not provided") }
     func delete(id: UUID) async throws { fatalError("EventsRepository not provided") }
+    func upsert(_ dto: EventDTO) async throws -> EventDTO { fatalError("EventsRepository not provided") }
     func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] { fatalError("EventsRepository not provided") }
+    func events(for babyID: UUID, in interval: DateInterval?) async throws -> [EventDTO] { fatalError("EventsRepository not provided") }
     func lastEvent(for kind: EventKind) async throws -> EventDTO? { fatalError("EventsRepository not provided") }
     func stats(for day: Date) async throws -> EventDayStats { fatalError("EventsRepository not provided") }
+    func batchCreate(_ dtos: [EventDTO]) async throws -> [EventDTO] { fatalError("EventsRepository not provided") }
+    func batchUpdate(_ dtos: [EventDTO]) async throws -> [EventDTO] { fatalError("EventsRepository not provided") }
 }
 
 private struct NullMeasurementsRepository: MeasurementsRepository {

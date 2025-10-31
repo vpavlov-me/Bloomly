@@ -65,7 +65,8 @@ public final class NotificationManager: NSObject, UNUserNotificationCenterDelega
         content.title = getReminderTitle(for: eventKind)
         content.body = getReminderMessage(for: eventKind)
         content.sound = .default
-        content.badge = NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + 1)
+        // Badge will be set via UNUserNotificationCenter
+        content.badge = nil
 
         // Add custom data for deep linking
         content.userInfo = [
@@ -111,7 +112,8 @@ public final class NotificationManager: NSObject, UNUserNotificationCenterDelega
         content.title = getReminderTitle(for: eventKind)
         content.body = getReminderMessage(for: eventKind)
         content.sound = .default
-        content.badge = NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + 1)
+        // Badge will be set via UNUserNotificationCenter
+        content.badge = nil
 
         content.userInfo = [
             "eventKind": eventKind.rawValue,
@@ -225,27 +227,31 @@ public final class NotificationManager: NSObject, UNUserNotificationCenterDelega
 
     private func getReminderTitle(for eventKind: EventKind) -> String {
         switch eventKind {
-        case .feed:
-            return String(localized: "notifications.feed.reminder")
+        case .feeding:
+            return String(localized: "notifications.feeding.reminder")
         case .sleep:
             return String(localized: "notifications.sleep.reminder")
         case .diaper:
             return String(localized: "notifications.diaper.reminder")
         case .pumping:
             return String(localized: "notifications.pumping.reminder")
+        case .measurement, .medication, .note:
+            return String(localized: "notifications.reminder")
         }
     }
 
     private func getReminderMessage(for eventKind: EventKind) -> String {
         switch eventKind {
-        case .feed:
-            return String(localized: "notifications.feed.body")
+        case .feeding:
+            return String(localized: "notifications.feeding.body")
         case .sleep:
             return String(localized: "notifications.sleep.body")
         case .diaper:
             return String(localized: "notifications.diaper.body")
         case .pumping:
             return String(localized: "notifications.pumping.body")
+        case .measurement, .medication, .note:
+            return String(localized: "notifications.body")
         }
     }
 }

@@ -120,7 +120,7 @@ public actor CloudKitSyncService: SyncService {
                 }
                 self.handleBackgroundTask(refreshTask)
             }
-            scheduleBackgroundSync()
+            await scheduleBackgroundSync()
         }
         #endif
     }
@@ -155,7 +155,7 @@ public actor CloudKitSyncService: SyncService {
                     Task { await self.setZoneCreatedFlag(true) }
                     continuation.resume()
                 case .failure(let error):
-                    if let ckError = error as? CKError, ckError.code == .zoneAlreadyExists {
+                    if let ckError = error as? CKError, ckError.code == .serverRecordChanged {
                         logger.info("CloudKit zone already exists")
                         Task { await self.setZoneCreatedFlag(true) }
                         continuation.resume()
@@ -229,22 +229,22 @@ public actor CloudKitSyncService: SyncService {
     // MARK: - Apply Pull Results
 
     private func applyRemoteChanges(_ records: [CKRecord], deletions: [CKRecord.ID]) async throws {
-        try await performBackgroundTask { context in
+        try await performBackgroundTask { [self] context in
             let logger = self.logger
 
             for record in records {
                 switch RecordType(rawValue: record.recordType) {
                 case .event:
-                    try upsertEventRecord(record, in: context)
+                    try self.upsertEventRecord(record, in: context)
                 case .measurement:
-                    try upsertMeasurementRecord(record, in: context)
+                    try self.upsertMeasurementRecord(record, in: context)
                 case .none:
                     logger.debug("Skipping unsupported record type: \(record.recordType, privacy: .public)")
                 }
             }
 
             for recordID in deletions {
-                try handleDeletion(recordID, in: context)
+                try self.handleDeletion(recordID, in: context)
             }
         }
     }
@@ -340,7 +340,7 @@ public actor CloudKitSyncService: SyncService {
     // MARK: - Push Helpers
 
     private func fetchPendingChanges() async throws -> PendingChanges {
-        try await performBackgroundTask { context in
+        try await performBackgroundTask { [self] context in
             var recordsToSave: [CKRecord] = []
             var recordIDsToDelete: [CKRecord.ID] = []
             var eventObjectIDs: [NSManagedObjectID] = []
@@ -360,7 +360,7 @@ public actor CloudKitSyncService: SyncService {
                 let isDeleted = object.value(forKey: "isDeleted") as? Bool ?? false
                 eventObjectIDs.append(object.objectID)
 
-                let recordID = CKRecord.ID(recordName: uuid.uuidString, zoneID: zoneID)
+                let recordID = CKRecord.ID(recordName: uuid.uuidString, zoneID: self.zoneID)
 
                 if isDeleted {
                     recordIDsToDelete.append(recordID)
@@ -392,7 +392,7 @@ public actor CloudKitSyncService: SyncService {
 
                 measurementObjectIDs.append(object.objectID)
 
-                let recordID = CKRecord.ID(recordName: uuid.uuidString, zoneID: zoneID)
+                let recordID = CKRecord.ID(recordName: uuid.uuidString, zoneID: self.zoneID)
                 let record = CKRecord(recordType: RecordType.measurement.rawValue, recordID: recordID)
                 record["type"] = type as CKRecordValue
                 record["value"] = value as CKRecordValue

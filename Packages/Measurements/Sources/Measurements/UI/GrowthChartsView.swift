@@ -118,6 +118,12 @@ public struct GrowthChartsView: View {
         }
     }
 
+    private struct PercentilePoint: Identifiable {
+        let id = UUID()
+        let date: Date
+        let value: Double
+    }
+
     @ChartContentBuilder
     private func percentileLayer(for type: MeasurementType) -> some ChartContent {
         // Show 3rd, 50th, and 97th percentile curves
@@ -126,11 +132,13 @@ public struct GrowthChartsView: View {
         ForEach(curves, id: \.rawValue) { curve in
             let percentileData = percentilePoints(for: type, curve: curve)
 
-            LineMark(
-                x: .value("Age", \.date),
-                y: .value("Value", \.value),
-                series: .value("Percentile", curve.label)
-            )
+            ForEach(percentileData) { point in
+                LineMark(
+                    x: .value("Age", point.date),
+                    y: .value("Value", point.value),
+                    series: .value("Percentile", curve.label)
+                )
+            }
             .foregroundStyle(percentileColor(for: curve).opacity(0.3))
             .lineStyle(StrokeStyle(lineWidth: 1, dash: [5, 5]))
             .interpolationMethod(.catmullRom)
@@ -140,7 +148,7 @@ public struct GrowthChartsView: View {
     private func percentilePoints(
         for type: MeasurementType,
         curve: WHOPercentiles.Curve
-    ) -> [(date: Date, value: Double)] {
+    ) -> [PercentilePoint] {
         let percentileData: [WHOPercentiles.PercentilePoint]
 
         switch type {
@@ -158,7 +166,7 @@ public struct GrowthChartsView: View {
             guard let date = calendar.date(byAdding: .month, value: point.ageMonths, to: birthDate) else {
                 return nil
             }
-            return (date: date, value: point.value)
+            return PercentilePoint(date: date, value: point.value)
         }
     }
 

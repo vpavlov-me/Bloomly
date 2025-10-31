@@ -1,3 +1,4 @@
+import AppSupport
 import Content
 import DesignSystem
 import Measurements
@@ -9,7 +10,7 @@ import UniformTypeIdentifiers
 
 public struct MainTabView: View {
     @ObservedObject private var container: DependencyContainer
-    @StateObject private var timelineViewModel: TimelineViewModel
+    @StateObject private var timelineViewModel: Timeline.TimelineViewModel
     @Binding var widgetDeepLink: WidgetDeepLink?
 
     @State private var showEventForm = false
@@ -39,7 +40,7 @@ public struct MainTabView: View {
         self._container = ObservedObject(initialValue: container)
         self._widgetDeepLink = widgetDeepLink
         _timelineViewModel = StateObject(
-            wrappedValue: TimelineViewModel(
+            wrappedValue: Timeline.TimelineViewModel(
                 eventsRepository: container.eventsRepository,
                 measurementsRepository: container.measurementsRepository,
                 analytics: container.analytics
@@ -65,7 +66,7 @@ public struct MainTabView: View {
             .tag(0)
 
             NavigationStack {
-                TimelineView(viewModel: timelineViewModel)
+                Timeline.TimelineView(viewModel: timelineViewModel)
                     .onAppear(perform: bindTimelineCallbacks)
             }
             .tabItem { Label(AppCopy.MainTabs.timeline, systemImage: "list.bullet") }
@@ -115,7 +116,7 @@ public struct MainTabView: View {
             MeasurementFormView(
                 repository: container.measurementsRepository,
                 measurement: editingMeasurement,
-                onSave: { _ in
+                onComplete: { _ in
                     Task {
                         await loadMeasurements()
                         toastMessage = ToastMessage(
@@ -152,15 +153,16 @@ public struct MainTabView: View {
     private var addTab: some View {
         List {
             Section {
-                QuickLogBar { event in
+                QuickLogBar(
+                    eventsRepository: container.eventsRepository,
+                    analytics: container.analytics
+                ) { event in
                     timelineViewModel.append(event: event)
                     toastMessage = ToastMessage(
                         type: .success,
                         message: AppCopy.string(for: "event.saved")
                     )
                 }
-                .environment(\.eventsRepository, container.eventsRepository)
-                .environment(\.analytics, container.analytics)
             }
             Section {
                 Button(AppCopy.string(for: "measurements.add")) {
@@ -218,15 +220,18 @@ public struct MainTabView: View {
             Section(header: Text(AppCopy.string(for: "settings.notifications"))) {
                 Toggle(
                     AppCopy.string(for: "settings.notifications.enable"),
-                    isOn: $container.notificationManager.isNotificationEnabled
-                )
-                .onChange(of: container.notificationManager.isNotificationEnabled) { _, newValue in
-                    if newValue {
-                        Task {
-                            await container.notificationManager.requestNotificationPermission()
+                    isOn: Binding(
+                        get: { container.notificationManager.isNotificationEnabled },
+                        set: { newValue in
+                            container.notificationManager.isNotificationEnabled = newValue
+                            if newValue {
+                                Task {
+                                    await container.notificationManager.requestNotificationPermission()
+                                }
+                            }
                         }
-                    }
-                }
+                    )
+                )
             }
 
             Section(header: Text(AppCopy.string(for: "settings.premium.status"))) {

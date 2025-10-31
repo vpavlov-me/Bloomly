@@ -2,7 +2,9 @@ import AppSupport
 import Content
 import SwiftUI
 import Tracking
+#if os(watchOS)
 import WatchKit
+#endif
 
 /// Quick action view with large, prominent buttons for common tracking actions
 public struct QuickActionsView: View {
@@ -172,7 +174,11 @@ public struct QuickActionsView: View {
         isLoggingSleep = true
         defer { isLoggingSleep = false }
 
+        #if os(watchOS)
         provideTapticFeedback(.start)
+        #else
+        provideTapticFeedback()
+        #endif
         analytics.track(.init(type: .watchQuickActionUsed, metadata: ["action": "sleep"]))
 
         do {
@@ -186,7 +192,9 @@ public struct QuickActionsView: View {
                 _ = try await eventsRepository.update(updated)
 
                 // Send to iPhone
+                #if os(watchOS)
                 connectivity.sendEvent(updated)
+                #endif
 
                 let duration = updated.duration ?? 0
                 let hours = Int(duration / 3600)
@@ -201,7 +209,9 @@ public struct QuickActionsView: View {
                 let created = try await eventsRepository.create(dto)
 
                 // Send to iPhone
+                #if os(watchOS)
                 connectivity.sendEvent(created)
+                #endif
 
                 provideSuccessFeedback()
                 successMessage = "Sleep started"
@@ -231,7 +241,9 @@ public struct QuickActionsView: View {
             let created = try await eventsRepository.create(dto)
 
             // Send to iPhone
+            #if os(watchOS)
             connectivity.sendEvent(created)
+            #endif
 
             provideSuccessFeedback()
             let minutes = Int(duration / 60)
@@ -253,7 +265,9 @@ public struct QuickActionsView: View {
             let created = try await eventsRepository.create(dto)
 
             // Send to iPhone
+            #if os(watchOS)
             connectivity.sendEvent(created)
+            #endif
 
             provideSuccessFeedback()
             successMessage = "\(notes) diaper logged"
@@ -273,7 +287,9 @@ public struct QuickActionsView: View {
             let created = try await eventsRepository.create(dto)
 
             // Send to iPhone
+            #if os(watchOS)
             connectivity.sendEvent(created)
+            #endif
 
             provideSuccessFeedback()
             successMessage = "Pumping logged"
@@ -286,23 +302,23 @@ public struct QuickActionsView: View {
 
     // MARK: - Haptic Feedback
 
+    #if os(watchOS)
     private func provideTapticFeedback(_ type: WKHapticType = .click) {
-        #if os(watchOS)
         WKInterfaceDevice.current().play(type)
-        #endif
     }
 
     private func provideSuccessFeedback() {
-        #if os(watchOS)
         WKInterfaceDevice.current().play(.success)
-        #endif
     }
 
     private func provideErrorFeedback() {
-        #if os(watchOS)
         WKInterfaceDevice.current().play(.failure)
-        #endif
     }
+    #else
+    private func provideTapticFeedback(_ type: Any? = nil) {}
+    private func provideSuccessFeedback() {}
+    private func provideErrorFeedback() {}
+    #endif
 }
 
 #if DEBUG
@@ -316,9 +332,14 @@ struct QuickActionsView_Previews: PreviewProvider {
 
     private struct PreviewEventsRepository: EventsRepository {
         func create(_ dto: EventDTO) async throws -> EventDTO { dto }
+        func read(id: UUID) async throws -> EventDTO { EventDTO(kind: .sleep, start: Date()) }
         func update(_ dto: EventDTO) async throws -> EventDTO { dto }
         func delete(id: UUID) async throws {}
+        func upsert(_ dto: EventDTO) async throws -> EventDTO { dto }
         func events(in interval: DateInterval?, kind: EventKind?) async throws -> [EventDTO] {
+            [EventDTO(kind: .sleep, start: Date(), end: nil)]
+        }
+        func events(for babyID: UUID, in interval: DateInterval?) async throws -> [EventDTO] {
             [EventDTO(kind: .sleep, start: Date(), end: nil)]
         }
         func lastEvent(for kind: EventKind) async throws -> EventDTO? {
@@ -327,6 +348,8 @@ struct QuickActionsView_Previews: PreviewProvider {
         func stats(for day: Date) async throws -> EventDayStats {
             .init(date: Date(), totalEvents: 5, totalDuration: 3600)
         }
+        func batchCreate(_ dtos: [EventDTO]) async throws -> [EventDTO] { dtos }
+        func batchUpdate(_ dtos: [EventDTO]) async throws -> [EventDTO] { dtos }
     }
 }
 #endif
