@@ -30,7 +30,7 @@ public struct EventFormView: View {
                     Card {
                         VStack(alignment: .leading, spacing: BloomyTheme.spacing.md) {
                             SegmentedControl(options: EventKind.allCases, selection: $viewModel.kind) { kind in
-                                LocalizedStringKey(kind.titleKey)
+                                LocalizedStringKey(AppCopy.string(for: kind.titleKey))
                             }
                             FormField(title: AppCopy.string(for: "event.form.start")) {
                                 DatePicker("", selection: $viewModel.start)
@@ -43,8 +43,8 @@ public struct EventFormView: View {
                                 Toggle(isOn: $viewModel.hasEnd) {
                                     Text(
                                         viewModel.hasEnd
-                                            ? LocalizedStringKey("event.form.end")
-                                            : LocalizedStringKey("event.form.duration")
+                                            ? LocalizedStringKey(AppCopy.string(for: "event.form.end"))
+                                            : LocalizedStringKey(AppCopy.string(for: "event.form.duration"))
                                     )
                                 }
                                 .toggleStyle(.switch)
@@ -68,7 +68,7 @@ public struct EventFormView: View {
                             .padding(.horizontal, BloomyTheme.spacing.md)
                     }
                     PrimaryButton(isLoading: viewModel.isSaving, action: save) {
-                        Text(LocalizedStringKey("event.form.save"))
+                        Text(AppCopy.string(for: "event.form.save"))
                     }
                     .padding(.horizontal, BloomyTheme.spacing.md)
                 }
@@ -77,8 +77,8 @@ public struct EventFormView: View {
             .background(BloomyTheme.palette.background.ignoresSafeArea())
             .navigationTitle(
                 viewModel.isEditing
-                    ? Text(LocalizedStringKey("event.form.title.edit"))
-                    : Text(LocalizedStringKey("event.form.title.new"))
+                    ? Text(AppCopy.string(for: "event.form.title.edit"))
+                    : Text(AppCopy.string(for: "event.form.title.new"))
             )
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

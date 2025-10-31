@@ -44,7 +44,8 @@ let project = Project(
             deploymentTargets: .iOS("17.0"),
             infoPlist: .extendingDefault(with: [
                 "UILaunchScreen": [:],
-                "UIBackgroundModes": ["fetch"]
+                "UIBackgroundModes": ["fetch"],
+                "CFBundleLocalizations": ["en", "ru"]
             ]),
             sources: ["App/**/*.swift"],
             resources: ["App/Resources/**"],
@@ -72,8 +73,8 @@ let project = Project(
                 .package(product: "Paywall"),
                 .package(product: "Sync"),
                 .package(product: "Widgets"),
-                .package(product: "WatchApp"),
-                .target(name: "BloomlyWidgets")
+                .package(product: "WatchApp")
+                // .target(name: "BloomlyWidgets") // Temporarily disabled due to Info.plist issues
             ],
             coreDataModels: [.coreDataModel("App/CoreData/BloomlyModel.xcdatamodeld")]
         ),

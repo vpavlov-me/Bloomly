@@ -75,7 +75,7 @@ public struct TimelineView: View {
 
             Section {
                 SegmentedControl(options: TimelineViewModel.Filter.allCases, selection: $viewModel.filter) { filter in
-                    LocalizedStringKey(filter.titleKey)
+                    LocalizedStringKey(AppCopy.string(for: filter.titleKey))
                 }
                 .listRowInsets(EdgeInsets())
                 .onChange(of: viewModel.filter) { _, _ in

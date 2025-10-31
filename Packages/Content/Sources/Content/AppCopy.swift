@@ -2,7 +2,21 @@ import SwiftUI
 
 public enum AppCopy {
     private static func localized(_ key: String, _ arguments: CVarArg...) -> String {
-        let format = NSLocalizedString(key, tableName: nil, bundle: .module, comment: "")
+        // Try main bundle first (for app-level localizations)
+        let mainFormat = NSLocalizedString(key, tableName: nil, bundle: .main, comment: "")
+        let format: String
+
+        if mainFormat != key {
+            // Found in main bundle
+            format = mainFormat
+        } else {
+            // Try module bundle (Content_Content.bundle)
+            format = NSLocalizedString(key, tableName: nil, bundle: .module, comment: "")
+            if format == key {
+                print("⚠️ Localization key not found: \(key)")
+            }
+        }
+
         if arguments.isEmpty {
             return format
         }
@@ -11,6 +25,10 @@ public enum AppCopy {
 
     public static func string(for key: String) -> String {
         localized(key)
+    }
+
+    public static func text(for key: String) -> Text {
+        Text(verbatim: localized(key))
     }
 
     public enum Timeline {

@@ -24,7 +24,7 @@ public struct MeasurementFormView: View {
                 Section(header: Text(AppCopy.string(for: "measurements.form.type"))) {
                     Picker("", selection: $viewModel.type) {
                         ForEach(MeasurementType.allCases) { type in
-                            Text(LocalizedStringKey(type.titleKey)).tag(type)
+                            Text(AppCopy.string(for: type.titleKey)).tag(type)
                         }
                     }
                     .pickerStyle(.segmented)

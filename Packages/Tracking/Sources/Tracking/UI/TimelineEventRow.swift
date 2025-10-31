@@ -21,7 +21,7 @@ public struct TimelineEventRow: View {
                 .frame(width: 32, height: 32)
             VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
                 HStack {
-                    Text(LocalizedStringKey(event.kind.titleKey))
+                    Text(AppCopy.string(for: event.kind.titleKey))
                         .font(.system(.headline, design: .rounded))
                     Spacer()
                     Text(timeRange)

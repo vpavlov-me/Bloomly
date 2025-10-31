@@ -62,7 +62,7 @@ public struct ChartsView: View {
         } label: {
             HStack(spacing: BloomyTheme.spacing.xs) {
                 Image(systemName: tab.icon)
-                Text(LocalizedStringKey(tab.titleKey))
+                Text(AppCopy.string(for: tab.titleKey))
                     .font(.system(.subheadline, design: .rounded).weight(.medium))
             }
             .padding(.horizontal, BloomyTheme.spacing.md)

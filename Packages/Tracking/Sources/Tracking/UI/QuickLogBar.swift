@@ -32,7 +32,7 @@ public struct QuickLogBar: View {
                         } label: {
                             HStack(spacing: BloomyTheme.spacing.xs) {
                                 Image(systemName: kind.symbol)
-                                Text(LocalizedStringKey(kind.titleKey))
+                                Text(AppCopy.string(for: kind.titleKey))
                                     .font(.system(.subheadline, design: .rounded).weight(.medium))
                             }
                             .frame(maxWidth: .infinity)

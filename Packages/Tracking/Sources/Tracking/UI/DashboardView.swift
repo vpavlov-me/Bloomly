@@ -75,7 +75,7 @@ public struct DashboardView: View {
         Card {
             VStack(alignment: .leading, spacing: BloomyTheme.spacing.md) {
                 BloomyTheme.typography.headline.text(
-                    String(localized: "dashboard.quickActions.title")
+                    AppCopy.string(for: "dashboard.quickActions.title")
                 )
 
                 LazyVGrid(
@@ -115,13 +115,13 @@ public struct DashboardView: View {
         Card {
             VStack(alignment: .leading, spacing: BloomyTheme.spacing.md) {
                 BloomyTheme.typography.headline.text(
-                    String(localized: "dashboard.todaySummary.title")
+                    AppCopy.string(for: "dashboard.todaySummary.title")
                 )
 
                 VStack(spacing: BloomyTheme.spacing.sm) {
                     StatRow(
                         icon: EventKind.sleep.symbol,
-                        title: String(localized: "dashboard.stats.sleep"),
+                        title: AppCopy.string(for: "dashboard.stats.sleep"),
                         value: "\(stats.sleepCount) • \(formatDuration(stats.totalSleepDuration))"
                     )
 
@@ -129,7 +129,7 @@ public struct DashboardView: View {
 
                     StatRow(
                         icon: EventKind.feeding.symbol,
-                        title: String(localized: "dashboard.stats.feeding"),
+                        title: AppCopy.string(for: "dashboard.stats.feeding"),
                         value: "\(stats.feedingCount) • \(formatDuration(stats.totalFeedingDuration))"
                     )
 
@@ -137,7 +137,7 @@ public struct DashboardView: View {
 
                     StatRow(
                         icon: EventKind.diaper.symbol,
-                        title: String(localized: "dashboard.stats.diaper"),
+                        title: AppCopy.string(for: "dashboard.stats.diaper"),
                         value: "\(stats.diaperCount)"
                     )
 
@@ -145,7 +145,7 @@ public struct DashboardView: View {
 
                     StatRow(
                         icon: EventKind.pumping.symbol,
-                        title: String(localized: "dashboard.stats.pumping"),
+                        title: AppCopy.string(for: "dashboard.stats.pumping"),
                         value: "\(stats.pumpingCount)"
                     )
                 }
@@ -156,9 +156,9 @@ public struct DashboardView: View {
     private func errorView(message: String) -> some View {
         EmptyStateView(
             icon: "exclamationmark.triangle",
-            title: String(localized: "dashboard.error.title"),
+            title: AppCopy.string(for: "dashboard.error.title"),
             message: message,
-            actionTitle: String(localized: "dashboard.error.retry")
+            actionTitle: AppCopy.string(for: "dashboard.error.retry")
         ) {
             Task { await viewModel.refresh() }
         }
@@ -169,9 +169,9 @@ public struct DashboardView: View {
         let minutes = (Int(duration) % 3600) / 60
 
         if hours > 0 {
-            return String(localized: "dashboard.duration.hoursMinutes \(hours) \(minutes)")
+            return String(format: AppCopy.string(for: "dashboard.duration.hoursMinutes"), hours, minutes)
         } else {
-            return String(localized: "dashboard.duration.minutes \(minutes)")
+            return String(format: AppCopy.string(for: "dashboard.duration.minutes"), minutes)
         }
     }
 }
@@ -218,7 +218,7 @@ private struct QuickActionButton: View {
                     .font(.system(size: 32))
                     .foregroundStyle(BloomyTheme.palette.accent)
 
-                Text(LocalizedStringKey(kind.titleKey))
+                Text(AppCopy.string(for: kind.titleKey))
                     .font(.system(.subheadline, design: .rounded).weight(.medium))
                     .multilineTextAlignment(.center)
             }
@@ -243,7 +243,7 @@ private struct TimeSinceCard: View {
                     .foregroundStyle(BloomyTheme.palette.accent)
 
                 VStack(alignment: .leading, spacing: BloomyTheme.spacing.xs) {
-                    Text(LocalizedStringKey(kind.titleKey))
+                    Text(AppCopy.string(for: kind.titleKey))
                         .font(.system(.subheadline, design: .rounded).weight(.medium))
                     Text(formatTimeSince(timeSince))
                         .font(.system(.caption, design: .rounded))
@@ -260,11 +260,11 @@ private struct TimeSinceCard: View {
         let minutes = (Int(interval) % 3600) / 60
 
         if hours > 0 {
-            return String(localized: "dashboard.timeSince.hours \(hours)")
+            return String(format: AppCopy.string(for: "dashboard.timeSince.hours"), hours)
         } else if minutes > 0 {
-            return String(localized: "dashboard.timeSince.minutes \(minutes)")
+            return String(format: AppCopy.string(for: "dashboard.timeSince.minutes"), minutes)
         } else {
-            return String(localized: "dashboard.timeSince.justNow")
+            return AppCopy.string(for: "dashboard.timeSince.justNow")
         }
     }
 }
